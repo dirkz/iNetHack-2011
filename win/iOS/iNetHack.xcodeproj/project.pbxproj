@@ -560,7 +560,6 @@
 		437A912F114FF5D1000046FD /* amiconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amiconf.h; sourceTree = "<group>"; };
 		437A9130114FF5D1000046FD /* artifact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artifact.h; sourceTree = "<group>"; };
 		437A9131114FF5D1000046FD /* artilist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artilist.h; sourceTree = "<group>"; };
-		437A9132114FF5D1000046FD /* attk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attk.h; sourceTree = "<group>"; };
 		437A9133114FF5D1000046FD /* attrib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = attrib.h; sourceTree = "<group>"; };
 		437A9134114FF5D1000046FD /* beconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = beconf.h; sourceTree = "<group>"; };
 		437A9135114FF5D1000046FD /* bitmfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitmfile.h; sourceTree = "<group>"; };
@@ -575,13 +574,11 @@
 		437A913E114FF5D1000046FD /* dlb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dlb.h; sourceTree = "<group>"; };
 		437A913F114FF5D1000046FD /* dungeon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dungeon.h; sourceTree = "<group>"; };
 		437A9140114FF5D1000046FD /* edog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edog.h; sourceTree = "<group>"; };
-		437A9141114FF5D1000046FD /* egyp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = egyp.h; sourceTree = "<group>"; };
 		437A9142114FF5D1000046FD /* emin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = emin.h; sourceTree = "<group>"; };
 		437A9143114FF5D1000046FD /* engrave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = engrave.h; sourceTree = "<group>"; };
 		437A9144114FF5D1000046FD /* epri.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = epri.h; sourceTree = "<group>"; };
 		437A9145114FF5D1000046FD /* eshk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eshk.h; sourceTree = "<group>"; };
 		437A9146114FF5D1000046FD /* extern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = extern.h; sourceTree = "<group>"; };
-		437A9147114FF5D1000046FD /* file.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file.h; sourceTree = "<group>"; };
 		437A9148114FF5D1000046FD /* flag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flag.h; sourceTree = "<group>"; };
 		437A9149114FF5D1000046FD /* func_tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = func_tab.h; sourceTree = "<group>"; };
 		437A914A114FF5D1000046FD /* gem_rsc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gem_rsc.h; sourceTree = "<group>"; };
@@ -597,7 +594,6 @@
 		437A9154114FF5D1000046FD /* mactty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mactty.h; sourceTree = "<group>"; };
 		437A9155114FF5D1000046FD /* macwin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macwin.h; sourceTree = "<group>"; };
 		437A9156114FF5D1000046FD /* mail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mail.h; sourceTree = "<group>"; };
-		437A9157114FF5D1000046FD /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
 		437A9158114FF5D1000046FD /* mfndpos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mfndpos.h; sourceTree = "<group>"; };
 		437A9159114FF5D1000046FD /* micro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = micro.h; sourceTree = "<group>"; };
 		437A915A114FF5D1000046FD /* mkroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mkroom.h; sourceTree = "<group>"; };
@@ -608,7 +604,6 @@
 		437A915F114FF5D1000046FD /* monsym.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = monsym.h; sourceTree = "<group>"; };
 		437A9160114FF5D1000046FD /* mttypriv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mttypriv.h; sourceTree = "<group>"; };
 		437A9161114FF5D1000046FD /* nhlan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nhlan.h; sourceTree = "<group>"; };
-		437A9162114FF5D1000046FD /* nhxdr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = nhxdr.h; sourceTree = "<group>"; };
 		437A9163114FF5D1000046FD /* ntconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ntconf.h; sourceTree = "<group>"; };
 		437A9164114FF5D1000046FD /* obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = obj.h; sourceTree = "<group>"; };
 		437A9165114FF5D1000046FD /* objclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objclass.h; sourceTree = "<group>"; };
@@ -617,9 +612,6 @@
 		437A9168114FF5D1000046FD /* pcconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pcconf.h; sourceTree = "<group>"; };
 		437A9169114FF5D1000046FD /* permonst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = permonst.h; sourceTree = "<group>"; };
 		437A916A114FF5D1000046FD /* prop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prop.h; sourceTree = "<group>"; };
-		437A916B114FF5D1000046FD /* proxycb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proxycb.h; sourceTree = "<group>"; };
-		437A916C114FF5D1000046FD /* proxycom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proxycom.h; sourceTree = "<group>"; };
-		437A916D114FF5D1000046FD /* prxyclnt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = prxyclnt.h; sourceTree = "<group>"; };
 		437A916E114FF5D1000046FD /* qt_clust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qt_clust.h; sourceTree = "<group>"; };
 		437A916F114FF5D1000046FD /* qt_kde0.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qt_kde0.h; sourceTree = "<group>"; };
 		437A9170114FF5D1000046FD /* qt_win.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qt_win.h; sourceTree = "<group>"; };
@@ -635,7 +627,6 @@
 		437A917A114FF5D1000046FD /* spell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spell.h; sourceTree = "<group>"; };
 		437A917B114FF5D1000046FD /* system.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = system.h; sourceTree = "<group>"; };
 		437A917C114FF5D1000046FD /* tcap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tcap.h; sourceTree = "<group>"; };
-		437A917D114FF5D1000046FD /* tech.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tech.h; sourceTree = "<group>"; };
 		437A917E114FF5D1000046FD /* tile2x11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tile2x11.h; sourceTree = "<group>"; };
 		437A917F114FF5D1000046FD /* timeout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timeout.h; sourceTree = "<group>"; };
 		437A9180114FF5D1000046FD /* tosconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tosconf.h; sourceTree = "<group>"; };
@@ -649,11 +640,8 @@
 		437A9188114FF5D1000046FD /* wceconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wceconf.h; sourceTree = "<group>"; };
 		437A9189114FF5D1000046FD /* winami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winami.h; sourceTree = "<group>"; };
 		437A918A114FF5D1000046FD /* wingem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wingem.h; sourceTree = "<group>"; };
-		437A918B114FF5D1000046FD /* winGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winGL.h; sourceTree = "<group>"; };
 		437A918C114FF5D1000046FD /* winGnome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winGnome.h; sourceTree = "<group>"; };
-		437A918D114FF5D1000046FD /* winGTK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winGTK.h; sourceTree = "<group>"; };
 		437A918E114FF5D1000046FD /* winprocs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winprocs.h; sourceTree = "<group>"; };
-		437A918F114FF5D1000046FD /* winproxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winproxy.h; sourceTree = "<group>"; };
 		437A9190114FF5D1000046FD /* wintty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wintty.h; sourceTree = "<group>"; };
 		437A9191114FF5D1000046FD /* wintype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wintype.h; sourceTree = "<group>"; };
 		437A9192114FF5D1000046FD /* winX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winX.h; sourceTree = "<group>"; };
@@ -768,10 +756,8 @@
 		437A9203114FF5D1000046FD /* write.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = write.c; sourceTree = "<group>"; };
 		437A9204114FF5D1000046FD /* zap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zap.c; sourceTree = "<group>"; };
 		437A9289114FF874000046FD /* date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = date.h; sourceTree = "<group>"; };
-		437A928A114FF874000046FD /* filename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filename.h; sourceTree = "<group>"; };
 		437A928B114FF874000046FD /* onames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = onames.h; sourceTree = "<group>"; };
 		437A928C114FF874000046FD /* pm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pm.h; sourceTree = "<group>"; };
-		437A928D114FF874000046FD /* tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tile.h; sourceTree = "<group>"; };
 		437A928E114FF874000046FD /* vis_tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vis_tab.h; sourceTree = "<group>"; };
 		437A928F114FF8B4000046FD /* monstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = monstr.c; sourceTree = "<group>"; };
 		437A9290114FF8B4000046FD /* vis_tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vis_tab.c; sourceTree = "<group>"; };
@@ -1018,16 +1004,13 @@
 			isa = PBXGroup;
 			children = (
 				437A9289114FF874000046FD /* date.h */,
-				437A928A114FF874000046FD /* filename.h */,
 				437A928B114FF874000046FD /* onames.h */,
 				437A928C114FF874000046FD /* pm.h */,
-				437A928D114FF874000046FD /* tile.h */,
 				437A928E114FF874000046FD /* vis_tab.h */,
 				437A912E114FF5D1000046FD /* align.h */,
 				437A912F114FF5D1000046FD /* amiconf.h */,
 				437A9130114FF5D1000046FD /* artifact.h */,
 				437A9131114FF5D1000046FD /* artilist.h */,
-				437A9132114FF5D1000046FD /* attk.h */,
 				437A9133114FF5D1000046FD /* attrib.h */,
 				437A9134114FF5D1000046FD /* beconf.h */,
 				437A9135114FF5D1000046FD /* bitmfile.h */,
@@ -1042,13 +1025,11 @@
 				437A913E114FF5D1000046FD /* dlb.h */,
 				437A913F114FF5D1000046FD /* dungeon.h */,
 				437A9140114FF5D1000046FD /* edog.h */,
-				437A9141114FF5D1000046FD /* egyp.h */,
 				437A9142114FF5D1000046FD /* emin.h */,
 				437A9143114FF5D1000046FD /* engrave.h */,
 				437A9144114FF5D1000046FD /* epri.h */,
 				437A9145114FF5D1000046FD /* eshk.h */,
 				437A9146114FF5D1000046FD /* extern.h */,
-				437A9147114FF5D1000046FD /* file.h */,
 				437A9148114FF5D1000046FD /* flag.h */,
 				437A9149114FF5D1000046FD /* func_tab.h */,
 				437A914A114FF5D1000046FD /* gem_rsc.h */,
@@ -1064,7 +1045,6 @@
 				437A9154114FF5D1000046FD /* mactty.h */,
 				437A9155114FF5D1000046FD /* macwin.h */,
 				437A9156114FF5D1000046FD /* mail.h */,
-				437A9157114FF5D1000046FD /* md5.h */,
 				437A9158114FF5D1000046FD /* mfndpos.h */,
 				437A9159114FF5D1000046FD /* micro.h */,
 				437A915A114FF5D1000046FD /* mkroom.h */,
@@ -1075,7 +1055,6 @@
 				437A915F114FF5D1000046FD /* monsym.h */,
 				437A9160114FF5D1000046FD /* mttypriv.h */,
 				437A9161114FF5D1000046FD /* nhlan.h */,
-				437A9162114FF5D1000046FD /* nhxdr.h */,
 				437A9163114FF5D1000046FD /* ntconf.h */,
 				437A9164114FF5D1000046FD /* obj.h */,
 				437A9165114FF5D1000046FD /* objclass.h */,
@@ -1084,9 +1063,6 @@
 				437A9168114FF5D1000046FD /* pcconf.h */,
 				437A9169114FF5D1000046FD /* permonst.h */,
 				437A916A114FF5D1000046FD /* prop.h */,
-				437A916B114FF5D1000046FD /* proxycb.h */,
-				437A916C114FF5D1000046FD /* proxycom.h */,
-				437A916D114FF5D1000046FD /* prxyclnt.h */,
 				437A916E114FF5D1000046FD /* qt_clust.h */,
 				437A916F114FF5D1000046FD /* qt_kde0.h */,
 				437A9170114FF5D1000046FD /* qt_win.h */,
@@ -1102,7 +1078,6 @@
 				437A917A114FF5D1000046FD /* spell.h */,
 				437A917B114FF5D1000046FD /* system.h */,
 				437A917C114FF5D1000046FD /* tcap.h */,
-				437A917D114FF5D1000046FD /* tech.h */,
 				437A917E114FF5D1000046FD /* tile2x11.h */,
 				437A917F114FF5D1000046FD /* timeout.h */,
 				437A9180114FF5D1000046FD /* tosconf.h */,
@@ -1116,11 +1091,8 @@
 				437A9188114FF5D1000046FD /* wceconf.h */,
 				437A9189114FF5D1000046FD /* winami.h */,
 				437A918A114FF5D1000046FD /* wingem.h */,
-				437A918B114FF5D1000046FD /* winGL.h */,
 				437A918C114FF5D1000046FD /* winGnome.h */,
-				437A918D114FF5D1000046FD /* winGTK.h */,
 				437A918E114FF5D1000046FD /* winprocs.h */,
-				437A918F114FF5D1000046FD /* winproxy.h */,
 				437A9190114FF5D1000046FD /* wintty.h */,
 				437A9191114FF5D1000046FD /* wintype.h */,
 				437A9192114FF5D1000046FD /* winX.h */,
