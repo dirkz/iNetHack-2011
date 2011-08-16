@@ -45,36 +45,38 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	s_instance = ts;
 }
 
-+ (NSString *)titleForTilesetDictionary:(NSDictionary *)dict {
-	NSString *title = [dict objectForKey:@"title"];
-	if (!title) {
-		title = [dict objectForKey:@"filename"];
-	}
-	return title;
++ (NSArray *)allTileSets {
+    return [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"tilesets" ofType:@"plist"]];
+}
+
++ (NSDictionary *)tileSetInfoFromFilename:(NSString *)title {
+    NSArray *tileSets = [self allTileSets];
+    for (NSDictionary *tileSet in tileSets) {
+        NSString *cmpTitle = [self filenameForTileSet:tileSet];
+        if ([title isEqualToString:cmpTitle]) {
+            return tileSet;
+        }
+    }
+    return nil;
+}
+
++ (NSString *)filenameForTileSet:(NSDictionary *)dict {
+	return [dict objectForKey:@"filename"];
 }
 
 + (TileSet *)tileSetFromDictionary:(NSDictionary *)dict {
-	NSString *filename = [dict objectForKey:@"filename"];
-	if (!filename) {
-		filename = [dict objectForKey:@"title"];
-	}
-	TileSet *tileSet = [self tileSetFromTitleOrFilename:filename];;
-	return tileSet;
+	NSString *filename = [self filenameForTileSet:dict];
+	TileSet *tileset = [self tileSetFromFilename:filename];
+	return tileset;
 }
 
-+ (TileSet *)tileSetFromTitleOrFilename:(NSString *)title {
-	TileSet *tileSet = nil;
-	if ([title endsWithString:@".png"]) {
-		UIImage *tilesetImage = [UIImage imageNamed:title];
-        NSAssert1(tilesetImage, @"missing tileset %@", title);
-		tileSet = [[self alloc] initWithImage:tilesetImage tileSize:defaultTileSize title:title];
-		if ([title containsString:@"absurd"]) {
-			tileSet.supportsTransparency = YES;
-		}
-	} else {
-		tileSet = [[AsciiTileSet alloc] initWithTileSize:defaultTileSize title:title];
-	}
-	return tileSet;
++ (TileSet *)tileSetFromFilename:(NSString *)filename {
+    UIImage *tilesetImage = [UIImage imageNamed:filename];
+    NSAssert1(tilesetImage, @"missing tileset %@", filename);
+    TileSet *tileset = [self tileSetWithImage:tilesetImage tileSize:defaultTileSize title:filename];
+    NSDictionary *info = [self tileSetInfoFromFilename:filename];
+    tileset.supportsTransparency = [[info objectForKey:@"transparency"] boolValue];
+	return tileset;
 }
 
 + (void)dumpTiles {
@@ -95,6 +97,10 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	}
 	DLog(@"%d glyphs, %d monsters, %d other, %d unique ascii", MAX_GLYPH, monsters, other, uniqueACIITiles.count);
 }	
+
++ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t {
+    return [[[self alloc] initWithImage:img tileSize:ts title:t] autorelease];
+}
 
 //- (id)init {
 //	if (self = [super init]) {

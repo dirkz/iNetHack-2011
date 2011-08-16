@@ -46,13 +46,16 @@ extern short glyph2tile[];
 
 + (TileSet *)sharedInstance;
 + (void)setSharedInstance:(TileSet *)ts;
-+ (NSString *)titleForTilesetDictionary:(NSDictionary *)dict;
 
-// returns retained object!
++ (NSArray *)allTileSets;
++ (NSDictionary *)tileSetInfoFromFilename:(NSString *)title;
+
++ (NSString *)filenameForTileSet:(NSDictionary *)dict;
+
 + (TileSet *)tileSetFromDictionary:(NSDictionary *)dict;
++ (TileSet *)tileSetFromFilename:(NSString *)title;
 
-// returns retained object!
-+ (TileSet *)tileSetFromTitleOrFilename:(NSString *)title;
++ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;
 
 - (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;
 - (id)initWithImage:(UIImage *)img title:(NSString *)t;

@@ -125,7 +125,7 @@ coord CoordMake(xchar i, xchar j) {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
 								@"NO", kWizard,
-								@"tiles32.png", kNetHackTileSet,
+								@"tiles32", kNetHackTileSet,
 								nil]];
 
 	char nethackBaseOptions[512] = "boulder:0,time,autopickup,autodig"

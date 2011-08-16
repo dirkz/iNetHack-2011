@@ -39,8 +39,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		NSString *filename = [[NSBundle mainBundle] pathForResource:@"tilesets" ofType:@"plist"];
-		tilesets = [[NSArray alloc] initWithContentsOfFile:filename];
+		tilesets = [[TileSet allTileSets] retain];
     }
     return self;
 }
@@ -79,7 +78,7 @@
     }
     
     NSDictionary *dict = [tilesets objectAtIndex:indexPath.row];
-	NSString *title = [TileSet titleForTilesetDictionary:dict];
+	NSString *title = [TileSet filenameForTileSet:dict];
 	NSString *author = [dict objectForKey:@"author"];
 	cell.textLabel.text = title;
 	if (author) {
@@ -101,11 +100,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dict = [tilesets objectAtIndex:indexPath.row];
     [[TileSet sharedInstance] release];
-	TileSet *tileSet = [TileSet tileSetFromDictionary:dict];
+	TileSet *tileSet = [[TileSet tileSetFromDictionary:dict] retain];
 	[TileSet setSharedInstance:tileSet];
 	[[MainViewController instance] displayWindow:[NhWindow mapWindow]];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:[TileSet titleForTilesetDictionary:dict] forKey:kNetHackTileSet];
+	[defaults setObject:[TileSet filenameForTileSet:dict] forKey:kNetHackTileSet];
 	[self dismissModalViewControllerAnimated:NO];
 }
 
