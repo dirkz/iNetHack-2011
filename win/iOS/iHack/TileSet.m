@@ -38,11 +38,6 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 @synthesize supportsTransparency;
 
 + (TileSet *)sharedInstance {
-	if (!s_instance) {
-		NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
-		TileSet *tileSet = [TileSet tileSetFromTitleOrFilename:filename];
-		s_instance = tileSet;
-	}
 	return s_instance;
 }
 
