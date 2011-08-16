@@ -1,5 +1,5 @@
 /*
- *  winiphone.c
+ *  winios.c
  *  SlashEM
  *
  *  Created by dirk on 6/26/09.
@@ -28,7 +28,7 @@
 #include "dlb.h"
 #include "hack.h"
 
-#import "winiphone.h"
+#import "winios.h"
 #import "NhWindow.h"
 #import "NhMapWindow.h"
 #import "MainViewController.h"

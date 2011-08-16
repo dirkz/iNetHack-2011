@@ -24,7 +24,7 @@
 
 #import "SlashEMAppDelegate.h"
 #import "MainViewController.h"
-#import "winiphone.h"
+#import "winios.h"
 #import "TileSet.h"
 
 #include <sys/stat.h>

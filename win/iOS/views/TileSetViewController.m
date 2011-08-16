@@ -28,7 +28,7 @@
 #import "MainViewController.h"
 #import "NhWindow.h"
 #import "NhMapWindow.h"
-#import "winiphone.h"
+#import "winios.h"
 
 @implementation TileSetViewController
 

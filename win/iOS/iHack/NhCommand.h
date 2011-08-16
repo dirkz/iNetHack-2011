@@ -24,7 +24,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Action.h"
-#import "winiphone.h"
+#import "winios.h"
 
 #ifndef M
 # ifndef NHSTDC

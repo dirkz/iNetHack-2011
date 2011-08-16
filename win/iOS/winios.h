@@ -1,5 +1,5 @@
 /*
- *  winiphone.h
+ *  winios.h
  *  SlashEM
  *
  *  Created by dirk on 6/26/09.

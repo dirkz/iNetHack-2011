@@ -25,7 +25,7 @@
 #import "TileSet.h"
 #import "AsciiTileSet.h"
 #import "NSString+Z.h"
-#import "winiphone.h" // kNetHackTileSet
+#import "winios.h" // kNetHackTileSet
 
 #include "hack.h"
 

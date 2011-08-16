@@ -47,7 +47,7 @@
 #import "NhStatus.h"
 #import "StatusView.h"
 
-#import "winiphone.h" // ipad_getpos etc.
+#import "winios.h" // ipad_getpos etc.
 
 #include "hack.h" // BUFSZ etc.
 
