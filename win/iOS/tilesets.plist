@@ -7,22 +7,48 @@
 		<string>John Shaw</string>
 		<key>filename</key>
 		<string>absurd32.png</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
 	</dict>
 	<dict>
 		<key>author</key>
-		<string>Mitsuhiro Itakura, Joep Gerrits</string>
+		<string>Unknown</string>
 		<key>filename</key>
-		<string>gltile32.png</string>
+		<string>tiles32.png</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
 	</dict>
 	<dict>
 		<key>author</key>
 		<string>James Hogwood</string>
 		<key>filename</key>
-		<string>chozo32c.png</string>
+		<string>chozo32.png</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
+	</dict>
+	<dict>
+		<key>author</key>
+		<string>James Hogwood</string>
+		<key>filename</key>
+		<string>chozo32b.png</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
 	</dict>
 	<dict>
 		<key>title</key>
 		<string>ascii</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
 	</dict>
 </array>
 </plist>
