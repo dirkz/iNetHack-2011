@@ -113,8 +113,8 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	if (self = [super init]) {
 		image = [img retain];
 		tileSize = ts;
-		rows = image.size.height / tileSize.height;
-		columns = image.size.width / tileSize.width;
+		rows = CGImageGetHeight(image.CGImage) / tileSize.height;
+		columns = CGImageGetWidth(image.CGImage) / tileSize.width;
 		numberOfCachedImages = rows*columns;
 		cachedImages = calloc(numberOfCachedImages, sizeof(CGImageRef));
 		memset(cachedImages, 0, numberOfCachedImages*sizeof(CGImageRef));
