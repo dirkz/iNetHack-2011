@@ -108,7 +108,7 @@ static BOOL s_doubleTapsEnabled = NO;
 									   COLNO * tileSize.width + thickness, -ROWNO * tileSize.height + thickness);
 		CGContextStrokeRectWithWidth(ctx, boundsRect, thickness);
 		
-		TileSet *tileSet = [TileSet instance];
+		TileSet *tileSet = [TileSet sharedInstance];
 		
 		int *glyphs = map.glyphs;
 		BOOL supportsTransparency = [tileSet supportsTransparency];
@@ -329,7 +329,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)dealloc {
 	CGImageRelease(petMark);
-	[[TileSet instance] release];
+	[[TileSet sharedInstance] release];
 	[touchInfoStore release];
     [super dealloc];
 }

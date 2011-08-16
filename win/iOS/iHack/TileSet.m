@@ -37,7 +37,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 @synthesize title;
 @synthesize supportsTransparency;
 
-+ (TileSet *)instance {
++ (TileSet *)sharedInstance {
 	if (!s_instance) {
 		NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
 		TileSet *tileSet = [TileSet tileSetFromTitleOrFilename:filename];
@@ -46,8 +46,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	return s_instance;
 }
 
-+ (void)setInstance:(TileSet *)ts {
-	[s_instance release];
++ (void)setSharedInstance:(TileSet *)ts {
 	s_instance = ts;
 }
 
@@ -72,6 +71,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	TileSet *tileSet = nil;
 	if ([title endsWithString:@".png"]) {
 		UIImage *tilesetImage = [UIImage imageNamed:title];
+        NSAssert1(tilesetImage, @"missing tileset %@", title);
 		tileSet = [[self alloc] initWithImage:tilesetImage tileSize:defaultTileSize title:title];
 		if ([title containsString:@"absurd"]) {
 			tileSet.supportsTransparency = YES;

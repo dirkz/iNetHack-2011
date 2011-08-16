@@ -86,7 +86,7 @@
 		cell.detailTextLabel.text = author;
 	}
 	
-	if ([title isEqual:[[TileSet instance] title]]) {
+	if ([title isEqual:[[TileSet sharedInstance] title]]) {
 		cell.accessoryType = UITableViewCellAccessoryCheckmark;
 	} else {
 		cell.accessoryType = UITableViewCellAccessoryNone;
@@ -100,8 +100,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dict = [tilesets objectAtIndex:indexPath.row];
+    [[TileSet sharedInstance] release];
 	TileSet *tileSet = [TileSet tileSetFromDictionary:dict];
-	[TileSet setInstance:tileSet];
+	[TileSet setSharedInstance:tileSet];
 	[[MainViewController instance] displayWindow:[NhWindow mapWindow]];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:[TileSet titleForTilesetDictionary:dict] forKey:kNetHackTileSet];

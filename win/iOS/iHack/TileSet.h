@@ -44,10 +44,14 @@ extern short glyph2tile[];
 // whether tilesets supports backglyphs with transparent foreground tiles
 @property (nonatomic, assign) BOOL supportsTransparency;
 
-+ (TileSet *)instance;
-+ (void)setInstance:(TileSet *)ts;
++ (TileSet *)sharedInstance;
++ (void)setSharedInstance:(TileSet *)ts;
 + (NSString *)titleForTilesetDictionary:(NSDictionary *)dict;
+
+// returns retained object!
 + (TileSet *)tileSetFromDictionary:(NSDictionary *)dict;
+
+// returns retained object!
 + (TileSet *)tileSetFromTitleOrFilename:(NSString *)title;
 
 - (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;

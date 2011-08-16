@@ -149,7 +149,7 @@
 	cell.detailTextLabel.text = item.detail;
 	
 	if (item.glyph && item.glyph != NO_GLYPH) {
-		CGImageRef img = [[TileSet instance] imageForGlyph:item.glyph];
+		CGImageRef img = [[TileSet sharedInstance] imageForGlyph:item.glyph];
 		cell.imageView.image = [UIImage imageWithCGImage:img];
 	} else {
 		cell.imageView.image = nil;

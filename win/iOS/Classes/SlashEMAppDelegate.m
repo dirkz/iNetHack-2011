@@ -44,6 +44,9 @@ extern int unixmain(int argc, char **argv);
 	[window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
 	
+    NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
+    [TileSet setSharedInstance:[TileSet tileSetFromTitleOrFilename:filename]];
+
 	netHackThread = [[NSThread alloc] initWithTarget:self selector:@selector(netHackMainLoop:) object:nil];
 	[netHackThread start];
 }
