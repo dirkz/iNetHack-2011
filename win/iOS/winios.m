@@ -49,65 +49,65 @@
 // mainly for tty port implementation
 #define BASE_WINDOW ((winid) [NhWindow messageWindow])
 
-struct window_procs iphone_procs = {
+struct window_procs ios_procs = {
 "iphone",
 WC_COLOR|WC_HILITE_PET|
 WC_ASCII_MAP|WC_TILED_MAP|
 WC_FONT_MAP|WC_TILE_FILE|WC_TILE_WIDTH|WC_TILE_HEIGHT|
 WC_PLAYER_SELECTION|WC_SPLASH_SCREEN,
 0L,
-iphone_init_nhwindows,
-iphone_player_selection,
-iphone_askname,
-iphone_get_nh_event,
-iphone_exit_nhwindows,
-iphone_suspend_nhwindows,
-iphone_resume_nhwindows,
-iphone_create_nhwindow,
-iphone_clear_nhwindow,
-iphone_display_nhwindow,
-iphone_destroy_nhwindow,
-iphone_curs,
-iphone_putstr,
-iphone_display_file,
-iphone_start_menu,
-iphone_add_menu,
-iphone_end_menu,
-iphone_select_menu,
+ios_init_nhwindows,
+ios_player_selection,
+ios_askname,
+ios_get_nh_event,
+ios_exit_nhwindows,
+ios_suspend_nhwindows,
+ios_resume_nhwindows,
+ios_create_nhwindow,
+ios_clear_nhwindow,
+ios_display_nhwindow,
+ios_destroy_nhwindow,
+ios_curs,
+ios_putstr,
+ios_display_file,
+ios_start_menu,
+ios_add_menu,
+ios_end_menu,
+ios_select_menu,
 genl_message_menu,	  /* no need for X-specific handling */
-iphone_update_inventory,
-iphone_mark_synch,
-iphone_wait_synch,
+ios_update_inventory,
+ios_mark_synch,
+ios_wait_synch,
 #ifdef CLIPPING
-iphone_cliparound,
+ios_cliparound,
 #endif
 #ifdef POSITIONBAR
 donull,
 #endif
-iphone_print_glyph,
-iphone_raw_print,
-iphone_raw_print_bold,
-iphone_nhgetch,
-iphone_nh_poskey,
-iphone_nhbell,
-iphone_doprev_message,
-iphone_yn_function,
-iphone_getlin,
-iphone_get_ext_cmd,
-iphone_number_pad,
-iphone_delay_output,
+ios_print_glyph,
+ios_raw_print,
+ios_raw_print_bold,
+ios_nhgetch,
+ios_nh_poskey,
+ios_nhbell,
+ios_doprev_message,
+ios_yn_function,
+ios_getlin,
+ios_get_ext_cmd,
+ios_number_pad,
+ios_delay_output,
 #ifdef CHANGE_COLOR	 /* only a Mac option currently */
 donull,
 donull,
 #endif
 /* other defs that really should go away (they're tty specific) */
-iphone_start_screen,
-iphone_end_screen,
-iphone_outrip,
+ios_start_screen,
+ios_end_screen,
+ios_outrip,
 genl_preference_update,
 };
 
-boolean iphone_getpos = 0;
+boolean ios_getpos = 0;
 
 static char s_baseFilePath[FQN_MAX_FILENAME];
 
@@ -157,7 +157,7 @@ coord CoordMake(xchar i, xchar j) {
 
 @end
 
-FILE *iphone_dlb_fopen(const char *filename, const char *mode) {
+FILE *ios_dlb_fopen(const char *filename, const char *mode) {
 	char path[FQN_MAX_FILENAME];
 	[WinIPhone expandFilename:filename intoPath:path];
 	FILE *file = fopen(path, mode);
@@ -180,14 +180,14 @@ void error(const char *s, ...) {
 	va_start(ap, s);
 	vsprintf(message, s, ap);
 	va_end(ap);
-	iphone_raw_print(message);
+	ios_raw_print(message);
 	// todo (button to wait for user?)
 	exit(0);
 }
 
 #pragma mark nethack window API
 
-void iphone_init_nhwindows(int* argc, char** argv) {
+void ios_init_nhwindows(int* argc, char** argv) {
 	//DLog(@"init_nhwindows");
 	iflags.runmode = RUN_STEP;
 	iflags.window_inited = TRUE;
@@ -200,35 +200,35 @@ void iphone_init_nhwindows(int* argc, char** argv) {
 		wizard = TRUE;
 	}
 
-#if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
+#if TARGET_OS_IPHONE && TARGET_ios_SIMULATOR
 	wizard = TRUE; /* debugging */
 #endif
 	
 }
 
-void iphone_askname() {
+void ios_askname() {
 	//DLog(@"askname");
-	iphone_getlin("Enter your name", plname);
+	ios_getlin("Enter your name", plname);
 }
 
-void iphone_get_nh_event() {
+void ios_get_nh_event() {
 	//DLog(@"get_nh_event");
 	[[NhEventQueue instance] reset];
 }
 
-void iphone_exit_nhwindows(const char *str) {
+void ios_exit_nhwindows(const char *str) {
 	//DLog(@"exit_nhwindows %s", str);
 }
 
-void iphone_suspend_nhwindows(const char *str) {
+void ios_suspend_nhwindows(const char *str) {
 	//DLog(@"suspend_nhwindows %s", str);
 }
 
-void iphone_resume_nhwindows() {
+void ios_resume_nhwindows() {
 	//DLog(@"resume_nhwindows");
 }
 
-winid iphone_create_nhwindow(int type) {
+winid ios_create_nhwindow(int type) {
 	NhWindow *w = nil;
 	switch (type) {
 		case NHW_MAP:
@@ -248,19 +248,19 @@ winid iphone_create_nhwindow(int type) {
 	return (winid) w;
 }
 
-void iphone_clear_nhwindow(winid wid) {
+void ios_clear_nhwindow(winid wid) {
 	//DLog(@"clear_nhwindow %x", wid);
 	[(NhWindow *) wid clear];
 }
 
-void iphone_display_nhwindow(winid wid, BOOLEAN_P block) {
+void ios_display_nhwindow(winid wid, BOOLEAN_P block) {
 	//DLog(@"display_nhwindow %x, %i, %i", wid, ((NhWindow *) wid).type, block);
 	((NhWindow *) wid).blocking = block;
 	[[MainViewController instance] displayWindow:(NhWindow *) wid];
 	((NhWindow *) wid).blocking = NO;
 }
 
-void iphone_destroy_nhwindow(winid wid) {
+void ios_destroy_nhwindow(winid wid) {
 	//DLog(@"destroy_nhwindow %x", wid);
 	NhWindow *w = (NhWindow *) wid;
 	if (w != [NhWindow messageWindow] && w != [NhWindow statusWindow] && w != [NhWindow mapWindow]) {
@@ -268,11 +268,11 @@ void iphone_destroy_nhwindow(winid wid) {
 	}
 }
 
-void iphone_curs(winid wid, int x, int y) {
+void ios_curs(winid wid, int x, int y) {
 	//DLog(@"curs %x %d,%d", wid, x, y);
 }
 
-void iphone_putstr(winid wid, int attr, const char *text) {
+void ios_putstr(winid wid, int attr, const char *text) {
 	//DLog(@"putstr %x %s", wid, text);
 	if (wid == WIN_ERR || !wid) {
 		wid = BASE_WINDOW;
@@ -280,7 +280,7 @@ void iphone_putstr(winid wid, int attr, const char *text) {
 	[(NhWindow *) wid print:text];
 }
 
-void iphone_display_file(const char *filename, BOOLEAN_P must_exist) {
+void ios_display_file(const char *filename, BOOLEAN_P must_exist) {
 	//DLog(@"display_file %s", filename);
 	char path[FQN_MAX_FILENAME];
 	[WinIPhone expandFilename:filename intoPath:path];
@@ -291,18 +291,18 @@ void iphone_display_file(const char *filename, BOOLEAN_P must_exist) {
 	if (must_exist && error) {
 		char msg[512];
 		sprintf(msg, "Could not display file %s", filename);
-		iphone_raw_print(msg);
+		ios_raw_print(msg);
 	} else if (!error) {
 		[[MainViewController instance] displayText:contents];
 	}
 }
 
-void iphone_start_menu(winid wid) {
+void ios_start_menu(winid wid) {
 	//DLog(@"start_menu %x", wid);
 	[(NhMenuWindow *) wid startMenu];
 }
 
-void iphone_add_menu(winid wid, int glyph, const ANY_P *identifier,
+void ios_add_menu(winid wid, int glyph, const ANY_P *identifier,
 					 CHAR_P accelerator, CHAR_P group_accel, int attr, 
 					 const char *str, BOOLEAN_P presel) {
 	//DLog(@"add_menu %x %s", wid, str);
@@ -320,18 +320,18 @@ void iphone_add_menu(winid wid, int glyph, const ANY_P *identifier,
 	}
 }
 
-void iphone_end_menu(winid wid, const char *prompt) {
+void ios_end_menu(winid wid, const char *prompt) {
 	//DLog(@"end_menu %x, %s", wid, prompt);
 	if (prompt) {
 		((NhMenuWindow *) wid).prompt = [NSString stringWithFormat:@"%s", prompt];
-		iphone_putstr(WIN_MESSAGE, 0, prompt);
+		ios_putstr(WIN_MESSAGE, 0, prompt);
 		[[MainViewController instance] refreshMessages];
 	} else {
 		((NhMenuWindow *) wid).prompt = nil;
 	}
 }
 
-int iphone_select_menu(winid wid, int how, menu_item **selected) {
+int ios_select_menu(winid wid, int how, menu_item **selected) {
 	//DLog(@"select_menu %x", wid);
 	NhMenuWindow *w = (NhMenuWindow *) wid;
 	w.how = how;
@@ -349,51 +349,51 @@ int iphone_select_menu(winid wid, int how, menu_item **selected) {
 	return e.key;
 }
 
-void iphone_update_inventory() {
+void ios_update_inventory() {
 	//DLog(@"update_inventory");
 	[[MainViewController instance] updateInventory];
 }
 
-void iphone_mark_synch() {
+void ios_mark_synch() {
 	//DLog(@"mark_synch");
 }
 
-void iphone_wait_synch() {
+void ios_wait_synch() {
 	//DLog(@"wait_synch");
 //	[[MainViewController instance] refreshAllViews];
 }
 
-void iphone_cliparound(int x, int y) {
+void ios_cliparound(int x, int y) {
 	//DLog(@"cliparound %d,%d", x, y);
 	[[MainViewController instance] clipAroundX:x y:y];
 }
 
-void iphone_cliparound_window(winid wid, int x, int y) {
+void ios_cliparound_window(winid wid, int x, int y) {
 	DLog(@"cliparound_window %x %d,%d", wid, x, y);
 }
 
-void iphone_print_glyph(winid wid, XCHAR_P x, XCHAR_P y, int glyph) {
+void ios_print_glyph(winid wid, XCHAR_P x, XCHAR_P y, int glyph) {
 	//DLog(@"print_glyph %x %d,%d", wid, x, y);
 	[(NhMapWindow *) wid printGlyph:glyph atX:x y:y];
 }
 
-void iphone_raw_print(const char *str) {
+void ios_raw_print(const char *str) {
 	DLog(@"raw_print %s", str);
-	iphone_putstr((winid) [NhWindow messageWindow], 0, str);
+	ios_putstr((winid) [NhWindow messageWindow], 0, str);
 	[[MainViewController instance] refreshMessages];
 }
 
-void iphone_raw_print_bold(const char *str) {
+void ios_raw_print_bold(const char *str) {
 	//DLog(@"raw_print_bold %s", str);
-	iphone_raw_print(str);
+	ios_raw_print(str);
 }
 
-int iphone_nhgetch() {
+int ios_nhgetch() {
 	DLog(@"nhgetch");
 	return 0;
 }
 
-int iphone_nh_poskey(int *x, int *y, int *mod) {
+int ios_nh_poskey(int *x, int *y, int *mod) {
 	//DLog(@"nh_poskey");
 	[[MainViewController instance] nhPoskey];
 	NhEvent *e = [[NhEventQueue instance] nextEvent];
@@ -405,21 +405,21 @@ int iphone_nh_poskey(int *x, int *y, int *mod) {
 	return e.key;
 }
 
-void iphone_nhbell() {
+void ios_nhbell() {
 	DLog(@"nhbell");
 }
 
-int iphone_doprev_message() {
+int ios_doprev_message() {
 	//DLog(@"doprev_message");
 	return 0;
 }
 
-char iphone_yn_function(const char *question, const char *choices, CHAR_P def) {
+char ios_yn_function(const char *question, const char *choices, CHAR_P def) {
 	//DLog(@"yn_function %s", question);
 	if (!strcmp("Really save?", question) || !strcmp("Overwrite the old file?", question)) {
 		return 'y';
 	}
-	iphone_putstr(WIN_MESSAGE, 0, question);
+	ios_putstr(WIN_MESSAGE, 0, question);
 	[[MainViewController instance] refreshMessages];
 	NhEvent *e = nil;
 	if ([[NhEventQueue instance] peek]) {
@@ -433,9 +433,9 @@ char iphone_yn_function(const char *question, const char *choices, CHAR_P def) {
 	return e.key;
 }
 
-void iphone_getlin(const char *prompt, char *line) {
+void ios_getlin(const char *prompt, char *line) {
 	//DLog(@"getlin %s", prompt);
-	iphone_putstr(WIN_MESSAGE, 0, prompt);
+	ios_putstr(WIN_MESSAGE, 0, prompt);
 	[[MainViewController instance] refreshMessages];
 	[[MainViewController instance] refreshAllViews];
 	char keys[80];
@@ -465,33 +465,33 @@ void iphone_getlin(const char *prompt, char *line) {
 	}
 }
 
-int iphone_get_ext_cmd() {
+int ios_get_ext_cmd() {
 	//DLog(@"get_ext_cmd");
 	[[MainViewController instance] showExtendedCommands];
 	NhEvent *e = [[NhEventQueue instance] nextEvent];
 	return e.key;
 }
 
-void iphone_number_pad(int num) {
+void ios_number_pad(int num) {
 	DLog(@"number_pad %d", num);
 }
 
-void iphone_delay_output() {
+void ios_delay_output() {
 	//DLog(@"delay_output");
-#if TARGET_IPHONE_SIMULATOR
+#if TARGET_ios_SIMULATOR
 	//usleep(500000);
 #endif	
 }
 
-void iphone_start_screen() {
+void ios_start_screen() {
 	DLog(@"start_screen");
 }
 
-void iphone_end_screen() {
+void ios_end_screen() {
 	DLog(@"end_screen");
 }
 
-void iphone_outrip(winid wid, int how) {
+void ios_outrip(winid wid, int how) {
 	DLog(@"outrip %x", wid);
 }
 
@@ -499,12 +499,12 @@ void iphone_outrip(winid wid, int how) {
 // from tty port
 /* clean up and quit */
 static void bail(const char *mesg) {
-    iphone_exit_nhwindows(mesg);
+    ios_exit_nhwindows(mesg);
     terminate(EXIT_SUCCESS);
 }
 
 // from tty port
-static int iphone_role_select(char *pbuf, char *plbuf) {
+static int ios_role_select(char *pbuf, char *plbuf) {
 	int i, n;
 	char thisch, lastch = 0;
     char rolenamebuf[QBUFSZ];
@@ -512,8 +512,8 @@ static int iphone_role_select(char *pbuf, char *plbuf) {
 	anything any;
 	menu_item *selected = 0;
 	
-   	iphone_clear_nhwindow(BASE_WINDOW);
-	iphone_putstr(BASE_WINDOW, 0, "Choosing Character's Role");
+   	ios_clear_nhwindow(BASE_WINDOW);
+	ios_putstr(BASE_WINDOW, 0, "Choosing Character's Role");
 	
 	/* Prompt for a role */
 	win = create_nhwindow(NHW_MENU);
@@ -555,7 +555,7 @@ static int iphone_role_select(char *pbuf, char *plbuf) {
 		Sprintf(pbuf, "Pick a role for your %s", plbuf);
 		end_menu(win, pbuf);
 		n = select_menu(win, PICK_ONE, &selected);
-		iphone_destroy_nhwindow(win);
+		ios_destroy_nhwindow(win);
 		
 	/* Process the choice */
 		if (n != 1 || selected[0].item.a_int == any.a_int) {
@@ -569,7 +569,7 @@ static int iphone_role_select(char *pbuf, char *plbuf) {
 }
 
 // from tty port
-static int iphone_race_select(char * pbuf, char * plbuf) {
+static int ios_race_select(char * pbuf, char * plbuf) {
 	int i, k, n;
 	char thisch, lastch;
 	winid win;
@@ -597,8 +597,8 @@ static int iphone_race_select(char * pbuf, char * plbuf) {
 	
 	/* Permit the user to pick, if there is more than one */
 	if (n > 1) {
-	    iphone_clear_nhwindow(BASE_WINDOW);
-	    iphone_putstr(BASE_WINDOW, 0, "Choosing Race");
+	    ios_clear_nhwindow(BASE_WINDOW);
+	    ios_putstr(BASE_WINDOW, 0, "Choosing Race");
 	    win = create_nhwindow(NHW_MENU);
 	    start_menu(win);
 	    any.a_void = 0;         /* zero out all bits */
@@ -637,7 +637,7 @@ static int iphone_race_select(char * pbuf, char * plbuf) {
 }
 
 // from tty port
-void iphone_player_selection() {
+void ios_player_selection() {
 	int i, k, n;
 	char pick4u = 'n';
 	char pbuf[QBUFSZ], plbuf[QBUFSZ];
@@ -655,8 +655,8 @@ void iphone_player_selection() {
 			char *prompt = build_plselection_prompt(pbuf, QBUFSZ, flags.initrole,
 													flags.initrace, flags.initgend, flags.initalign);
 			
-			pick4u = iphone_yn_function(prompt, "ynq", pick4u);
-			iphone_clear_nhwindow(BASE_WINDOW);
+			pick4u = ios_yn_function(prompt, "ynq", pick4u);
+			ios_clear_nhwindow(BASE_WINDOW);
 			
 			if (pick4u != 'y' && pick4u != 'n') {
 			give_up:	/* Quit */
@@ -680,11 +680,11 @@ void iphone_player_selection() {
 			flags.initrole = pick_role(flags.initrace, flags.initgend,
 									   flags.initalign, PICK_RANDOM);
 			if (flags.initrole < 0) {
-				iphone_putstr(BASE_WINDOW, 0, "Incompatible role!");
+				ios_putstr(BASE_WINDOW, 0, "Incompatible role!");
 				flags.initrole = randrole();
 			}
 	    } else {
-	    	if (iphone_role_select(pbuf, plbuf) < 0) goto give_up;
+	    	if (ios_role_select(pbuf, plbuf) < 0) goto give_up;
 	    }
 	    (void)  root_plselection_prompt(plbuf, QBUFSZ - 1,
 										flags.initrole, flags.initrace, flags.initgend, flags.initalign);
@@ -699,11 +699,11 @@ void iphone_player_selection() {
 			flags.initrace = pick_race(flags.initrole, flags.initgend,
 									   flags.initalign, PICK_RANDOM);
 			if (flags.initrace < 0) {
-				iphone_putstr(BASE_WINDOW, 0, "Incompatible race!");
+				ios_putstr(BASE_WINDOW, 0, "Incompatible race!");
 				flags.initrace = randrace(flags.initrole);
 			}
 	    } else {	/* pick4u == 'n' */
-	    	if (iphone_race_select(pbuf, plbuf) < 0) goto give_up;
+	    	if (ios_race_select(pbuf, plbuf) < 0) goto give_up;
 	    }
 	    (void)  root_plselection_prompt(plbuf, QBUFSZ - 1,
 										flags.initrole, flags.initrace, flags.initgend, flags.initalign);
@@ -719,7 +719,7 @@ void iphone_player_selection() {
 			flags.initgend = pick_gend(flags.initrole, flags.initrace,
 									   flags.initalign, PICK_RANDOM);
 			if (flags.initgend < 0) {
-				iphone_putstr(BASE_WINDOW, 0, "Incompatible gender!");
+				ios_putstr(BASE_WINDOW, 0, "Incompatible gender!");
 				flags.initgend = randgend(flags.initrole, flags.initrace);
 			}
 		} else {	/* pick4u == 'n' */
@@ -744,8 +744,8 @@ void iphone_player_selection() {
 			
 			/* Permit the user to pick, if there is more than one */
 			if (n > 1) {
-				iphone_clear_nhwindow(BASE_WINDOW);
-				iphone_putstr(BASE_WINDOW, 0, "Choosing Gender");
+				ios_clear_nhwindow(BASE_WINDOW);
+				ios_putstr(BASE_WINDOW, 0, "Choosing Gender");
 				win = create_nhwindow(NHW_MENU);
 				start_menu(win);
 				any.a_void = 0;         /* zero out all bits */
@@ -790,7 +790,7 @@ void iphone_player_selection() {
 			flags.initalign = pick_align(flags.initrole, flags.initrace,
 										 flags.initgend, PICK_RANDOM);
 			if (flags.initalign < 0) {
-				iphone_putstr(BASE_WINDOW, 0, "Incompatible alignment!");
+				ios_putstr(BASE_WINDOW, 0, "Incompatible alignment!");
 				flags.initalign = randalign(flags.initrole, flags.initrace);
 			}
 	    } else {	/* pick4u == 'n' */
@@ -815,8 +815,8 @@ void iphone_player_selection() {
 			
 			/* Permit the user to pick, if there is more than one */
 			if (n > 1) {
-				iphone_clear_nhwindow(BASE_WINDOW);
-				iphone_putstr(BASE_WINDOW, 0, "Choosing Alignment");
+				ios_clear_nhwindow(BASE_WINDOW);
+				ios_putstr(BASE_WINDOW, 0, "Choosing Alignment");
 				win = create_nhwindow(NHW_MENU);
 				start_menu(win);
 				any.a_void = 0;         /* zero out all bits */
@@ -850,5 +850,5 @@ void iphone_player_selection() {
 	    }
 	}
 	/* Success! */
-	iphone_display_nhwindow(BASE_WINDOW, FALSE);
+	ios_display_nhwindow(BASE_WINDOW, FALSE);
 }

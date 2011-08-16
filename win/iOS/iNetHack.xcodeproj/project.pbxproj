@@ -70,7 +70,6 @@
 		434630B313FAD79E00550A93 /* knox.des in Resources */ = {isa = PBXBuildFile; fileRef = 4346301C13FAD79E00550A93 /* knox.des */; };
 		434630B413FAD79E00550A93 /* knox.lev in Resources */ = {isa = PBXBuildFile; fileRef = 4346301D13FAD79E00550A93 /* knox.lev */; };
 		434630B513FAD79E00550A93 /* license in Resources */ = {isa = PBXBuildFile; fileRef = 4346301E13FAD79E00550A93 /* license */; };
-		434630B613FAD79E00550A93 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 4346301F13FAD79E00550A93 /* Makefile */; };
 		434630B713FAD79E00550A93 /* medusa-1.lev in Resources */ = {isa = PBXBuildFile; fileRef = 4346302013FAD79E00550A93 /* medusa-1.lev */; };
 		434630B813FAD79E00550A93 /* medusa-2.lev in Resources */ = {isa = PBXBuildFile; fileRef = 4346302113FAD79E00550A93 /* medusa-2.lev */; };
 		434630B913FAD79E00550A93 /* medusa.des in Resources */ = {isa = PBXBuildFile; fileRef = 4346302213FAD79E00550A93 /* medusa.des */; };
@@ -398,7 +397,6 @@
 		4346301C13FAD79E00550A93 /* knox.des */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = knox.des; sourceTree = "<group>"; };
 		4346301D13FAD79E00550A93 /* knox.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = knox.lev; sourceTree = "<group>"; };
 		4346301E13FAD79E00550A93 /* license */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license; sourceTree = "<group>"; };
-		4346301F13FAD79E00550A93 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		4346302013FAD79E00550A93 /* medusa-1.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = "medusa-1.lev"; sourceTree = "<group>"; };
 		4346302113FAD79E00550A93 /* medusa-2.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = "medusa-2.lev"; sourceTree = "<group>"; };
 		4346302213FAD79E00550A93 /* medusa.des */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = medusa.des; sourceTree = "<group>"; };
@@ -777,7 +775,7 @@
 		437A928E114FF874000046FD /* vis_tab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vis_tab.h; sourceTree = "<group>"; };
 		437A928F114FF8B4000046FD /* monstr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = monstr.c; sourceTree = "<group>"; };
 		437A9290114FF8B4000046FD /* vis_tab.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vis_tab.c; sourceTree = "<group>"; };
-		437A94B7114FFDEC000046FD /* winios.h */ = {isa = PBXFileReference; fileEncoding = 4; path = winios.h; sourceTree = "<group>"; };
+		437A94B7114FFDEC000046FD /* winios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = winios.h; sourceTree = "<group>"; };
 		437A94B8114FFDEC000046FD /* winios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = winios.m; sourceTree = "<group>"; };
 		437A94D81150019A000046FD /* CommandButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommandButtonItem.h; sourceTree = "<group>"; };
 		437A94D91150019A000046FD /* CommandButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommandButtonItem.m; sourceTree = "<group>"; };
@@ -1306,7 +1304,6 @@
 				4346301C13FAD79E00550A93 /* knox.des */,
 				4346301D13FAD79E00550A93 /* knox.lev */,
 				4346301E13FAD79E00550A93 /* license */,
-				4346301F13FAD79E00550A93 /* Makefile */,
 				4346302013FAD79E00550A93 /* medusa-1.lev */,
 				4346302113FAD79E00550A93 /* medusa-2.lev */,
 				4346302213FAD79E00550A93 /* medusa.des */,
@@ -1805,7 +1802,6 @@
 				43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */,
 				438622C611590FC700295E23 /* QuestionViewController.m in Sources */,
 				43F64B271182F06A0016061C /* StatusView.m in Sources */,
-				434630B613FAD79E00550A93 /* Makefile in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

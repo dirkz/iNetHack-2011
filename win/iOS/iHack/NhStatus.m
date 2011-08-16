@@ -120,7 +120,11 @@ void trimStringInPlace(char *s) {
 	}
 	updatedOnce = YES;
 
+#ifdef SLASHEM
 	describe_level(level, false);
+#else
+	describe_level(level);
+#endif
 	size_t last = strlen(level)-1;
 	while (level[last] == ' ') {
 		level[last] = '\0';

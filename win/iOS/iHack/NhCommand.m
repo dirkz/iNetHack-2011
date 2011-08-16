@@ -28,6 +28,10 @@
 
 #include "hack.h"
 
+#ifndef SLASHEM
+#define IS_TOILET(typ)	(NO)
+#endif
+
 static NSArray *g_captions;
 
 @implementation NhCommand
@@ -133,11 +137,13 @@ enum InvFlags {
 					inv |= fTinningKit;
 					oTinningKit = otmp;
 				}
+#ifdef SLASHEM
 				// activated lightsabers act the same as a wielded weapon (#force)
 				if (otmp->owornmask & W_WEP && is_lightsaber(otmp) && otmp->lamplit) {
 					inv |= fWieldedWeapon;
 					oWieldedWeapon = otmp;
 				}
+#endif
 			case POTION_CLASS:
 				inv |= fAppliable;
 				break;

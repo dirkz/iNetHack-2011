@@ -253,7 +253,7 @@ static BOOL s_doubleTapsEnabled = NO;
 		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
 		if (!ti.moved && !ti.pinched) {
 			CGPoint p = [touch locationInView:self];
-			if (!self.panned && !iphone_getpos) {
+			if (!self.panned && !ios_getpos) {
 				CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
 				CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
 				if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {

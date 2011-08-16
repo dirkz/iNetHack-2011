@@ -568,7 +568,7 @@ enum rotation_lock {
 			//DLog(@"key %c", key);
 			[[NhEventQueue instance] addKey:key];
 		}
-	} else if (!iphone_getpos) {
+	} else if (!ios_getpos) {
 		if (u.ux == x && u.uy == y) {
 			// tap on self
 			NSArray *commands = [NhCommand allCurrentCommands];
@@ -597,7 +597,7 @@ enum rotation_lock {
 }
 
 - (void)handleDirectionTap:(e_direction)direction {
-	if (!iphone_getpos) {
+	if (!ios_getpos) {
 		if (directionQuestion) {
 			directionQuestion = NO;
 			int key = [self keyFromDirection:direction];
@@ -658,7 +658,7 @@ enum rotation_lock {
 }
 
 - (void)handleDirectionDoubleTap:(e_direction)direction {
-	if (!iphone_getpos) {
+	if (!ios_getpos) {
 		int key = [self keyFromDirection:direction];
 		[[NhEventQueue instance] addKey:'g'];
 		[[NhEventQueue instance] addKey:key];
