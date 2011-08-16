@@ -791,6 +791,7 @@
 		438622C411590FC700295E23 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		438622C511590FC700295E23 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		438622D11159104100295E23 /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
+		43B98DA213FAE68200427415 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		43C52F4311535404001FAA6D /* AsciiTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsciiTileSet.h; sourceTree = "<group>"; };
 		43C52F4411535404001FAA6D /* AsciiTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsciiTileSet.m; sourceTree = "<group>"; };
 		43D4D3E2116CF22E000D14B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -835,6 +836,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				43B98DA113FAE68200427415 /* DLog */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				437A90FF114FF58E000046FD /* Views */,
@@ -1402,6 +1404,14 @@
 				43E8F5171150D7E700BD7CAA /* absurd32.png */,
 			);
 			path = tilesets;
+			sourceTree = "<group>";
+		};
+		43B98DA113FAE68200427415 /* DLog */ = {
+			isa = PBXGroup;
+			children = (
+				43B98DA213FAE68200427415 /* DLog.h */,
+			);
+			path = DLog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

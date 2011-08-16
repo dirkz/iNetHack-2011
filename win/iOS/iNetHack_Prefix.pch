@@ -7,8 +7,4 @@
     #import <UIKit/UIKit.h>
 #endif
 
-#if DLOG
-#    define DLog(...) NSLog(__VA_ARGS__)
-#else
-#    define DLog(...) /* */
-#endif
+#import "DLog.h"

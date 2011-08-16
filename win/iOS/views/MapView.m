@@ -163,6 +163,11 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
+    CGFloat scale = 1.f;
+    if ([self respondsToSelector:@selector(contentScaleFactor)]) {
+        scale = [self contentScaleFactor];
+    }
+    DLog(@"bounds %@ scale %f", NSStringFromCGRect(self.bounds), scale);
 	clipX = x;
 	clipY = y;
 	CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
