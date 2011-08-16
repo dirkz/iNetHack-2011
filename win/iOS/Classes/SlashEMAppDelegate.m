@@ -66,11 +66,17 @@ extern int unixmain(int argc, char **argv);
 	[self saveAndQuitGame];
 }
 
-- (void) netHackMainLoop:(id)arg {
+- (void)netHackMainLoop:(id)arg {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+#ifdef SLASHEM
 	char *argv[] = {
 		"SlashEM",
 	};
+#else
+	char *argv[] = {
+		"NetHack",
+	};
+#endif
 	int argc = sizeof(argv)/sizeof(char *);
 	
 	// create necessary directories
