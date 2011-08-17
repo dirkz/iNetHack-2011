@@ -297,7 +297,7 @@ enum rotation_lock {
 	const char *pStr = [lets cStringUsingEncoding:NSASCIIStringEncoding];
 	enum eState { start, inv, invInterval, end } state = start;
 	char c, lastInv = 0;
-	while (c = *pStr++) {
+	while ((c = *pStr++)) {
 		switch (state) {
 			case start:
 				if (isalpha(c)) {
