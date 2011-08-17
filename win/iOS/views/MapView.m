@@ -163,10 +163,14 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
+    // correct tile size for retina display
     CGFloat scale = 1.f;
     if ([self respondsToSelector:@selector(contentScaleFactor)]) {
         scale = [self contentScaleFactor];
     }
+    tileSize = [[TileSet sharedInstance] tileSize];
+    tileSize = CGSizeMake(tileSize.width/scale, tileSize.height/scale);
+    
     DLog(@"bounds %@ scale %f", NSStringFromCGRect(self.bounds), scale);
 	clipX = x;
 	clipY = y;
