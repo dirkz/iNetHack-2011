@@ -53,11 +53,13 @@
 
 static MainViewController* instance;
 
-@implementation MainViewController
-
 enum rotation_lock {
 	none, portrait, landscape
 } g_rotationLock;
+
+@implementation MainViewController
+
+@synthesize actionBar;
 
 + (void)initialize {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -122,6 +124,11 @@ enum rotation_lock {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    (void) self.actionBar;
 }
 
 #pragma mark Menus/Actions
@@ -220,40 +227,67 @@ enum rotation_lock {
 	return menuViewController;
 }
 
+#pragma mark Properties
+
+- (ActionBar *)actionBar {
+    if (!actionBar) {
+        actionBar = [[ActionBar alloc] initWithFrame:CGRectZero];
+        actionBar.name = @"ActionBar1";
+
+        NSMutableArray *toolbarItems = [NSMutableArray arrayWithCapacity:5];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Wait" key:'s']];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Search" keys:"9s"]];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Redo" key:C('a')]];
+        [toolbarItems addObject:[Action actionWithTitle:@"Inv" target:self action:@selector(inventoryMenuAction:) arg:nil]];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Fire" key:'f']];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Alt" key:'x']];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"Cast" key:'Z']];
+        [toolbarItems addObject:[NhCommand commandWithTitle:"#Ext" key:'#']];
+        [toolbarItems addObject:[Action actionWithTitle:@"Info" target:self action:@selector(infoMenuAction:) arg:nil]];
+        [toolbarItems addObject:[Action actionWithTitle:@"Tools" target:self action:@selector(toolsMenuAction:) arg:nil]];
+        [toolbarItems addObject:[Action actionWithTitle:@"Move" target:self action:@selector(moveMenuAction:) arg:nil]];
+        [toolbarItems addObject:[Action actionWithTitle:@"Tiles" target:self action:@selector(tilesetMenuAction:) arg:nil]];
+        
+        if (wizard) { // wizard mode
+            [toolbarItems addObject:[Action actionWithTitle:@"Wiz" target:self action:@selector(wizardMenuAction:)]];
+        }
+        
+#if 0 // test
+        [toolbarItems addObject:[CommandButtonItem buttonWithAction:[NhCommand commandWithTitle:"Drop" key:'D']]];
+#endif
+        
+        [actionBar setActions:toolbarItems];
+
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            actionBar.placement = ActionBarPlacementLeft;
+        } else {
+            actionBar.placement = ActionBarPlacementBottom;
+        }
+
+        [self.view addSubview:actionBar];
+        [actionBar release];
+        
+        [actionBar layoutSubviews];
+
+        CGRect actionFrame = actionBar.frame;
+
+        CGRect statusFrame = statusView.frame;
+        statusFrame.origin.y = actionFrame.origin.y - statusFrame.size.height;
+        statusView.frame = statusFrame;
+        
+        CGRect viewFrame = mapView.frame;
+        viewFrame.size.height = self.view.bounds.size.height - actionFrame.size.height - statusFrame.size.height - viewFrame.origin.y;
+        mapView.frame = viewFrame;
+    }
+    return actionBar;
+}
+
 #pragma mark Window API
 
 - (void)nhPoskey {
 	if (![NSThread isMainThread]) {
 		[self performSelectorOnMainThread:@selector(nhPoskey) withObject:nil waitUntilDone:NO];
 	} else {
-		// build bottom bar
-		if (actionBar.actions.count == 0) {
-			NSMutableArray *toolbarItems = [NSMutableArray arrayWithCapacity:5];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Wait" key:'s']];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Search" keys:"9s"]];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Redo" key:C('a')]];
-			[toolbarItems addObject:[Action actionWithTitle:@"Inv" target:self action:@selector(inventoryMenuAction:) arg:nil]];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Fire" key:'f']];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Alt" key:'x']];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Cast" key:'Z']];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"#Ext" key:'#']];
-			[toolbarItems addObject:[Action actionWithTitle:@"Info" target:self action:@selector(infoMenuAction:) arg:nil]];
-			[toolbarItems addObject:[Action actionWithTitle:@"Tools" target:self action:@selector(toolsMenuAction:) arg:nil]];
-			[toolbarItems addObject:[Action actionWithTitle:@"Move" target:self action:@selector(moveMenuAction:) arg:nil]];
-			[toolbarItems addObject:[Action actionWithTitle:@"Tiles" target:self action:@selector(tilesetMenuAction:) arg:nil]];
-			
-			if (wizard) { // wizard mode
-				[toolbarItems addObject:[Action actionWithTitle:@"Wiz" target:self action:@selector(wizardMenuAction:)]];
-			}
-
-#if 0 // test
-			[toolbarItems addObject:[CommandButtonItem buttonWithAction:[NhCommand commandWithTitle:"Drop" key:'D']]];
-#endif
-			
-			[actionBar setActions:toolbarItems];
-			[actionScrollView setContentSize:actionBar.frame.size];
-		}
-
 		[self refreshAllViews];
 	}
 }

@@ -41,10 +41,9 @@
 	IBOutlet MessageView *messageView;
 	IBOutlet StatusView *statusView;
 	IBOutlet MapView *mapView;
-	IBOutlet ActionBar *actionBar;
-	IBOutlet UIScrollView *actionScrollView;
 	
 	NhYnQuestion *currentYnQuestion;
+
 	ActionViewController *actionViewController;
 	InventoryViewController *inventoryViewController;
 	MenuViewController *menuViewController;
@@ -56,10 +55,12 @@
 	
 }
 
-@property (readonly) ActionViewController *actionViewController;
-@property (readonly) InventoryViewController *inventoryViewController;
-@property (readonly) UINavigationController *inventoryNavigationController;
-@property (readonly) MenuViewController *menuViewController;
+@property (nonatomic, readonly) ActionViewController *actionViewController;
+@property (nonatomic, readonly) InventoryViewController *inventoryViewController;
+@property (nonatomic, readonly) UINavigationController *inventoryNavigationController;
+@property (nonatomic, readonly) MenuViewController *menuViewController;
+
+@property (nonatomic, readonly) ActionBar *actionBar;
 
 + (MainViewController *) instance;
 

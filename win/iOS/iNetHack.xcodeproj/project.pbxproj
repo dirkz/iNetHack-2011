@@ -316,7 +316,6 @@
 		437A9561115007ED000046FD /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A9560115007ED000046FD /* MainViewController.xib */; };
 		437A957F11500A2D000046FD /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A957E11500A2D000046FD /* MenuViewController.xib */; };
 		437A95CE11500E47000046FD /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A95CD11500E47000046FD /* TextViewController.xib */; };
-		437A960B11501275000046FD /* ActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A960A11501275000046FD /* ActionBar.m */; };
 		437A96D011501B1F000046FD /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A96CF11501B1F000046FD /* ActionViewController.xib */; };
 		437A970C11501EB1000046FD /* tilesets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437A970B11501EB1000046FD /* tilesets.plist */; };
 		437A971411501F74000046FD /* TileSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A971311501F74000046FD /* TileSetViewController.xib */; };
@@ -327,6 +326,7 @@
 		437A97D81150289F000046FD /* TextInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A97D71150289F000046FD /* TextInputController.xib */; };
 		438622C611590FC700295E23 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438622C511590FC700295E23 /* QuestionViewController.m */; };
 		438622D21159104100295E23 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438622D11159104100295E23 /* QuestionViewController.xib */; };
+		43998AC413FBB86800080074 /* ActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998AC313FBB86800080074 /* ActionBar.m */; };
 		43A2406413FB7795001BF067 /* geoduck 10x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A2406213FB7795001BF067 /* geoduck 10x20.png */; };
 		43A2406513FB7795001BF067 /* geoduck 20x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A2406313FB7795001BF067 /* geoduck 20x40.png */; };
 		43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C52F4411535404001FAA6D /* AsciiTileSet.m */; };
@@ -782,8 +782,6 @@
 		437A9560115007ED000046FD /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		437A957E11500A2D000046FD /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		437A95CD11500E47000046FD /* TextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
-		437A960911501275000046FD /* ActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBar.h; sourceTree = "<group>"; };
-		437A960A11501275000046FD /* ActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBar.m; sourceTree = "<group>"; };
 		437A96CF11501B1F000046FD /* ActionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActionViewController.xib; sourceTree = "<group>"; };
 		437A970B11501EB1000046FD /* tilesets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tilesets.plist; sourceTree = SOURCE_ROOT; };
 		437A971311501F74000046FD /* TileSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TileSetViewController.xib; sourceTree = "<group>"; };
@@ -795,6 +793,8 @@
 		438622C411590FC700295E23 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		438622C511590FC700295E23 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		438622D11159104100295E23 /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
+		43998AC213FBB86800080074 /* ActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBar.h; sourceTree = "<group>"; };
+		43998AC313FBB86800080074 /* ActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBar.m; sourceTree = "<group>"; };
 		43A2406213FB7795001BF067 /* geoduck 10x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 10x20.png"; sourceTree = "<group>"; };
 		43A2406313FB7795001BF067 /* geoduck 20x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 20x40.png"; sourceTree = "<group>"; };
 		43B98DA213FAE68200427415 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
@@ -931,6 +931,8 @@
 			children = (
 				437A90B7114FF57A000046FD /* Action.h */,
 				437A90B8114FF57A000046FD /* Action.m */,
+				43998AC213FBB86800080074 /* ActionBar.h */,
+				43998AC313FBB86800080074 /* ActionBar.m */,
 				437A90B9114FF57A000046FD /* NhStatus.h */,
 				437A90BA114FF57A000046FD /* NhStatus.m */,
 				437A90BB114FF57A000046FD /* NhCommand.h */,
@@ -988,8 +990,6 @@
 				437A910D114FF58E000046FD /* MainViewController.m */,
 				437A910E114FF58E000046FD /* MapView.h */,
 				437A910F114FF58E000046FD /* MapView.m */,
-				437A960911501275000046FD /* ActionBar.h */,
-				437A960A11501275000046FD /* ActionBar.m */,
 				437A9100114FF58E000046FD /* ActionViewController.h */,
 				437A9101114FF58E000046FD /* ActionViewController.m */,
 				437A9106114FF58E000046FD /* ExtendedCommandsController.h */,
@@ -1808,10 +1808,10 @@
 				437A9536115003E0000046FD /* unixmain.c in Sources */,
 				437A9538115003E0000046FD /* unixunix.c in Sources */,
 				437A954911500675000046FD /* tile.c in Sources */,
-				437A960B11501275000046FD /* ActionBar.m in Sources */,
 				43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */,
 				438622C611590FC700295E23 /* QuestionViewController.m in Sources */,
 				43F64B271182F06A0016061C /* StatusView.m in Sources */,
+				43998AC413FBB86800080074 /* ActionBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1891,7 +1891,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_PREPROCESSOR_DEFINITIONS = "DLOG=1";
+				GCC_PREPROCESSOR_DEFINITIONS = DLOG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
