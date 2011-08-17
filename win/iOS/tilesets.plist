@@ -16,7 +16,7 @@
 	</dict>
 	<dict>
 		<key>author</key>
-		<string>Unknown</string>
+		<string>NetHack DevTeam</string>
 		<key>filename</key>
 		<string>nhtiles</string>
 		<key>width</key>
@@ -26,7 +26,7 @@
 	</dict>
 	<dict>
 		<key>author</key>
-		<string>Unknown</string>
+		<string>NetHack DevTeam</string>
 		<key>filename</key>
 		<string>tiles32</string>
 		<key>width</key>
@@ -36,9 +36,19 @@
 	</dict>
 	<dict>
 		<key>author</key>
-		<string>Unknown</string>
+		<string>Robert M. Cook</string>
 		<key>filename</key>
-		<string>geoduck 40x20</string>
+		<string>geoduck 10x20</string>
+		<key>width</key>
+		<integer>10</integer>
+		<key>height</key>
+		<integer>20</integer>
+	</dict>
+	<dict>
+		<key>author</key>
+		<string>Robert M. Cook</string>
+		<key>filename</key>
+		<string>geoduck 20x40</string>
 		<key>width</key>
 		<integer>20</integer>
 		<key>height</key>
@@ -46,7 +56,7 @@
 	</dict>
 	<dict>
 		<key>author</key>
-		<string>James Hogwood</string>
+		<string>kbailey</string>
 		<key>filename</key>
 		<string>chozo32</string>
 		<key>width</key>
