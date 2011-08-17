@@ -182,6 +182,15 @@ static BOOL s_doubleTapsEnabled = NO;
     tileSize = tileSet.tileSize;
     tileSize = CGSizeMake(tileSize.width/scale, tileSize.height/scale);
     [self clipAroundX:clipX y:clipY];
+
+    if (tileSize.width != tileSize.height) {
+        CGFloat tileAspect = tileSize.height/tileSize.width;
+        minTileSize.height = round(minTileSize.width * tileAspect);
+        maxTileSize.height = round(maxTileSize.width * tileAspect);
+    } else {
+        minTileSize.height = minTileSize.width;
+        maxTileSize.height = maxTileSize.height;
+    }
 }
 
 #pragma mark - Clip offset
@@ -320,17 +329,20 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)zoom:(CGFloat)d {
 	d /= 5;
 	CGSize originalSize = tileSize;
+    CGFloat tileAspect = tileSize.height/tileSize.width;
 	tileSize.width += d;
 	tileSize.width = round(tileSize.width);
-	tileSize.height = tileSize.width;
-	if (tileSize.width > maxTileSize.width) {
+    tileSize.height = round(tileSize.width * tileAspect);
+
+	if (tileSize.width > maxTileSize.width || tileSize.height > maxTileSize.height) {
 		tileSize = maxTileSize;
-	} else if (tileSize.width < minTileSize.width) {
+	} else if (tileSize.width < minTileSize.width || tileSize.height < minTileSize.height) {
 		tileSize = minTileSize;
 	}
-	CGFloat aspect = tileSize.width / originalSize.width;
-	panOffset.x *= aspect;
-	panOffset.y *= aspect;
+	
+    CGFloat zoomAspect = tileSize.width / originalSize.width;
+	panOffset.x *= zoomAspect;
+	panOffset.y *= zoomAspect;
 	[self clipAroundX:clipX y:clipY];
 	[self setNeedsDisplay];
 }
