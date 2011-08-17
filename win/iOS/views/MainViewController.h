@@ -82,6 +82,8 @@
 // displays text, always blocking
 - (void)displayText:(NSString *)text;
 
+- (void)updateTileSet;
+- (void)redrawMap;
 - (void)displayWindow:(NhWindow *)w;
 - (void)showMenuWindow:(NhMenuWindow *)w;
 - (void)clipAround;

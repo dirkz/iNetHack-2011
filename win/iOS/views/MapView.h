@@ -29,6 +29,7 @@
 #define kDoubleTapsEnabled (@"kDoubleTapsEnabled")
 
 @class ZTouchInfoStore;
+@class TileSet;
 
 @interface MapView : UIView {
 
@@ -55,11 +56,14 @@
 	
 	// the hit box to hit for detecting tap on self
 	CGSize selfTapRectSize;
+    
+    TileSet *tileSet;
 }
 
 @property (nonatomic, readonly) CGSize tileSize;
 @property (nonatomic, readonly) BOOL panned;
 
+- (void)updateTileSet;
 - (void)clipAroundX:(int)x y:(int)y;
 
 - (void)moveAlongVector:(CGPoint)d;

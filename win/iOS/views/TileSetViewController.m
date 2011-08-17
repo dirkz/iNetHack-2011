@@ -102,7 +102,7 @@
     [[TileSet sharedInstance] release];
 	TileSet *tileSet = [[TileSet tileSetFromDictionary:dict] retain];
 	[TileSet setSharedInstance:tileSet];
-	[[MainViewController instance] displayWindow:[NhWindow mapWindow]];
+	[[MainViewController instance] updateTileSet];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:[TileSet filenameForTileSet:dict] forKey:kNetHackTileSet];
 	[self dismissModalViewControllerAnimated:NO];

@@ -421,6 +421,19 @@ enum rotation_lock {
 	}
 }
 
+- (void)updateTileSet {
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [mapView updateTileSet];
+        [mapView setNeedsDisplay];
+    });
+}
+
+- (void)redrawMap {
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [mapView setNeedsDisplay];
+    });
+}
+
 - (void)displayWindow:(NhWindow *)w {
 	if (![NSThread isMainThread]) {
 		[self performSelectorOnMainThread:@selector(displayWindow:) withObject:w waitUntilDone:NO];

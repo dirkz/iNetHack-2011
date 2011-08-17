@@ -35,6 +35,9 @@
 
 static BOOL s_doubleTapsEnabled = NO;
 
+@interface MapView ()
+@end
+
 @implementation MapView
 
 @synthesize tileSize;
@@ -108,10 +111,8 @@ static BOOL s_doubleTapsEnabled = NO;
 									   COLNO * tileSize.width + thickness, -ROWNO * tileSize.height + thickness);
 		CGContextStrokeRectWithWidth(ctx, boundsRect, thickness);
 		
-		TileSet *tileset = [TileSet sharedInstance];
-		
 		int *glyphs = map.glyphs;
-		BOOL supportsTransparency = [tileset supportsTransparency];
+		BOOL supportsTransparency = [tileSet supportsTransparency];
 		for (int j = 0; j < ROWNO; ++j) {
 			for (int i = 0; i < COLNO; ++i) {
 				CGPoint p = CGPointMake(start.x+i*tileSize.width,
@@ -126,12 +127,12 @@ static BOOL s_doubleTapsEnabled = NO;
 							if (backGlyph != kNoGlyph && backGlyph != glyph) {
 								// tile 1184, glyph 3627 is dark floor
 								//DLog(@"back %d in %d,%d (player %d,%d)", glyph2tile[backGlyph], i, j, u.ux, u.uy);
-								CGImageRef tileImg = [tileset imageForGlyph:backGlyph atX:i y:j];
+								CGImageRef tileImg = [tileSet imageForGlyph:backGlyph atX:i y:j];
 								CGContextDrawImage(ctx, r, tileImg);
 							}
 						}
 						// draw front
-						CGImageRef tileImg = [tileset imageForGlyph:glyph atX:i y:j];
+						CGImageRef tileImg = [tileSet imageForGlyph:glyph atX:i y:j];
 						CGContextDrawImage(ctx, r, tileImg);
 						if (u.ux == i && u.uy == j) {
 							// hp100 calculation from qt_win.cpp
@@ -162,27 +163,42 @@ static BOOL s_doubleTapsEnabled = NO;
 	}
 }
 
-- (void)clipAroundX:(int)x y:(int)y {
+- (void)layoutSubviews {
+    if (!tileSet) {
+        [self updateTileSet];
+    }
+}
+
+#pragma mark - TileSet
+
+- (void)updateTileSet {
+    tileSet = [TileSet sharedInstance];
+
     // correct tile size for retina display
     CGFloat scale = 1.f;
     if ([self respondsToSelector:@selector(contentScaleFactor)]) {
         scale = [self contentScaleFactor];
     }
-    tileSize = [[TileSet sharedInstance] tileSize];
+    tileSize = tileSet.tileSize;
     tileSize = CGSizeMake(tileSize.width/scale, tileSize.height/scale);
-    
-    DLog(@"bounds %@ scale %f", NSStringFromCGRect(self.bounds), scale);
+    [self clipAroundX:clipX y:clipY];
+}
+
+#pragma mark - Clip offset
+
+- (void)clipAroundX:(int)x y:(int)y {
 	clipX = x;
 	clipY = y;
+
 	CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-	CGPoint playerPos = CGPointMake(x*tileSize.width, y*tileSize.height);
+	CGPoint playerPos = CGPointMake(clipX*tileSize.width, clipY*tileSize.height);
 	
 	// offset is the translation to get player to the center
 	// note how this gets corrected about tileSize/2 to center player tile
 	clipOffset = CGPointMake(center.x-playerPos.x-tileSize.width/2, center.y-playerPos.y-tileSize.height/2);
 }
 
-#pragma mark touch handling
+#pragma mark Touch Handling
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchInfoStore storeTouches:touches];
@@ -334,7 +350,7 @@ static BOOL s_doubleTapsEnabled = NO;
 	*py = roundf(p.y / tileSize.height);
 }
 
-#pragma mark misc
+#pragma mark Memory
 
 - (void)dealloc {
 	CGImageRelease(petMark);

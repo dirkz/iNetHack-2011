@@ -18,6 +18,16 @@
 		<key>author</key>
 		<string>Unknown</string>
 		<key>filename</key>
+		<string>nhtiles</string>
+		<key>width</key>
+		<integer>16</integer>
+		<key>height</key>
+		<integer>16</integer>
+	</dict>
+	<dict>
+		<key>author</key>
+		<string>Unknown</string>
+		<key>filename</key>
 		<string>tiles32</string>
 		<key>width</key>
 		<integer>32</integer>
