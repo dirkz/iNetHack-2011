@@ -37,6 +37,8 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 @synthesize title;
 @synthesize supportsTransparency;
 @synthesize tileSize;
+@synthesize numberOfCachedImages;
+@synthesize textureFileName;
 
 + (TileSet *)sharedInstance {
 	return s_instance;
@@ -123,6 +125,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 		cachedImages = calloc(numberOfCachedImages, sizeof(CGImageRef));
 		memset(cachedImages, 0, numberOfCachedImages*sizeof(CGImageRef));
 		title = [t copy];
+        textureFileName = [[NSString alloc] initWithFormat:@"Texture %@", title];
 	}
 	return self;
 }
@@ -145,6 +148,10 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	return cachedImages[tile];
 }
 
+- (CGImageRef)imageForTile:(int)tile {
+    return [self imageForTile:tile atX:0 y:0];
+}
+
 - (CGImageRef)imageForGlyph:(int)glyph atX:(int)x y:(int)y {
 	int tile = glyph2tile[glyph];
 	return [self imageForTile:tile atX:x y:y];
@@ -153,6 +160,8 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 - (CGImageRef)imageForGlyph:(int)glyph {
 	return [self imageForGlyph:glyph atX:0 y:0];
 }
+
+#pragma mark - Memory
 
 - (void)dealloc {
 	for (int i = 0; i < numberOfCachedImages; ++i) {
@@ -165,6 +174,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	}
 	[image release];
 	[title release];
+    [textureFileName release];
 	[super dealloc];
 }
 

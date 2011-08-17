@@ -1,0 +1,2406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0</key>
+	<string>{{0, 0}, {16, 16}}</string>
+	<key>1</key>
+	<string>{{17, 0}, {16, 16}}</string>
+	<key>10</key>
+	<string>{{170, 0}, {16, 16}}</string>
+	<key>100</key>
+	<string>{{680, 17}, {16, 16}}</string>
+	<key>1000</key>
+	<string>{{680, 272}, {16, 16}}</string>
+	<key>1001</key>
+	<string>{{697, 272}, {16, 16}}</string>
+	<key>1002</key>
+	<string>{{714, 272}, {16, 16}}</string>
+	<key>1003</key>
+	<string>{{731, 272}, {16, 16}}</string>
+	<key>1004</key>
+	<string>{{748, 272}, {16, 16}}</string>
+	<key>1005</key>
+	<string>{{765, 272}, {16, 16}}</string>
+	<key>1006</key>
+	<string>{{782, 272}, {16, 16}}</string>
+	<key>1007</key>
+	<string>{{799, 272}, {16, 16}}</string>
+	<key>1008</key>
+	<string>{{816, 272}, {16, 16}}</string>
+	<key>1009</key>
+	<string>{{833, 272}, {16, 16}}</string>
+	<key>101</key>
+	<string>{{697, 17}, {16, 16}}</string>
+	<key>1010</key>
+	<string>{{850, 272}, {16, 16}}</string>
+	<key>1011</key>
+	<string>{{867, 272}, {16, 16}}</string>
+	<key>1012</key>
+	<string>{{884, 272}, {16, 16}}</string>
+	<key>1013</key>
+	<string>{{901, 272}, {16, 16}}</string>
+	<key>1014</key>
+	<string>{{918, 272}, {16, 16}}</string>
+	<key>1015</key>
+	<string>{{935, 272}, {16, 16}}</string>
+	<key>1016</key>
+	<string>{{952, 272}, {16, 16}}</string>
+	<key>1017</key>
+	<string>{{969, 272}, {16, 16}}</string>
+	<key>1018</key>
+	<string>{{986, 272}, {16, 16}}</string>
+	<key>1019</key>
+	<string>{{1003, 272}, {16, 16}}</string>
+	<key>102</key>
+	<string>{{714, 17}, {16, 16}}</string>
+	<key>1020</key>
+	<string>{{0, 289}, {16, 16}}</string>
+	<key>1021</key>
+	<string>{{17, 289}, {16, 16}}</string>
+	<key>1022</key>
+	<string>{{34, 289}, {16, 16}}</string>
+	<key>1023</key>
+	<string>{{51, 289}, {16, 16}}</string>
+	<key>1024</key>
+	<string>{{68, 289}, {16, 16}}</string>
+	<key>1025</key>
+	<string>{{85, 289}, {16, 16}}</string>
+	<key>1026</key>
+	<string>{{102, 289}, {16, 16}}</string>
+	<key>1027</key>
+	<string>{{119, 289}, {16, 16}}</string>
+	<key>1028</key>
+	<string>{{136, 289}, {16, 16}}</string>
+	<key>1029</key>
+	<string>{{153, 289}, {16, 16}}</string>
+	<key>103</key>
+	<string>{{731, 17}, {16, 16}}</string>
+	<key>1030</key>
+	<string>{{170, 289}, {16, 16}}</string>
+	<key>1031</key>
+	<string>{{187, 289}, {16, 16}}</string>
+	<key>1032</key>
+	<string>{{204, 289}, {16, 16}}</string>
+	<key>1033</key>
+	<string>{{221, 289}, {16, 16}}</string>
+	<key>1034</key>
+	<string>{{238, 289}, {16, 16}}</string>
+	<key>1035</key>
+	<string>{{255, 289}, {16, 16}}</string>
+	<key>1036</key>
+	<string>{{272, 289}, {16, 16}}</string>
+	<key>1037</key>
+	<string>{{289, 289}, {16, 16}}</string>
+	<key>1038</key>
+	<string>{{306, 289}, {16, 16}}</string>
+	<key>1039</key>
+	<string>{{323, 289}, {16, 16}}</string>
+	<key>104</key>
+	<string>{{748, 17}, {16, 16}}</string>
+	<key>1040</key>
+	<string>{{340, 289}, {16, 16}}</string>
+	<key>1041</key>
+	<string>{{357, 289}, {16, 16}}</string>
+	<key>1042</key>
+	<string>{{374, 289}, {16, 16}}</string>
+	<key>1043</key>
+	<string>{{391, 289}, {16, 16}}</string>
+	<key>1044</key>
+	<string>{{408, 289}, {16, 16}}</string>
+	<key>1045</key>
+	<string>{{425, 289}, {16, 16}}</string>
+	<key>1046</key>
+	<string>{{442, 289}, {16, 16}}</string>
+	<key>1047</key>
+	<string>{{459, 289}, {16, 16}}</string>
+	<key>1048</key>
+	<string>{{476, 289}, {16, 16}}</string>
+	<key>1049</key>
+	<string>{{493, 289}, {16, 16}}</string>
+	<key>105</key>
+	<string>{{765, 17}, {16, 16}}</string>
+	<key>1050</key>
+	<string>{{510, 289}, {16, 16}}</string>
+	<key>1051</key>
+	<string>{{527, 289}, {16, 16}}</string>
+	<key>1052</key>
+	<string>{{544, 289}, {16, 16}}</string>
+	<key>1053</key>
+	<string>{{561, 289}, {16, 16}}</string>
+	<key>1054</key>
+	<string>{{578, 289}, {16, 16}}</string>
+	<key>1055</key>
+	<string>{{595, 289}, {16, 16}}</string>
+	<key>1056</key>
+	<string>{{612, 289}, {16, 16}}</string>
+	<key>1057</key>
+	<string>{{629, 289}, {16, 16}}</string>
+	<key>1058</key>
+	<string>{{646, 289}, {16, 16}}</string>
+	<key>1059</key>
+	<string>{{663, 289}, {16, 16}}</string>
+	<key>106</key>
+	<string>{{782, 17}, {16, 16}}</string>
+	<key>1060</key>
+	<string>{{680, 289}, {16, 16}}</string>
+	<key>1061</key>
+	<string>{{697, 289}, {16, 16}}</string>
+	<key>1062</key>
+	<string>{{714, 289}, {16, 16}}</string>
+	<key>1063</key>
+	<string>{{731, 289}, {16, 16}}</string>
+	<key>1064</key>
+	<string>{{748, 289}, {16, 16}}</string>
+	<key>1065</key>
+	<string>{{765, 289}, {16, 16}}</string>
+	<key>1066</key>
+	<string>{{782, 289}, {16, 16}}</string>
+	<key>1067</key>
+	<string>{{799, 289}, {16, 16}}</string>
+	<key>1068</key>
+	<string>{{816, 289}, {16, 16}}</string>
+	<key>1069</key>
+	<string>{{833, 289}, {16, 16}}</string>
+	<key>107</key>
+	<string>{{799, 17}, {16, 16}}</string>
+	<key>1070</key>
+	<string>{{850, 289}, {16, 16}}</string>
+	<key>1071</key>
+	<string>{{867, 289}, {16, 16}}</string>
+	<key>1072</key>
+	<string>{{884, 289}, {16, 16}}</string>
+	<key>1073</key>
+	<string>{{901, 289}, {16, 16}}</string>
+	<key>1074</key>
+	<string>{{918, 289}, {16, 16}}</string>
+	<key>1075</key>
+	<string>{{935, 289}, {16, 16}}</string>
+	<key>1076</key>
+	<string>{{952, 289}, {16, 16}}</string>
+	<key>1077</key>
+	<string>{{969, 289}, {16, 16}}</string>
+	<key>1078</key>
+	<string>{{986, 289}, {16, 16}}</string>
+	<key>1079</key>
+	<string>{{1003, 289}, {16, 16}}</string>
+	<key>108</key>
+	<string>{{816, 17}, {16, 16}}</string>
+	<key>1080</key>
+	<string>{{0, 306}, {16, 16}}</string>
+	<key>1081</key>
+	<string>{{17, 306}, {16, 16}}</string>
+	<key>1082</key>
+	<string>{{34, 306}, {16, 16}}</string>
+	<key>1083</key>
+	<string>{{51, 306}, {16, 16}}</string>
+	<key>1084</key>
+	<string>{{68, 306}, {16, 16}}</string>
+	<key>1085</key>
+	<string>{{85, 306}, {16, 16}}</string>
+	<key>1086</key>
+	<string>{{102, 306}, {16, 16}}</string>
+	<key>1087</key>
+	<string>{{119, 306}, {16, 16}}</string>
+	<key>1088</key>
+	<string>{{136, 306}, {16, 16}}</string>
+	<key>1089</key>
+	<string>{{153, 306}, {16, 16}}</string>
+	<key>109</key>
+	<string>{{833, 17}, {16, 16}}</string>
+	<key>1090</key>
+	<string>{{170, 306}, {16, 16}}</string>
+	<key>1091</key>
+	<string>{{187, 306}, {16, 16}}</string>
+	<key>1092</key>
+	<string>{{204, 306}, {16, 16}}</string>
+	<key>1093</key>
+	<string>{{221, 306}, {16, 16}}</string>
+	<key>1094</key>
+	<string>{{238, 306}, {16, 16}}</string>
+	<key>1095</key>
+	<string>{{255, 306}, {16, 16}}</string>
+	<key>1096</key>
+	<string>{{272, 306}, {16, 16}}</string>
+	<key>1097</key>
+	<string>{{289, 306}, {16, 16}}</string>
+	<key>1098</key>
+	<string>{{306, 306}, {16, 16}}</string>
+	<key>1099</key>
+	<string>{{323, 306}, {16, 16}}</string>
+	<key>11</key>
+	<string>{{187, 0}, {16, 16}}</string>
+	<key>110</key>
+	<string>{{850, 17}, {16, 16}}</string>
+	<key>1100</key>
+	<string>{{340, 306}, {16, 16}}</string>
+	<key>1101</key>
+	<string>{{357, 306}, {16, 16}}</string>
+	<key>1102</key>
+	<string>{{374, 306}, {16, 16}}</string>
+	<key>1103</key>
+	<string>{{391, 306}, {16, 16}}</string>
+	<key>1104</key>
+	<string>{{408, 306}, {16, 16}}</string>
+	<key>1105</key>
+	<string>{{425, 306}, {16, 16}}</string>
+	<key>1106</key>
+	<string>{{442, 306}, {16, 16}}</string>
+	<key>1107</key>
+	<string>{{459, 306}, {16, 16}}</string>
+	<key>1108</key>
+	<string>{{476, 306}, {16, 16}}</string>
+	<key>1109</key>
+	<string>{{493, 306}, {16, 16}}</string>
+	<key>111</key>
+	<string>{{867, 17}, {16, 16}}</string>
+	<key>1110</key>
+	<string>{{510, 306}, {16, 16}}</string>
+	<key>1111</key>
+	<string>{{527, 306}, {16, 16}}</string>
+	<key>1112</key>
+	<string>{{544, 306}, {16, 16}}</string>
+	<key>1113</key>
+	<string>{{561, 306}, {16, 16}}</string>
+	<key>1114</key>
+	<string>{{578, 306}, {16, 16}}</string>
+	<key>1115</key>
+	<string>{{595, 306}, {16, 16}}</string>
+	<key>1116</key>
+	<string>{{612, 306}, {16, 16}}</string>
+	<key>1117</key>
+	<string>{{629, 306}, {16, 16}}</string>
+	<key>1118</key>
+	<string>{{646, 306}, {16, 16}}</string>
+	<key>1119</key>
+	<string>{{663, 306}, {16, 16}}</string>
+	<key>112</key>
+	<string>{{884, 17}, {16, 16}}</string>
+	<key>1120</key>
+	<string>{{680, 306}, {16, 16}}</string>
+	<key>1121</key>
+	<string>{{697, 306}, {16, 16}}</string>
+	<key>1122</key>
+	<string>{{714, 306}, {16, 16}}</string>
+	<key>1123</key>
+	<string>{{731, 306}, {16, 16}}</string>
+	<key>1124</key>
+	<string>{{748, 306}, {16, 16}}</string>
+	<key>1125</key>
+	<string>{{765, 306}, {16, 16}}</string>
+	<key>1126</key>
+	<string>{{782, 306}, {16, 16}}</string>
+	<key>1127</key>
+	<string>{{799, 306}, {16, 16}}</string>
+	<key>1128</key>
+	<string>{{816, 306}, {16, 16}}</string>
+	<key>1129</key>
+	<string>{{833, 306}, {16, 16}}</string>
+	<key>113</key>
+	<string>{{901, 17}, {16, 16}}</string>
+	<key>1130</key>
+	<string>{{850, 306}, {16, 16}}</string>
+	<key>1131</key>
+	<string>{{867, 306}, {16, 16}}</string>
+	<key>1132</key>
+	<string>{{884, 306}, {16, 16}}</string>
+	<key>1133</key>
+	<string>{{901, 306}, {16, 16}}</string>
+	<key>1134</key>
+	<string>{{918, 306}, {16, 16}}</string>
+	<key>1135</key>
+	<string>{{935, 306}, {16, 16}}</string>
+	<key>1136</key>
+	<string>{{952, 306}, {16, 16}}</string>
+	<key>1137</key>
+	<string>{{969, 306}, {16, 16}}</string>
+	<key>1138</key>
+	<string>{{986, 306}, {16, 16}}</string>
+	<key>1139</key>
+	<string>{{1003, 306}, {16, 16}}</string>
+	<key>114</key>
+	<string>{{918, 17}, {16, 16}}</string>
+	<key>1140</key>
+	<string>{{0, 323}, {16, 16}}</string>
+	<key>1141</key>
+	<string>{{17, 323}, {16, 16}}</string>
+	<key>1142</key>
+	<string>{{34, 323}, {16, 16}}</string>
+	<key>1143</key>
+	<string>{{51, 323}, {16, 16}}</string>
+	<key>1144</key>
+	<string>{{68, 323}, {16, 16}}</string>
+	<key>1145</key>
+	<string>{{85, 323}, {16, 16}}</string>
+	<key>1146</key>
+	<string>{{102, 323}, {16, 16}}</string>
+	<key>1147</key>
+	<string>{{119, 323}, {16, 16}}</string>
+	<key>1148</key>
+	<string>{{136, 323}, {16, 16}}</string>
+	<key>1149</key>
+	<string>{{153, 323}, {16, 16}}</string>
+	<key>115</key>
+	<string>{{935, 17}, {16, 16}}</string>
+	<key>1150</key>
+	<string>{{170, 323}, {16, 16}}</string>
+	<key>1151</key>
+	<string>{{187, 323}, {16, 16}}</string>
+	<key>1152</key>
+	<string>{{204, 323}, {16, 16}}</string>
+	<key>1153</key>
+	<string>{{221, 323}, {16, 16}}</string>
+	<key>1154</key>
+	<string>{{238, 323}, {16, 16}}</string>
+	<key>1155</key>
+	<string>{{255, 323}, {16, 16}}</string>
+	<key>1156</key>
+	<string>{{272, 323}, {16, 16}}</string>
+	<key>1157</key>
+	<string>{{289, 323}, {16, 16}}</string>
+	<key>1158</key>
+	<string>{{306, 323}, {16, 16}}</string>
+	<key>1159</key>
+	<string>{{323, 323}, {16, 16}}</string>
+	<key>116</key>
+	<string>{{952, 17}, {16, 16}}</string>
+	<key>1160</key>
+	<string>{{340, 323}, {16, 16}}</string>
+	<key>1161</key>
+	<string>{{357, 323}, {16, 16}}</string>
+	<key>1162</key>
+	<string>{{374, 323}, {16, 16}}</string>
+	<key>1163</key>
+	<string>{{391, 323}, {16, 16}}</string>
+	<key>1164</key>
+	<string>{{408, 323}, {16, 16}}</string>
+	<key>1165</key>
+	<string>{{425, 323}, {16, 16}}</string>
+	<key>1166</key>
+	<string>{{442, 323}, {16, 16}}</string>
+	<key>1167</key>
+	<string>{{459, 323}, {16, 16}}</string>
+	<key>1168</key>
+	<string>{{476, 323}, {16, 16}}</string>
+	<key>1169</key>
+	<string>{{493, 323}, {16, 16}}</string>
+	<key>117</key>
+	<string>{{969, 17}, {16, 16}}</string>
+	<key>1170</key>
+	<string>{{510, 323}, {16, 16}}</string>
+	<key>1171</key>
+	<string>{{527, 323}, {16, 16}}</string>
+	<key>1172</key>
+	<string>{{544, 323}, {16, 16}}</string>
+	<key>1173</key>
+	<string>{{561, 323}, {16, 16}}</string>
+	<key>1174</key>
+	<string>{{578, 323}, {16, 16}}</string>
+	<key>1175</key>
+	<string>{{595, 323}, {16, 16}}</string>
+	<key>1176</key>
+	<string>{{612, 323}, {16, 16}}</string>
+	<key>1177</key>
+	<string>{{629, 323}, {16, 16}}</string>
+	<key>1178</key>
+	<string>{{646, 323}, {16, 16}}</string>
+	<key>1179</key>
+	<string>{{663, 323}, {16, 16}}</string>
+	<key>118</key>
+	<string>{{986, 17}, {16, 16}}</string>
+	<key>1180</key>
+	<string>{{680, 323}, {16, 16}}</string>
+	<key>1181</key>
+	<string>{{697, 323}, {16, 16}}</string>
+	<key>1182</key>
+	<string>{{714, 323}, {16, 16}}</string>
+	<key>1183</key>
+	<string>{{731, 323}, {16, 16}}</string>
+	<key>1184</key>
+	<string>{{748, 323}, {16, 16}}</string>
+	<key>1185</key>
+	<string>{{765, 323}, {16, 16}}</string>
+	<key>1186</key>
+	<string>{{782, 323}, {16, 16}}</string>
+	<key>1187</key>
+	<string>{{799, 323}, {16, 16}}</string>
+	<key>1188</key>
+	<string>{{816, 323}, {16, 16}}</string>
+	<key>1189</key>
+	<string>{{833, 323}, {16, 16}}</string>
+	<key>119</key>
+	<string>{{1003, 17}, {16, 16}}</string>
+	<key>1190</key>
+	<string>{{850, 323}, {16, 16}}</string>
+	<key>1191</key>
+	<string>{{867, 323}, {16, 16}}</string>
+	<key>1192</key>
+	<string>{{884, 323}, {16, 16}}</string>
+	<key>1193</key>
+	<string>{{901, 323}, {16, 16}}</string>
+	<key>1194</key>
+	<string>{{918, 323}, {16, 16}}</string>
+	<key>1195</key>
+	<string>{{935, 323}, {16, 16}}</string>
+	<key>1196</key>
+	<string>{{952, 323}, {16, 16}}</string>
+	<key>1197</key>
+	<string>{{969, 323}, {16, 16}}</string>
+	<key>1198</key>
+	<string>{{986, 323}, {16, 16}}</string>
+	<key>1199</key>
+	<string>{{1003, 323}, {16, 16}}</string>
+	<key>12</key>
+	<string>{{204, 0}, {16, 16}}</string>
+	<key>120</key>
+	<string>{{0, 34}, {16, 16}}</string>
+	<key>121</key>
+	<string>{{17, 34}, {16, 16}}</string>
+	<key>122</key>
+	<string>{{34, 34}, {16, 16}}</string>
+	<key>123</key>
+	<string>{{51, 34}, {16, 16}}</string>
+	<key>124</key>
+	<string>{{68, 34}, {16, 16}}</string>
+	<key>125</key>
+	<string>{{85, 34}, {16, 16}}</string>
+	<key>126</key>
+	<string>{{102, 34}, {16, 16}}</string>
+	<key>127</key>
+	<string>{{119, 34}, {16, 16}}</string>
+	<key>128</key>
+	<string>{{136, 34}, {16, 16}}</string>
+	<key>129</key>
+	<string>{{153, 34}, {16, 16}}</string>
+	<key>13</key>
+	<string>{{221, 0}, {16, 16}}</string>
+	<key>130</key>
+	<string>{{170, 34}, {16, 16}}</string>
+	<key>131</key>
+	<string>{{187, 34}, {16, 16}}</string>
+	<key>132</key>
+	<string>{{204, 34}, {16, 16}}</string>
+	<key>133</key>
+	<string>{{221, 34}, {16, 16}}</string>
+	<key>134</key>
+	<string>{{238, 34}, {16, 16}}</string>
+	<key>135</key>
+	<string>{{255, 34}, {16, 16}}</string>
+	<key>136</key>
+	<string>{{272, 34}, {16, 16}}</string>
+	<key>137</key>
+	<string>{{289, 34}, {16, 16}}</string>
+	<key>138</key>
+	<string>{{306, 34}, {16, 16}}</string>
+	<key>139</key>
+	<string>{{323, 34}, {16, 16}}</string>
+	<key>14</key>
+	<string>{{238, 0}, {16, 16}}</string>
+	<key>140</key>
+	<string>{{340, 34}, {16, 16}}</string>
+	<key>141</key>
+	<string>{{357, 34}, {16, 16}}</string>
+	<key>142</key>
+	<string>{{374, 34}, {16, 16}}</string>
+	<key>143</key>
+	<string>{{391, 34}, {16, 16}}</string>
+	<key>144</key>
+	<string>{{408, 34}, {16, 16}}</string>
+	<key>145</key>
+	<string>{{425, 34}, {16, 16}}</string>
+	<key>146</key>
+	<string>{{442, 34}, {16, 16}}</string>
+	<key>147</key>
+	<string>{{459, 34}, {16, 16}}</string>
+	<key>148</key>
+	<string>{{476, 34}, {16, 16}}</string>
+	<key>149</key>
+	<string>{{493, 34}, {16, 16}}</string>
+	<key>15</key>
+	<string>{{255, 0}, {16, 16}}</string>
+	<key>150</key>
+	<string>{{510, 34}, {16, 16}}</string>
+	<key>151</key>
+	<string>{{527, 34}, {16, 16}}</string>
+	<key>152</key>
+	<string>{{544, 34}, {16, 16}}</string>
+	<key>153</key>
+	<string>{{561, 34}, {16, 16}}</string>
+	<key>154</key>
+	<string>{{578, 34}, {16, 16}}</string>
+	<key>155</key>
+	<string>{{595, 34}, {16, 16}}</string>
+	<key>156</key>
+	<string>{{612, 34}, {16, 16}}</string>
+	<key>157</key>
+	<string>{{629, 34}, {16, 16}}</string>
+	<key>158</key>
+	<string>{{646, 34}, {16, 16}}</string>
+	<key>159</key>
+	<string>{{663, 34}, {16, 16}}</string>
+	<key>16</key>
+	<string>{{272, 0}, {16, 16}}</string>
+	<key>160</key>
+	<string>{{680, 34}, {16, 16}}</string>
+	<key>161</key>
+	<string>{{697, 34}, {16, 16}}</string>
+	<key>162</key>
+	<string>{{714, 34}, {16, 16}}</string>
+	<key>163</key>
+	<string>{{731, 34}, {16, 16}}</string>
+	<key>164</key>
+	<string>{{748, 34}, {16, 16}}</string>
+	<key>165</key>
+	<string>{{765, 34}, {16, 16}}</string>
+	<key>166</key>
+	<string>{{782, 34}, {16, 16}}</string>
+	<key>167</key>
+	<string>{{799, 34}, {16, 16}}</string>
+	<key>168</key>
+	<string>{{816, 34}, {16, 16}}</string>
+	<key>169</key>
+	<string>{{833, 34}, {16, 16}}</string>
+	<key>17</key>
+	<string>{{289, 0}, {16, 16}}</string>
+	<key>170</key>
+	<string>{{850, 34}, {16, 16}}</string>
+	<key>171</key>
+	<string>{{867, 34}, {16, 16}}</string>
+	<key>172</key>
+	<string>{{884, 34}, {16, 16}}</string>
+	<key>173</key>
+	<string>{{901, 34}, {16, 16}}</string>
+	<key>174</key>
+	<string>{{918, 34}, {16, 16}}</string>
+	<key>175</key>
+	<string>{{935, 34}, {16, 16}}</string>
+	<key>176</key>
+	<string>{{952, 34}, {16, 16}}</string>
+	<key>177</key>
+	<string>{{969, 34}, {16, 16}}</string>
+	<key>178</key>
+	<string>{{986, 34}, {16, 16}}</string>
+	<key>179</key>
+	<string>{{1003, 34}, {16, 16}}</string>
+	<key>18</key>
+	<string>{{306, 0}, {16, 16}}</string>
+	<key>180</key>
+	<string>{{0, 51}, {16, 16}}</string>
+	<key>181</key>
+	<string>{{17, 51}, {16, 16}}</string>
+	<key>182</key>
+	<string>{{34, 51}, {16, 16}}</string>
+	<key>183</key>
+	<string>{{51, 51}, {16, 16}}</string>
+	<key>184</key>
+	<string>{{68, 51}, {16, 16}}</string>
+	<key>185</key>
+	<string>{{85, 51}, {16, 16}}</string>
+	<key>186</key>
+	<string>{{102, 51}, {16, 16}}</string>
+	<key>187</key>
+	<string>{{119, 51}, {16, 16}}</string>
+	<key>188</key>
+	<string>{{136, 51}, {16, 16}}</string>
+	<key>189</key>
+	<string>{{153, 51}, {16, 16}}</string>
+	<key>19</key>
+	<string>{{323, 0}, {16, 16}}</string>
+	<key>190</key>
+	<string>{{170, 51}, {16, 16}}</string>
+	<key>191</key>
+	<string>{{187, 51}, {16, 16}}</string>
+	<key>192</key>
+	<string>{{204, 51}, {16, 16}}</string>
+	<key>193</key>
+	<string>{{221, 51}, {16, 16}}</string>
+	<key>194</key>
+	<string>{{238, 51}, {16, 16}}</string>
+	<key>195</key>
+	<string>{{255, 51}, {16, 16}}</string>
+	<key>196</key>
+	<string>{{272, 51}, {16, 16}}</string>
+	<key>197</key>
+	<string>{{289, 51}, {16, 16}}</string>
+	<key>198</key>
+	<string>{{306, 51}, {16, 16}}</string>
+	<key>199</key>
+	<string>{{323, 51}, {16, 16}}</string>
+	<key>2</key>
+	<string>{{34, 0}, {16, 16}}</string>
+	<key>20</key>
+	<string>{{340, 0}, {16, 16}}</string>
+	<key>200</key>
+	<string>{{340, 51}, {16, 16}}</string>
+	<key>201</key>
+	<string>{{357, 51}, {16, 16}}</string>
+	<key>202</key>
+	<string>{{374, 51}, {16, 16}}</string>
+	<key>203</key>
+	<string>{{391, 51}, {16, 16}}</string>
+	<key>204</key>
+	<string>{{408, 51}, {16, 16}}</string>
+	<key>205</key>
+	<string>{{425, 51}, {16, 16}}</string>
+	<key>206</key>
+	<string>{{442, 51}, {16, 16}}</string>
+	<key>207</key>
+	<string>{{459, 51}, {16, 16}}</string>
+	<key>208</key>
+	<string>{{476, 51}, {16, 16}}</string>
+	<key>209</key>
+	<string>{{493, 51}, {16, 16}}</string>
+	<key>21</key>
+	<string>{{357, 0}, {16, 16}}</string>
+	<key>210</key>
+	<string>{{510, 51}, {16, 16}}</string>
+	<key>211</key>
+	<string>{{527, 51}, {16, 16}}</string>
+	<key>212</key>
+	<string>{{544, 51}, {16, 16}}</string>
+	<key>213</key>
+	<string>{{561, 51}, {16, 16}}</string>
+	<key>214</key>
+	<string>{{578, 51}, {16, 16}}</string>
+	<key>215</key>
+	<string>{{595, 51}, {16, 16}}</string>
+	<key>216</key>
+	<string>{{612, 51}, {16, 16}}</string>
+	<key>217</key>
+	<string>{{629, 51}, {16, 16}}</string>
+	<key>218</key>
+	<string>{{646, 51}, {16, 16}}</string>
+	<key>219</key>
+	<string>{{663, 51}, {16, 16}}</string>
+	<key>22</key>
+	<string>{{374, 0}, {16, 16}}</string>
+	<key>220</key>
+	<string>{{680, 51}, {16, 16}}</string>
+	<key>221</key>
+	<string>{{697, 51}, {16, 16}}</string>
+	<key>222</key>
+	<string>{{714, 51}, {16, 16}}</string>
+	<key>223</key>
+	<string>{{731, 51}, {16, 16}}</string>
+	<key>224</key>
+	<string>{{748, 51}, {16, 16}}</string>
+	<key>225</key>
+	<string>{{765, 51}, {16, 16}}</string>
+	<key>226</key>
+	<string>{{782, 51}, {16, 16}}</string>
+	<key>227</key>
+	<string>{{799, 51}, {16, 16}}</string>
+	<key>228</key>
+	<string>{{816, 51}, {16, 16}}</string>
+	<key>229</key>
+	<string>{{833, 51}, {16, 16}}</string>
+	<key>23</key>
+	<string>{{391, 0}, {16, 16}}</string>
+	<key>230</key>
+	<string>{{850, 51}, {16, 16}}</string>
+	<key>231</key>
+	<string>{{867, 51}, {16, 16}}</string>
+	<key>232</key>
+	<string>{{884, 51}, {16, 16}}</string>
+	<key>233</key>
+	<string>{{901, 51}, {16, 16}}</string>
+	<key>234</key>
+	<string>{{918, 51}, {16, 16}}</string>
+	<key>235</key>
+	<string>{{935, 51}, {16, 16}}</string>
+	<key>236</key>
+	<string>{{952, 51}, {16, 16}}</string>
+	<key>237</key>
+	<string>{{969, 51}, {16, 16}}</string>
+	<key>238</key>
+	<string>{{986, 51}, {16, 16}}</string>
+	<key>239</key>
+	<string>{{1003, 51}, {16, 16}}</string>
+	<key>24</key>
+	<string>{{408, 0}, {16, 16}}</string>
+	<key>240</key>
+	<string>{{0, 68}, {16, 16}}</string>
+	<key>241</key>
+	<string>{{17, 68}, {16, 16}}</string>
+	<key>242</key>
+	<string>{{34, 68}, {16, 16}}</string>
+	<key>243</key>
+	<string>{{51, 68}, {16, 16}}</string>
+	<key>244</key>
+	<string>{{68, 68}, {16, 16}}</string>
+	<key>245</key>
+	<string>{{85, 68}, {16, 16}}</string>
+	<key>246</key>
+	<string>{{102, 68}, {16, 16}}</string>
+	<key>247</key>
+	<string>{{119, 68}, {16, 16}}</string>
+	<key>248</key>
+	<string>{{136, 68}, {16, 16}}</string>
+	<key>249</key>
+	<string>{{153, 68}, {16, 16}}</string>
+	<key>25</key>
+	<string>{{425, 0}, {16, 16}}</string>
+	<key>250</key>
+	<string>{{170, 68}, {16, 16}}</string>
+	<key>251</key>
+	<string>{{187, 68}, {16, 16}}</string>
+	<key>252</key>
+	<string>{{204, 68}, {16, 16}}</string>
+	<key>253</key>
+	<string>{{221, 68}, {16, 16}}</string>
+	<key>254</key>
+	<string>{{238, 68}, {16, 16}}</string>
+	<key>255</key>
+	<string>{{255, 68}, {16, 16}}</string>
+	<key>256</key>
+	<string>{{272, 68}, {16, 16}}</string>
+	<key>257</key>
+	<string>{{289, 68}, {16, 16}}</string>
+	<key>258</key>
+	<string>{{306, 68}, {16, 16}}</string>
+	<key>259</key>
+	<string>{{323, 68}, {16, 16}}</string>
+	<key>26</key>
+	<string>{{442, 0}, {16, 16}}</string>
+	<key>260</key>
+	<string>{{340, 68}, {16, 16}}</string>
+	<key>261</key>
+	<string>{{357, 68}, {16, 16}}</string>
+	<key>262</key>
+	<string>{{374, 68}, {16, 16}}</string>
+	<key>263</key>
+	<string>{{391, 68}, {16, 16}}</string>
+	<key>264</key>
+	<string>{{408, 68}, {16, 16}}</string>
+	<key>265</key>
+	<string>{{425, 68}, {16, 16}}</string>
+	<key>266</key>
+	<string>{{442, 68}, {16, 16}}</string>
+	<key>267</key>
+	<string>{{459, 68}, {16, 16}}</string>
+	<key>268</key>
+	<string>{{476, 68}, {16, 16}}</string>
+	<key>269</key>
+	<string>{{493, 68}, {16, 16}}</string>
+	<key>27</key>
+	<string>{{459, 0}, {16, 16}}</string>
+	<key>270</key>
+	<string>{{510, 68}, {16, 16}}</string>
+	<key>271</key>
+	<string>{{527, 68}, {16, 16}}</string>
+	<key>272</key>
+	<string>{{544, 68}, {16, 16}}</string>
+	<key>273</key>
+	<string>{{561, 68}, {16, 16}}</string>
+	<key>274</key>
+	<string>{{578, 68}, {16, 16}}</string>
+	<key>275</key>
+	<string>{{595, 68}, {16, 16}}</string>
+	<key>276</key>
+	<string>{{612, 68}, {16, 16}}</string>
+	<key>277</key>
+	<string>{{629, 68}, {16, 16}}</string>
+	<key>278</key>
+	<string>{{646, 68}, {16, 16}}</string>
+	<key>279</key>
+	<string>{{663, 68}, {16, 16}}</string>
+	<key>28</key>
+	<string>{{476, 0}, {16, 16}}</string>
+	<key>280</key>
+	<string>{{680, 68}, {16, 16}}</string>
+	<key>281</key>
+	<string>{{697, 68}, {16, 16}}</string>
+	<key>282</key>
+	<string>{{714, 68}, {16, 16}}</string>
+	<key>283</key>
+	<string>{{731, 68}, {16, 16}}</string>
+	<key>284</key>
+	<string>{{748, 68}, {16, 16}}</string>
+	<key>285</key>
+	<string>{{765, 68}, {16, 16}}</string>
+	<key>286</key>
+	<string>{{782, 68}, {16, 16}}</string>
+	<key>287</key>
+	<string>{{799, 68}, {16, 16}}</string>
+	<key>288</key>
+	<string>{{816, 68}, {16, 16}}</string>
+	<key>289</key>
+	<string>{{833, 68}, {16, 16}}</string>
+	<key>29</key>
+	<string>{{493, 0}, {16, 16}}</string>
+	<key>290</key>
+	<string>{{850, 68}, {16, 16}}</string>
+	<key>291</key>
+	<string>{{867, 68}, {16, 16}}</string>
+	<key>292</key>
+	<string>{{884, 68}, {16, 16}}</string>
+	<key>293</key>
+	<string>{{901, 68}, {16, 16}}</string>
+	<key>294</key>
+	<string>{{918, 68}, {16, 16}}</string>
+	<key>295</key>
+	<string>{{935, 68}, {16, 16}}</string>
+	<key>296</key>
+	<string>{{952, 68}, {16, 16}}</string>
+	<key>297</key>
+	<string>{{969, 68}, {16, 16}}</string>
+	<key>298</key>
+	<string>{{986, 68}, {16, 16}}</string>
+	<key>299</key>
+	<string>{{1003, 68}, {16, 16}}</string>
+	<key>3</key>
+	<string>{{51, 0}, {16, 16}}</string>
+	<key>30</key>
+	<string>{{510, 0}, {16, 16}}</string>
+	<key>300</key>
+	<string>{{0, 85}, {16, 16}}</string>
+	<key>301</key>
+	<string>{{17, 85}, {16, 16}}</string>
+	<key>302</key>
+	<string>{{34, 85}, {16, 16}}</string>
+	<key>303</key>
+	<string>{{51, 85}, {16, 16}}</string>
+	<key>304</key>
+	<string>{{68, 85}, {16, 16}}</string>
+	<key>305</key>
+	<string>{{85, 85}, {16, 16}}</string>
+	<key>306</key>
+	<string>{{102, 85}, {16, 16}}</string>
+	<key>307</key>
+	<string>{{119, 85}, {16, 16}}</string>
+	<key>308</key>
+	<string>{{136, 85}, {16, 16}}</string>
+	<key>309</key>
+	<string>{{153, 85}, {16, 16}}</string>
+	<key>31</key>
+	<string>{{527, 0}, {16, 16}}</string>
+	<key>310</key>
+	<string>{{170, 85}, {16, 16}}</string>
+	<key>311</key>
+	<string>{{187, 85}, {16, 16}}</string>
+	<key>312</key>
+	<string>{{204, 85}, {16, 16}}</string>
+	<key>313</key>
+	<string>{{221, 85}, {16, 16}}</string>
+	<key>314</key>
+	<string>{{238, 85}, {16, 16}}</string>
+	<key>315</key>
+	<string>{{255, 85}, {16, 16}}</string>
+	<key>316</key>
+	<string>{{272, 85}, {16, 16}}</string>
+	<key>317</key>
+	<string>{{289, 85}, {16, 16}}</string>
+	<key>318</key>
+	<string>{{306, 85}, {16, 16}}</string>
+	<key>319</key>
+	<string>{{323, 85}, {16, 16}}</string>
+	<key>32</key>
+	<string>{{544, 0}, {16, 16}}</string>
+	<key>320</key>
+	<string>{{340, 85}, {16, 16}}</string>
+	<key>321</key>
+	<string>{{357, 85}, {16, 16}}</string>
+	<key>322</key>
+	<string>{{374, 85}, {16, 16}}</string>
+	<key>323</key>
+	<string>{{391, 85}, {16, 16}}</string>
+	<key>324</key>
+	<string>{{408, 85}, {16, 16}}</string>
+	<key>325</key>
+	<string>{{425, 85}, {16, 16}}</string>
+	<key>326</key>
+	<string>{{442, 85}, {16, 16}}</string>
+	<key>327</key>
+	<string>{{459, 85}, {16, 16}}</string>
+	<key>328</key>
+	<string>{{476, 85}, {16, 16}}</string>
+	<key>329</key>
+	<string>{{493, 85}, {16, 16}}</string>
+	<key>33</key>
+	<string>{{561, 0}, {16, 16}}</string>
+	<key>330</key>
+	<string>{{510, 85}, {16, 16}}</string>
+	<key>331</key>
+	<string>{{527, 85}, {16, 16}}</string>
+	<key>332</key>
+	<string>{{544, 85}, {16, 16}}</string>
+	<key>333</key>
+	<string>{{561, 85}, {16, 16}}</string>
+	<key>334</key>
+	<string>{{578, 85}, {16, 16}}</string>
+	<key>335</key>
+	<string>{{595, 85}, {16, 16}}</string>
+	<key>336</key>
+	<string>{{612, 85}, {16, 16}}</string>
+	<key>337</key>
+	<string>{{629, 85}, {16, 16}}</string>
+	<key>338</key>
+	<string>{{646, 85}, {16, 16}}</string>
+	<key>339</key>
+	<string>{{663, 85}, {16, 16}}</string>
+	<key>34</key>
+	<string>{{578, 0}, {16, 16}}</string>
+	<key>340</key>
+	<string>{{680, 85}, {16, 16}}</string>
+	<key>341</key>
+	<string>{{697, 85}, {16, 16}}</string>
+	<key>342</key>
+	<string>{{714, 85}, {16, 16}}</string>
+	<key>343</key>
+	<string>{{731, 85}, {16, 16}}</string>
+	<key>344</key>
+	<string>{{748, 85}, {16, 16}}</string>
+	<key>345</key>
+	<string>{{765, 85}, {16, 16}}</string>
+	<key>346</key>
+	<string>{{782, 85}, {16, 16}}</string>
+	<key>347</key>
+	<string>{{799, 85}, {16, 16}}</string>
+	<key>348</key>
+	<string>{{816, 85}, {16, 16}}</string>
+	<key>349</key>
+	<string>{{833, 85}, {16, 16}}</string>
+	<key>35</key>
+	<string>{{595, 0}, {16, 16}}</string>
+	<key>350</key>
+	<string>{{850, 85}, {16, 16}}</string>
+	<key>351</key>
+	<string>{{867, 85}, {16, 16}}</string>
+	<key>352</key>
+	<string>{{884, 85}, {16, 16}}</string>
+	<key>353</key>
+	<string>{{901, 85}, {16, 16}}</string>
+	<key>354</key>
+	<string>{{918, 85}, {16, 16}}</string>
+	<key>355</key>
+	<string>{{935, 85}, {16, 16}}</string>
+	<key>356</key>
+	<string>{{952, 85}, {16, 16}}</string>
+	<key>357</key>
+	<string>{{969, 85}, {16, 16}}</string>
+	<key>358</key>
+	<string>{{986, 85}, {16, 16}}</string>
+	<key>359</key>
+	<string>{{1003, 85}, {16, 16}}</string>
+	<key>36</key>
+	<string>{{612, 0}, {16, 16}}</string>
+	<key>360</key>
+	<string>{{0, 102}, {16, 16}}</string>
+	<key>361</key>
+	<string>{{17, 102}, {16, 16}}</string>
+	<key>362</key>
+	<string>{{34, 102}, {16, 16}}</string>
+	<key>363</key>
+	<string>{{51, 102}, {16, 16}}</string>
+	<key>364</key>
+	<string>{{68, 102}, {16, 16}}</string>
+	<key>365</key>
+	<string>{{85, 102}, {16, 16}}</string>
+	<key>366</key>
+	<string>{{102, 102}, {16, 16}}</string>
+	<key>367</key>
+	<string>{{119, 102}, {16, 16}}</string>
+	<key>368</key>
+	<string>{{136, 102}, {16, 16}}</string>
+	<key>369</key>
+	<string>{{153, 102}, {16, 16}}</string>
+	<key>37</key>
+	<string>{{629, 0}, {16, 16}}</string>
+	<key>370</key>
+	<string>{{170, 102}, {16, 16}}</string>
+	<key>371</key>
+	<string>{{187, 102}, {16, 16}}</string>
+	<key>372</key>
+	<string>{{204, 102}, {16, 16}}</string>
+	<key>373</key>
+	<string>{{221, 102}, {16, 16}}</string>
+	<key>374</key>
+	<string>{{238, 102}, {16, 16}}</string>
+	<key>375</key>
+	<string>{{255, 102}, {16, 16}}</string>
+	<key>376</key>
+	<string>{{272, 102}, {16, 16}}</string>
+	<key>377</key>
+	<string>{{289, 102}, {16, 16}}</string>
+	<key>378</key>
+	<string>{{306, 102}, {16, 16}}</string>
+	<key>379</key>
+	<string>{{323, 102}, {16, 16}}</string>
+	<key>38</key>
+	<string>{{646, 0}, {16, 16}}</string>
+	<key>380</key>
+	<string>{{340, 102}, {16, 16}}</string>
+	<key>381</key>
+	<string>{{357, 102}, {16, 16}}</string>
+	<key>382</key>
+	<string>{{374, 102}, {16, 16}}</string>
+	<key>383</key>
+	<string>{{391, 102}, {16, 16}}</string>
+	<key>384</key>
+	<string>{{408, 102}, {16, 16}}</string>
+	<key>385</key>
+	<string>{{425, 102}, {16, 16}}</string>
+	<key>386</key>
+	<string>{{442, 102}, {16, 16}}</string>
+	<key>387</key>
+	<string>{{459, 102}, {16, 16}}</string>
+	<key>388</key>
+	<string>{{476, 102}, {16, 16}}</string>
+	<key>389</key>
+	<string>{{493, 102}, {16, 16}}</string>
+	<key>39</key>
+	<string>{{663, 0}, {16, 16}}</string>
+	<key>390</key>
+	<string>{{510, 102}, {16, 16}}</string>
+	<key>391</key>
+	<string>{{527, 102}, {16, 16}}</string>
+	<key>392</key>
+	<string>{{544, 102}, {16, 16}}</string>
+	<key>393</key>
+	<string>{{561, 102}, {16, 16}}</string>
+	<key>394</key>
+	<string>{{578, 102}, {16, 16}}</string>
+	<key>395</key>
+	<string>{{595, 102}, {16, 16}}</string>
+	<key>396</key>
+	<string>{{612, 102}, {16, 16}}</string>
+	<key>397</key>
+	<string>{{629, 102}, {16, 16}}</string>
+	<key>398</key>
+	<string>{{646, 102}, {16, 16}}</string>
+	<key>399</key>
+	<string>{{663, 102}, {16, 16}}</string>
+	<key>4</key>
+	<string>{{68, 0}, {16, 16}}</string>
+	<key>40</key>
+	<string>{{680, 0}, {16, 16}}</string>
+	<key>400</key>
+	<string>{{680, 102}, {16, 16}}</string>
+	<key>401</key>
+	<string>{{697, 102}, {16, 16}}</string>
+	<key>402</key>
+	<string>{{714, 102}, {16, 16}}</string>
+	<key>403</key>
+	<string>{{731, 102}, {16, 16}}</string>
+	<key>404</key>
+	<string>{{748, 102}, {16, 16}}</string>
+	<key>405</key>
+	<string>{{765, 102}, {16, 16}}</string>
+	<key>406</key>
+	<string>{{782, 102}, {16, 16}}</string>
+	<key>407</key>
+	<string>{{799, 102}, {16, 16}}</string>
+	<key>408</key>
+	<string>{{816, 102}, {16, 16}}</string>
+	<key>409</key>
+	<string>{{833, 102}, {16, 16}}</string>
+	<key>41</key>
+	<string>{{697, 0}, {16, 16}}</string>
+	<key>410</key>
+	<string>{{850, 102}, {16, 16}}</string>
+	<key>411</key>
+	<string>{{867, 102}, {16, 16}}</string>
+	<key>412</key>
+	<string>{{884, 102}, {16, 16}}</string>
+	<key>413</key>
+	<string>{{901, 102}, {16, 16}}</string>
+	<key>414</key>
+	<string>{{918, 102}, {16, 16}}</string>
+	<key>415</key>
+	<string>{{935, 102}, {16, 16}}</string>
+	<key>416</key>
+	<string>{{952, 102}, {16, 16}}</string>
+	<key>417</key>
+	<string>{{969, 102}, {16, 16}}</string>
+	<key>418</key>
+	<string>{{986, 102}, {16, 16}}</string>
+	<key>419</key>
+	<string>{{1003, 102}, {16, 16}}</string>
+	<key>42</key>
+	<string>{{714, 0}, {16, 16}}</string>
+	<key>420</key>
+	<string>{{0, 119}, {16, 16}}</string>
+	<key>421</key>
+	<string>{{17, 119}, {16, 16}}</string>
+	<key>422</key>
+	<string>{{34, 119}, {16, 16}}</string>
+	<key>423</key>
+	<string>{{51, 119}, {16, 16}}</string>
+	<key>424</key>
+	<string>{{68, 119}, {16, 16}}</string>
+	<key>425</key>
+	<string>{{85, 119}, {16, 16}}</string>
+	<key>426</key>
+	<string>{{102, 119}, {16, 16}}</string>
+	<key>427</key>
+	<string>{{119, 119}, {16, 16}}</string>
+	<key>428</key>
+	<string>{{136, 119}, {16, 16}}</string>
+	<key>429</key>
+	<string>{{153, 119}, {16, 16}}</string>
+	<key>43</key>
+	<string>{{731, 0}, {16, 16}}</string>
+	<key>430</key>
+	<string>{{170, 119}, {16, 16}}</string>
+	<key>431</key>
+	<string>{{187, 119}, {16, 16}}</string>
+	<key>432</key>
+	<string>{{204, 119}, {16, 16}}</string>
+	<key>433</key>
+	<string>{{221, 119}, {16, 16}}</string>
+	<key>434</key>
+	<string>{{238, 119}, {16, 16}}</string>
+	<key>435</key>
+	<string>{{255, 119}, {16, 16}}</string>
+	<key>436</key>
+	<string>{{272, 119}, {16, 16}}</string>
+	<key>437</key>
+	<string>{{289, 119}, {16, 16}}</string>
+	<key>438</key>
+	<string>{{306, 119}, {16, 16}}</string>
+	<key>439</key>
+	<string>{{323, 119}, {16, 16}}</string>
+	<key>44</key>
+	<string>{{748, 0}, {16, 16}}</string>
+	<key>440</key>
+	<string>{{340, 119}, {16, 16}}</string>
+	<key>441</key>
+	<string>{{357, 119}, {16, 16}}</string>
+	<key>442</key>
+	<string>{{374, 119}, {16, 16}}</string>
+	<key>443</key>
+	<string>{{391, 119}, {16, 16}}</string>
+	<key>444</key>
+	<string>{{408, 119}, {16, 16}}</string>
+	<key>445</key>
+	<string>{{425, 119}, {16, 16}}</string>
+	<key>446</key>
+	<string>{{442, 119}, {16, 16}}</string>
+	<key>447</key>
+	<string>{{459, 119}, {16, 16}}</string>
+	<key>448</key>
+	<string>{{476, 119}, {16, 16}}</string>
+	<key>449</key>
+	<string>{{493, 119}, {16, 16}}</string>
+	<key>45</key>
+	<string>{{765, 0}, {16, 16}}</string>
+	<key>450</key>
+	<string>{{510, 119}, {16, 16}}</string>
+	<key>451</key>
+	<string>{{527, 119}, {16, 16}}</string>
+	<key>452</key>
+	<string>{{544, 119}, {16, 16}}</string>
+	<key>453</key>
+	<string>{{561, 119}, {16, 16}}</string>
+	<key>454</key>
+	<string>{{578, 119}, {16, 16}}</string>
+	<key>455</key>
+	<string>{{595, 119}, {16, 16}}</string>
+	<key>456</key>
+	<string>{{612, 119}, {16, 16}}</string>
+	<key>457</key>
+	<string>{{629, 119}, {16, 16}}</string>
+	<key>458</key>
+	<string>{{646, 119}, {16, 16}}</string>
+	<key>459</key>
+	<string>{{663, 119}, {16, 16}}</string>
+	<key>46</key>
+	<string>{{782, 0}, {16, 16}}</string>
+	<key>460</key>
+	<string>{{680, 119}, {16, 16}}</string>
+	<key>461</key>
+	<string>{{697, 119}, {16, 16}}</string>
+	<key>462</key>
+	<string>{{714, 119}, {16, 16}}</string>
+	<key>463</key>
+	<string>{{731, 119}, {16, 16}}</string>
+	<key>464</key>
+	<string>{{748, 119}, {16, 16}}</string>
+	<key>465</key>
+	<string>{{765, 119}, {16, 16}}</string>
+	<key>466</key>
+	<string>{{782, 119}, {16, 16}}</string>
+	<key>467</key>
+	<string>{{799, 119}, {16, 16}}</string>
+	<key>468</key>
+	<string>{{816, 119}, {16, 16}}</string>
+	<key>469</key>
+	<string>{{833, 119}, {16, 16}}</string>
+	<key>47</key>
+	<string>{{799, 0}, {16, 16}}</string>
+	<key>470</key>
+	<string>{{850, 119}, {16, 16}}</string>
+	<key>471</key>
+	<string>{{867, 119}, {16, 16}}</string>
+	<key>472</key>
+	<string>{{884, 119}, {16, 16}}</string>
+	<key>473</key>
+	<string>{{901, 119}, {16, 16}}</string>
+	<key>474</key>
+	<string>{{918, 119}, {16, 16}}</string>
+	<key>475</key>
+	<string>{{935, 119}, {16, 16}}</string>
+	<key>476</key>
+	<string>{{952, 119}, {16, 16}}</string>
+	<key>477</key>
+	<string>{{969, 119}, {16, 16}}</string>
+	<key>478</key>
+	<string>{{986, 119}, {16, 16}}</string>
+	<key>479</key>
+	<string>{{1003, 119}, {16, 16}}</string>
+	<key>48</key>
+	<string>{{816, 0}, {16, 16}}</string>
+	<key>480</key>
+	<string>{{0, 136}, {16, 16}}</string>
+	<key>481</key>
+	<string>{{17, 136}, {16, 16}}</string>
+	<key>482</key>
+	<string>{{34, 136}, {16, 16}}</string>
+	<key>483</key>
+	<string>{{51, 136}, {16, 16}}</string>
+	<key>484</key>
+	<string>{{68, 136}, {16, 16}}</string>
+	<key>485</key>
+	<string>{{85, 136}, {16, 16}}</string>
+	<key>486</key>
+	<string>{{102, 136}, {16, 16}}</string>
+	<key>487</key>
+	<string>{{119, 136}, {16, 16}}</string>
+	<key>488</key>
+	<string>{{136, 136}, {16, 16}}</string>
+	<key>489</key>
+	<string>{{153, 136}, {16, 16}}</string>
+	<key>49</key>
+	<string>{{833, 0}, {16, 16}}</string>
+	<key>490</key>
+	<string>{{170, 136}, {16, 16}}</string>
+	<key>491</key>
+	<string>{{187, 136}, {16, 16}}</string>
+	<key>492</key>
+	<string>{{204, 136}, {16, 16}}</string>
+	<key>493</key>
+	<string>{{221, 136}, {16, 16}}</string>
+	<key>494</key>
+	<string>{{238, 136}, {16, 16}}</string>
+	<key>495</key>
+	<string>{{255, 136}, {16, 16}}</string>
+	<key>496</key>
+	<string>{{272, 136}, {16, 16}}</string>
+	<key>497</key>
+	<string>{{289, 136}, {16, 16}}</string>
+	<key>498</key>
+	<string>{{306, 136}, {16, 16}}</string>
+	<key>499</key>
+	<string>{{323, 136}, {16, 16}}</string>
+	<key>5</key>
+	<string>{{85, 0}, {16, 16}}</string>
+	<key>50</key>
+	<string>{{850, 0}, {16, 16}}</string>
+	<key>500</key>
+	<string>{{340, 136}, {16, 16}}</string>
+	<key>501</key>
+	<string>{{357, 136}, {16, 16}}</string>
+	<key>502</key>
+	<string>{{374, 136}, {16, 16}}</string>
+	<key>503</key>
+	<string>{{391, 136}, {16, 16}}</string>
+	<key>504</key>
+	<string>{{408, 136}, {16, 16}}</string>
+	<key>505</key>
+	<string>{{425, 136}, {16, 16}}</string>
+	<key>506</key>
+	<string>{{442, 136}, {16, 16}}</string>
+	<key>507</key>
+	<string>{{459, 136}, {16, 16}}</string>
+	<key>508</key>
+	<string>{{476, 136}, {16, 16}}</string>
+	<key>509</key>
+	<string>{{493, 136}, {16, 16}}</string>
+	<key>51</key>
+	<string>{{867, 0}, {16, 16}}</string>
+	<key>510</key>
+	<string>{{510, 136}, {16, 16}}</string>
+	<key>511</key>
+	<string>{{527, 136}, {16, 16}}</string>
+	<key>512</key>
+	<string>{{544, 136}, {16, 16}}</string>
+	<key>513</key>
+	<string>{{561, 136}, {16, 16}}</string>
+	<key>514</key>
+	<string>{{578, 136}, {16, 16}}</string>
+	<key>515</key>
+	<string>{{595, 136}, {16, 16}}</string>
+	<key>516</key>
+	<string>{{612, 136}, {16, 16}}</string>
+	<key>517</key>
+	<string>{{629, 136}, {16, 16}}</string>
+	<key>518</key>
+	<string>{{646, 136}, {16, 16}}</string>
+	<key>519</key>
+	<string>{{663, 136}, {16, 16}}</string>
+	<key>52</key>
+	<string>{{884, 0}, {16, 16}}</string>
+	<key>520</key>
+	<string>{{680, 136}, {16, 16}}</string>
+	<key>521</key>
+	<string>{{697, 136}, {16, 16}}</string>
+	<key>522</key>
+	<string>{{714, 136}, {16, 16}}</string>
+	<key>523</key>
+	<string>{{731, 136}, {16, 16}}</string>
+	<key>524</key>
+	<string>{{748, 136}, {16, 16}}</string>
+	<key>525</key>
+	<string>{{765, 136}, {16, 16}}</string>
+	<key>526</key>
+	<string>{{782, 136}, {16, 16}}</string>
+	<key>527</key>
+	<string>{{799, 136}, {16, 16}}</string>
+	<key>528</key>
+	<string>{{816, 136}, {16, 16}}</string>
+	<key>529</key>
+	<string>{{833, 136}, {16, 16}}</string>
+	<key>53</key>
+	<string>{{901, 0}, {16, 16}}</string>
+	<key>530</key>
+	<string>{{850, 136}, {16, 16}}</string>
+	<key>531</key>
+	<string>{{867, 136}, {16, 16}}</string>
+	<key>532</key>
+	<string>{{884, 136}, {16, 16}}</string>
+	<key>533</key>
+	<string>{{901, 136}, {16, 16}}</string>
+	<key>534</key>
+	<string>{{918, 136}, {16, 16}}</string>
+	<key>535</key>
+	<string>{{935, 136}, {16, 16}}</string>
+	<key>536</key>
+	<string>{{952, 136}, {16, 16}}</string>
+	<key>537</key>
+	<string>{{969, 136}, {16, 16}}</string>
+	<key>538</key>
+	<string>{{986, 136}, {16, 16}}</string>
+	<key>539</key>
+	<string>{{1003, 136}, {16, 16}}</string>
+	<key>54</key>
+	<string>{{918, 0}, {16, 16}}</string>
+	<key>540</key>
+	<string>{{0, 153}, {16, 16}}</string>
+	<key>541</key>
+	<string>{{17, 153}, {16, 16}}</string>
+	<key>542</key>
+	<string>{{34, 153}, {16, 16}}</string>
+	<key>543</key>
+	<string>{{51, 153}, {16, 16}}</string>
+	<key>544</key>
+	<string>{{68, 153}, {16, 16}}</string>
+	<key>545</key>
+	<string>{{85, 153}, {16, 16}}</string>
+	<key>546</key>
+	<string>{{102, 153}, {16, 16}}</string>
+	<key>547</key>
+	<string>{{119, 153}, {16, 16}}</string>
+	<key>548</key>
+	<string>{{136, 153}, {16, 16}}</string>
+	<key>549</key>
+	<string>{{153, 153}, {16, 16}}</string>
+	<key>55</key>
+	<string>{{935, 0}, {16, 16}}</string>
+	<key>550</key>
+	<string>{{170, 153}, {16, 16}}</string>
+	<key>551</key>
+	<string>{{187, 153}, {16, 16}}</string>
+	<key>552</key>
+	<string>{{204, 153}, {16, 16}}</string>
+	<key>553</key>
+	<string>{{221, 153}, {16, 16}}</string>
+	<key>554</key>
+	<string>{{238, 153}, {16, 16}}</string>
+	<key>555</key>
+	<string>{{255, 153}, {16, 16}}</string>
+	<key>556</key>
+	<string>{{272, 153}, {16, 16}}</string>
+	<key>557</key>
+	<string>{{289, 153}, {16, 16}}</string>
+	<key>558</key>
+	<string>{{306, 153}, {16, 16}}</string>
+	<key>559</key>
+	<string>{{323, 153}, {16, 16}}</string>
+	<key>56</key>
+	<string>{{952, 0}, {16, 16}}</string>
+	<key>560</key>
+	<string>{{340, 153}, {16, 16}}</string>
+	<key>561</key>
+	<string>{{357, 153}, {16, 16}}</string>
+	<key>562</key>
+	<string>{{374, 153}, {16, 16}}</string>
+	<key>563</key>
+	<string>{{391, 153}, {16, 16}}</string>
+	<key>564</key>
+	<string>{{408, 153}, {16, 16}}</string>
+	<key>565</key>
+	<string>{{425, 153}, {16, 16}}</string>
+	<key>566</key>
+	<string>{{442, 153}, {16, 16}}</string>
+	<key>567</key>
+	<string>{{459, 153}, {16, 16}}</string>
+	<key>568</key>
+	<string>{{476, 153}, {16, 16}}</string>
+	<key>569</key>
+	<string>{{493, 153}, {16, 16}}</string>
+	<key>57</key>
+	<string>{{969, 0}, {16, 16}}</string>
+	<key>570</key>
+	<string>{{510, 153}, {16, 16}}</string>
+	<key>571</key>
+	<string>{{527, 153}, {16, 16}}</string>
+	<key>572</key>
+	<string>{{544, 153}, {16, 16}}</string>
+	<key>573</key>
+	<string>{{561, 153}, {16, 16}}</string>
+	<key>574</key>
+	<string>{{578, 153}, {16, 16}}</string>
+	<key>575</key>
+	<string>{{595, 153}, {16, 16}}</string>
+	<key>576</key>
+	<string>{{612, 153}, {16, 16}}</string>
+	<key>577</key>
+	<string>{{629, 153}, {16, 16}}</string>
+	<key>578</key>
+	<string>{{646, 153}, {16, 16}}</string>
+	<key>579</key>
+	<string>{{663, 153}, {16, 16}}</string>
+	<key>58</key>
+	<string>{{986, 0}, {16, 16}}</string>
+	<key>580</key>
+	<string>{{680, 153}, {16, 16}}</string>
+	<key>581</key>
+	<string>{{697, 153}, {16, 16}}</string>
+	<key>582</key>
+	<string>{{714, 153}, {16, 16}}</string>
+	<key>583</key>
+	<string>{{731, 153}, {16, 16}}</string>
+	<key>584</key>
+	<string>{{748, 153}, {16, 16}}</string>
+	<key>585</key>
+	<string>{{765, 153}, {16, 16}}</string>
+	<key>586</key>
+	<string>{{782, 153}, {16, 16}}</string>
+	<key>587</key>
+	<string>{{799, 153}, {16, 16}}</string>
+	<key>588</key>
+	<string>{{816, 153}, {16, 16}}</string>
+	<key>589</key>
+	<string>{{833, 153}, {16, 16}}</string>
+	<key>59</key>
+	<string>{{1003, 0}, {16, 16}}</string>
+	<key>590</key>
+	<string>{{850, 153}, {16, 16}}</string>
+	<key>591</key>
+	<string>{{867, 153}, {16, 16}}</string>
+	<key>592</key>
+	<string>{{884, 153}, {16, 16}}</string>
+	<key>593</key>
+	<string>{{901, 153}, {16, 16}}</string>
+	<key>594</key>
+	<string>{{918, 153}, {16, 16}}</string>
+	<key>595</key>
+	<string>{{935, 153}, {16, 16}}</string>
+	<key>596</key>
+	<string>{{952, 153}, {16, 16}}</string>
+	<key>597</key>
+	<string>{{969, 153}, {16, 16}}</string>
+	<key>598</key>
+	<string>{{986, 153}, {16, 16}}</string>
+	<key>599</key>
+	<string>{{1003, 153}, {16, 16}}</string>
+	<key>6</key>
+	<string>{{102, 0}, {16, 16}}</string>
+	<key>60</key>
+	<string>{{0, 17}, {16, 16}}</string>
+	<key>600</key>
+	<string>{{0, 170}, {16, 16}}</string>
+	<key>601</key>
+	<string>{{17, 170}, {16, 16}}</string>
+	<key>602</key>
+	<string>{{34, 170}, {16, 16}}</string>
+	<key>603</key>
+	<string>{{51, 170}, {16, 16}}</string>
+	<key>604</key>
+	<string>{{68, 170}, {16, 16}}</string>
+	<key>605</key>
+	<string>{{85, 170}, {16, 16}}</string>
+	<key>606</key>
+	<string>{{102, 170}, {16, 16}}</string>
+	<key>607</key>
+	<string>{{119, 170}, {16, 16}}</string>
+	<key>608</key>
+	<string>{{136, 170}, {16, 16}}</string>
+	<key>609</key>
+	<string>{{153, 170}, {16, 16}}</string>
+	<key>61</key>
+	<string>{{17, 17}, {16, 16}}</string>
+	<key>610</key>
+	<string>{{170, 170}, {16, 16}}</string>
+	<key>611</key>
+	<string>{{187, 170}, {16, 16}}</string>
+	<key>612</key>
+	<string>{{204, 170}, {16, 16}}</string>
+	<key>613</key>
+	<string>{{221, 170}, {16, 16}}</string>
+	<key>614</key>
+	<string>{{238, 170}, {16, 16}}</string>
+	<key>615</key>
+	<string>{{255, 170}, {16, 16}}</string>
+	<key>616</key>
+	<string>{{272, 170}, {16, 16}}</string>
+	<key>617</key>
+	<string>{{289, 170}, {16, 16}}</string>
+	<key>618</key>
+	<string>{{306, 170}, {16, 16}}</string>
+	<key>619</key>
+	<string>{{323, 170}, {16, 16}}</string>
+	<key>62</key>
+	<string>{{34, 17}, {16, 16}}</string>
+	<key>620</key>
+	<string>{{340, 170}, {16, 16}}</string>
+	<key>621</key>
+	<string>{{357, 170}, {16, 16}}</string>
+	<key>622</key>
+	<string>{{374, 170}, {16, 16}}</string>
+	<key>623</key>
+	<string>{{391, 170}, {16, 16}}</string>
+	<key>624</key>
+	<string>{{408, 170}, {16, 16}}</string>
+	<key>625</key>
+	<string>{{425, 170}, {16, 16}}</string>
+	<key>626</key>
+	<string>{{442, 170}, {16, 16}}</string>
+	<key>627</key>
+	<string>{{459, 170}, {16, 16}}</string>
+	<key>628</key>
+	<string>{{476, 170}, {16, 16}}</string>
+	<key>629</key>
+	<string>{{493, 170}, {16, 16}}</string>
+	<key>63</key>
+	<string>{{51, 17}, {16, 16}}</string>
+	<key>630</key>
+	<string>{{510, 170}, {16, 16}}</string>
+	<key>631</key>
+	<string>{{527, 170}, {16, 16}}</string>
+	<key>632</key>
+	<string>{{544, 170}, {16, 16}}</string>
+	<key>633</key>
+	<string>{{561, 170}, {16, 16}}</string>
+	<key>634</key>
+	<string>{{578, 170}, {16, 16}}</string>
+	<key>635</key>
+	<string>{{595, 170}, {16, 16}}</string>
+	<key>636</key>
+	<string>{{612, 170}, {16, 16}}</string>
+	<key>637</key>
+	<string>{{629, 170}, {16, 16}}</string>
+	<key>638</key>
+	<string>{{646, 170}, {16, 16}}</string>
+	<key>639</key>
+	<string>{{663, 170}, {16, 16}}</string>
+	<key>64</key>
+	<string>{{68, 17}, {16, 16}}</string>
+	<key>640</key>
+	<string>{{680, 170}, {16, 16}}</string>
+	<key>641</key>
+	<string>{{697, 170}, {16, 16}}</string>
+	<key>642</key>
+	<string>{{714, 170}, {16, 16}}</string>
+	<key>643</key>
+	<string>{{731, 170}, {16, 16}}</string>
+	<key>644</key>
+	<string>{{748, 170}, {16, 16}}</string>
+	<key>645</key>
+	<string>{{765, 170}, {16, 16}}</string>
+	<key>646</key>
+	<string>{{782, 170}, {16, 16}}</string>
+	<key>647</key>
+	<string>{{799, 170}, {16, 16}}</string>
+	<key>648</key>
+	<string>{{816, 170}, {16, 16}}</string>
+	<key>649</key>
+	<string>{{833, 170}, {16, 16}}</string>
+	<key>65</key>
+	<string>{{85, 17}, {16, 16}}</string>
+	<key>650</key>
+	<string>{{850, 170}, {16, 16}}</string>
+	<key>651</key>
+	<string>{{867, 170}, {16, 16}}</string>
+	<key>652</key>
+	<string>{{884, 170}, {16, 16}}</string>
+	<key>653</key>
+	<string>{{901, 170}, {16, 16}}</string>
+	<key>654</key>
+	<string>{{918, 170}, {16, 16}}</string>
+	<key>655</key>
+	<string>{{935, 170}, {16, 16}}</string>
+	<key>656</key>
+	<string>{{952, 170}, {16, 16}}</string>
+	<key>657</key>
+	<string>{{969, 170}, {16, 16}}</string>
+	<key>658</key>
+	<string>{{986, 170}, {16, 16}}</string>
+	<key>659</key>
+	<string>{{1003, 170}, {16, 16}}</string>
+	<key>66</key>
+	<string>{{102, 17}, {16, 16}}</string>
+	<key>660</key>
+	<string>{{0, 187}, {16, 16}}</string>
+	<key>661</key>
+	<string>{{17, 187}, {16, 16}}</string>
+	<key>662</key>
+	<string>{{34, 187}, {16, 16}}</string>
+	<key>663</key>
+	<string>{{51, 187}, {16, 16}}</string>
+	<key>664</key>
+	<string>{{68, 187}, {16, 16}}</string>
+	<key>665</key>
+	<string>{{85, 187}, {16, 16}}</string>
+	<key>666</key>
+	<string>{{102, 187}, {16, 16}}</string>
+	<key>667</key>
+	<string>{{119, 187}, {16, 16}}</string>
+	<key>668</key>
+	<string>{{136, 187}, {16, 16}}</string>
+	<key>669</key>
+	<string>{{153, 187}, {16, 16}}</string>
+	<key>67</key>
+	<string>{{119, 17}, {16, 16}}</string>
+	<key>670</key>
+	<string>{{170, 187}, {16, 16}}</string>
+	<key>671</key>
+	<string>{{187, 187}, {16, 16}}</string>
+	<key>672</key>
+	<string>{{204, 187}, {16, 16}}</string>
+	<key>673</key>
+	<string>{{221, 187}, {16, 16}}</string>
+	<key>674</key>
+	<string>{{238, 187}, {16, 16}}</string>
+	<key>675</key>
+	<string>{{255, 187}, {16, 16}}</string>
+	<key>676</key>
+	<string>{{272, 187}, {16, 16}}</string>
+	<key>677</key>
+	<string>{{289, 187}, {16, 16}}</string>
+	<key>678</key>
+	<string>{{306, 187}, {16, 16}}</string>
+	<key>679</key>
+	<string>{{323, 187}, {16, 16}}</string>
+	<key>68</key>
+	<string>{{136, 17}, {16, 16}}</string>
+	<key>680</key>
+	<string>{{340, 187}, {16, 16}}</string>
+	<key>681</key>
+	<string>{{357, 187}, {16, 16}}</string>
+	<key>682</key>
+	<string>{{374, 187}, {16, 16}}</string>
+	<key>683</key>
+	<string>{{391, 187}, {16, 16}}</string>
+	<key>684</key>
+	<string>{{408, 187}, {16, 16}}</string>
+	<key>685</key>
+	<string>{{425, 187}, {16, 16}}</string>
+	<key>686</key>
+	<string>{{442, 187}, {16, 16}}</string>
+	<key>687</key>
+	<string>{{459, 187}, {16, 16}}</string>
+	<key>688</key>
+	<string>{{476, 187}, {16, 16}}</string>
+	<key>689</key>
+	<string>{{493, 187}, {16, 16}}</string>
+	<key>69</key>
+	<string>{{153, 17}, {16, 16}}</string>
+	<key>690</key>
+	<string>{{510, 187}, {16, 16}}</string>
+	<key>691</key>
+	<string>{{527, 187}, {16, 16}}</string>
+	<key>692</key>
+	<string>{{544, 187}, {16, 16}}</string>
+	<key>693</key>
+	<string>{{561, 187}, {16, 16}}</string>
+	<key>694</key>
+	<string>{{578, 187}, {16, 16}}</string>
+	<key>695</key>
+	<string>{{595, 187}, {16, 16}}</string>
+	<key>696</key>
+	<string>{{612, 187}, {16, 16}}</string>
+	<key>697</key>
+	<string>{{629, 187}, {16, 16}}</string>
+	<key>698</key>
+	<string>{{646, 187}, {16, 16}}</string>
+	<key>699</key>
+	<string>{{663, 187}, {16, 16}}</string>
+	<key>7</key>
+	<string>{{119, 0}, {16, 16}}</string>
+	<key>70</key>
+	<string>{{170, 17}, {16, 16}}</string>
+	<key>700</key>
+	<string>{{680, 187}, {16, 16}}</string>
+	<key>701</key>
+	<string>{{697, 187}, {16, 16}}</string>
+	<key>702</key>
+	<string>{{714, 187}, {16, 16}}</string>
+	<key>703</key>
+	<string>{{731, 187}, {16, 16}}</string>
+	<key>704</key>
+	<string>{{748, 187}, {16, 16}}</string>
+	<key>705</key>
+	<string>{{765, 187}, {16, 16}}</string>
+	<key>706</key>
+	<string>{{782, 187}, {16, 16}}</string>
+	<key>707</key>
+	<string>{{799, 187}, {16, 16}}</string>
+	<key>708</key>
+	<string>{{816, 187}, {16, 16}}</string>
+	<key>709</key>
+	<string>{{833, 187}, {16, 16}}</string>
+	<key>71</key>
+	<string>{{187, 17}, {16, 16}}</string>
+	<key>710</key>
+	<string>{{850, 187}, {16, 16}}</string>
+	<key>711</key>
+	<string>{{867, 187}, {16, 16}}</string>
+	<key>712</key>
+	<string>{{884, 187}, {16, 16}}</string>
+	<key>713</key>
+	<string>{{901, 187}, {16, 16}}</string>
+	<key>714</key>
+	<string>{{918, 187}, {16, 16}}</string>
+	<key>715</key>
+	<string>{{935, 187}, {16, 16}}</string>
+	<key>716</key>
+	<string>{{952, 187}, {16, 16}}</string>
+	<key>717</key>
+	<string>{{969, 187}, {16, 16}}</string>
+	<key>718</key>
+	<string>{{986, 187}, {16, 16}}</string>
+	<key>719</key>
+	<string>{{1003, 187}, {16, 16}}</string>
+	<key>72</key>
+	<string>{{204, 17}, {16, 16}}</string>
+	<key>720</key>
+	<string>{{0, 204}, {16, 16}}</string>
+	<key>721</key>
+	<string>{{17, 204}, {16, 16}}</string>
+	<key>722</key>
+	<string>{{34, 204}, {16, 16}}</string>
+	<key>723</key>
+	<string>{{51, 204}, {16, 16}}</string>
+	<key>724</key>
+	<string>{{68, 204}, {16, 16}}</string>
+	<key>725</key>
+	<string>{{85, 204}, {16, 16}}</string>
+	<key>726</key>
+	<string>{{102, 204}, {16, 16}}</string>
+	<key>727</key>
+	<string>{{119, 204}, {16, 16}}</string>
+	<key>728</key>
+	<string>{{136, 204}, {16, 16}}</string>
+	<key>729</key>
+	<string>{{153, 204}, {16, 16}}</string>
+	<key>73</key>
+	<string>{{221, 17}, {16, 16}}</string>
+	<key>730</key>
+	<string>{{170, 204}, {16, 16}}</string>
+	<key>731</key>
+	<string>{{187, 204}, {16, 16}}</string>
+	<key>732</key>
+	<string>{{204, 204}, {16, 16}}</string>
+	<key>733</key>
+	<string>{{221, 204}, {16, 16}}</string>
+	<key>734</key>
+	<string>{{238, 204}, {16, 16}}</string>
+	<key>735</key>
+	<string>{{255, 204}, {16, 16}}</string>
+	<key>736</key>
+	<string>{{272, 204}, {16, 16}}</string>
+	<key>737</key>
+	<string>{{289, 204}, {16, 16}}</string>
+	<key>738</key>
+	<string>{{306, 204}, {16, 16}}</string>
+	<key>739</key>
+	<string>{{323, 204}, {16, 16}}</string>
+	<key>74</key>
+	<string>{{238, 17}, {16, 16}}</string>
+	<key>740</key>
+	<string>{{340, 204}, {16, 16}}</string>
+	<key>741</key>
+	<string>{{357, 204}, {16, 16}}</string>
+	<key>742</key>
+	<string>{{374, 204}, {16, 16}}</string>
+	<key>743</key>
+	<string>{{391, 204}, {16, 16}}</string>
+	<key>744</key>
+	<string>{{408, 204}, {16, 16}}</string>
+	<key>745</key>
+	<string>{{425, 204}, {16, 16}}</string>
+	<key>746</key>
+	<string>{{442, 204}, {16, 16}}</string>
+	<key>747</key>
+	<string>{{459, 204}, {16, 16}}</string>
+	<key>748</key>
+	<string>{{476, 204}, {16, 16}}</string>
+	<key>749</key>
+	<string>{{493, 204}, {16, 16}}</string>
+	<key>75</key>
+	<string>{{255, 17}, {16, 16}}</string>
+	<key>750</key>
+	<string>{{510, 204}, {16, 16}}</string>
+	<key>751</key>
+	<string>{{527, 204}, {16, 16}}</string>
+	<key>752</key>
+	<string>{{544, 204}, {16, 16}}</string>
+	<key>753</key>
+	<string>{{561, 204}, {16, 16}}</string>
+	<key>754</key>
+	<string>{{578, 204}, {16, 16}}</string>
+	<key>755</key>
+	<string>{{595, 204}, {16, 16}}</string>
+	<key>756</key>
+	<string>{{612, 204}, {16, 16}}</string>
+	<key>757</key>
+	<string>{{629, 204}, {16, 16}}</string>
+	<key>758</key>
+	<string>{{646, 204}, {16, 16}}</string>
+	<key>759</key>
+	<string>{{663, 204}, {16, 16}}</string>
+	<key>76</key>
+	<string>{{272, 17}, {16, 16}}</string>
+	<key>760</key>
+	<string>{{680, 204}, {16, 16}}</string>
+	<key>761</key>
+	<string>{{697, 204}, {16, 16}}</string>
+	<key>762</key>
+	<string>{{714, 204}, {16, 16}}</string>
+	<key>763</key>
+	<string>{{731, 204}, {16, 16}}</string>
+	<key>764</key>
+	<string>{{748, 204}, {16, 16}}</string>
+	<key>765</key>
+	<string>{{765, 204}, {16, 16}}</string>
+	<key>766</key>
+	<string>{{782, 204}, {16, 16}}</string>
+	<key>767</key>
+	<string>{{799, 204}, {16, 16}}</string>
+	<key>768</key>
+	<string>{{816, 204}, {16, 16}}</string>
+	<key>769</key>
+	<string>{{833, 204}, {16, 16}}</string>
+	<key>77</key>
+	<string>{{289, 17}, {16, 16}}</string>
+	<key>770</key>
+	<string>{{850, 204}, {16, 16}}</string>
+	<key>771</key>
+	<string>{{867, 204}, {16, 16}}</string>
+	<key>772</key>
+	<string>{{884, 204}, {16, 16}}</string>
+	<key>773</key>
+	<string>{{901, 204}, {16, 16}}</string>
+	<key>774</key>
+	<string>{{918, 204}, {16, 16}}</string>
+	<key>775</key>
+	<string>{{935, 204}, {16, 16}}</string>
+	<key>776</key>
+	<string>{{952, 204}, {16, 16}}</string>
+	<key>777</key>
+	<string>{{969, 204}, {16, 16}}</string>
+	<key>778</key>
+	<string>{{986, 204}, {16, 16}}</string>
+	<key>779</key>
+	<string>{{1003, 204}, {16, 16}}</string>
+	<key>78</key>
+	<string>{{306, 17}, {16, 16}}</string>
+	<key>780</key>
+	<string>{{0, 221}, {16, 16}}</string>
+	<key>781</key>
+	<string>{{17, 221}, {16, 16}}</string>
+	<key>782</key>
+	<string>{{34, 221}, {16, 16}}</string>
+	<key>783</key>
+	<string>{{51, 221}, {16, 16}}</string>
+	<key>784</key>
+	<string>{{68, 221}, {16, 16}}</string>
+	<key>785</key>
+	<string>{{85, 221}, {16, 16}}</string>
+	<key>786</key>
+	<string>{{102, 221}, {16, 16}}</string>
+	<key>787</key>
+	<string>{{119, 221}, {16, 16}}</string>
+	<key>788</key>
+	<string>{{136, 221}, {16, 16}}</string>
+	<key>789</key>
+	<string>{{153, 221}, {16, 16}}</string>
+	<key>79</key>
+	<string>{{323, 17}, {16, 16}}</string>
+	<key>790</key>
+	<string>{{170, 221}, {16, 16}}</string>
+	<key>791</key>
+	<string>{{187, 221}, {16, 16}}</string>
+	<key>792</key>
+	<string>{{204, 221}, {16, 16}}</string>
+	<key>793</key>
+	<string>{{221, 221}, {16, 16}}</string>
+	<key>794</key>
+	<string>{{238, 221}, {16, 16}}</string>
+	<key>795</key>
+	<string>{{255, 221}, {16, 16}}</string>
+	<key>796</key>
+	<string>{{272, 221}, {16, 16}}</string>
+	<key>797</key>
+	<string>{{289, 221}, {16, 16}}</string>
+	<key>798</key>
+	<string>{{306, 221}, {16, 16}}</string>
+	<key>799</key>
+	<string>{{323, 221}, {16, 16}}</string>
+	<key>8</key>
+	<string>{{136, 0}, {16, 16}}</string>
+	<key>80</key>
+	<string>{{340, 17}, {16, 16}}</string>
+	<key>800</key>
+	<string>{{340, 221}, {16, 16}}</string>
+	<key>801</key>
+	<string>{{357, 221}, {16, 16}}</string>
+	<key>802</key>
+	<string>{{374, 221}, {16, 16}}</string>
+	<key>803</key>
+	<string>{{391, 221}, {16, 16}}</string>
+	<key>804</key>
+	<string>{{408, 221}, {16, 16}}</string>
+	<key>805</key>
+	<string>{{425, 221}, {16, 16}}</string>
+	<key>806</key>
+	<string>{{442, 221}, {16, 16}}</string>
+	<key>807</key>
+	<string>{{459, 221}, {16, 16}}</string>
+	<key>808</key>
+	<string>{{476, 221}, {16, 16}}</string>
+	<key>809</key>
+	<string>{{493, 221}, {16, 16}}</string>
+	<key>81</key>
+	<string>{{357, 17}, {16, 16}}</string>
+	<key>810</key>
+	<string>{{510, 221}, {16, 16}}</string>
+	<key>811</key>
+	<string>{{527, 221}, {16, 16}}</string>
+	<key>812</key>
+	<string>{{544, 221}, {16, 16}}</string>
+	<key>813</key>
+	<string>{{561, 221}, {16, 16}}</string>
+	<key>814</key>
+	<string>{{578, 221}, {16, 16}}</string>
+	<key>815</key>
+	<string>{{595, 221}, {16, 16}}</string>
+	<key>816</key>
+	<string>{{612, 221}, {16, 16}}</string>
+	<key>817</key>
+	<string>{{629, 221}, {16, 16}}</string>
+	<key>818</key>
+	<string>{{646, 221}, {16, 16}}</string>
+	<key>819</key>
+	<string>{{663, 221}, {16, 16}}</string>
+	<key>82</key>
+	<string>{{374, 17}, {16, 16}}</string>
+	<key>820</key>
+	<string>{{680, 221}, {16, 16}}</string>
+	<key>821</key>
+	<string>{{697, 221}, {16, 16}}</string>
+	<key>822</key>
+	<string>{{714, 221}, {16, 16}}</string>
+	<key>823</key>
+	<string>{{731, 221}, {16, 16}}</string>
+	<key>824</key>
+	<string>{{748, 221}, {16, 16}}</string>
+	<key>825</key>
+	<string>{{765, 221}, {16, 16}}</string>
+	<key>826</key>
+	<string>{{782, 221}, {16, 16}}</string>
+	<key>827</key>
+	<string>{{799, 221}, {16, 16}}</string>
+	<key>828</key>
+	<string>{{816, 221}, {16, 16}}</string>
+	<key>829</key>
+	<string>{{833, 221}, {16, 16}}</string>
+	<key>83</key>
+	<string>{{391, 17}, {16, 16}}</string>
+	<key>830</key>
+	<string>{{850, 221}, {16, 16}}</string>
+	<key>831</key>
+	<string>{{867, 221}, {16, 16}}</string>
+	<key>832</key>
+	<string>{{884, 221}, {16, 16}}</string>
+	<key>833</key>
+	<string>{{901, 221}, {16, 16}}</string>
+	<key>834</key>
+	<string>{{918, 221}, {16, 16}}</string>
+	<key>835</key>
+	<string>{{935, 221}, {16, 16}}</string>
+	<key>836</key>
+	<string>{{952, 221}, {16, 16}}</string>
+	<key>837</key>
+	<string>{{969, 221}, {16, 16}}</string>
+	<key>838</key>
+	<string>{{986, 221}, {16, 16}}</string>
+	<key>839</key>
+	<string>{{1003, 221}, {16, 16}}</string>
+	<key>84</key>
+	<string>{{408, 17}, {16, 16}}</string>
+	<key>840</key>
+	<string>{{0, 238}, {16, 16}}</string>
+	<key>841</key>
+	<string>{{17, 238}, {16, 16}}</string>
+	<key>842</key>
+	<string>{{34, 238}, {16, 16}}</string>
+	<key>843</key>
+	<string>{{51, 238}, {16, 16}}</string>
+	<key>844</key>
+	<string>{{68, 238}, {16, 16}}</string>
+	<key>845</key>
+	<string>{{85, 238}, {16, 16}}</string>
+	<key>846</key>
+	<string>{{102, 238}, {16, 16}}</string>
+	<key>847</key>
+	<string>{{119, 238}, {16, 16}}</string>
+	<key>848</key>
+	<string>{{136, 238}, {16, 16}}</string>
+	<key>849</key>
+	<string>{{153, 238}, {16, 16}}</string>
+	<key>85</key>
+	<string>{{425, 17}, {16, 16}}</string>
+	<key>850</key>
+	<string>{{170, 238}, {16, 16}}</string>
+	<key>851</key>
+	<string>{{187, 238}, {16, 16}}</string>
+	<key>852</key>
+	<string>{{204, 238}, {16, 16}}</string>
+	<key>853</key>
+	<string>{{221, 238}, {16, 16}}</string>
+	<key>854</key>
+	<string>{{238, 238}, {16, 16}}</string>
+	<key>855</key>
+	<string>{{255, 238}, {16, 16}}</string>
+	<key>856</key>
+	<string>{{272, 238}, {16, 16}}</string>
+	<key>857</key>
+	<string>{{289, 238}, {16, 16}}</string>
+	<key>858</key>
+	<string>{{306, 238}, {16, 16}}</string>
+	<key>859</key>
+	<string>{{323, 238}, {16, 16}}</string>
+	<key>86</key>
+	<string>{{442, 17}, {16, 16}}</string>
+	<key>860</key>
+	<string>{{340, 238}, {16, 16}}</string>
+	<key>861</key>
+	<string>{{357, 238}, {16, 16}}</string>
+	<key>862</key>
+	<string>{{374, 238}, {16, 16}}</string>
+	<key>863</key>
+	<string>{{391, 238}, {16, 16}}</string>
+	<key>864</key>
+	<string>{{408, 238}, {16, 16}}</string>
+	<key>865</key>
+	<string>{{425, 238}, {16, 16}}</string>
+	<key>866</key>
+	<string>{{442, 238}, {16, 16}}</string>
+	<key>867</key>
+	<string>{{459, 238}, {16, 16}}</string>
+	<key>868</key>
+	<string>{{476, 238}, {16, 16}}</string>
+	<key>869</key>
+	<string>{{493, 238}, {16, 16}}</string>
+	<key>87</key>
+	<string>{{459, 17}, {16, 16}}</string>
+	<key>870</key>
+	<string>{{510, 238}, {16, 16}}</string>
+	<key>871</key>
+	<string>{{527, 238}, {16, 16}}</string>
+	<key>872</key>
+	<string>{{544, 238}, {16, 16}}</string>
+	<key>873</key>
+	<string>{{561, 238}, {16, 16}}</string>
+	<key>874</key>
+	<string>{{578, 238}, {16, 16}}</string>
+	<key>875</key>
+	<string>{{595, 238}, {16, 16}}</string>
+	<key>876</key>
+	<string>{{612, 238}, {16, 16}}</string>
+	<key>877</key>
+	<string>{{629, 238}, {16, 16}}</string>
+	<key>878</key>
+	<string>{{646, 238}, {16, 16}}</string>
+	<key>879</key>
+	<string>{{663, 238}, {16, 16}}</string>
+	<key>88</key>
+	<string>{{476, 17}, {16, 16}}</string>
+	<key>880</key>
+	<string>{{680, 238}, {16, 16}}</string>
+	<key>881</key>
+	<string>{{697, 238}, {16, 16}}</string>
+	<key>882</key>
+	<string>{{714, 238}, {16, 16}}</string>
+	<key>883</key>
+	<string>{{731, 238}, {16, 16}}</string>
+	<key>884</key>
+	<string>{{748, 238}, {16, 16}}</string>
+	<key>885</key>
+	<string>{{765, 238}, {16, 16}}</string>
+	<key>886</key>
+	<string>{{782, 238}, {16, 16}}</string>
+	<key>887</key>
+	<string>{{799, 238}, {16, 16}}</string>
+	<key>888</key>
+	<string>{{816, 238}, {16, 16}}</string>
+	<key>889</key>
+	<string>{{833, 238}, {16, 16}}</string>
+	<key>89</key>
+	<string>{{493, 17}, {16, 16}}</string>
+	<key>890</key>
+	<string>{{850, 238}, {16, 16}}</string>
+	<key>891</key>
+	<string>{{867, 238}, {16, 16}}</string>
+	<key>892</key>
+	<string>{{884, 238}, {16, 16}}</string>
+	<key>893</key>
+	<string>{{901, 238}, {16, 16}}</string>
+	<key>894</key>
+	<string>{{918, 238}, {16, 16}}</string>
+	<key>895</key>
+	<string>{{935, 238}, {16, 16}}</string>
+	<key>896</key>
+	<string>{{952, 238}, {16, 16}}</string>
+	<key>897</key>
+	<string>{{969, 238}, {16, 16}}</string>
+	<key>898</key>
+	<string>{{986, 238}, {16, 16}}</string>
+	<key>899</key>
+	<string>{{1003, 238}, {16, 16}}</string>
+	<key>9</key>
+	<string>{{153, 0}, {16, 16}}</string>
+	<key>90</key>
+	<string>{{510, 17}, {16, 16}}</string>
+	<key>900</key>
+	<string>{{0, 255}, {16, 16}}</string>
+	<key>901</key>
+	<string>{{17, 255}, {16, 16}}</string>
+	<key>902</key>
+	<string>{{34, 255}, {16, 16}}</string>
+	<key>903</key>
+	<string>{{51, 255}, {16, 16}}</string>
+	<key>904</key>
+	<string>{{68, 255}, {16, 16}}</string>
+	<key>905</key>
+	<string>{{85, 255}, {16, 16}}</string>
+	<key>906</key>
+	<string>{{102, 255}, {16, 16}}</string>
+	<key>907</key>
+	<string>{{119, 255}, {16, 16}}</string>
+	<key>908</key>
+	<string>{{136, 255}, {16, 16}}</string>
+	<key>909</key>
+	<string>{{153, 255}, {16, 16}}</string>
+	<key>91</key>
+	<string>{{527, 17}, {16, 16}}</string>
+	<key>910</key>
+	<string>{{170, 255}, {16, 16}}</string>
+	<key>911</key>
+	<string>{{187, 255}, {16, 16}}</string>
+	<key>912</key>
+	<string>{{204, 255}, {16, 16}}</string>
+	<key>913</key>
+	<string>{{221, 255}, {16, 16}}</string>
+	<key>914</key>
+	<string>{{238, 255}, {16, 16}}</string>
+	<key>915</key>
+	<string>{{255, 255}, {16, 16}}</string>
+	<key>916</key>
+	<string>{{272, 255}, {16, 16}}</string>
+	<key>917</key>
+	<string>{{289, 255}, {16, 16}}</string>
+	<key>918</key>
+	<string>{{306, 255}, {16, 16}}</string>
+	<key>919</key>
+	<string>{{323, 255}, {16, 16}}</string>
+	<key>92</key>
+	<string>{{544, 17}, {16, 16}}</string>
+	<key>920</key>
+	<string>{{340, 255}, {16, 16}}</string>
+	<key>921</key>
+	<string>{{357, 255}, {16, 16}}</string>
+	<key>922</key>
+	<string>{{374, 255}, {16, 16}}</string>
+	<key>923</key>
+	<string>{{391, 255}, {16, 16}}</string>
+	<key>924</key>
+	<string>{{408, 255}, {16, 16}}</string>
+	<key>925</key>
+	<string>{{425, 255}, {16, 16}}</string>
+	<key>926</key>
+	<string>{{442, 255}, {16, 16}}</string>
+	<key>927</key>
+	<string>{{459, 255}, {16, 16}}</string>
+	<key>928</key>
+	<string>{{476, 255}, {16, 16}}</string>
+	<key>929</key>
+	<string>{{493, 255}, {16, 16}}</string>
+	<key>93</key>
+	<string>{{561, 17}, {16, 16}}</string>
+	<key>930</key>
+	<string>{{510, 255}, {16, 16}}</string>
+	<key>931</key>
+	<string>{{527, 255}, {16, 16}}</string>
+	<key>932</key>
+	<string>{{544, 255}, {16, 16}}</string>
+	<key>933</key>
+	<string>{{561, 255}, {16, 16}}</string>
+	<key>934</key>
+	<string>{{578, 255}, {16, 16}}</string>
+	<key>935</key>
+	<string>{{595, 255}, {16, 16}}</string>
+	<key>936</key>
+	<string>{{612, 255}, {16, 16}}</string>
+	<key>937</key>
+	<string>{{629, 255}, {16, 16}}</string>
+	<key>938</key>
+	<string>{{646, 255}, {16, 16}}</string>
+	<key>939</key>
+	<string>{{663, 255}, {16, 16}}</string>
+	<key>94</key>
+	<string>{{578, 17}, {16, 16}}</string>
+	<key>940</key>
+	<string>{{680, 255}, {16, 16}}</string>
+	<key>941</key>
+	<string>{{697, 255}, {16, 16}}</string>
+	<key>942</key>
+	<string>{{714, 255}, {16, 16}}</string>
+	<key>943</key>
+	<string>{{731, 255}, {16, 16}}</string>
+	<key>944</key>
+	<string>{{748, 255}, {16, 16}}</string>
+	<key>945</key>
+	<string>{{765, 255}, {16, 16}}</string>
+	<key>946</key>
+	<string>{{782, 255}, {16, 16}}</string>
+	<key>947</key>
+	<string>{{799, 255}, {16, 16}}</string>
+	<key>948</key>
+	<string>{{816, 255}, {16, 16}}</string>
+	<key>949</key>
+	<string>{{833, 255}, {16, 16}}</string>
+	<key>95</key>
+	<string>{{595, 17}, {16, 16}}</string>
+	<key>950</key>
+	<string>{{850, 255}, {16, 16}}</string>
+	<key>951</key>
+	<string>{{867, 255}, {16, 16}}</string>
+	<key>952</key>
+	<string>{{884, 255}, {16, 16}}</string>
+	<key>953</key>
+	<string>{{901, 255}, {16, 16}}</string>
+	<key>954</key>
+	<string>{{918, 255}, {16, 16}}</string>
+	<key>955</key>
+	<string>{{935, 255}, {16, 16}}</string>
+	<key>956</key>
+	<string>{{952, 255}, {16, 16}}</string>
+	<key>957</key>
+	<string>{{969, 255}, {16, 16}}</string>
+	<key>958</key>
+	<string>{{986, 255}, {16, 16}}</string>
+	<key>959</key>
+	<string>{{1003, 255}, {16, 16}}</string>
+	<key>96</key>
+	<string>{{612, 17}, {16, 16}}</string>
+	<key>960</key>
+	<string>{{0, 272}, {16, 16}}</string>
+	<key>961</key>
+	<string>{{17, 272}, {16, 16}}</string>
+	<key>962</key>
+	<string>{{34, 272}, {16, 16}}</string>
+	<key>963</key>
+	<string>{{51, 272}, {16, 16}}</string>
+	<key>964</key>
+	<string>{{68, 272}, {16, 16}}</string>
+	<key>965</key>
+	<string>{{85, 272}, {16, 16}}</string>
+	<key>966</key>
+	<string>{{102, 272}, {16, 16}}</string>
+	<key>967</key>
+	<string>{{119, 272}, {16, 16}}</string>
+	<key>968</key>
+	<string>{{136, 272}, {16, 16}}</string>
+	<key>969</key>
+	<string>{{153, 272}, {16, 16}}</string>
+	<key>97</key>
+	<string>{{629, 17}, {16, 16}}</string>
+	<key>970</key>
+	<string>{{170, 272}, {16, 16}}</string>
+	<key>971</key>
+	<string>{{187, 272}, {16, 16}}</string>
+	<key>972</key>
+	<string>{{204, 272}, {16, 16}}</string>
+	<key>973</key>
+	<string>{{221, 272}, {16, 16}}</string>
+	<key>974</key>
+	<string>{{238, 272}, {16, 16}}</string>
+	<key>975</key>
+	<string>{{255, 272}, {16, 16}}</string>
+	<key>976</key>
+	<string>{{272, 272}, {16, 16}}</string>
+	<key>977</key>
+	<string>{{289, 272}, {16, 16}}</string>
+	<key>978</key>
+	<string>{{306, 272}, {16, 16}}</string>
+	<key>979</key>
+	<string>{{323, 272}, {16, 16}}</string>
+	<key>98</key>
+	<string>{{646, 17}, {16, 16}}</string>
+	<key>980</key>
+	<string>{{340, 272}, {16, 16}}</string>
+	<key>981</key>
+	<string>{{357, 272}, {16, 16}}</string>
+	<key>982</key>
+	<string>{{374, 272}, {16, 16}}</string>
+	<key>983</key>
+	<string>{{391, 272}, {16, 16}}</string>
+	<key>984</key>
+	<string>{{408, 272}, {16, 16}}</string>
+	<key>985</key>
+	<string>{{425, 272}, {16, 16}}</string>
+	<key>986</key>
+	<string>{{442, 272}, {16, 16}}</string>
+	<key>987</key>
+	<string>{{459, 272}, {16, 16}}</string>
+	<key>988</key>
+	<string>{{476, 272}, {16, 16}}</string>
+	<key>989</key>
+	<string>{{493, 272}, {16, 16}}</string>
+	<key>99</key>
+	<string>{{663, 17}, {16, 16}}</string>
+	<key>990</key>
+	<string>{{510, 272}, {16, 16}}</string>
+	<key>991</key>
+	<string>{{527, 272}, {16, 16}}</string>
+	<key>992</key>
+	<string>{{544, 272}, {16, 16}}</string>
+	<key>993</key>
+	<string>{{561, 272}, {16, 16}}</string>
+	<key>994</key>
+	<string>{{578, 272}, {16, 16}}</string>
+	<key>995</key>
+	<string>{{595, 272}, {16, 16}}</string>
+	<key>996</key>
+	<string>{{612, 272}, {16, 16}}</string>
+	<key>997</key>
+	<string>{{629, 272}, {16, 16}}</string>
+	<key>998</key>
+	<string>{{646, 272}, {16, 16}}</string>
+	<key>999</key>
+	<string>{{663, 272}, {16, 16}}</string>
+</dict>
+</plist>

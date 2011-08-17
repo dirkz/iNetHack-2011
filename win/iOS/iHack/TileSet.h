@@ -30,9 +30,9 @@ extern short glyph2tile[];
 	
 	UIImage *image;
 	CGSize tileSize;
-	int rows;
-	int columns;
-	int numberOfCachedImages;
+	NSUInteger rows;
+	NSUInteger columns;
+	NSUInteger numberOfCachedImages;
 	CGImageRef *cachedImages;
     NSString *title;
 
@@ -44,6 +44,12 @@ extern short glyph2tile[];
 @property (nonatomic, readonly) BOOL supportsTransparency;
 
 @property (nonatomic, readonly) CGSize tileSize;
+
+// maximum number of tiles
+@property (nonatomic, readonly, getter = count) NSUInteger numberOfCachedImages;
+
+// the title/filename of this tileset with @"Texture" added
+@property (nonatomic, readonly) NSString *textureFileName;
 
 + (TileSet *)sharedInstance;
 + (void)setSharedInstance:(TileSet *)ts;
@@ -63,6 +69,7 @@ extern short glyph2tile[];
 - (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;
 - (id)initWithImage:(UIImage *)img title:(NSString *)t;
 
+- (CGImageRef)imageForTile:(int)tile;
 - (CGImageRef)imageForGlyph:(int)glyph atX:(int)x y:(int)y;
 - (CGImageRef)imageForGlyph:(int)glyph;
 

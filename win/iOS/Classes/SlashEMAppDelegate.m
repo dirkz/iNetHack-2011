@@ -26,6 +26,7 @@
 #import "MainViewController.h"
 #import "winios.h"
 #import "TileSet.h"
+#import "AssetBuilder.h"
 
 #include <sys/stat.h>
 
@@ -41,6 +42,12 @@ extern int unixmain(int argc, char **argv);
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
+#if CREATE_TILES && TARGET_IPHONE_SIMULATOR
+    // create TileSet offline if needed
+    AssetBuilder *builder = [[AssetBuilder alloc] init];
+    [builder createTileSets];
+#endif
+    
 	[window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
 	
