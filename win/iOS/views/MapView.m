@@ -179,8 +179,7 @@ static BOOL s_doubleTapsEnabled = NO;
     if ([self respondsToSelector:@selector(contentScaleFactor)]) {
         scale = [self contentScaleFactor];
     }
-    tileSize = tileSet.tileSize;
-    tileSize = CGSizeMake(tileSize.width/scale, tileSize.height/scale);
+    tileSize = CGSizeMake(tileSet.tileSize.width/scale, tileSet.tileSize.height/scale);
     [self clipAroundX:clipX y:clipY];
 
     if (tileSize.width != tileSize.height) {
@@ -189,7 +188,7 @@ static BOOL s_doubleTapsEnabled = NO;
         maxTileSize.height = round(maxTileSize.width * tileAspect);
     } else {
         minTileSize.height = minTileSize.width;
-        maxTileSize.height = maxTileSize.height;
+        maxTileSize.height = maxTileSize.width;
     }
 }
 
