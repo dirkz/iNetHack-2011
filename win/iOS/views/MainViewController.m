@@ -287,28 +287,18 @@ enum rotation_lock {
 #pragma mark Window API
 
 - (void)nhPoskey {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(nhPoskey) withObject:nil waitUntilDone:NO];
-	} else {
-		[self refreshAllViews];
-	}
+    [self refreshAllViews];
 }
 
 - (void)refreshAllViews {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(refreshAllViews) withObject:nil waitUntilDone:NO];
-	} else {
-		[self refreshMessages];
-	}
+    [self refreshMessages];
 }
 
 - (void)refreshMessages {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(refreshMessages) withObject:nil waitUntilDone:NO];
-	} else {
-		[statusView update];
-		messageView.text = [[NhWindow messageWindow] textWithDelimiter:@" "];
-	}
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [statusView update];
+        messageView.text = [[NhWindow messageWindow] textWithDelimiter:@" "];
+    });
 }
 
 - (void)handleDirectionQuestion:(NhYnQuestion *)q {
@@ -387,9 +377,7 @@ enum rotation_lock {
 }
 
 - (void)showYnQuestion:(NhYnQuestion *)q {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(showYnQuestion:) withObject:q waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		if ([q.question containsString:@"direction"] ||
 			[q.question containsString:@"Enter Blitz Command"]) {
 			[self handleDirectionQuestion:q];
@@ -442,19 +430,17 @@ enum rotation_lock {
 				DLog(@"giving up on question %@", q.question);
 			}
 		}
-	}
+	});
 }
 
 - (void)displayText:(NSString *)text {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(displayText:) withObject:text waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		TextViewController *textViewController = [[[TextViewController alloc]
 												   initWithNibName:@"TextViewController" bundle:nil] autorelease];
 		textViewController.text = text;
 		textViewController.blocking = YES;
 		[self presentModalViewController:textViewController animated:YES];
-	}
+	});
 }
 
 - (void)updateTileSet {
@@ -492,12 +478,10 @@ enum rotation_lock {
 }
 
 - (void)showMenuWindow:(NhMenuWindow *)w {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(showMenuWindow:) withObject:w waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		self.menuViewController.menuWindow = w;
 		[self presentModalViewController:menuViewController animated:YES];
-	}
+	});
 }
 
 - (void)clipAround {
@@ -507,43 +491,33 @@ enum rotation_lock {
 - (void)clipAroundX:(int)x y:(int)y {
 	clipX = x;
 	clipY = y;
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(clipAround) withObject:nil waitUntilDone:NO];
-	} else {
-		[self clipAround];
-	}
+    [self clipAround];
 }
 
 - (void)updateInventory {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(updateInventory) withObject:nil waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		if (inventoryViewController) {
 			[self.inventoryViewController updateInventory];
 		}
-	}
+	});
 }
 
 - (void)getLine {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(getLine) withObject:nil waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		TextInputController *textInputController = [[TextInputController alloc]
 													initWithNibName:@"TextInputController" bundle:nil];
 		[self presentModalViewController:textInputController animated:YES];
 		[textInputController release];
-	}
+	});
 }
 
 - (void)showExtendedCommands {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(showExtendedCommands) withObject:nil waitUntilDone:NO];
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		ExtendedCommandsController *extendedCommandsController = [[ExtendedCommandsController alloc]
 																  initWithNibName:@"ExtendedCommandsController" bundle:nil];
 		[self presentModalViewController:extendedCommandsController animated:YES];
 		[extendedCommandsController release];
-	}
+	});
 }
 
 #pragma mark Touch Handling

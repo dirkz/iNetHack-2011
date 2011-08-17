@@ -436,7 +436,6 @@ char ios_yn_function(const char *question, const char *choices, CHAR_P def) {
 void ios_getlin(const char *prompt, char *line) {
 	//DLog(@"getlin %s", prompt);
 	ios_putstr(WIN_MESSAGE, 0, prompt);
-	[[MainViewController instance] refreshMessages];
 	[[MainViewController instance] refreshAllViews];
 	char keys[80];
 	char *pStr = keys;
