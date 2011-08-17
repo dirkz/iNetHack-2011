@@ -228,12 +228,7 @@
 	}
 }
 
-- (void)dealloc {
-	[actions release];
-    [super dealloc];
-}
-
-#pragma mark Table view methods
+#pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -258,10 +253,25 @@
     return cell;
 }
 
+#pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tv willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tv.backgroundColor = [UIColor darkGrayColor];
+}
+
 - (void)tableView:(UITableView *)tv didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	Action *action = [actions objectAtIndex:[indexPath row]];
 	[action invoke:nil];
 	[self dismissModalViewControllerAnimated:NO];
+}
+
+#pragma mark Memory
+
+- (void)dealloc {
+	[actions release];
+    [super dealloc];
 }
 
 @end

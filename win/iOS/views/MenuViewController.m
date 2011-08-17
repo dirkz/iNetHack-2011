@@ -150,7 +150,7 @@
 	[self updateCell:cell withItem:item atIndexPath:indexPath];
 }
 
-#pragma mark Table view methods
+#pragma mark Table view datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.menuWindow.itemGroups.count;
@@ -262,6 +262,14 @@
     
 	[self updateCell:cell withItem:item atIndexPath:indexPath];
     return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tableView.backgroundColor = [UIColor darkGrayColor];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

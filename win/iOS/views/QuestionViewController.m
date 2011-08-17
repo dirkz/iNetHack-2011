@@ -53,7 +53,6 @@
     return YES;
 }
 
-#pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -81,8 +80,13 @@
     return cell;
 }
 
-#pragma mark -
 #pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tableView.backgroundColor = [UIColor darkGrayColor];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	char c = question.choices[indexPath.row];
@@ -90,7 +94,7 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark memory handling
+#pragma mark Memory
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

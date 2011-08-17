@@ -34,7 +34,6 @@
 
 @synthesize tableView = tv;
 
-#pragma mark -
 #pragma mark Initialization
 
 - (void)updateInventory {
@@ -57,7 +56,6 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark -
 #pragma mark View lifecycle
 
 /*
@@ -96,7 +94,6 @@
     return YES;
 }
 
-#pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -170,8 +167,13 @@
 }
 */
 
-#pragma mark -
 #pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tableView.backgroundColor = [UIColor darkGrayColor];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	NhObject *item = [items objectAtIndex:indexPath.row];
@@ -181,7 +183,6 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark -
 #pragma mark Memory management
 
 - (void)didReceiveMemoryWarning {

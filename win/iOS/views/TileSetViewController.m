@@ -34,7 +34,6 @@
 
 @synthesize tableView = tv;
 
-#pragma mark -
 #pragma mark Initialization
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -48,14 +47,12 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark -
 #pragma mark View lifecycle
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-#pragma mark -
 #pragma mark Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -94,8 +91,13 @@
     return cell;
 }
 
-#pragma mark -
 #pragma mark Table view delegate
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    cell.backgroundColor = [UIColor darkGrayColor];
+    cell.textLabel.textColor = [UIColor whiteColor];
+    tableView.backgroundColor = [UIColor darkGrayColor];
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *dict = [tilesets objectAtIndex:indexPath.row];
@@ -108,7 +110,6 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark -
 #pragma mark Memory management
 
 - (void)dealloc {
