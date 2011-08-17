@@ -162,6 +162,8 @@
 		4346311613FAD79E00550A93 /* wizard3.lev in Resources */ = {isa = PBXBuildFile; fileRef = 4346307F13FAD79E00550A93 /* wizard3.lev */; };
 		4346311713FAD79E00550A93 /* wizhelp in Resources */ = {isa = PBXBuildFile; fileRef = 4346308013FAD79E00550A93 /* wizhelp */; };
 		434C9D47115BE57F00A6EBD6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 434C9D46115BE57F00A6EBD6 /* Settings.bundle */; };
+		4359837613FB9074003E138A /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4359837313FB9074003E138A /* Icon.png */; };
+		4359837713FB9074003E138A /* Icon@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4359837413FB9074003E138A /* Icon@2.png */; };
 		4365D6FC115154E600B15085 /* ExtendedCommandsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4365D6FB115154E600B15085 /* ExtendedCommandsController.xib */; };
 		437A90E7114FF57A000046FD /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A90B8114FF57A000046FD /* Action.m */; };
 		437A90E8114FF57A000046FD /* NhStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A90BA114FF57A000046FD /* NhStatus.m */; };
@@ -312,7 +314,6 @@
 		437A9538115003E0000046FD /* unixunix.c in Sources */ = {isa = PBXBuildFile; fileRef = 437A9528115003E0000046FD /* unixunix.c */; };
 		437A954911500675000046FD /* tile.c in Sources */ = {isa = PBXBuildFile; fileRef = 437A954811500675000046FD /* tile.c */; };
 		437A9561115007ED000046FD /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A9560115007ED000046FD /* MainViewController.xib */; };
-		437A957C11500A16000046FD /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 437A957911500A16000046FD /* Icon.png */; };
 		437A957F11500A2D000046FD /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A957E11500A2D000046FD /* MenuViewController.xib */; };
 		437A95CE11500E47000046FD /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A95CD11500E47000046FD /* TextViewController.xib */; };
 		437A960B11501275000046FD /* ActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A960A11501275000046FD /* ActionBar.m */; };
@@ -493,6 +494,8 @@
 		4346307F13FAD79E00550A93 /* wizard3.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = wizard3.lev; sourceTree = "<group>"; };
 		4346308013FAD79E00550A93 /* wizhelp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wizhelp; sourceTree = "<group>"; };
 		434C9D46115BE57F00A6EBD6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4359837313FB9074003E138A /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		4359837413FB9074003E138A /* Icon@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2.png"; sourceTree = "<group>"; };
 		4365D6FB115154E600B15085 /* ExtendedCommandsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtendedCommandsController.xib; sourceTree = "<group>"; };
 		437A90B7114FF57A000046FD /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		437A90B8114FF57A000046FD /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
@@ -777,7 +780,6 @@
 		437A9528115003E0000046FD /* unixunix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unixunix.c; sourceTree = "<group>"; };
 		437A954811500675000046FD /* tile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tile.c; sourceTree = "<group>"; };
 		437A9560115007ED000046FD /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		437A957911500A16000046FD /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		437A957E11500A2D000046FD /* MenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		437A95CD11500E47000046FD /* TextViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
 		437A960911501275000046FD /* ActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBar.h; sourceTree = "<group>"; };
@@ -871,7 +873,7 @@
 				434C9D46115BE57F00A6EBD6 /* Settings.bundle */,
 				8D1107310486CEB800E47090 /* iNetHack-Info.plist */,
 				437A97411150207A000046FD /* Entitlements.plist */,
-				437A957911500A16000046FD /* Icon.png */,
+				4359837113FB9074003E138A /* Icons */,
 				4339A7EE115A7E8800741CE5 /* gfx */,
 				437A957A11500A16000046FD /* tilesets */,
 				437A9299114FFBF4000046FD /* dat */,
@@ -913,6 +915,15 @@
 				4339A7FB115A7F3100741CE5 /* actionButton.png */,
 			);
 			path = gfx;
+			sourceTree = "<group>";
+		};
+		4359837113FB9074003E138A /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4359837313FB9074003E138A /* Icon.png */,
+				4359837413FB9074003E138A /* Icon@2.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 		437A90B6114FF57A000046FD /* iHack */ = {
@@ -1471,7 +1482,6 @@
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				437A9561115007ED000046FD /* MainViewController.xib in Resources */,
-				437A957C11500A16000046FD /* Icon.png in Resources */,
 				437A957F11500A2D000046FD /* MenuViewController.xib in Resources */,
 				437A95CE11500E47000046FD /* TextViewController.xib in Resources */,
 				437A96D011501B1F000046FD /* ActionViewController.xib in Resources */,
@@ -1636,6 +1646,8 @@
 				432D755213FADDDF00A0FB21 /* tiles32.png in Resources */,
 				43A2406413FB7795001BF067 /* geoduck 10x20.png in Resources */,
 				43A2406513FB7795001BF067 /* geoduck 20x40.png in Resources */,
+				4359837613FB9074003E138A /* Icon.png in Resources */,
+				4359837713FB9074003E138A /* Icon@2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
