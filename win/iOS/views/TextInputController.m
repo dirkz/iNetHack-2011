@@ -71,14 +71,15 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)keyboardWillShow:(NSNotification *)notification {
-	NSDictionary *userInfo = [notification userInfo];
-	NSValue *value = [userInfo valueForKey:UIKeyboardBoundsUserInfoKey];
-	CGRect keyboardFrame;
-	[value getValue:&keyboardFrame];
+- (void)keyboardWillShow:(NSNotification *)n {
+    CGRect keyboardEndFrame;
+    [[n.userInfo valueForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    
+    // convert into view coordinates
+    CGRect convertedKeyboardEndFrame = [self.view convertRect:keyboardEndFrame fromView:nil];
 
 	CGRect messageFrame = messageTextView.frame;
-	CGFloat overlap = messageFrame.origin.y + messageFrame.size.height - (self.view.bounds.size.height - keyboardFrame.size.height);
+	CGFloat overlap = messageFrame.origin.y + messageFrame.size.height - convertedKeyboardEndFrame.origin.y;
 	if (overlap != 0.0f) {
 		messageFrame.size.height -= overlap;
 		messageTextView.frame = messageFrame;
