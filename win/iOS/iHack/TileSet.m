@@ -78,7 +78,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
     CGSize tileSize = defaultTileSize;
     CGFloat width = [[info objectForKey:@"width"] floatValue];
     if (width > 0.f) {
-        CGFloat height = [[info objectForKey:@"width"] floatValue];
+        CGFloat height = [[info objectForKey:@"height"] floatValue];
         tileSize = CGSizeMake(width, height);
     }
     TileSet *tileset = [self tileSetWithImage:tilesetImage tileSize:tileSize title:filename transparency:[[info objectForKey:@"transparency"] boolValue]];
@@ -139,8 +139,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	if (!cachedImages[tile]) {
 		int row = tile/columns;
 		int col = row ? tile % columns : tile;
-		CGRect r = { col * tileSize.width, row * tileSize.height };
-		r.size = tileSize;
+		CGRect r = CGRectMake(col * tileSize.width, row * tileSize.height, tileSize.width, tileSize.height);
 		cachedImages[tile] = CGImageCreateWithImageInRect(image.CGImage, r);
 	}
 	return cachedImages[tile];

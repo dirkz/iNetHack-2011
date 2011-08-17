@@ -133,6 +133,8 @@ static BOOL s_doubleTapsEnabled = NO;
 						}
 						// draw front
 						CGImageRef tileImg = [tileSet imageForGlyph:glyph atX:i y:j];
+                        CGFloat width = CGImageGetWidth(tileImg);
+                        CGFloat height = CGImageGetHeight(tileImg);
 						CGContextDrawImage(ctx, r, tileImg);
 						if (u.ux == i && u.uy == j) {
 							// hp100 calculation from qt_win.cpp
