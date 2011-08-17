@@ -198,7 +198,7 @@ static BOOL s_doubleTapsEnabled = NO;
 	
     CGFloat totalAreaHeight = tileSize.height * ROWNO;
     CGFloat posY = totalAreaHeight-playerPos.y;
-	clipOffset = CGPointMake(-playerPos.x + center.x, -posY + center.y);
+	clipOffset = CGPointMake(-playerPos.x + center.x - tileSize.width/2, -posY + center.y + tileSize.height/2);
     
     DLog(@"clipAround %d,%d clipOffset %@", clipX, clipY, NSStringFromCGPoint(clipOffset));
 
@@ -289,6 +289,7 @@ static BOOL s_doubleTapsEnabled = NO;
 			if (!self.panned && !ios_getpos) {
 				CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
 				CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
+                DLog(@"delta %@", NSStringFromCGPoint(delta));
 				if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {
 					[[MainViewController instance] handleMapTapTileX:u.ux y:u.uy forLocation:p inView:self];
 				} else {
@@ -319,13 +320,13 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)moveAlongVector:(CGPoint)d {
 	panOffset.x += d.x;
 	panOffset.y += d.y;
-//    DLog(@"panOffet %@", NSStringFromCGPoint(panOffset));
     glMatrixMode(GL_MODELVIEW);
     glTranslatef(d.x, -d.y, 0);
 }
 
 - (void)resetPanOffset {
 	panOffset = CGPointMake(0.0f, 0.0f);
+    [self clipAroundX:clipX y:clipY];
 }
 
 - (void)zoom:(CGFloat)d {

@@ -488,7 +488,9 @@ enum rotation_lock {
 }
 
 - (void)clipAround {
-	[mapView clipAroundX:clipX y:clipY];
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [mapView clipAroundX:clipX y:clipY];
+    });
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
