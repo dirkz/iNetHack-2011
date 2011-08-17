@@ -334,6 +334,8 @@
 		437E4E6F13FBDD53005C8683 /* Texture nhtiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6113FBDD53005C8683 /* Texture nhtiles.png */; };
 		437E4E7013FBDD53005C8683 /* Texture tiles32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6213FBDD53005C8683 /* Texture tiles32.plist */; };
 		437E4E7113FBDD53005C8683 /* Texture tiles32.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6313FBDD53005C8683 /* Texture tiles32.png */; };
+		437E4E7B13FBFA9A005C8683 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 437E4E7A13FBFA9A005C8683 /* EAGLView.m */; };
+		437E4E7E13FBFAF0005C8683 /* MapViewGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 437E4E7D13FBFAF0005C8683 /* MapViewGL.m */; };
 		438622C611590FC700295E23 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438622C511590FC700295E23 /* QuestionViewController.m */; };
 		438622D21159104100295E23 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438622D11159104100295E23 /* QuestionViewController.xib */; };
 		43998AC413FBB86800080074 /* ActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998AC313FBB86800080074 /* ActionBar.m */; };
@@ -816,6 +818,10 @@
 		437E4E6113FBDD53005C8683 /* Texture nhtiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture nhtiles.png"; sourceTree = "<group>"; };
 		437E4E6213FBDD53005C8683 /* Texture tiles32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture tiles32.plist"; sourceTree = "<group>"; };
 		437E4E6313FBDD53005C8683 /* Texture tiles32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture tiles32.png"; sourceTree = "<group>"; };
+		437E4E7913FBFA9A005C8683 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		437E4E7A13FBFA9A005C8683 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
+		437E4E7C13FBFAF0005C8683 /* MapViewGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewGL.h; sourceTree = "<group>"; };
+		437E4E7D13FBFAF0005C8683 /* MapViewGL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewGL.m; sourceTree = "<group>"; };
 		438622C411590FC700295E23 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		438622C511590FC700295E23 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		438622D11159104100295E23 /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
@@ -1502,6 +1508,10 @@
 				43998ACE13FBCE8C00080074 /* TextureSet.m */,
 				43998ACF13FBCE8C00080074 /* VBO.h */,
 				43998AD013FBCE8C00080074 /* VBO.m */,
+				437E4E7913FBFA9A005C8683 /* EAGLView.h */,
+				437E4E7A13FBFA9A005C8683 /* EAGLView.m */,
+				437E4E7C13FBFAF0005C8683 /* MapViewGL.h */,
+				437E4E7D13FBFAF0005C8683 /* MapViewGL.m */,
 			);
 			path = GL;
 			sourceTree = "<group>";
@@ -1911,6 +1921,8 @@
 				43998AD713FBCE8C00080074 /* VBO.m in Sources */,
 				43998AD813FBCE8C00080074 /* TileSetBuilder.m in Sources */,
 				43998ADE13FBCF1000080074 /* AssetBuilder.m in Sources */,
+				437E4E7B13FBFA9A005C8683 /* EAGLView.m in Sources */,
+				437E4E7E13FBFAF0005C8683 /* MapViewGL.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

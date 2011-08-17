@@ -39,6 +39,7 @@
 #import "NhTextInputEvent.h"
 #import "MessageView.h"
 #import "MapView.h"
+#import "MapViewGL.h"
 #import "TileSetViewController.h"
 #import "ToolsViewController.h"
 #import "CommandButtonItem.h"
@@ -83,6 +84,8 @@ enum rotation_lock {
 + (MainViewController *)instance {
 	return instance;
 }
+
+#pragma mark - UIViewController
 
 - (void)awakeFromNib {
 	[super awakeFromNib]; // responsible for viewDidLoad
@@ -452,7 +455,7 @@ enum rotation_lock {
 
 - (void)redrawMap {
     dispatch_async(dispatch_get_main_queue(), ^ {
-        [mapView setNeedsDisplay];
+        [mapView drawFrame];
     });
 }
 

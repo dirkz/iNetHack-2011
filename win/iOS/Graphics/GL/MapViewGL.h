@@ -1,0 +1,55 @@
+//
+//  MapViewGL.h
+//  iNetHack
+//
+//  Created by Dirk Zimmermann on 8/17/11.
+//  Copyright 2011 Dirk Zimmermann. All rights reserved.
+//
+
+#import "EAGLView.h"
+
+#define kDoubleTapsEnabled (@"kDoubleTapsEnabled")
+
+@class TileSet;
+@class ZTouchInfoStore;
+
+@interface MapViewGL : EAGLView {
+    
+    CGRect oldBounds;
+    CGSize tileSize;
+    CGPoint drawStart;
+    
+	CGSize maxTileSize;
+	CGSize minTileSize;
+    int clipX, clipY;
+
+	// the translation needed to center player, based on clip
+	CGPoint clipOffset;
+    
+	// created by panning around
+	CGPoint panOffset;
+	
+	// for zooming
+	CGFloat initialDistance;
+	
+	// the hit box to hit for detecting tap on self
+	CGSize selfTapRectSize;
+    
+    TileSet *tileSet;
+    
+    ZTouchInfoStore *touchInfoStore;
+    
+}
+
+@property (nonatomic, readonly) BOOL panned;
+
+- (void)drawFrame;
+- (void)updateTileSet;
+- (void)clipAroundX:(int)x y:(int)y;
+
+- (void)moveAlongVector:(CGPoint)d;
+- (void)resetPanOffset;
+- (void)zoom:(CGFloat)d;
+- (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
+
+@end

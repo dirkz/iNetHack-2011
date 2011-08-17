@@ -32,7 +32,7 @@
 
 - (id) initWithType:(int)t {
 	if (self = [super initWithType:t]) {
-		size_t numBytes = COLNO * ROWNO * sizeof(int);
+		size_t numBytes = ROWNO * COLNO * sizeof(int);
 		glyphs = malloc(numBytes);
 		memset(glyphs, kNoGlyph, numBytes);
 	}

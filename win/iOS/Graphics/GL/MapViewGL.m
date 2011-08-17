@@ -1,46 +1,51 @@
 //
-//  MapView.m
-//  SlashEM
+//  MapViewGL.m
+//  iNetHack
 //
-//  Created by dirk on 1/18/10.
-//  Copyright 2010 Dirk Zimmermann. All rights reserved.
+//  Created by Dirk Zimmermann on 8/17/11.
+//  Copyright 2011 Dirk Zimmermann. All rights reserved.
 //
 
-/*
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- as published by the Free Software Foundation, version 2
- of the License.
- 
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
- 
- You should have received a copy of the GNU General Public License
- along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
- */
+#import <OpenGLES/EAGL.h>
 
-#import "MapView.h"
+#import "MapViewGL.h"
+
+#import "TextureSet.h"
+#import "VBO.h"
 #import "NhMapWindow.h"
 #import "TileSet.h"
-#import "MainViewController.h"
-#import "winios.h"
 #import "ZTouchInfo.h"
 #import "ZTouchInfoStore.h"
+#import "winios.h" // ios_getpos
+#import "ZDirection.h"
+#import "MainViewController.h"
 
 #define kMinimumPinchDelta (0.0f)
 #define kMinimumPanDelta (20.0f)
 
 static BOOL s_doubleTapsEnabled = NO;
 
-@interface MapView ()
+@interface MapViewGL ()
+
+- (void)resize;
+- (void)buildVertexBuffer;
+
+@property (nonatomic, readonly) TextureSet *textureSet;
+@property (nonatomic, readonly) VBO *vertexBuffer;
+@property (nonatomic, readonly) VBO *texCoordsBuffer;
+@property (nonatomic, readonly) size_t vertexQuadSizeInBytes;
+@property (nonatomic, readonly) size_t textureQuadSizeInBytes;
+@property (nonatomic, readonly) NhMapWindow *mapWindow;
+
 @end
 
-@implementation MapView
+@implementation MapViewGL
 
-@synthesize tileSize;
+@synthesize textureSet;
+@synthesize vertexBuffer;
+@synthesize texCoordsBuffer;
+
+#pragma mark - View
 
 + (void)load {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -58,130 +63,114 @@ static BOOL s_doubleTapsEnabled = NO;
 	maxTileSize = CGSizeMake(32.0f, 32.0f);
 	minTileSize = CGSizeMake(8.0f, 8.0f);
 	selfTapRectSize = CGSizeMake(40.0f, 40.0f);
-
-	// load gfx
-	NSString *bundlePath = [[NSBundle mainBundle] resourcePath];
-	petMark = CGImageRetain([UIImage imageWithContentsOfFile:[bundlePath
-															  stringByAppendingPathComponent:@"petmark.png"]].CGImage);
 	touchInfoStore = [[ZTouchInfoStore alloc] init];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    if (self = [super initWithCoder:aDecoder]) {
-		[self setup];
-	}
-	return self;
-}
-
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
-		[self setup];
-	}
+- (id)initWithCoder:(NSCoder*)coder {
+    if ((self = [super initWithCoder:coder])) {
+        EAGLContext *aContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+        
+        if (!aContext)
+            NSLog(@"Failed to create ES context");
+        
+        self.context = aContext;
+        [aContext release];
+        
+        [self setFramebuffer];
+        
+        [self setup];
+    }
     return self;
 }
 
-- (void)drawRect:(CGRect)rect {
-	NhMapWindow *map = (NhMapWindow *) [NhWindow mapWindow];
-	if (map) {
-		CGContextRef ctx = UIGraphicsGetCurrentContext();
-		CGContextSetBlendMode(ctx, kCGBlendModeNormal);
-	
-		// erase background
-		float backgroundColor[] = { 0.0f, 0.0f, 0.0f, 1.0f };
-		CGContextSetFillColor(ctx, backgroundColor);
-		CGContextFillRect(ctx, rect);
-		
-		float foregroundColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-		CGContextSetFillColor(ctx, foregroundColor);
-		
-		// switch to right-handed coordinate system (quartz)
-		CGContextTranslateCTM(ctx, 0.0f, self.bounds.size.height);
-		CGContextScaleCTM(ctx, 1.0f, -1.0f);
-		
-		// since this coordinate system is right-handed, each tile starts above left
-		// and draws the area below to the right, so we have to be one tile height off
-		CGPoint start = CGPointMake(clipOffset.x+panOffset.x,
-									self.bounds.size.height-tileSize.height-clipOffset.y-panOffset.y);
-		
-		// indicate map bounds
-		float boundsColor[] = { 0.4f, 0.4f, 0.4f, 1.0f };
-		CGContextSetStrokeColor(ctx, boundsColor);
-		float thickness = 3.0f;
-		CGRect boundsRect = CGRectMake(start.x - thickness, start.y + tileSize.height + thickness,
-									   COLNO * tileSize.width + thickness, -ROWNO * tileSize.height + thickness);
-		CGContextStrokeRectWithWidth(ctx, boundsRect, thickness);
-		
-		int *glyphs = map.glyphs;
-		BOOL supportsTransparency = [tileSet supportsTransparency];
-		for (int j = 0; j < ROWNO; ++j) {
-			for (int i = 0; i < COLNO; ++i) {
-				CGPoint p = CGPointMake(start.x+i*tileSize.width,
-										start.y-j*tileSize.height);
-				CGRect r = CGRectMake(p.x, p.y, tileSize.width, tileSize.height);
-				if (CGRectIntersectsRect(r, rect)) {
-					int glyph = glyphAt(glyphs, i, j);
-					if (glyph != kNoGlyph) {
-						// draw background
-						if (supportsTransparency) {
-							int backGlyph = back_to_glyph(i, j);
-							if (backGlyph != kNoGlyph && backGlyph != glyph) {
-								// tile 1184, glyph 3627 is dark floor
-								//DLog(@"back %d in %d,%d (player %d,%d)", glyph2tile[backGlyph], i, j, u.ux, u.uy);
-								CGImageRef tileImg = [tileSet imageForGlyph:backGlyph atX:i y:j];
-								CGContextDrawImage(ctx, r, tileImg);
-							}
-						}
-						// draw front
-						CGImageRef tileImg = [tileSet imageForGlyph:glyph atX:i y:j];
-						CGContextDrawImage(ctx, r, tileImg);
-						if (u.ux == i && u.uy == j) {
-							// hp100 calculation from qt_win.cpp
-							int hp100;
-							if (u.mtimedone) {
-								hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
-							} else {
-								hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
-							}
-							const static float colorValue = 0.7f;
-							float playerRectColor[] = {colorValue, 0, 0, 0.5f};
-							if (hp100 > 75) {
-								playerRectColor[0] = 0;
-								playerRectColor[1] = colorValue;
-							} else if (hp100 > 50) {
-								playerRectColor[2] = 0;
-								playerRectColor[0] = playerRectColor[1] = colorValue;
-							}
-							CGContextSetStrokeColor(ctx, playerRectColor);
-							CGContextStrokeRect(ctx, r);
-						} else if (glyph_is_pet(glyph)) {
-							CGContextDrawImage(ctx, r, petMark);
-						}
-					}
-				}
-			}
-		}
-	}
+- (void)drawFrame {
+    [self setFramebuffer];
+    
+    glClearColor(0, 0, 0, 1.f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+	if (self.mapWindow) {
+        GLfloat *t = [self.texCoordsBuffer mapBytes];
+        
+		int *glyphs = self.mapWindow.glyphs;
+
+        for (int row = ROWNO-1; row >= 0; --row) {
+            for (int col = 0; col < COLNO; ++col) {
+                int glyph = glyphAt(glyphs, col, row);
+                if (glyph != kNoGlyph) {
+                    int h = glyph2tile[glyph];
+                    t = [self.textureSet writeTriangleQuadForTextureHash:h toTexCoords:t];
+                } else {
+                    memset(t, 0, self.vertexQuadSizeInBytes);
+                    t += self.vertexQuadSizeInBytes/sizeof(GLfloat);
+                }
+            }
+        }
+        
+        [self.texCoordsBuffer unmapBytes];
+        
+        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.name);
+        glVertexPointer(2, GL_FLOAT, 0, 0);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        
+        glBindBuffer(GL_ARRAY_BUFFER, texCoordsBuffer.name);
+        glTexCoordPointer(2, GL_FLOAT, 0, 0);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        
+        glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
+    }
+    
+    [self presentFramebuffer];
+}
+
+- (void)resize {
+    CGRect bounds = self.bounds;
+    if (!CGRectEqualToRect(bounds, oldBounds)) {
+        oldBounds = bounds;
+        
+        if ([self respondsToSelector:@selector(contentScaleFactor)]) {
+            bounds.size.width *= self.contentScaleFactor;
+            bounds.size.height *= self.contentScaleFactor;
+        }
+        
+        tileSize = tileSet.tileSize;
+        drawStart = CGPointMake(0,0);
+        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
+        
+        [textureSet release];
+        textureSet = nil;
+        
+        [self buildVertexBuffer];
+    }
 }
 
 - (void)layoutSubviews {
+    [super layoutSubviews];
+    
     if (!tileSet) {
         [self updateTileSet];
     }
+
+    glViewport(0, 0, self.framebufferWidth, self.framebufferHeight);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrthof(0, self.framebufferWidth, 0, self.framebufferHeight, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    [self resize];
+    
+    [self clipAroundX:clipX y:clipY];
 }
 
 #pragma mark - TileSet
 
 - (void)updateTileSet {
     tileSet = [TileSet sharedInstance];
+    tileSize = tileSet.tileSize;
 
-    // correct tile size for retina display
-    CGFloat scale = 1.f;
-    if ([self respondsToSelector:@selector(contentScaleFactor)]) {
-        scale = [self contentScaleFactor];
-    }
-    tileSize = CGSizeMake(tileSet.tileSize.width/scale, tileSet.tileSize.height/scale);
     [self clipAroundX:clipX y:clipY];
-
+    
     if (tileSize.width != tileSize.height) {
         CGFloat tileAspect = tileSize.height/tileSize.width;
         minTileSize.height = round(minTileSize.width * tileAspect);
@@ -190,6 +179,12 @@ static BOOL s_doubleTapsEnabled = NO;
         minTileSize.height = minTileSize.width;
         maxTileSize.height = maxTileSize.width;
     }
+    
+    [self buildVertexBuffer];
+
+    [textureSet release];
+    textureSet = nil;
+    (void) self.textureSet;
 }
 
 #pragma mark - Clip offset
@@ -197,13 +192,19 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)clipAroundX:(int)x y:(int)y {
 	clipX = x;
 	clipY = y;
-
-	CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    
+	CGPoint center = CGPointMake(self.framebufferWidth/2, self.framebufferHeight/2);
 	CGPoint playerPos = CGPointMake(clipX*tileSize.width, clipY*tileSize.height);
 	
-	// offset is the translation to get player to the center
-	// note how this gets corrected about tileSize/2 to center player tile
-	clipOffset = CGPointMake(center.x-playerPos.x-tileSize.width/2, center.y-playerPos.y-tileSize.height/2);
+    CGFloat totalAreaHeight = tileSize.height * ROWNO;
+    CGFloat posY = totalAreaHeight-playerPos.y;
+	clipOffset = CGPointMake(-playerPos.x + center.x, -posY + center.y);
+    
+    DLog(@"clipAround %d,%d clipOffset %@", clipX, clipY, NSStringFromCGPoint(clipOffset));
+
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glTranslatef(clipOffset.x, clipOffset.y, 0);
 }
 
 #pragma mark Touch Handling
@@ -318,6 +319,9 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)moveAlongVector:(CGPoint)d {
 	panOffset.x += d.x;
 	panOffset.y += d.y;
+//    DLog(@"panOffet %@", NSStringFromCGPoint(panOffset));
+    glMatrixMode(GL_MODELVIEW);
+    glTranslatef(d.x, -d.y, 0);
 }
 
 - (void)resetPanOffset {
@@ -331,7 +335,7 @@ static BOOL s_doubleTapsEnabled = NO;
 	tileSize.width += d;
 	tileSize.width = round(tileSize.width);
     tileSize.height = round(tileSize.width * tileAspect);
-
+    
 	if (tileSize.width > maxTileSize.width || tileSize.height > maxTileSize.height) {
 		tileSize = maxTileSize;
 	} else if (tileSize.width < minTileSize.width || tileSize.height < minTileSize.height) {
@@ -360,17 +364,65 @@ static BOOL s_doubleTapsEnabled = NO;
 	*py = roundf(p.y / tileSize.height);
 }
 
-- (void)drawFrame {
-    [self setNeedsDisplay];
+#pragma mark - Properties
+
+- (NhMapWindow *)mapWindow {
+    return (NhMapWindow *) [NhWindow mapWindow];
 }
 
-#pragma mark Memory
+- (TextureSet *)textureSet {
+    if (!textureSet) {
+        textureSet = [[TextureSet alloc] initWithBaseName:[TileSet sharedInstance].textureFileName];
+    }
+    return textureSet;
+}
+
+- (VBO *)vertexBuffer {
+    if (!vertexBuffer) {
+        vertexBuffer = [[VBO alloc] initWithLength:self.vertexQuadSizeInBytes * ROWNO * COLNO];
+    }
+    return vertexBuffer;
+}
+
+- (VBO *)texCoordsBuffer {
+    if (!texCoordsBuffer) {
+        texCoordsBuffer = [[VBO alloc] initWithLength:self.textureQuadSizeInBytes * ROWNO * COLNO];
+    }
+    return texCoordsBuffer;
+}
+
+// the size of a vertex quad, consisting of 6 vertices with 2 GLfloats in it
+- (size_t)vertexQuadSizeInBytes {
+    return sizeof(GLfloat) * 12;
+}
+
+// the size of a texture quad, consisting of 6 vertices with 2 GLfloats in it
+- (size_t)textureQuadSizeInBytes {
+    return sizeof(GLfloat) * 12;
+}
+
+#pragma mark - Util
+
+- (void)buildVertexBuffer {
+    GLfloat *v = [self.vertexBuffer mapBytes];
+    
+    for (int row = 0; row < ROWNO; ++row) {
+        for (int col = 0; col < COLNO; ++col) {
+            CGRect tileRect = CGRectMake(drawStart.x + col * tileSize.width, drawStart.y + row * tileSize.height, tileSize.width, tileSize.height);
+            v = GLTypesWriteTriangleQuadFromRect(tileRect, v);
+        }
+    }
+    
+    [self.vertexBuffer unmapBytes];
+}
+
+#pragma mark - Memory
 
 - (void)dealloc {
-	CGImageRelease(petMark);
-	[[TileSet sharedInstance] release];
-	[touchInfoStore release];
+    [touchInfoStore release];
     [super dealloc];
 }
+
+
 
 @end

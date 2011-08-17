@@ -37,26 +37,15 @@ typedef enum {
         if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
             scale = [[UIScreen mainScreen] scale];
         }
-        NSString *fileBaseName = nil;
-        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            fileBaseName = [NSString stringWithFormat:@"%@~ipad", baseName];
-        } else if (scale != 1.f) {
-            fileBaseName = [NSString stringWithFormat:@"%@@2x~iphone", baseName];
-        } else {
-            fileBaseName = [NSString stringWithFormat:@"%@~iphone", baseName];
-        }
-        NSString *imagePath = [NSString stringWithFormat:@"%@.png", fileBaseName];
+        NSString *imagePath = [NSString stringWithFormat:@"%@.png", baseName];
         UIImage *img = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imagePath ofType:nil]];
-        if (img) {
-            size = CGSizeMake(CGImageGetWidth(img.CGImage), CGImageGetHeight(img.CGImage));
-            if ([self loadAndConvertTexPositionsWithBaseName:fileBaseName]) {
-                [self createTextureFromImage:img];
-            }
-            else {
-                [self release];
-                self = nil;
-            }
-        } else {
+        NSAssert1(img, @"could not load %@", imagePath);
+
+        size = CGSizeMake(CGImageGetWidth(img.CGImage), CGImageGetHeight(img.CGImage));
+        if ([self loadAndConvertTexPositionsWithBaseName:baseName]) {
+            [self createTextureFromImage:img];
+        }
+        else {
             [self release];
             self = nil;
         }

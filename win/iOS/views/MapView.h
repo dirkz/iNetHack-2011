@@ -24,8 +24,6 @@
 
 #import <UIKit/UIKit.h>
 
-#include "hack.h"
-
 #define kDoubleTapsEnabled (@"kDoubleTapsEnabled")
 
 @class ZTouchInfoStore;
@@ -70,5 +68,7 @@
 - (void)resetPanOffset;
 - (void)zoom:(CGFloat)d;
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
+
+- (void)drawFrame;
 
 @end

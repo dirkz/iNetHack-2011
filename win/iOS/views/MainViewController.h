@@ -33,6 +33,7 @@
 @class MenuViewController;
 @class MessageView;
 @class MapView;
+@class MapViewGL;
 @class ActionBar;
 @class StatusView;
 
@@ -40,7 +41,7 @@
 
 	IBOutlet MessageView *messageView;
 	IBOutlet StatusView *statusView;
-	IBOutlet MapView *mapView;
+	IBOutlet MapViewGL *mapView;
 	
 	NhYnQuestion *currentYnQuestion;
 
