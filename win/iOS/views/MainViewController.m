@@ -124,7 +124,7 @@ enum rotation_lock {
     // e.g. self.myOutlet = nil;
 }
 
-#pragma mark menus/actions
+#pragma mark Menus/Actions
 
 - (void)inventoryMenuAction:(id)sender {
 	[self presentModalViewController:self.inventoryNavigationController animated:YES];
@@ -193,7 +193,7 @@ enum rotation_lock {
 	[messageView toggleMessageHistory:sender];
 }
 
-#pragma mark view controllers
+#pragma mark View Controllers
 
 - (ActionViewController *)actionViewController {
 	if (!actionViewController) {
@@ -220,7 +220,7 @@ enum rotation_lock {
 	return menuViewController;
 }
 
-#pragma mark window API
+#pragma mark Window API
 
 - (void)nhPoskey {
 	if (![NSThread isMainThread]) {
@@ -512,7 +512,7 @@ enum rotation_lock {
 	}
 }
 
-#pragma mark touch handling
+#pragma mark Touch Handling
 
 - (int)keyFromDirection:(e_direction)d {
 	static char keys[] = "kulnjbhy\033";
@@ -524,7 +524,7 @@ enum rotation_lock {
 		static char directionKeys[] = "kulnjbhy";
 		char *pStr = directionKeys;
 		char c;
-		while (c = *pStr++) {
+		while ((c = *pStr++)) {
 			if (c == k) {
 				return YES;
 			}
@@ -646,6 +646,8 @@ enum rotation_lock {
 				case kDirectionDown:
 					tp.y++;
 					break;
+                case kDirectionMax:
+                    break;
 			}
 			int key = [self keyFromDirection:direction];
 			if (IS_DOOR(levl[tp.x][tp.y].typ)) {
@@ -679,7 +681,7 @@ enum rotation_lock {
 	}
 }
 
-#pragma mark utility
+#pragma mark Utility
 
 #pragma mark UIAlertViewDelegate
 
@@ -694,7 +696,7 @@ enum rotation_lock {
 	}
 }
 
-#pragma mark misc
+#pragma mark Memory
 
 - (void)dealloc {
     [super dealloc];
