@@ -229,7 +229,7 @@ enum rotation_lock {
 		// build bottom bar
 		if (actionBar.actions.count == 0) {
 			NSMutableArray *toolbarItems = [NSMutableArray arrayWithCapacity:5];
-			[toolbarItems addObject:[NhCommand commandWithTitle:"Wait" key:'.']];
+			[toolbarItems addObject:[NhCommand commandWithTitle:"Wait" key:'s']];
 			[toolbarItems addObject:[NhCommand commandWithTitle:"Search" keys:"9s"]];
 			[toolbarItems addObject:[NhCommand commandWithTitle:"Redo" key:C('a')]];
 			[toolbarItems addObject:[Action actionWithTitle:@"Inv" target:self action:@selector(inventoryMenuAction:) arg:nil]];
