@@ -34,15 +34,16 @@ extern short glyph2tile[];
 	int columns;
 	int numberOfCachedImages;
 	CGImageRef *cachedImages;
-	NSString *title;
-	BOOL supportsTransparency;
+    NSString *title;
 
 }
 
 @property (nonatomic, readonly) NSString *title;
 
 // whether tilesets supports backglyphs with transparent foreground tiles
-@property (nonatomic, assign) BOOL supportsTransparency;
+@property (nonatomic, readonly) BOOL supportsTransparency;
+
+@property (nonatomic, readonly) CGSize tileSize;
 
 + (TileSet *)sharedInstance;
 + (void)setSharedInstance:(TileSet *)ts;
@@ -55,8 +56,10 @@ extern short glyph2tile[];
 + (TileSet *)tileSetFromDictionary:(NSDictionary *)dict;
 + (TileSet *)tileSetFromFilename:(NSString *)title;
 
++ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t transparency:(BOOL)trans;
 + (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;
 
+- (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t transparency:(BOOL)trans;
 - (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t;
 - (id)initWithImage:(UIImage *)img title:(NSString *)t;
 

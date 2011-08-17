@@ -36,6 +36,7 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 
 @synthesize title;
 @synthesize supportsTransparency;
+@synthesize tileSize;
 
 + (TileSet *)sharedInstance {
 	return s_instance;
@@ -73,9 +74,14 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 + (TileSet *)tileSetFromFilename:(NSString *)filename {
     UIImage *tilesetImage = [UIImage imageNamed:filename];
     NSAssert1(tilesetImage, @"missing tileset %@", filename);
-    TileSet *tileset = [self tileSetWithImage:tilesetImage tileSize:defaultTileSize title:filename];
     NSDictionary *info = [self tileSetInfoFromFilename:filename];
-    tileset.supportsTransparency = [[info objectForKey:@"transparency"] boolValue];
+    CGSize tileSize = defaultTileSize;
+    CGFloat width = [[info objectForKey:@"width"] floatValue];
+    if (width > 0.f) {
+        CGFloat height = [[info objectForKey:@"width"] floatValue];
+        tileSize = CGSizeMake(width, height);
+    }
+    TileSet *tileset = [self tileSetWithImage:tilesetImage tileSize:tileSize title:filename transparency:[[info objectForKey:@"transparency"] boolValue]];
 	return tileset;
 }
 
@@ -98,20 +104,17 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	DLog(@"%d glyphs, %d monsters, %d other, %d unique ascii", MAX_GLYPH, monsters, other, uniqueACIITiles.count);
 }	
 
-+ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t {
-    return [[[self alloc] initWithImage:img tileSize:ts title:t] autorelease];
++ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t transparency:(BOOL)trans {
+    return [[[self alloc] initWithImage:img tileSize:ts title:t transparency:trans] autorelease];
 }
 
-//- (id)init {
-//	if (self = [super init]) {
-//		[TileSet dumpTiles];
-//	}
-//	return self;
-//}
++ (id)tileSetWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t {
+    return [self tileSetWithImage:img tileSize:ts title:t transparency:NO];
+}
 
-- (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t {
-//	[TileSet dumpTiles];
+- (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t transparency:(BOOL)trans {
 	if (self = [super init]) {
+        supportsTransparency = trans;
 		image = [img retain];
 		tileSize = ts;
 		rows = CGImageGetHeight(image.CGImage) / tileSize.height;
@@ -124,8 +127,11 @@ static const CGSize defaultTileSize = {32.0f, 32.0f};
 	return self;
 }
 
+- (id)initWithImage:(UIImage *)img tileSize:(CGSize)ts title:(NSString *)t {
+    return [self initWithImage:img tileSize:ts title:t transparency:NO];
+}
+
 - (id)initWithImage:(UIImage *)img title:(NSString *)t {
-	[TileSet dumpTiles];
 	return [self initWithImage:img tileSize:defaultTileSize title:t];
 }
 
