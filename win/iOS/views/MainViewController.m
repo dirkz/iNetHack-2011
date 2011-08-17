@@ -104,7 +104,7 @@ enum rotation_lock {
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self clipAround];
-	[mapView setNeedsDisplay];
+	[self redrawMap];
 	[messageView scrollToBottom];
 }
 
@@ -263,6 +263,8 @@ enum rotation_lock {
         } else {
             actionBar.placement = ActionBarPlacementBottom;
         }
+        
+        actionBar.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
 
         [self.view addSubview:actionBar];
         [actionBar release];
@@ -458,7 +460,7 @@ enum rotation_lock {
 - (void)updateTileSet {
     dispatch_async(dispatch_get_main_queue(), ^ {
         [mapView updateTileSet];
-        [mapView setNeedsDisplay];
+        [self redrawMap];
     });
 }
 
@@ -469,26 +471,24 @@ enum rotation_lock {
 }
 
 - (void)displayWindow:(NhWindow *)w {
-	if (![NSThread isMainThread]) {
-		[self performSelectorOnMainThread:@selector(displayWindow:) withObject:w waitUntilDone:NO];
-		if (w.blocking && w != [NhWindow messageWindow]) {
-			// ignore blocking main message window
-			[[NhEventQueue instance] nextEvent];
-		}
-	} else {
+    dispatch_async(dispatch_get_main_queue(), ^ {
 		if (w == [NhWindow messageWindow]) {
 			[self refreshMessages];
 		} else if (w.type == NHW_MAP) {
+            [self redrawMap];
 			if (w.blocking) {
 				//todo (though it seems to work)
 			}
-			[mapView setNeedsDisplay];
-			[self.view setNeedsDisplay];
 		} else if (w.type == NHW_MESSAGE || w.type == NHW_MENU || w.type == NHW_TEXT) {
 			// display text
 			[self displayText:w.text];
 		}
-	}
+    });
+
+    if (w.blocking && w != [NhWindow messageWindow]) {
+        // ignore blocking main message window
+        [[NhEventQueue instance] nextEvent];
+    }
 }
 
 - (void)showMenuWindow:(NhMenuWindow *)w {
