@@ -36,6 +36,16 @@
 	</dict>
 	<dict>
 		<key>author</key>
+		<string>Unknown</string>
+		<key>filename</key>
+		<string>geoduck 40x20</string>
+		<key>width</key>
+		<integer>20</integer>
+		<key>height</key>
+		<integer>40</integer>
+	</dict>
+	<dict>
+		<key>author</key>
 		<string>James Hogwood</string>
 		<key>filename</key>
 		<string>chozo32</string>

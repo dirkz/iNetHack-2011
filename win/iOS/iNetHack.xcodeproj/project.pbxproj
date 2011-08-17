@@ -326,6 +326,7 @@
 		437A97D81150289F000046FD /* TextInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A97D71150289F000046FD /* TextInputController.xib */; };
 		438622C611590FC700295E23 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438622C511590FC700295E23 /* QuestionViewController.m */; };
 		438622D21159104100295E23 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438622D11159104100295E23 /* QuestionViewController.xib */; };
+		43A2406113FB73C1001BF067 /* geoduck 40x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A2406013FB73C1001BF067 /* geoduck 40x20.png */; };
 		43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C52F4411535404001FAA6D /* AsciiTileSet.m */; };
 		43D4D3E3116CF22E000D14B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3E2116CF22E000D14B2 /* QuartzCore.framework */; };
 		43E8F5181150D7E700BD7CAA /* absurd32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E8F5171150D7E700BD7CAA /* absurd32.png */; };
@@ -791,6 +792,7 @@
 		438622C411590FC700295E23 /* QuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionViewController.h; sourceTree = "<group>"; };
 		438622C511590FC700295E23 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		438622D11159104100295E23 /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
+		43A2406013FB73C1001BF067 /* geoduck 40x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 40x20.png"; sourceTree = "<group>"; };
 		43B98DA213FAE68200427415 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		43C52F4311535404001FAA6D /* AsciiTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsciiTileSet.h; sourceTree = "<group>"; };
 		43C52F4411535404001FAA6D /* AsciiTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsciiTileSet.m; sourceTree = "<group>"; };
@@ -1396,6 +1398,7 @@
 		437A957A11500A16000046FD /* tilesets */ = {
 			isa = PBXGroup;
 			children = (
+				43A2406013FB73C1001BF067 /* geoduck 40x20.png */,
 				432D754B13FADDDF00A0FB21 /* chozo32.png */,
 				432D754C13FADDDF00A0FB21 /* chozo32b.png */,
 				432D754D13FADDDF00A0FB21 /* nhtiles.png */,
@@ -1628,6 +1631,7 @@
 				432D755013FADDDF00A0FB21 /* chozo32b.png in Resources */,
 				432D755113FADDDF00A0FB21 /* nhtiles.png in Resources */,
 				432D755213FADDDF00A0FB21 /* tiles32.png in Resources */,
+				43A2406113FB73C1001BF067 /* geoduck 40x20.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
