@@ -1940,7 +1940,7 @@
 				GCC_PREFIX_HEADER = iNetHack_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLOG,
-					CREATE_TILES,
+					CREATE_TILES_,
 				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "iNetHack-Info.plist";

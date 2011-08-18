@@ -16,16 +16,50 @@
 static inline GLfloat *GLTypesWriteTriangleQuadFromRect(CGRect r, GLfloat *v) {
     *v++ = r.origin.x; // ll
     *v++ = r.origin.y;
+    
     *v++ = r.origin.x + r.size.width; // lr
     *v++ = r.origin.y;
+    
     *v++ = r.origin.x; // tl
     *v++ = r.origin.y + r.size.height;
+    
     *v++ = r.origin.x + r.size.width; // lr
     *v++ = r.origin.y;
+    
     *v++ = r.origin.x + r.size.width; // tr
     *v++ = r.origin.y + r.size.height;
+    
     *v++ = r.origin.x; // tl
     *v++ = r.origin.y + r.size.height;
+    
+    return v;
+}
+
+static inline GLfloat *GLTypesWriteLineQuadFromRect(CGRect r, GLfloat *v) {
+    *v++ = r.origin.x; // ll
+    *v++ = r.origin.y;
+    
+    *v++ = r.origin.x + r.size.width; // lr
+    *v++ = r.origin.y;
+
+    *v++ = r.origin.x + r.size.width; // lr
+    *v++ = r.origin.y;
+
+    *v++ = r.origin.x + r.size.width; // tr
+    *v++ = r.origin.y + r.size.height;
+    
+    *v++ = r.origin.x + r.size.width; // tr
+    *v++ = r.origin.y + r.size.height;
+    
+    *v++ = r.origin.x; // tl
+    *v++ = r.origin.y + r.size.height;
+
+    *v++ = r.origin.x; // tl
+    *v++ = r.origin.y + r.size.height;
+
+    *v++ = r.origin.x; // ll
+    *v++ = r.origin.y;
+
     return v;
 }
 

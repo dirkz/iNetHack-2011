@@ -39,8 +39,10 @@ static BOOL s_doubleTapsEnabled = NO;
 @property (nonatomic, readonly) TextureSet *textureSet;
 @property (nonatomic, readonly) VBO *vertexBuffer;
 @property (nonatomic, readonly) VBO *texCoordsBuffer;
+@property (nonatomic, readonly) VBO *vertexLineBuffer;
 @property (nonatomic, readonly) size_t vertexQuadSizeInBytes;
 @property (nonatomic, readonly) size_t textureQuadSizeInBytes;
+@property (nonatomic, readonly) size_t vertexLineQuadSizeInBytes;
 @property (nonatomic, readonly) NhMapWindow *mapWindow;
 
 @end
@@ -50,6 +52,7 @@ static BOOL s_doubleTapsEnabled = NO;
 @synthesize textureSet;
 @synthesize vertexBuffer;
 @synthesize texCoordsBuffer;
+@synthesize vertexLineBuffer;
 
 #pragma mark - View
 
@@ -149,6 +152,13 @@ static BOOL s_doubleTapsEnabled = NO;
     return vertexBuffer;
 }
 
+- (VBO *)vertexLineBuffer {
+    if (!vertexLineBuffer) {
+        vertexLineBuffer = [[VBO alloc] initWithLength:self.vertexLineQuadSizeInBytes * ROWNO * COLNO];
+    }
+    return vertexLineBuffer;
+}
+
 - (VBO *)texCoordsBuffer {
     if (!texCoordsBuffer) {
         texCoordsBuffer = [[VBO alloc] initWithLength:self.textureQuadSizeInBytes * ROWNO * COLNO];
@@ -166,19 +176,27 @@ static BOOL s_doubleTapsEnabled = NO;
     return sizeof(GLfloat) * 12;
 }
 
+// the size of a line quad, consisting of 4 lines with 2 vertices with 2 GLfloats in it
+- (size_t)vertexLineQuadSizeInBytes {
+    return sizeof(GLfloat) * 16;
+}
+
 #pragma mark - Util
 
 - (void)buildVertexBuffer {
-    GLfloat *v = [self.vertexBuffer mapBytes];
+    GLfloat *vQuads = [self.vertexBuffer mapBytes];
+    GLfloat *vLines = [self.vertexLineBuffer mapBytes];
     
     for (int row = 0; row < ROWNO; ++row) {
         for (int col = 0; col < COLNO; ++col) {
             CGRect tileRect = CGRectMake(drawStart.x + col * tileSize.width, drawStart.y + row * tileSize.height, tileSize.width, tileSize.height);
-            v = GLTypesWriteTriangleQuadFromRect(tileRect, v);
+            vQuads = GLTypesWriteTriangleQuadFromRect(tileRect, vQuads);
+            vLines = GLTypesWriteLineQuadFromRect(tileRect, vLines);
         }
     }
     
     [self.vertexBuffer unmapBytes];
+    [self.vertexLineBuffer unmapBytes];
 }
 
 #pragma mark - API
@@ -209,6 +227,8 @@ static BOOL s_doubleTapsEnabled = NO;
         
         [self.texCoordsBuffer unmapBytes];
         
+        glEnable(GL_TEXTURE_2D);
+        
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glEnableClientState(GL_VERTEX_ARRAY);
@@ -218,6 +238,12 @@ static BOOL s_doubleTapsEnabled = NO;
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
+
+        glBindBuffer(GL_ARRAY_BUFFER, vertexLineBuffer.name);
+        glVertexPointer(2, GL_FLOAT, 0, 0);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        glDisable(GL_TEXTURE_2D);
+        glDrawArrays(GL_LINES, 0, ROWNO * COLNO * 8);
     }
     
     [self presentFramebuffer];
@@ -337,11 +363,11 @@ static BOOL s_doubleTapsEnabled = NO;
 		UITouch *touch = [touches anyObject];
 
         // debug
-        CGPoint p = [touch locationInView:self];
-        int tx, ty;
-        [self tilePositionX:&tx y:&ty fromPoint:p];
-        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
-        return;
+//        CGPoint p = [touch locationInView:self];
+//        int tx, ty;
+//        [self tilePositionX:&tx y:&ty fromPoint:p];
+//        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
+//        return;
         
 		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
 		if (!ti.moved && !ti.pinched) {
@@ -444,6 +470,10 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)dealloc {
     [touchInfoStore release];
+    [textureSet release];
+    [vertexBuffer release];
+    [texCoordsBuffer release];
+    [vertexLineBuffer release];
     [super dealloc];
 }
 
