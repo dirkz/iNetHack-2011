@@ -337,11 +337,11 @@ static BOOL s_doubleTapsEnabled = NO;
 		UITouch *touch = [touches anyObject];
 
         // debug
-//        CGPoint p = [touch locationInView:self];
-//        int tx, ty;
-//        [self tilePositionX:&tx y:&ty fromPoint:p];
-//        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
-//        return;
+        CGPoint p = [touch locationInView:self];
+        int tx, ty;
+        [self tilePositionX:&tx y:&ty fromPoint:p];
+        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
+        return;
         
 		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
 		if (!ti.moved && !ti.pinched) {
@@ -419,28 +419,25 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p {
+    // correct for retina display
     CGFloat scale = 1.f;
     if ([self respondsToSelector:@selector(contentScaleFactor)]) {
         scale = [self contentScaleFactor];
     }
     p.x *= scale;
     p.y *= scale;
-
-    // convert p.y to cartesian coords
-//    p.y = self.framebufferHeight-p.y;
+    
+    // Increase p.y about the invisible area of the level that is 'ontop' the screen
+    // Since the offset are inverted (used for translation) we have to add them whereas normally we'd subtract them
+    GLfloat levelH = tileSize.height * ROWNO;
+    GLfloat delta = levelH - self.framebufferHeight + clipOffset.y + panOffset.y;
+    p.y += delta + tileSize.height/2;
 
     // correct x for panning and clipping
-	p.x -= panOffset.x;
-	p.x -= clipOffset.x;
-	p.x -= tileSize.width/2;
-
-    // correct y for panning and clipping
-	p.y -= panOffset.y;
-	p.y -= clipOffset.y;
-	p.y -= tileSize.height/2;
+	p.x -= panOffset.x + clipOffset.x + tileSize.width/2;
 
 	*px = roundf(p.x / tileSize.width);
-	*py = roundf(p.y / tileSize.height);
+	*py = roundf(p.y / tileSize.height) - 1; // -1 to make it 0-based
 }
 
 #pragma mark - Memory
