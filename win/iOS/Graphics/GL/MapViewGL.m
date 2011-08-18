@@ -34,7 +34,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 // gesture recognizers
 - (void)handleSingleTapGesture:(UITapGestureRecognizer *)gr;
-- (void)handleDoubleTapGesture:(UITapGestureRecognizer *)gr;
+- (void)handleLongPressGesture:(UITapGestureRecognizer *)gr;
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gr;
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gr;
 
@@ -90,11 +90,15 @@ static BOOL s_doubleTapsEnabled = NO;
         [self addGestureRecognizer:singleTap];
         [singleTap release];
         
-        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapGesture:)];
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapGesture:)];
         doubleTap.numberOfTapsRequired = 2;
         [self addGestureRecognizer:doubleTap];
         [doubleTap release];
-
+        
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPressGesture:)];
+        [self addGestureRecognizer:longPress];
+        [longPress release];
+        
         UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
         [self addGestureRecognizer:pinch];
         [pinch release];
@@ -392,12 +396,14 @@ static BOOL s_doubleTapsEnabled = NO;
     }
 }
 
-- (void)handleDoubleTapGesture:(UITapGestureRecognizer *)gr {
-    CGPoint p = [gr locationInView:self];
-    CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-    CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
-    e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
-    [[MainViewController instance] handleDirectionDoubleTap:direction];
+- (void)handleLongPressGesture:(UITapGestureRecognizer *)gr {
+    if (gr.state == UIGestureRecognizerStateBegan) {
+        CGPoint p = [gr locationInView:self];
+        CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+        CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
+        e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
+        [[MainViewController instance] handleDirectionDoubleTap:direction];
+    }
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gr {
