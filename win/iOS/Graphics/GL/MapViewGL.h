@@ -6,14 +6,14 @@
 //  Copyright 2011 Dirk Zimmermann. All rights reserved.
 //
 
-#import "EAGLView.h"
+#import "ZEAGLView.h"
 
 #define kDoubleTapsEnabled (@"kDoubleTapsEnabled")
 
 @class TileSet;
 @class ZTouchInfoStore;
 
-@interface MapViewGL : EAGLView {
+@interface MapViewGL : ZEAGLView {
     
     CGRect oldBounds;
     CGSize tileSize;

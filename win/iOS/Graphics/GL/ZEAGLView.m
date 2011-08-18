@@ -8,9 +8,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#import "EAGLView.h"
+#import "ZEAGLView.h"
 
-@interface EAGLView (PrivateMethods)
+@interface ZEAGLView (PrivateMethods)
 
 - (void)setupEAGL;
 - (void)createFramebuffer;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation EAGLView
+@implementation ZEAGLView
 
 @synthesize context;
 @synthesize framebufferWidth;
