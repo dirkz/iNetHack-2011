@@ -14,10 +14,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		432D754F13FADDDF00A0FB21 /* chozo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754B13FADDDF00A0FB21 /* chozo32.png */; };
-		432D755013FADDDF00A0FB21 /* chozo32b.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754C13FADDDF00A0FB21 /* chozo32b.png */; };
-		432D755113FADDDF00A0FB21 /* nhtiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754D13FADDDF00A0FB21 /* nhtiles.png */; };
-		432D755213FADDDF00A0FB21 /* tiles32.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754E13FADDDF00A0FB21 /* tiles32.png */; };
+		432D754F13FADDDF00A0FB21 /* chozo 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754B13FADDDF00A0FB21 /* chozo 32x32.png */; };
+		432D755013FADDDF00A0FB21 /* chozob 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754C13FADDDF00A0FB21 /* chozob 32x32.png */; };
+		432D755113FADDDF00A0FB21 /* nhtiles 16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754D13FADDDF00A0FB21 /* nhtiles 16x16.png */; };
+		432D755213FADDDF00A0FB21 /* tiles 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 432D754E13FADDDF00A0FB21 /* tiles 32x32.png */; };
 		4339A7F0115A7E8800741CE5 /* petmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4339A7EF115A7E8800741CE5 /* petmark.png */; };
 		4346308213FAD79E00550A93 /* air.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEB13FAD79E00550A93 /* air.lev */; };
 		4346308313FAD79E00550A93 /* Arc-fila.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEC13FAD79E00550A93 /* Arc-fila.lev */; };
@@ -320,20 +320,6 @@
 		437A978D115022E0000046FD /* InventoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A978C115022E0000046FD /* InventoryViewController.xib */; };
 		437A979B11502433000046FD /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A979A11502433000046FD /* ItemViewController.xib */; };
 		437A97D81150289F000046FD /* TextInputController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 437A97D71150289F000046FD /* TextInputController.xib */; };
-		437E4E6413FBDD53005C8683 /* Texture absurd32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5613FBDD53005C8683 /* Texture absurd32.plist */; };
-		437E4E6513FBDD53005C8683 /* Texture absurd32.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5713FBDD53005C8683 /* Texture absurd32.png */; };
-		437E4E6613FBDD53005C8683 /* Texture chozo32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5813FBDD53005C8683 /* Texture chozo32.plist */; };
-		437E4E6713FBDD53005C8683 /* Texture chozo32.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5913FBDD53005C8683 /* Texture chozo32.png */; };
-		437E4E6813FBDD53005C8683 /* Texture chozo32b.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5A13FBDD53005C8683 /* Texture chozo32b.plist */; };
-		437E4E6913FBDD53005C8683 /* Texture chozo32b.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5B13FBDD53005C8683 /* Texture chozo32b.png */; };
-		437E4E6A13FBDD53005C8683 /* Texture geoduck 10x20.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5C13FBDD53005C8683 /* Texture geoduck 10x20.plist */; };
-		437E4E6B13FBDD53005C8683 /* Texture geoduck 10x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5D13FBDD53005C8683 /* Texture geoduck 10x20.png */; };
-		437E4E6C13FBDD53005C8683 /* Texture geoduck 20x40.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5E13FBDD53005C8683 /* Texture geoduck 20x40.plist */; };
-		437E4E6D13FBDD53005C8683 /* Texture geoduck 20x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E5F13FBDD53005C8683 /* Texture geoduck 20x40.png */; };
-		437E4E6E13FBDD53005C8683 /* Texture nhtiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6013FBDD53005C8683 /* Texture nhtiles.plist */; };
-		437E4E6F13FBDD53005C8683 /* Texture nhtiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6113FBDD53005C8683 /* Texture nhtiles.png */; };
-		437E4E7013FBDD53005C8683 /* Texture tiles32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6213FBDD53005C8683 /* Texture tiles32.plist */; };
-		437E4E7113FBDD53005C8683 /* Texture tiles32.png in Resources */ = {isa = PBXBuildFile; fileRef = 437E4E6313FBDD53005C8683 /* Texture tiles32.png */; };
 		437E4E7B13FBFA9A005C8683 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 437E4E7A13FBFA9A005C8683 /* EAGLView.m */; };
 		437E4E7E13FBFAF0005C8683 /* MapViewGL.m in Sources */ = {isa = PBXBuildFile; fileRef = 437E4E7D13FBFAF0005C8683 /* MapViewGL.m */; };
 		438622C611590FC700295E23 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438622C511590FC700295E23 /* QuestionViewController.m */; };
@@ -347,9 +333,23 @@
 		43998ADE13FBCF1000080074 /* AssetBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998ADD13FBCF1000080074 /* AssetBuilder.m */; };
 		43A2406413FB7795001BF067 /* geoduck 10x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A2406213FB7795001BF067 /* geoduck 10x20.png */; };
 		43A2406513FB7795001BF067 /* geoduck 20x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 43A2406313FB7795001BF067 /* geoduck 20x40.png */; };
+		43B57EA713FD1EAD00166646 /* Texture absurd 32x32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9913FD1EAD00166646 /* Texture absurd 32x32.plist */; };
+		43B57EA813FD1EAD00166646 /* Texture absurd 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9A13FD1EAD00166646 /* Texture absurd 32x32.png */; };
+		43B57EA913FD1EAD00166646 /* Texture chozo 32x32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9B13FD1EAD00166646 /* Texture chozo 32x32.plist */; };
+		43B57EAA13FD1EAD00166646 /* Texture chozo 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9C13FD1EAD00166646 /* Texture chozo 32x32.png */; };
+		43B57EAB13FD1EAD00166646 /* Texture chozob 32x32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9D13FD1EAD00166646 /* Texture chozob 32x32.plist */; };
+		43B57EAC13FD1EAD00166646 /* Texture chozob 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9E13FD1EAD00166646 /* Texture chozob 32x32.png */; };
+		43B57EAD13FD1EAD00166646 /* Texture geoduck 10x20.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57E9F13FD1EAD00166646 /* Texture geoduck 10x20.plist */; };
+		43B57EAE13FD1EAD00166646 /* Texture geoduck 10x20.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA013FD1EAD00166646 /* Texture geoduck 10x20.png */; };
+		43B57EAF13FD1EAD00166646 /* Texture geoduck 20x40.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA113FD1EAD00166646 /* Texture geoduck 20x40.plist */; };
+		43B57EB013FD1EAD00166646 /* Texture geoduck 20x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA213FD1EAD00166646 /* Texture geoduck 20x40.png */; };
+		43B57EB113FD1EAD00166646 /* Texture nhtiles 16x16.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA313FD1EAD00166646 /* Texture nhtiles 16x16.plist */; };
+		43B57EB213FD1EAD00166646 /* Texture nhtiles 16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA413FD1EAD00166646 /* Texture nhtiles 16x16.png */; };
+		43B57EB313FD1EAD00166646 /* Texture tiles 32x32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA513FD1EAD00166646 /* Texture tiles 32x32.plist */; };
+		43B57EB413FD1EAD00166646 /* Texture tiles 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B57EA613FD1EAD00166646 /* Texture tiles 32x32.png */; };
 		43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C52F4411535404001FAA6D /* AsciiTileSet.m */; };
 		43D4D3E3116CF22E000D14B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3E2116CF22E000D14B2 /* QuartzCore.framework */; };
-		43E8F5181150D7E700BD7CAA /* absurd32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E8F5171150D7E700BD7CAA /* absurd32.png */; };
+		43E8F5181150D7E700BD7CAA /* absurd 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E8F5171150D7E700BD7CAA /* absurd 32x32.png */; };
 		43F64B271182F06A0016061C /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F64B261182F06A0016061C /* StatusView.m */; };
 /* End PBXBuildFile section */
 
@@ -364,10 +364,10 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* iNetHack_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iNetHack_Prefix.pch; sourceTree = "<group>"; };
-		432D754B13FADDDF00A0FB21 /* chozo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chozo32.png; sourceTree = "<group>"; };
-		432D754C13FADDDF00A0FB21 /* chozo32b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chozo32b.png; sourceTree = "<group>"; };
-		432D754D13FADDDF00A0FB21 /* nhtiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nhtiles.png; sourceTree = "<group>"; };
-		432D754E13FADDDF00A0FB21 /* tiles32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiles32.png; sourceTree = "<group>"; };
+		432D754B13FADDDF00A0FB21 /* chozo 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chozo 32x32.png"; sourceTree = "<group>"; };
+		432D754C13FADDDF00A0FB21 /* chozob 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chozob 32x32.png"; sourceTree = "<group>"; };
+		432D754D13FADDDF00A0FB21 /* nhtiles 16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nhtiles 16x16.png"; sourceTree = "<group>"; };
+		432D754E13FADDDF00A0FB21 /* tiles 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles 32x32.png"; sourceTree = "<group>"; };
 		4339A7EF115A7E8800741CE5 /* petmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = petmark.png; sourceTree = "<group>"; };
 		43462FEB13FAD79E00550A93 /* air.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.lev; sourceTree = "<group>"; };
 		43462FEC13FAD79E00550A93 /* Arc-fila.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arc-fila.lev"; sourceTree = "<group>"; };
@@ -804,20 +804,6 @@
 		437A978C115022E0000046FD /* InventoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InventoryViewController.xib; sourceTree = "<group>"; };
 		437A979A11502433000046FD /* ItemViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
 		437A97D71150289F000046FD /* TextInputController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextInputController.xib; sourceTree = "<group>"; };
-		437E4E5613FBDD53005C8683 /* Texture absurd32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture absurd32.plist"; sourceTree = "<group>"; };
-		437E4E5713FBDD53005C8683 /* Texture absurd32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture absurd32.png"; sourceTree = "<group>"; };
-		437E4E5813FBDD53005C8683 /* Texture chozo32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture chozo32.plist"; sourceTree = "<group>"; };
-		437E4E5913FBDD53005C8683 /* Texture chozo32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture chozo32.png"; sourceTree = "<group>"; };
-		437E4E5A13FBDD53005C8683 /* Texture chozo32b.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture chozo32b.plist"; sourceTree = "<group>"; };
-		437E4E5B13FBDD53005C8683 /* Texture chozo32b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture chozo32b.png"; sourceTree = "<group>"; };
-		437E4E5C13FBDD53005C8683 /* Texture geoduck 10x20.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture geoduck 10x20.plist"; sourceTree = "<group>"; };
-		437E4E5D13FBDD53005C8683 /* Texture geoduck 10x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture geoduck 10x20.png"; sourceTree = "<group>"; };
-		437E4E5E13FBDD53005C8683 /* Texture geoduck 20x40.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture geoduck 20x40.plist"; sourceTree = "<group>"; };
-		437E4E5F13FBDD53005C8683 /* Texture geoduck 20x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture geoduck 20x40.png"; sourceTree = "<group>"; };
-		437E4E6013FBDD53005C8683 /* Texture nhtiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture nhtiles.plist"; sourceTree = "<group>"; };
-		437E4E6113FBDD53005C8683 /* Texture nhtiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture nhtiles.png"; sourceTree = "<group>"; };
-		437E4E6213FBDD53005C8683 /* Texture tiles32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture tiles32.plist"; sourceTree = "<group>"; };
-		437E4E6313FBDD53005C8683 /* Texture tiles32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture tiles32.png"; sourceTree = "<group>"; };
 		437E4E7913FBFA9A005C8683 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
 		437E4E7A13FBFA9A005C8683 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		437E4E7C13FBFAF0005C8683 /* MapViewGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewGL.h; sourceTree = "<group>"; };
@@ -840,11 +826,25 @@
 		43998ADD13FBCF1000080074 /* AssetBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetBuilder.m; sourceTree = "<group>"; };
 		43A2406213FB7795001BF067 /* geoduck 10x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 10x20.png"; sourceTree = "<group>"; };
 		43A2406313FB7795001BF067 /* geoduck 20x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 20x40.png"; sourceTree = "<group>"; };
+		43B57E9913FD1EAD00166646 /* Texture absurd 32x32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture absurd 32x32.plist"; sourceTree = "<group>"; };
+		43B57E9A13FD1EAD00166646 /* Texture absurd 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture absurd 32x32.png"; sourceTree = "<group>"; };
+		43B57E9B13FD1EAD00166646 /* Texture chozo 32x32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture chozo 32x32.plist"; sourceTree = "<group>"; };
+		43B57E9C13FD1EAD00166646 /* Texture chozo 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture chozo 32x32.png"; sourceTree = "<group>"; };
+		43B57E9D13FD1EAD00166646 /* Texture chozob 32x32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture chozob 32x32.plist"; sourceTree = "<group>"; };
+		43B57E9E13FD1EAD00166646 /* Texture chozob 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture chozob 32x32.png"; sourceTree = "<group>"; };
+		43B57E9F13FD1EAD00166646 /* Texture geoduck 10x20.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture geoduck 10x20.plist"; sourceTree = "<group>"; };
+		43B57EA013FD1EAD00166646 /* Texture geoduck 10x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture geoduck 10x20.png"; sourceTree = "<group>"; };
+		43B57EA113FD1EAD00166646 /* Texture geoduck 20x40.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture geoduck 20x40.plist"; sourceTree = "<group>"; };
+		43B57EA213FD1EAD00166646 /* Texture geoduck 20x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture geoduck 20x40.png"; sourceTree = "<group>"; };
+		43B57EA313FD1EAD00166646 /* Texture nhtiles 16x16.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture nhtiles 16x16.plist"; sourceTree = "<group>"; };
+		43B57EA413FD1EAD00166646 /* Texture nhtiles 16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture nhtiles 16x16.png"; sourceTree = "<group>"; };
+		43B57EA513FD1EAD00166646 /* Texture tiles 32x32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture tiles 32x32.plist"; sourceTree = "<group>"; };
+		43B57EA613FD1EAD00166646 /* Texture tiles 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture tiles 32x32.png"; sourceTree = "<group>"; };
 		43B98DA213FAE68200427415 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		43C52F4311535404001FAA6D /* AsciiTileSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsciiTileSet.h; sourceTree = "<group>"; };
 		43C52F4411535404001FAA6D /* AsciiTileSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsciiTileSet.m; sourceTree = "<group>"; };
 		43D4D3E2116CF22E000D14B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		43E8F5171150D7E700BD7CAA /* absurd32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = absurd32.png; sourceTree = "<group>"; };
+		43E8F5171150D7E700BD7CAA /* absurd 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "absurd 32x32.png"; sourceTree = "<group>"; };
 		43F64B251182F06A0016061C /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
 		43F64B261182F06A0016061C /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* iNetHack-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "iNetHack-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
@@ -1456,12 +1456,12 @@
 			children = (
 				43A2406213FB7795001BF067 /* geoduck 10x20.png */,
 				43A2406313FB7795001BF067 /* geoduck 20x40.png */,
-				432D754B13FADDDF00A0FB21 /* chozo32.png */,
-				432D754C13FADDDF00A0FB21 /* chozo32b.png */,
-				432D754D13FADDDF00A0FB21 /* nhtiles.png */,
-				432D754E13FADDDF00A0FB21 /* tiles32.png */,
+				432D754B13FADDDF00A0FB21 /* chozo 32x32.png */,
+				432D754C13FADDDF00A0FB21 /* chozob 32x32.png */,
+				432D754D13FADDDF00A0FB21 /* nhtiles 16x16.png */,
+				432D754E13FADDDF00A0FB21 /* tiles 32x32.png */,
 				437A970B11501EB1000046FD /* tilesets.plist */,
-				43E8F5171150D7E700BD7CAA /* absurd32.png */,
+				43E8F5171150D7E700BD7CAA /* absurd 32x32.png */,
 			);
 			path = tilesets;
 			sourceTree = "<group>";
@@ -1469,20 +1469,20 @@
 		437E4E3913FBDC07005C8683 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
-				437E4E5613FBDD53005C8683 /* Texture absurd32.plist */,
-				437E4E5713FBDD53005C8683 /* Texture absurd32.png */,
-				437E4E5813FBDD53005C8683 /* Texture chozo32.plist */,
-				437E4E5913FBDD53005C8683 /* Texture chozo32.png */,
-				437E4E5A13FBDD53005C8683 /* Texture chozo32b.plist */,
-				437E4E5B13FBDD53005C8683 /* Texture chozo32b.png */,
-				437E4E5C13FBDD53005C8683 /* Texture geoduck 10x20.plist */,
-				437E4E5D13FBDD53005C8683 /* Texture geoduck 10x20.png */,
-				437E4E5E13FBDD53005C8683 /* Texture geoduck 20x40.plist */,
-				437E4E5F13FBDD53005C8683 /* Texture geoduck 20x40.png */,
-				437E4E6013FBDD53005C8683 /* Texture nhtiles.plist */,
-				437E4E6113FBDD53005C8683 /* Texture nhtiles.png */,
-				437E4E6213FBDD53005C8683 /* Texture tiles32.plist */,
-				437E4E6313FBDD53005C8683 /* Texture tiles32.png */,
+				43B57E9913FD1EAD00166646 /* Texture absurd 32x32.plist */,
+				43B57E9A13FD1EAD00166646 /* Texture absurd 32x32.png */,
+				43B57E9B13FD1EAD00166646 /* Texture chozo 32x32.plist */,
+				43B57E9C13FD1EAD00166646 /* Texture chozo 32x32.png */,
+				43B57E9D13FD1EAD00166646 /* Texture chozob 32x32.plist */,
+				43B57E9E13FD1EAD00166646 /* Texture chozob 32x32.png */,
+				43B57E9F13FD1EAD00166646 /* Texture geoduck 10x20.plist */,
+				43B57EA013FD1EAD00166646 /* Texture geoduck 10x20.png */,
+				43B57EA113FD1EAD00166646 /* Texture geoduck 20x40.plist */,
+				43B57EA213FD1EAD00166646 /* Texture geoduck 20x40.png */,
+				43B57EA313FD1EAD00166646 /* Texture nhtiles 16x16.plist */,
+				43B57EA413FD1EAD00166646 /* Texture nhtiles 16x16.png */,
+				43B57EA513FD1EAD00166646 /* Texture tiles 32x32.plist */,
+				43B57EA613FD1EAD00166646 /* Texture tiles 32x32.png */,
 			);
 			path = Textures;
 			sourceTree = "<group>";
@@ -1586,7 +1586,7 @@
 				437A978D115022E0000046FD /* InventoryViewController.xib in Resources */,
 				437A979B11502433000046FD /* ItemViewController.xib in Resources */,
 				437A97D81150289F000046FD /* TextInputController.xib in Resources */,
-				43E8F5181150D7E700BD7CAA /* absurd32.png in Resources */,
+				43E8F5181150D7E700BD7CAA /* absurd 32x32.png in Resources */,
 				4365D6FC115154E600B15085 /* ExtendedCommandsController.xib in Resources */,
 				438622D21159104100295E23 /* QuestionViewController.xib in Resources */,
 				4339A7F0115A7E8800741CE5 /* petmark.png in Resources */,
@@ -1730,28 +1730,28 @@
 				4346311513FAD79E00550A93 /* wizard2.lev in Resources */,
 				4346311613FAD79E00550A93 /* wizard3.lev in Resources */,
 				4346311713FAD79E00550A93 /* wizhelp in Resources */,
-				432D754F13FADDDF00A0FB21 /* chozo32.png in Resources */,
-				432D755013FADDDF00A0FB21 /* chozo32b.png in Resources */,
-				432D755113FADDDF00A0FB21 /* nhtiles.png in Resources */,
-				432D755213FADDDF00A0FB21 /* tiles32.png in Resources */,
+				432D754F13FADDDF00A0FB21 /* chozo 32x32.png in Resources */,
+				432D755013FADDDF00A0FB21 /* chozob 32x32.png in Resources */,
+				432D755113FADDDF00A0FB21 /* nhtiles 16x16.png in Resources */,
+				432D755213FADDDF00A0FB21 /* tiles 32x32.png in Resources */,
 				43A2406413FB7795001BF067 /* geoduck 10x20.png in Resources */,
 				43A2406513FB7795001BF067 /* geoduck 20x40.png in Resources */,
 				4359837613FB9074003E138A /* Icon.png in Resources */,
 				4359837713FB9074003E138A /* Icon@2.png in Resources */,
-				437E4E6413FBDD53005C8683 /* Texture absurd32.plist in Resources */,
-				437E4E6513FBDD53005C8683 /* Texture absurd32.png in Resources */,
-				437E4E6613FBDD53005C8683 /* Texture chozo32.plist in Resources */,
-				437E4E6713FBDD53005C8683 /* Texture chozo32.png in Resources */,
-				437E4E6813FBDD53005C8683 /* Texture chozo32b.plist in Resources */,
-				437E4E6913FBDD53005C8683 /* Texture chozo32b.png in Resources */,
-				437E4E6A13FBDD53005C8683 /* Texture geoduck 10x20.plist in Resources */,
-				437E4E6B13FBDD53005C8683 /* Texture geoduck 10x20.png in Resources */,
-				437E4E6C13FBDD53005C8683 /* Texture geoduck 20x40.plist in Resources */,
-				437E4E6D13FBDD53005C8683 /* Texture geoduck 20x40.png in Resources */,
-				437E4E6E13FBDD53005C8683 /* Texture nhtiles.plist in Resources */,
-				437E4E6F13FBDD53005C8683 /* Texture nhtiles.png in Resources */,
-				437E4E7013FBDD53005C8683 /* Texture tiles32.plist in Resources */,
-				437E4E7113FBDD53005C8683 /* Texture tiles32.png in Resources */,
+				43B57EA713FD1EAD00166646 /* Texture absurd 32x32.plist in Resources */,
+				43B57EA813FD1EAD00166646 /* Texture absurd 32x32.png in Resources */,
+				43B57EA913FD1EAD00166646 /* Texture chozo 32x32.plist in Resources */,
+				43B57EAA13FD1EAD00166646 /* Texture chozo 32x32.png in Resources */,
+				43B57EAB13FD1EAD00166646 /* Texture chozob 32x32.plist in Resources */,
+				43B57EAC13FD1EAD00166646 /* Texture chozob 32x32.png in Resources */,
+				43B57EAD13FD1EAD00166646 /* Texture geoduck 10x20.plist in Resources */,
+				43B57EAE13FD1EAD00166646 /* Texture geoduck 10x20.png in Resources */,
+				43B57EAF13FD1EAD00166646 /* Texture geoduck 20x40.plist in Resources */,
+				43B57EB013FD1EAD00166646 /* Texture geoduck 20x40.png in Resources */,
+				43B57EB113FD1EAD00166646 /* Texture nhtiles 16x16.plist in Resources */,
+				43B57EB213FD1EAD00166646 /* Texture nhtiles 16x16.png in Resources */,
+				43B57EB313FD1EAD00166646 /* Texture tiles 32x32.plist in Resources */,
+				43B57EB413FD1EAD00166646 /* Texture tiles 32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1940,7 +1940,7 @@
 				GCC_PREFIX_HEADER = iNetHack_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DLOG,
-					CREATE_TILES_,
+					CREATE_TILES,
 				);
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "iNetHack-Info.plist";

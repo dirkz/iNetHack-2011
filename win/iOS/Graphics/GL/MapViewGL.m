@@ -337,11 +337,11 @@ static BOOL s_doubleTapsEnabled = NO;
 		UITouch *touch = [touches anyObject];
 
         // debug
-        CGPoint p = [touch locationInView:self];
-        int tx, ty;
-        [self tilePositionX:&tx y:&ty fromPoint:p];
-        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
-        return;
+//        CGPoint p = [touch locationInView:self];
+//        int tx, ty;
+//        [self tilePositionX:&tx y:&ty fromPoint:p];
+//        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
+//        return;
         
 		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
 		if (!ti.moved && !ti.pinched) {

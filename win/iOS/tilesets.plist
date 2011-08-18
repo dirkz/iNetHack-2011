@@ -8,7 +8,7 @@
 		<key>author</key>
 		<string>John Shaw</string>
 		<key>filename</key>
-		<string>absurd32</string>
+		<string>absurd 32x32</string>
 		<key>width</key>
 		<integer>32</integer>
 		<key>height</key>
@@ -18,7 +18,7 @@
 		<key>author</key>
 		<string>NetHack DevTeam</string>
 		<key>filename</key>
-		<string>nhtiles</string>
+		<string>nhtiles 16x16</string>
 		<key>width</key>
 		<integer>16</integer>
 		<key>height</key>
@@ -28,7 +28,7 @@
 		<key>author</key>
 		<string>NetHack DevTeam</string>
 		<key>filename</key>
-		<string>tiles32</string>
+		<string>tiles 32x32</string>
 		<key>width</key>
 		<integer>32</integer>
 		<key>height</key>
@@ -58,7 +58,7 @@
 		<key>author</key>
 		<string>kbailey</string>
 		<key>filename</key>
-		<string>chozo32</string>
+		<string>chozo 32x32</string>
 		<key>width</key>
 		<integer>32</integer>
 		<key>height</key>
@@ -68,7 +68,7 @@
 		<key>author</key>
 		<string>James Hogwood</string>
 		<key>filename</key>
-		<string>chozo32b</string>
+		<string>chozob 32x32</string>
 		<key>width</key>
 		<integer>32</integer>
 		<key>height</key>
