@@ -28,13 +28,17 @@ static BOOL s_doubleTapsEnabled = NO;
 @interface MapViewGL ()
 
 - (void)resize;
-
 - (void)buildVertexBuffer;
-
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
-- (void)moveAlongVector:(CGPoint)d;
 - (void)resetPanOffsetClipAround:(BOOL)c;
-- (void)zoom:(CGFloat)d;
+
+// gesture recognizers
+- (void)handleSingleTapGesture:(UITapGestureRecognizer *)gr;
+- (void)handleDoubleTapGesture:(UITapGestureRecognizer *)gr;
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gr;
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gr;
+
+- (void)applyTransformations;
 
 @property (nonatomic, readonly) TextureSet *textureSet;
 @property (nonatomic, readonly) VBO *vertexBuffer;
@@ -72,7 +76,28 @@ static BOOL s_doubleTapsEnabled = NO;
 	maxTileSize = CGSizeMake(32.0f, 32.0f);
 	minTileSize = CGSizeMake(8.0f, 8.0f);
 	selfTapRectSize = CGSizeMake(40.0f, 40.0f);
-	touchInfoStore = [[ZTouchInfoStore alloc] init];
+    scale = 1.f;
+
+    NSArray *gestureRecognizers = [self gestureRecognizers];
+    if (gestureRecognizers.count == 0) {
+        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTapGesture:)];
+        singleTap.numberOfTapsRequired = 1;
+        [self addGestureRecognizer:singleTap];
+        [singleTap release];
+        
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapGesture:)];
+        doubleTap.numberOfTapsRequired = 2;
+        [self addGestureRecognizer:doubleTap];
+        [doubleTap release];
+
+        UIPinchGestureRecognizer *pinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+        [self addGestureRecognizer:pinch];
+        [pinch release];
+
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+        [self addGestureRecognizer:pan];
+        [pan release];
+    }
 }
 
 - (id)initWithCoder:(NSCoder*)coder {
@@ -284,133 +309,10 @@ static BOOL s_doubleTapsEnabled = NO;
 
     [self resetPanOffsetClipAround:NO];
     
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    glTranslatef(clipOffset.x, clipOffset.y, 0);
+    [self applyTransformations];
 }
 
 #pragma mark - Touch Handling
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	[touchInfoStore storeTouches:touches];
-	if (touches.count == 1) {
-		UITouch *touch = [touches anyObject];
-		if (s_doubleTapsEnabled && touch.tapCount == 2 && touch.timestamp - touchInfoStore.singleTapTimestamp < 0.2f) {
-			ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
-			ti.doubleTap = YES;
-		} else {
-			touchInfoStore.singleTapTimestamp = touch.timestamp;
-		}
-	} else if (touches.count == 2) {
-		NSArray *allTouches = [touches allObjects];
-		UITouch *t1 = [allTouches objectAtIndex:0];
-		UITouch *t2 = [allTouches objectAtIndex:1];
-		CGPoint p1 = [t1 locationInView:self];
-		CGPoint p2 = [t2 locationInView:self];
-		CGPoint d = CGPointMake(p2.x-p1.x, p2.y-p1.y);
-		initialDistance = sqrt(d.x*d.x + d.y*d.y);
-	}
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (touches.count == 1) {
-		UITouch *touch = [touches anyObject];
-		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:[touches anyObject]];
-		if (!ti.pinched) {
-			CGPoint p = [touch locationInView:self];
-			CGPoint delta = CGPointMake(p.x-ti.currentLocation.x, p.y-ti.currentLocation.y);
-			if (!ti.moved && (abs(delta.x) > kMinimumPanDelta || abs(delta.y) > kMinimumPanDelta)) {
-				ti.moved = YES;
-			}
-			if (ti.moved) {
-				[self moveAlongVector:delta];
-				ti.currentLocation = p;
-				[self drawFrame];
-			}
-		}
-	} else if (touches.count == 2) {
-		for (UITouch *t in touches) {
-			ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:t];
-			ti.pinched = YES;
-		}
-		NSArray *allTouches = [touches allObjects];
-		UITouch *t1 = [allTouches objectAtIndex:0];
-		UITouch *t2 = [allTouches objectAtIndex:1];
-		CGPoint p1 = [t1 locationInView:self];
-		CGPoint p2 = [t2 locationInView:self];
-		CGPoint d = CGPointMake(p2.x-p1.x, p2.y-p1.y);
-		CGFloat currentDistance = sqrt(d.x*d.x + d.y*d.y);
-		if (initialDistance == 0) {
-			initialDistance = currentDistance;
-		} else if (currentDistance-initialDistance > kMinimumPinchDelta) {
-			// zoom (in)
-			CGFloat zoom = currentDistance-initialDistance;
-			[self zoom:zoom];
-			initialDistance = currentDistance;
-			[self drawFrame];
-		} else if (initialDistance-currentDistance > kMinimumPinchDelta) {
-			// zoom (out)
-			CGFloat zoom = currentDistance-initialDistance;
-			[self zoom:zoom];
-			initialDistance = currentDistance;
-			[self drawFrame];
-		}
-	}
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (touches.count == 1) {
-		UITouch *touch = [touches anyObject];
-
-        // debug
-//        CGPoint p = [touch locationInView:self];
-//        int tx, ty;
-//        [self tilePositionX:&tx y:&ty fromPoint:p];
-//        DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
-//        return;
-        
-		ZTouchInfo *ti = [touchInfoStore touchInfoForTouch:touch];
-		if (!ti.moved && !ti.pinched) {
-			CGPoint p = [touch locationInView:self];
-			if (!self.panned && !ios_getpos) {
-				CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-				CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
-				if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {
-					[[MainViewController instance] handleMapTapTileX:u.ux y:u.uy forLocation:p inView:self];
-				} else {
-					e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
-					if (ti.doubleTap) {
-						[[MainViewController instance] handleDirectionDoubleTap:direction];
-					} else {
-						[[MainViewController instance] handleDirectionTap:direction];
-					}
-				}
-			} else {
-				// travel to
-				int tx, ty; // for travel to and getpos
-				[self tilePositionX:&tx y:&ty fromPoint:p];
-                if (tx != clipX && ty != clipY) {
-                    [[MainViewController instance] handleMapTapTileX:tx y:ty forLocation:p inView:self];
-                }
-				[self resetPanOffsetClipAround:YES];
-                [self drawFrame];
-			}
-		}
-	}
-	initialDistance = 0;
-	[touchInfoStore removeTouches:touches];
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-	[touchInfoStore removeTouches:touches];
-}
-
-- (void)moveAlongVector:(CGPoint)d {
-	panOffset.x += d.x;
-	panOffset.y -= d.y;
-    glMatrixMode(GL_MODELVIEW);
-    glTranslatef(d.x, -d.y, 0);
-}
 
 - (void)resetPanOffsetClipAround:(BOOL)c {
     panOffset = CGPointMake(0.0f, 0.0f);
@@ -419,39 +321,18 @@ static BOOL s_doubleTapsEnabled = NO;
     }
 }
 
-- (void)zoom:(CGFloat)d {
-	d /= 5;
-	CGSize originalSize = tileSize;
-    CGFloat tileAspect = tileSize.height/tileSize.width;
-	tileSize.width += d;
-	tileSize.width = round(tileSize.width);
-    tileSize.height = round(tileSize.width * tileAspect);
-    
-	if (tileSize.width > maxTileSize.width || tileSize.height > maxTileSize.height) {
-		tileSize = maxTileSize;
-	} else if (tileSize.width < minTileSize.width || tileSize.height < minTileSize.height) {
-		tileSize = minTileSize;
-	}
-	
-    CGFloat zoomAspect = tileSize.width / originalSize.width;
-	panOffset.x *= zoomAspect;
-	panOffset.y *= zoomAspect;
-	[self clipAroundX:clipX y:clipY];
-	[self drawFrame];
-}
-
 - (BOOL)panned {
 	return panOffset.x != 0 || panOffset.y != 0;
 }
 
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p {
     // correct for retina display
-    CGFloat scale = 1.f;
+    CGFloat contentScale = 1.f;
     if ([self respondsToSelector:@selector(contentScaleFactor)]) {
-        scale = [self contentScaleFactor];
+        contentScale = [self contentScaleFactor];
     }
-    p.x *= scale;
-    p.y *= scale;
+    p.x *= contentScale;
+    p.y *= contentScale;
     
     // Increase p.y about the invisible area of the level that is 'ontop' the screen
     // Since the offset are inverted (used for translation) we have to add them whereas normally we'd subtract them
@@ -466,10 +347,74 @@ static BOOL s_doubleTapsEnabled = NO;
 	*py = roundf(p.y / tileSize.height) - 1; // -1 to make it 0-based
 }
 
+- (void)applyTransformations {
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    glScalef(scale, scale, 1.f);
+    glTranslatef(clipOffset.x + panOffset.y, clipOffset.y + panOffset.y, 0);
+}
+
+#pragma mark - UIGestureRecognizer
+
+- (void)handleSingleTapGesture:(UITapGestureRecognizer *)gr {
+    // debug
+//    CGPoint p = [gr locationInView:self];
+//    int tx, ty;
+//    [self tilePositionX:&tx y:&ty fromPoint:p];
+//    DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
+//    return;
+
+    CGPoint p = [gr locationInView:self];
+    CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
+
+    if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {
+        [[MainViewController instance] handleMapTapTileX:u.ux y:u.uy forLocation:p inView:self];
+    } else {
+        e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
+        [[MainViewController instance] handleDirectionTap:direction];
+    }
+}
+
+- (void)handleDoubleTapGesture:(UITapGestureRecognizer *)gr {
+    CGPoint p = [gr locationInView:self];
+    CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
+    e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
+    [[MainViewController instance] handleDirectionDoubleTap:direction];
+}
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gr {
+    CGPoint d = [gr translationInView:self];
+    [gr setTranslation:CGPointMake(0, 0) inView:self];
+	panOffset.x += d.x;
+	panOffset.y += -d.y;
+    DLog(@"move along %@, pan %@", NSStringFromCGPoint(d), NSStringFromCGPoint(panOffset));
+    [self applyTransformations];
+    [self drawFrame];
+}
+
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)gr {
+    scale = gr.scale;
+    
+	tileSize.width *= round(gr.scale);
+	tileSize.height *= round(gr.scale);
+    
+	if (tileSize.width > maxTileSize.width || tileSize.height > maxTileSize.height) {
+		tileSize = maxTileSize;
+	} else if (tileSize.width < minTileSize.width || tileSize.height < minTileSize.height) {
+		tileSize = minTileSize;
+	}
+	
+	panOffset.x *= gr.scale;
+	panOffset.y *= gr.scale;
+    [self applyTransformations];
+    [self drawFrame];
+}
+
 #pragma mark - Memory
 
 - (void)dealloc {
-    [touchInfoStore release];
     [textureSet release];
     [vertexBuffer release];
     [texCoordsBuffer release];

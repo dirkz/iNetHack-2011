@@ -28,17 +28,14 @@
     
 	// created by panning around
 	CGPoint panOffset;
-	
-	// for zooming
-	CGFloat initialDistance;
+    
+    CGFloat scale;
 	
 	// the hit box to hit for detecting tap on self
 	CGSize selfTapRectSize;
     
     TileSet *tileSet;
-    
-    ZTouchInfoStore *touchInfoStore;
-    
+
 }
 
 @property (nonatomic, readonly) BOOL panned;
