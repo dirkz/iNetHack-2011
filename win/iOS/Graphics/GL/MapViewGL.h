@@ -17,7 +17,6 @@
     
     CGRect oldBounds;
     CGSize tileSize;
-    CGPoint drawStart;
     
 	CGSize maxTileSize;
 	CGSize minTileSize;

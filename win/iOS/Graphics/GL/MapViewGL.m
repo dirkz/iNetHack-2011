@@ -137,7 +137,6 @@ static BOOL s_doubleTapsEnabled = NO;
         }
         
         tileSize = tileSet.tileSize;
-        drawStart = CGPointMake(0,0);
 //        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
         
         [textureSet release];
@@ -188,7 +187,9 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)vertexLineBuffer {
     if (!vertexLineBuffer) {
-        vertexLineBuffer = [[VBO alloc] initWithLength:self.vertexLineQuadSizeInBytes * ROWNO * COLNO];
+        vertexLineBuffer = [[VBO alloc] initWithLength:self.vertexLineQuadSizeInBytes];
+        GLTypesWriteLineQuadFromRect(CGRectZero, [vertexLineBuffer mapBytes]);
+        [vertexLineBuffer unmapBytes];
     }
     return vertexLineBuffer;
 }
@@ -219,18 +220,15 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)buildVertexBuffer {
     GLfloat *vQuads = [self.vertexBuffer mapBytes];
-    GLfloat *vLines = [self.vertexLineBuffer mapBytes];
     
     for (int row = 0; row < ROWNO; ++row) {
         for (int col = 0; col < COLNO; ++col) {
-            CGRect tileRect = CGRectMake(drawStart.x + col * tileSize.width, drawStart.y + row * tileSize.height, tileSize.width, tileSize.height);
+            CGRect tileRect = CGRectMake(col * tileSize.width, row * tileSize.height, tileSize.width, tileSize.height);
             vQuads = GLTypesWriteTriangleQuadFromRect(tileRect, vQuads);
-            vLines = GLTypesWriteLineQuadFromRect(tileRect, vLines);
         }
     }
     
     [self.vertexBuffer unmapBytes];
-    [self.vertexLineBuffer unmapBytes];
 }
 
 #pragma mark - API
@@ -273,11 +271,31 @@ static BOOL s_doubleTapsEnabled = NO;
         
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
 
-        glBindBuffer(GL_ARRAY_BUFFER, vertexLineBuffer.name);
+        // draw health rectangle around player
+        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
         glDisable(GL_TEXTURE_2D);
-        glDrawArrays(GL_LINES, 0, ROWNO * COLNO * 8);
+
+        int hp100;
+        if (u.mtimedone) {
+            hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
+        } else {
+            hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
+        }
+        const static float colorValue = 0.7f;
+        float playerRectColor[] = { colorValue, 0, 0 };
+        if (hp100 > 75) {
+            playerRectColor[0] = 0;
+            playerRectColor[1] = colorValue;
+        } else if (hp100 > 50) {
+            playerRectColor[2] = 0;
+            playerRectColor[0] = playerRectColor[1] = colorValue;
+        }
+        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+
+        glDrawArrays(GL_LINES, 0, 1 * 8);
+        glColor4f(1.f, 1.f, 1.f, 1.f);
     }
     
     [self presentFramebuffer];
@@ -306,6 +324,12 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
+    if (x != clipX || y != clipY) {
+        CGRect tileRect = CGRectMake(x * tileSize.width, (ROWNO - y -1) * tileSize.height, tileSize.width, tileSize.height);
+        GLTypesWriteLineQuadFromRect(tileRect, [self.vertexLineBuffer mapBytes]);
+        [self.vertexLineBuffer unmapBytes];
+    }
+
 	clipX = x;
 	clipY = y;
     
