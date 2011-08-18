@@ -55,7 +55,7 @@
 							<bytes key="NSWhite">MAA</bytes>
 						</object>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-						<int key="IBUIContentMode">3</int>
+						<int key="IBUIContentMode">4</int>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<object class="IBUITextView" id="50193299">
@@ -329,7 +329,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>MapView</string>
+							<string>MapViewGL</string>
 							<string>MessageView</string>
 							<string>StatusView</string>
 						</object>
@@ -346,7 +346,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">mapView</string>
-								<string key="candidateClassName">MapView</string>
+								<string key="candidateClassName">MapViewGL</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">messageView</string>
@@ -361,14 +361,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/MainViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">MapView</string>
-					<string key="superclassName">UIView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/MapView.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
