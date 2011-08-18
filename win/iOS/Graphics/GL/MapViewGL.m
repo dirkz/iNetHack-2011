@@ -135,7 +135,7 @@ static BOOL s_doubleTapsEnabled = NO;
         
         tileSize = tileSet.tileSize;
         drawStart = CGPointMake(0,0);
-        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
+//        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
         
         [textureSet release];
         textureSet = nil;
@@ -200,7 +200,7 @@ static BOOL s_doubleTapsEnabled = NO;
     CGFloat posY = totalAreaHeight-playerPos.y;
 	clipOffset = CGPointMake(-playerPos.x + center.x - tileSize.width/2, -posY + center.y + tileSize.height/2);
     
-    DLog(@"clipAround %d,%d clipOffset %@", clipX, clipY, NSStringFromCGPoint(clipOffset));
+//    DLog(@"clipAround %d,%d clipOffset %@", clipX, clipY, NSStringFromCGPoint(clipOffset));
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
