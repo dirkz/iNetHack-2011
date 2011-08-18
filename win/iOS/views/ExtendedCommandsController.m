@@ -32,20 +32,20 @@
 
 @synthesize tableView = tv;
 
-#pragma mark View lifecycle
+#pragma mark - View lifecycle
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
 
-#pragma mark actions
+#pragma mark - actions
 
 - (IBAction)cancelAction:(id)sender {
 	[[NhEventQueue instance] addKey:-1];
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -78,7 +78,7 @@
     return cell;
 }
 
-#pragma mark Table view delegate
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];
@@ -91,7 +91,7 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark Memory management
+#pragma mark - Memory management
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

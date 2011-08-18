@@ -91,7 +91,7 @@
 	}
 }
 
-#pragma mark UIResponder
+#pragma mark - UIResponder
 
 - (BOOL)canBecomeFirstResponder {
 	return YES;

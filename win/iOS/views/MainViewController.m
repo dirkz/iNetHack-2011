@@ -134,7 +134,7 @@ enum rotation_lock {
     (void) self.actionBar;
 }
 
-#pragma mark Menus/Actions
+#pragma mark - Menus/Actions
 
 - (void)inventoryMenuAction:(id)sender {
 	[self presentModalViewController:self.inventoryNavigationController animated:YES];
@@ -203,7 +203,7 @@ enum rotation_lock {
 	[messageView toggleMessageHistory:sender];
 }
 
-#pragma mark View Controllers
+#pragma mark - View Controllers
 
 - (ActionViewController *)actionViewController {
 	if (!actionViewController) {
@@ -230,7 +230,7 @@ enum rotation_lock {
 	return menuViewController;
 }
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (ActionBar *)actionBar {
     if (!actionBar) {
@@ -287,7 +287,7 @@ enum rotation_lock {
     return actionBar;
 }
 
-#pragma mark Window API
+#pragma mark - Window API
 
 - (void)nhPoskey {
     [self refreshAllViews];
@@ -525,7 +525,7 @@ enum rotation_lock {
 	});
 }
 
-#pragma mark Touch Handling
+#pragma mark - Touch Handling
 
 - (int)keyFromDirection:(e_direction)d {
 	static char keys[] = "kulnjbhy\033";
@@ -694,9 +694,9 @@ enum rotation_lock {
 	}
 }
 
-#pragma mark Utility
+#pragma mark - Utility
 
-#pragma mark UIAlertViewDelegate
+#pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (alertView.numberOfButtons > 1) {
@@ -709,7 +709,7 @@ enum rotation_lock {
 	}
 }
 
-#pragma mark Memory
+#pragma mark - Memory
 
 - (void)dealloc {
     [super dealloc];

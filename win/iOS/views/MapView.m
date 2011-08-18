@@ -36,6 +36,12 @@
 static BOOL s_doubleTapsEnabled = NO;
 
 @interface MapView ()
+
+- (void)moveAlongVector:(CGPoint)d;
+- (void)resetPanOffset;
+- (void)zoom:(CGFloat)d;
+- (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
+
 @end
 
 @implementation MapView
@@ -169,7 +175,11 @@ static BOOL s_doubleTapsEnabled = NO;
     }
 }
 
-#pragma mark - TileSet
+#pragma mark - API
+
+- (void)drawFrame {
+    [self setNeedsDisplay];
+}
 
 - (void)updateTileSet {
     tileSet = [TileSet sharedInstance];
@@ -192,8 +202,6 @@ static BOOL s_doubleTapsEnabled = NO;
     }
 }
 
-#pragma mark - Clip offset
-
 - (void)clipAroundX:(int)x y:(int)y {
 	clipX = x;
 	clipY = y;
@@ -206,7 +214,7 @@ static BOOL s_doubleTapsEnabled = NO;
 	clipOffset = CGPointMake(center.x-playerPos.x-tileSize.width/2, center.y-playerPos.y-tileSize.height/2);
 }
 
-#pragma mark Touch Handling
+#pragma mark - Touch Handling
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	[touchInfoStore storeTouches:touches];
@@ -360,11 +368,7 @@ static BOOL s_doubleTapsEnabled = NO;
 	*py = roundf(p.y / tileSize.height);
 }
 
-- (void)drawFrame {
-    [self setNeedsDisplay];
-}
-
-#pragma mark Memory
+#pragma mark - Memory
 
 - (void)dealloc {
 	CGImageRelease(petMark);

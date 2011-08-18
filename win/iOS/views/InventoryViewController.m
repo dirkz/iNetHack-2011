@@ -99,7 +99,7 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark memory management
+#pragma mark - memory management
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.
@@ -119,7 +119,7 @@
     [super dealloc];
 }
 
-#pragma mark UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return inventory.objectClasses.count;
@@ -194,7 +194,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 	[[NhEventQueue instance] addKeys:cmd];
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];

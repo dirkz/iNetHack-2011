@@ -228,7 +228,7 @@
 	}
 }
 
-#pragma mark Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -253,7 +253,7 @@
     return cell;
 }
 
-#pragma mark Table view delegate
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tv willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];

@@ -34,7 +34,7 @@
 
 @synthesize tableView = tv;
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (void)updateInventory {
 	for (struct obj *otmp = invent; otmp; otmp = otmp->nobj) {
@@ -56,7 +56,7 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark View lifecycle
+#pragma mark - View lifecycle
 
 /*
 - (void)viewDidLoad {
@@ -94,7 +94,7 @@
     return YES;
 }
 
-#pragma mark Table view data source
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -167,7 +167,7 @@
 }
 */
 
-#pragma mark Table view delegate
+#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];
@@ -183,7 +183,7 @@
 	[self dismissModalViewControllerAnimated:NO];
 }
 
-#pragma mark Memory management
+#pragma mark - Memory management
 
 - (void)didReceiveMemoryWarning {
     // Releases the view if it doesn't have a superview.

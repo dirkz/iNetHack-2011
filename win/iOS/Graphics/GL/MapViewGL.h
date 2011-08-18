@@ -47,9 +47,4 @@
 - (void)updateTileSet;
 - (void)clipAroundX:(int)x y:(int)y;
 
-- (void)moveAlongVector:(CGPoint)d;
-- (void)resetPanOffset;
-- (void)zoom:(CGFloat)d;
-- (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
-
 @end

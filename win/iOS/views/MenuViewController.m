@@ -88,7 +88,7 @@
 	[self.tableView reloadData];
 }
 
-#pragma mark button actions
+#pragma mark - button actions
 
 - (IBAction)cancelButton:(id)sender {
 	[self dismissModalViewControllerAnimated:NO];
@@ -150,7 +150,7 @@
 	[self updateCell:cell withItem:item atIndexPath:indexPath];
 }
 
-#pragma mark Table view datasource
+#pragma mark - Table view datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.menuWindow.itemGroups.count;

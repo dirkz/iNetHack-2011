@@ -433,7 +433,7 @@ enum InvFlags {
 	[super dealloc];
 }
 
-#pragma mark Action
+#pragma mark - Action
 
 - (NSString *)title {
 	return title;

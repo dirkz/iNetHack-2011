@@ -185,7 +185,7 @@ void error(const char *s, ...) {
 	exit(0);
 }
 
-#pragma mark nethack window API
+#pragma mark - nethack window API
 
 void ios_init_nhwindows(int* argc, char** argv) {
 	//DLog(@"init_nhwindows");
@@ -494,7 +494,7 @@ void ios_outrip(winid wid, int how) {
 	DLog(@"outrip %x", wid);
 }
 
-#pragma mark window API player_selection()
+#pragma mark - window API player_selection()
 // from tty port
 /* clean up and quit */
 static void bail(const char *mesg) {

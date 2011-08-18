@@ -86,7 +86,7 @@
 	}
 }
 
-#pragma mark UITextFieldDelegate
+#pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidEndEditing:(UITextField *)tf {
 	if (tf == textField) {
@@ -104,7 +104,7 @@
 	}
 }
 
-#pragma mark memory management
+#pragma mark - memory management
 
 - (void)dealloc {
     [super dealloc];
