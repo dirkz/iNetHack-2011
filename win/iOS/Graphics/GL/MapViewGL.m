@@ -41,12 +41,17 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)applyTransformations;
 
 @property (nonatomic, readonly) TextureSet *textureSet;
+
+// VBOs
 @property (nonatomic, readonly) VBO *vertexBuffer;
 @property (nonatomic, readonly) VBO *texCoordsBuffer;
 @property (nonatomic, readonly) VBO *vertexLineBuffer;
+
+// VBO sizes
 @property (nonatomic, readonly) size_t vertexQuadSizeInBytes;
 @property (nonatomic, readonly) size_t textureQuadSizeInBytes;
 @property (nonatomic, readonly) size_t vertexLineQuadSizeInBytes;
+
 @property (nonatomic, readonly) NhMapWindow *mapWindow;
 
 @end
@@ -73,7 +78,7 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)setup {
 	self.multipleTouchEnabled = YES;
 	tileSize = CGSizeMake(32.0f, 32.0f);
-	maxTileSize = CGSizeMake(32.0f, 32.0f);
+	maxTileSize = CGSizeMake(64.0f, 64.0f);
 	minTileSize = CGSizeMake(8.0f, 8.0f);
 	selfTapRectSize = CGSizeMake(40.0f, 40.0f);
     scale = 1.f;
@@ -351,28 +356,39 @@ static BOOL s_doubleTapsEnabled = NO;
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     glScalef(scale, scale, 1.f);
-    glTranslatef(clipOffset.x + panOffset.y, clipOffset.y + panOffset.y, 0);
+    glTranslatef(clipOffset.x + panOffset.x, clipOffset.y + panOffset.y, 0);
 }
 
 #pragma mark - UIGestureRecognizer
 
 - (void)handleSingleTapGesture:(UITapGestureRecognizer *)gr {
+    CGPoint p = [gr locationInView:self];
+
     // debug
-//    CGPoint p = [gr locationInView:self];
 //    int tx, ty;
 //    [self tilePositionX:&tx y:&ty fromPoint:p];
 //    DLog(@"p %@ %d,%d (player %d,%d)", NSStringFromCGPoint(p), tx, ty, clipX, clipY);
 //    return;
-
-    CGPoint p = [gr locationInView:self];
-    CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
-    CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
-
-    if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {
-        [[MainViewController instance] handleMapTapTileX:u.ux y:u.uy forLocation:p inView:self];
+    
+    if (self.panned) {
+        int tx, ty;
+        [self tilePositionX:&tx y:&ty fromPoint:p];
+        if (tx == clipX && ty == clipY) {
+            [self resetPanOffsetClipAround:YES];
+            [self drawFrame];
+        } else {
+            [[MainViewController instance] handleMapTapTileX:tx y:ty forLocation:p inView:self];
+        }
     } else {
-        e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
-        [[MainViewController instance] handleDirectionTap:direction];
+        CGPoint center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+        CGPoint delta = CGPointMake(p.x-center.x, center.y-p.y);
+        
+        if (fabs(delta.x) < selfTapRectSize.width/2 && fabs(delta.y) < selfTapRectSize.height/2) {
+            [[MainViewController instance] handleMapTapTileX:u.ux y:u.uy forLocation:p inView:self];
+        } else {
+            e_direction direction = [ZDirection directionFromEuclideanPointDelta:&delta];
+            [[MainViewController instance] handleDirectionTap:direction];
+        }
     }
 }
 
@@ -389,7 +405,6 @@ static BOOL s_doubleTapsEnabled = NO;
     [gr setTranslation:CGPointMake(0, 0) inView:self];
 	panOffset.x += d.x;
 	panOffset.y += -d.y;
-    DLog(@"move along %@, pan %@", NSStringFromCGPoint(d), NSStringFromCGPoint(panOffset));
     [self applyTransformations];
     [self drawFrame];
 }
@@ -421,7 +436,5 @@ static BOOL s_doubleTapsEnabled = NO;
     [vertexLineBuffer release];
     [super dealloc];
 }
-
-
 
 @end
