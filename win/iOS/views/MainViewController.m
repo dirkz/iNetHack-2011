@@ -22,7 +22,10 @@
  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 
+#import "cocos2d.h"
+
 #import "MainViewController.h"
+
 #import "NhYnQuestion.h"
 #import "NSString+Z.h"
 #import "NhEventQueue.h"
@@ -47,16 +50,12 @@
 #import "QuestionViewController.h"
 #import "NhStatus.h"
 #import "StatusView.h"
-
+#import "EAGLView.h"
 #import "winios.h" // ipad_getpos etc.
-
 #include "hack.h" // BUFSZ etc.
+#include "GameConfig.h"
 
 static MainViewController* instance;
-
-enum rotation_lock {
-	none, portrait, landscape
-} g_rotationLock;
 
 @implementation MainViewController
 
@@ -70,14 +69,6 @@ enum rotation_lock {
 								@"kRotationLockNone", kRotationLock,
 								nil]];
 	
-	NSString *rotationLock = [defaults stringForKey:kRotationLock];
-	if ([rotationLock isEqual:kRotationLockNone]) {
-		g_rotationLock = none;
-	} else if ([rotationLock isEqual:kRotationLockPortrait]) {
-		g_rotationLock = portrait;
-	} else if ([rotationLock isEqual:kRotationLockLandscape]) {
-		g_rotationLock = landscape;
-	}
 	[pool drain];
 }
 
@@ -92,18 +83,87 @@ enum rotation_lock {
 	instance = self;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)iO {
-	switch (g_rotationLock) {
-		case none:
-			return YES;
-		case portrait:
-			return iO == UIInterfaceOrientationPortrait || iO == UIInterfaceOrientationPortraitUpsideDown;
-		case landscape:
-			return iO == UIInterfaceOrientationLandscapeLeft || iO == UIInterfaceOrientationLandscapeRight;
-		default:
-			return YES;
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+	//
+	// There are 2 ways to support auto-rotation:
+	//  - The OpenGL / cocos2d way
+	//     - Faster, but doesn't rotate the UIKit objects
+	//  - The ViewController way
+	//    - A bit slower, but the UiKit objects are placed in the right place
+	//
+	
+#if GAME_AUTOROTATION==kGameAutorotationNone
+	//
+	// EAGLView won't be autorotated.
+	// Since this method should return YES in at least 1 orientation, 
+	// we return YES only in the Portrait orientation
+	//
+	return ( interfaceOrientation == UIInterfaceOrientationPortrait );
+	
+#elif GAME_AUTOROTATION==kGameAutorotationCCDirector
+	//
+	// EAGLView will be rotated by cocos2d
+	//
+	// Sample: Autorotate only in landscape mode
+	//
+	if( interfaceOrientation == UIInterfaceOrientationLandscapeLeft ) {
+		[[CCDirector sharedDirector] setDeviceOrientation: kCCDeviceOrientationLandscapeRight];
+	} else if( interfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+		[[CCDirector sharedDirector] setDeviceOrientation: kCCDeviceOrientationLandscapeLeft];
 	}
+	
+	// Since this method should return YES in at least 1 orientation, 
+	// we return YES only in the Portrait orientation
+	return ( interfaceOrientation == UIInterfaceOrientationPortrait );
+	
+#elif GAME_AUTOROTATION == kGameAutorotationUIViewController
+	//
+	// EAGLView will be rotated by the UIViewController
+	//
+	// Sample: Autorotate only in landscpe mode
+	//
+	// return YES for the supported orientations
+	
+	return YES;
+	
+#else
+#error Unknown value in GAME_AUTOROTATION
+	
+#endif // GAME_AUTOROTATION
+	
+	
+	// Shold not happen
+	return NO;
 }
+
+#if GAME_AUTOROTATION == kGameAutorotationUIViewController
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+	//
+	// Assuming that the main window has the size of the screen
+	// BUG: This won't work if the EAGLView is not fullscreen
+	///
+	CGRect screenRect = [[UIScreen mainScreen] bounds];
+	CGRect rect = CGRectZero;
+    
+	
+	if(toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown)		
+		rect = screenRect;
+	
+	else if(toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight)
+		rect.size = CGSizeMake( screenRect.size.height, screenRect.size.width );
+	
+	CCDirector *director = [CCDirector sharedDirector];
+	EAGLView *glView = [director openGLView];
+	float contentScaleFactor = [director contentScaleFactor];
+	
+	if( contentScaleFactor != 1 ) {
+		rect.size.width *= contentScaleFactor;
+		rect.size.height *= contentScaleFactor;
+	}
+	glView.frame = rect;
+}
+#endif // GAME_AUTOROTATION == kGameAutorotationUIViewController
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self clipAround];

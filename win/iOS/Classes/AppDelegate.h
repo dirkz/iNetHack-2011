@@ -26,14 +26,14 @@
 
 @class MainViewController;
 
-@interface SlashEMAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
+
+	MainViewController *viewController;
 	NSThread *netHackThread;
-	MainViewController *mainViewController;
+
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet MainViewController *mainViewController;
+@property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, readonly) BOOL isGameWorthSaving;
 
 @end
