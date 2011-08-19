@@ -8,6 +8,8 @@
 
 #import "TextureSet.h"
 
+#import "GLTypes.h"
+
 // Enumerators for the different pixel formats this class can handle
 typedef enum {
 	kTexture2DPixelFormat_Automatic = 0,
@@ -54,24 +56,35 @@ typedef enum {
 }
 
 
-- (GLfloat *)writeTriangleQuadForTextureHash:(uint32_t)textureHash toTexCoords:(GLfloat *)p {
+- (textureStruct *)writeTrianglesQuadForTextureHash:(uint32_t)textureHash toTexCoords:(textureStruct *)p {
     NSNumber *n = [NSNumber numberWithInt:textureHash];
     NSValue *v = [texPositions objectForKey:n];
     if (v) {
         CGRect r;
         [v getValue:&r];
-        *p++ = r.origin.x; // ll
-        *p++ = r.origin.y;
-        *p++ = r.origin.x + r.size.width; // lr
-        *p++ = r.origin.y;
-        *p++ = r.origin.x; // tl
-        *p++ = r.origin.y + r.size.height;
-        *p++ = r.origin.x + r.size.width; // lr
-        *p++ = r.origin.y;
-        *p++ = r.origin.x + r.size.width; // tr
-        *p++ = r.origin.y + r.size.height;
-        *p++ = r.origin.x; // tl
-        *p++ = r.origin.y + r.size.height;
+        p->position[0] = r.origin.x; // ll
+        p->position[1] = r.origin.y;
+        ++p;
+
+        p->position[0] = r.origin.x + r.size.width; // lr
+        p->position[1] = r.origin.y;
+        ++p;
+        
+        p->position[0] = r.origin.x; // tl
+        p->position[1] = r.origin.y + r.size.height;
+        ++p;
+        
+        p->position[0] = r.origin.x + r.size.width; // lr
+        p->position[1] = r.origin.y;
+        ++p;
+        
+        p->position[0] = r.origin.x + r.size.width; // tr
+        p->position[1] = r.origin.y + r.size.height;
+        ++p;
+        
+        p->position[0] = r.origin.x; // tl
+        p->position[1] = r.origin.y + r.size.height;
+        ++p;
     }
     return p;
 }

@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) CGSize tileSize;
 
 - (id)initWithBaseName:(NSString *)baseName;
-- (GLfloat *)writeTriangleQuadForTextureHash:(uint32_t)textureHash toTexCoords:(GLfloat *)p;
+- (textureStruct *)writeTrianglesQuadForTextureHash:(uint32_t)textureHash toTexCoords:(textureStruct *)p;
 - (BOOL)textureHashExists:(uint32_t)textureHash;
 
 @end

@@ -13,52 +13,82 @@
 #import <Foundation/Foundation.h>
 #include <OpenGLES/ES1/gl.h>
 
-static inline GLfloat *GLTypesWriteTriangleQuadFromRect(CGRect r, GLfloat *v) {
-    *v++ = r.origin.x; // ll
-    *v++ = r.origin.y;
+typedef struct _vertexStruct
+{
+    GLfloat position[2];
+} vertexStruct;
+
+typedef struct _textureStruct
+{
+    GLfloat position[2];
+} textureStruct;
+
+enum {
+    ATTRIB_POSITION,
+    ATTRIB_COLOR,
+    NUM_ATTRIBUTES
+};
+
+static inline vertexStruct *GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(CGRect r, vertexStruct *v) {
+    v->position[0] = r.origin.x; // ll
+    v->position[1] = r.origin.y;
+    ++v;
     
-    *v++ = r.origin.x + r.size.width; // lr
-    *v++ = r.origin.y;
+    v->position[0] = r.origin.x + r.size.width; // lr
+    v->position[1] = r.origin.y;
+    ++v;
     
-    *v++ = r.origin.x; // tl
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x; // tl
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
     
-    *v++ = r.origin.x + r.size.width; // lr
-    *v++ = r.origin.y;
+    v->position[0] = r.origin.x + r.size.width; // lr
+    v->position[1] = r.origin.y;
+    ++v;
     
-    *v++ = r.origin.x + r.size.width; // tr
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x + r.size.width; // tr
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
     
-    *v++ = r.origin.x; // tl
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x; // tl
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
     
     return v;
 }
 
-static inline GLfloat *GLTypesWriteLineQuadFromRect(CGRect r, GLfloat *v) {
-    *v++ = r.origin.x; // ll
-    *v++ = r.origin.y;
+static inline vertexStruct *GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRect r, vertexStruct *v) {
+    v->position[0] = r.origin.x; // ll
+    v->position[1] = r.origin.y;
+    ++v;
     
-    *v++ = r.origin.x + r.size.width; // lr
-    *v++ = r.origin.y;
+    v->position[0] = r.origin.x + r.size.width; // lr
+    v->position[1] = r.origin.y;
+    ++v;
 
-    *v++ = r.origin.x + r.size.width; // lr
-    *v++ = r.origin.y;
+    v->position[0] = r.origin.x + r.size.width; // lr
+    v->position[1] = r.origin.y;
+    ++v;
 
-    *v++ = r.origin.x + r.size.width; // tr
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x + r.size.width; // tr
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
     
-    *v++ = r.origin.x + r.size.width; // tr
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x + r.size.width; // tr
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
     
-    *v++ = r.origin.x; // tl
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x; // tl
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
 
-    *v++ = r.origin.x; // tl
-    *v++ = r.origin.y + r.size.height;
+    v->position[0] = r.origin.x; // tl
+    v->position[1] = r.origin.y + r.size.height;
+    ++v;
 
-    *v++ = r.origin.x; // ll
-    *v++ = r.origin.y;
+    v->position[0] = r.origin.x; // ll
+    v->position[1] = r.origin.y;
+    ++v;
 
     return v;
 }

@@ -12,16 +12,11 @@
 
 @interface VBO : NSObject {
     
-    NSMutableData *data;
-    BOOL buffered;
     
 }
 
 @property (nonatomic, readonly) uint length;
 @property (nonatomic, readonly) GLuint name;
-
-- (void *)mapBytes;
-- (void)unmapBytes;
-- (void)reset;
+@property (nonatomic, readonly) void *bytes;
 
 @end

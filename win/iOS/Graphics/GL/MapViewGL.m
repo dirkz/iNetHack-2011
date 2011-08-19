@@ -30,6 +30,7 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)resize;
 - (void)buildVertexBuffer;
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
+- (void)updateHealthRect;
 - (void)resetPanOffsetClipAround:(BOOL)c;
 
 // gesture recognizers
@@ -46,11 +47,6 @@ static BOOL s_doubleTapsEnabled = NO;
 @property (nonatomic, readonly) VBO *vertexBuffer;
 @property (nonatomic, readonly) VBO *texCoordsBuffer;
 @property (nonatomic, readonly) VBO *vertexLineBuffer;
-
-// VBO sizes
-@property (nonatomic, readonly) size_t vertexQuadSizeInBytes;
-@property (nonatomic, readonly) size_t textureQuadSizeInBytes;
-@property (nonatomic, readonly) size_t vertexLineQuadSizeInBytes;
 
 @property (nonatomic, readonly) NhMapWindow *mapWindow;
 
@@ -180,55 +176,43 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)vertexBuffer {
     if (!vertexBuffer) {
-        vertexBuffer = [[VBO alloc] initWithLength:self.vertexQuadSizeInBytes * ROWNO * COLNO];
+        vertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO];
     }
     return vertexBuffer;
 }
 
 - (VBO *)vertexLineBuffer {
     if (!vertexLineBuffer) {
-        vertexLineBuffer = [[VBO alloc] initWithLength:self.vertexLineQuadSizeInBytes];
-        GLTypesWriteLineQuadFromRect(CGRectZero, [vertexLineBuffer mapBytes]);
-        [vertexLineBuffer unmapBytes];
+        vertexLineBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
+        GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(CGRectZero, vertexLineBuffer.bytes);
     }
     return vertexLineBuffer;
 }
 
 - (VBO *)texCoordsBuffer {
     if (!texCoordsBuffer) {
-        texCoordsBuffer = [[VBO alloc] initWithLength:self.textureQuadSizeInBytes * ROWNO * COLNO];
+        texCoordsBuffer = [[VBO alloc] initWithLength:sizeof(textureStruct) * 6 * ROWNO * COLNO];
     }
     return texCoordsBuffer;
-}
-
-// the size of a vertex quad, consisting of 6 vertices with 2 GLfloats in it
-- (size_t)vertexQuadSizeInBytes {
-    return sizeof(GLfloat) * 12;
-}
-
-// the size of a texture quad, consisting of 6 vertices with 2 GLfloats in it
-- (size_t)textureQuadSizeInBytes {
-    return sizeof(GLfloat) * 12;
-}
-
-// the size of a line quad, consisting of 4 lines with 2 vertices with 2 GLfloats in it
-- (size_t)vertexLineQuadSizeInBytes {
-    return sizeof(GLfloat) * 16;
 }
 
 #pragma mark - Util
 
 - (void)buildVertexBuffer {
-    GLfloat *vQuads = [self.vertexBuffer mapBytes];
+    vertexStruct *vQuads = [self.vertexBuffer bytes];
     
     for (int row = 0; row < ROWNO; ++row) {
         for (int col = 0; col < COLNO; ++col) {
             CGRect tileRect = CGRectMake(col * tileSize.width, row * tileSize.height, tileSize.width, tileSize.height);
-            vQuads = GLTypesWriteTriangleQuadFromRect(tileRect, vQuads);
+            vQuads = GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(tileRect, vQuads);
         }
     }
+    size_t diff = (void *) vQuads - self.vertexBuffer.bytes;
+    NSAssert2(diff <= self.vertexBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.vertexBuffer.length);
     
-    [self.vertexBuffer unmapBytes];
+    glBindBuffer(GL_ARRAY_BUFFER, self.vertexBuffer.name);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.vertexBuffer.length, self.vertexBuffer.bytes, GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 #pragma mark - API
@@ -240,7 +224,7 @@ static BOOL s_doubleTapsEnabled = NO;
     glClear(GL_COLOR_BUFFER_BIT);
     
 	if (self.mapWindow) {
-        GLfloat *t = [self.texCoordsBuffer mapBytes];
+        textureStruct *t = [self.texCoordsBuffer bytes];
         
 		int *glyphs = self.mapWindow.glyphs;
         
@@ -249,53 +233,53 @@ static BOOL s_doubleTapsEnabled = NO;
                 int glyph = glyphAt(glyphs, col, row);
                 if (glyph != kNoGlyph) {
                     int h = glyph2tile[glyph];
-                    t = [self.textureSet writeTriangleQuadForTextureHash:h toTexCoords:t];
+                    t = [self.textureSet writeTrianglesQuadForTextureHash:h toTexCoords:t];
                 } else {
-                    memset(t, 0, self.vertexQuadSizeInBytes);
-                    t += self.vertexQuadSizeInBytes/sizeof(GLfloat);
+                    memset(t, 0, sizeof(textureStruct) * 6);
+                    t += 6;
                 }
+                size_t diff = (void *) t - self.texCoordsBuffer.bytes;
+                NSAssert2(diff <= self.texCoordsBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.texCoordsBuffer.length);
             }
         }
         
-        [self.texCoordsBuffer unmapBytes];
-        
         glEnable(GL_TEXTURE_2D);
-        
+        glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
+        glTexCoordPointer(2, GL_FLOAT, 0, 0);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glEnableClientState(GL_VERTEX_ARRAY);
         
-        glBindBuffer(GL_ARRAY_BUFFER, texCoordsBuffer.name);
-        glTexCoordPointer(2, GL_FLOAT, 0, 0);
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
 
         // draw health rectangle around player
-        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
-        glVertexPointer(2, GL_FLOAT, 0, 0);
-        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-        glDisable(GL_TEXTURE_2D);
-
-        int hp100;
-        if (u.mtimedone) {
-            hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
-        } else {
-            hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
-        }
-        const static float colorValue = 0.7f;
-        float playerRectColor[] = { colorValue, 0, 0 };
-        if (hp100 > 75) {
-            playerRectColor[0] = 0;
-            playerRectColor[1] = colorValue;
-        } else if (hp100 > 50) {
-            playerRectColor[2] = 0;
-            playerRectColor[0] = playerRectColor[1] = colorValue;
-        }
-        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
-
-        glDrawArrays(GL_LINES, 0, 1 * 8);
-        glColor4f(1.f, 1.f, 1.f, 1.f);
+//        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
+//        glVertexPointer(2, GL_FLOAT, 0, 0);
+//        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+//        glDisable(GL_TEXTURE_2D);
+//
+//        int hp100;
+//        if (u.mtimedone) {
+//            hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
+//        } else {
+//            hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
+//        }
+//        const static float colorValue = 0.7f;
+//        float playerRectColor[] = { colorValue, 0, 0 };
+//        if (hp100 > 75) {
+//            playerRectColor[0] = 0;
+//            playerRectColor[1] = colorValue;
+//        } else if (hp100 > 50) {
+//            playerRectColor[2] = 0;
+//            playerRectColor[0] = playerRectColor[1] = colorValue;
+//        }
+//        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+//
+//        glDrawArrays(GL_LINES, 0, 1 * 8);
+//        glColor4f(1.f, 1.f, 1.f, 1.f);
     }
     
     [self presentFramebuffer];
@@ -325,9 +309,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)clipAroundX:(int)x y:(int)y {
     if (x != clipX || y != clipY) {
-        CGRect tileRect = CGRectMake(x * tileSize.width, (ROWNO - y -1) * tileSize.height, tileSize.width, tileSize.height);
-        GLTypesWriteLineQuadFromRect(tileRect, [self.vertexLineBuffer mapBytes]);
-        [self.vertexLineBuffer unmapBytes];
+        [self updateHealthRect];
     }
 
 	clipX = x;
@@ -343,6 +325,15 @@ static BOOL s_doubleTapsEnabled = NO;
     [self resetPanOffsetClipAround:NO];
     
     [self applyTransformations];
+}
+
+- (void)updateHealthRect {
+    CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
+    DLog(@"updating health rect vertices %x with %@", (uint) self.vertexLineBuffer.bytes, NSStringFromCGRect(tileRect));
+    GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.vertexLineBuffer bytes]);
+
+    glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.vertexLineBuffer.length, self.vertexLineBuffer.bytes, GL_DYNAMIC_DRAW);
 }
 
 #pragma mark - Touch Handling
