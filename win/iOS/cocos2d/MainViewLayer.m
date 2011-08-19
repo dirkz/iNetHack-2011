@@ -8,7 +8,17 @@
 
 #import "MainViewLayer.h"
 
+#import "TileSet.h"
+
+static const MainViewLayer *s_sharedInstance;
+
 @implementation MainViewLayer
+
+#pragma mark - CCNode
+
++ (id)sharedInstance {
+    return s_sharedInstance;
+}
 
 + (CCScene *)scene {
 	// 'scene' is an autorelease object.
@@ -41,9 +51,31 @@
 		
 		// add the label as a child to this Layer
 		[self addChild: label];
+        
+        s_sharedInstance = self;
 	}
 	return self;
 }
+
+#pragma mark - callable from MVC
+
+- (void)drawFrame {
+    DLog(@"drawFrame");
+}
+
+- (void)updateTileSet {
+    DLog(@"updateTileSet");
+    tileSet = [TileSet sharedInstance];
+    NSAssert(tileSet, @"missing TileSet");
+}
+
+- (void)clipAroundX:(int)x y:(int)y {
+    DLog(@"clipAround %d,%d", x, y);
+    clipX = x;
+    clipY = y;
+}
+
+#pragma mark - callable from Memory
 
 // on "dealloc" you need to release all your retained objects
 - (void)dealloc {

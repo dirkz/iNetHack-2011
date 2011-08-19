@@ -54,6 +54,7 @@
 #import "winios.h" // ipad_getpos etc.
 #include "hack.h" // BUFSZ etc.
 #include "GameConfig.h"
+#import "MainViewLayer.h"
 
 static MainViewController *s_instance;
 
@@ -61,6 +62,7 @@ static MainViewController *s_instance;
 
 @property (nonatomic, readonly) MessageView *messageView;
 @property (nonatomic, readonly) StatusView *statusView;
+@property (nonatomic, readonly) MainViewLayer *mainView;
 
 @end
 
@@ -69,6 +71,7 @@ static MainViewController *s_instance;
 @synthesize actionBar;
 @synthesize messageView;
 @synthesize statusView;
+@synthesize mainView;
 
 + (void)initialize {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -350,10 +353,6 @@ static MainViewController *s_instance;
         CGRect statusFrame = self.statusView.frame;
         statusFrame.origin.y = actionFrame.origin.y - statusFrame.size.height;
         self.statusView.frame = statusFrame;
-        
-        CGRect viewFrame = mapView.frame;
-        viewFrame.size.height = self.view.bounds.size.height - actionFrame.size.height - statusFrame.size.height - viewFrame.origin.y;
-        mapView.frame = viewFrame;
     }
     return actionBar;
 }
@@ -399,6 +398,13 @@ static MainViewController *s_instance;
         [statusView release];
     }
     return statusView;
+}
+
+- (MainViewLayer *)mainView {
+    if (!mainView) {
+        mainView = [MainViewLayer sharedInstance];
+    }
+    return mainView;
 }
 
 #pragma mark - Window API
@@ -562,14 +568,14 @@ static MainViewController *s_instance;
 
 - (void)updateTileSet {
     dispatch_async(dispatch_get_main_queue(), ^ {
-        [mapView updateTileSet];
+        [self.mainView updateTileSet];
         [self redrawMap];
     });
 }
 
 - (void)redrawMap {
     dispatch_async(dispatch_get_main_queue(), ^ {
-        [mapView drawFrame];
+        [self.mainView drawFrame];
     });
 }
 
@@ -603,7 +609,7 @@ static MainViewController *s_instance;
 
 - (void)clipAround {
     dispatch_async(dispatch_get_main_queue(), ^ {
-        [mapView clipAroundX:clipX y:clipY];
+        [self.mainView clipAroundX:clipX y:clipY];
     });
 }
 

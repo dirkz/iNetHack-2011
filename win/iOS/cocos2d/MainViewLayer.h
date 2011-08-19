@@ -9,10 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
+@class TileSet;
+
 @interface MainViewLayer : CCNode {
+    
+    int clipX, clipY;
+    TileSet *tileSet;
     
 }
 
++ (id)sharedInstance;
 + (CCScene *)scene;
+
+- (void)drawFrame;
+- (void)updateTileSet;
+- (void)clipAroundX:(int)x y:(int)y;
 
 @end

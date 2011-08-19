@@ -1,5 +1,5 @@
 //
-//  SlashEMAppDelegate.m
+//  AppDelegate.m
 //  SlashEM
 //
 //  Created by Dirk Zimmermann on 3/16/10.
@@ -123,6 +123,7 @@ extern int unixmain(int argc, char **argv);
 	
     NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
     [TileSet setSharedInstance:[[TileSet tileSetFromFilename:filename] retain]];
+    [viewController updateTileSet];
 
 	netHackThread = [[NSThread alloc] initWithTarget:self selector:@selector(netHackMainLoop:) object:nil];
 	[netHackThread start];

@@ -39,8 +39,6 @@
 
 @interface MainViewController : UIViewController <UITextFieldDelegate> {
 
-	MapViewGL *mapView;
-	
 	NhYnQuestion *currentYnQuestion;
 
 	ActionViewController *actionViewController;
