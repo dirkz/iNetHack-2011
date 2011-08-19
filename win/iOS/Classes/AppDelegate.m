@@ -30,9 +30,7 @@
 #import "MainViewController.h"
 #import "winios.h"
 #import "TileSet.h"
-#import "AssetBuilder.h"
-
-#import "HelloWorldLayer.h"
+#import "MainViewLayer.h"
 
 extern int unixmain(int argc, char **argv);
 
@@ -97,8 +95,8 @@ extern int unixmain(int argc, char **argv);
 	[director setDeviceOrientation:kCCDeviceOrientationLandscapeLeft];
 #endif
 	
-	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:YES];
+//	[director setAnimationInterval:1.0/60];
+	[director setDisplayFPS:NO];
 	
 	
 	// make the OpenGLView a child of the view controller
@@ -121,13 +119,13 @@ extern int unixmain(int argc, char **argv);
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
+	[[CCDirector sharedDirector] runWithScene: [MainViewLayer scene]];
 	
-//    NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
-//    [TileSet setSharedInstance:[[TileSet tileSetFromFilename:filename] retain]];
-//
-//	netHackThread = [[NSThread alloc] initWithTarget:self selector:@selector(netHackMainLoop:) object:nil];
-//	[netHackThread start];
+    NSString *filename = [[NSUserDefaults standardUserDefaults] objectForKey:kNetHackTileSet];
+    [TileSet setSharedInstance:[[TileSet tileSetFromFilename:filename] retain]];
+
+	netHackThread = [[NSThread alloc] initWithTarget:self selector:@selector(netHackMainLoop:) object:nil];
+	[netHackThread start];
 }
 
 - (void)cleanUpLocks {

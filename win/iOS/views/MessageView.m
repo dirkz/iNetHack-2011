@@ -41,6 +41,13 @@
 	return self;
 }
 
+- (id)initWithFrame:(CGRect)frame {
+    if ((self = [super initWithFrame:frame])) {
+        [self setup];
+    }
+    return self;
+}
+
 - (BOOL)enlarged {
 	return self.frame.size.height > originalHeight;
 }
@@ -85,7 +92,7 @@
 	if (historyDisplayed) {
 		[self shrinkBack];
 		historyDisplayed = NO;
-	} else if (messageWindow = [NhWindow messageWindow]) {
+	} else if ((messageWindow = [NhWindow messageWindow])) {
 		[self setText:messageWindow.historyText];
 		historyDisplayed = YES;
 	}

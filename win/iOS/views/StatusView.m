@@ -46,9 +46,15 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+	CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    // clear rectangle
+	CGContextSetStrokeColorWithColor(ctx, [UIColor blackColor].CGColor);
+	CGContextSetFillColorWithColor(ctx, [UIColor blackColor].CGColor);
+    CGContextFillRect(ctx, rect);
+    
 	float space = 5.0f;
 	UIFont *font = [UIFont systemFontOfSize:13.0f];
-	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	CGContextSetStrokeColorWithColor(ctx, [UIColor whiteColor].CGColor);
 	CGContextSetFillColorWithColor(ctx, [UIColor whiteColor].CGColor);
 	NSString *bot1 = [NSString stringWithFormat:@"Str:%s Dx:%u Con:%u Int:%u Wis:%u Cha:%u %s",

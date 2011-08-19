@@ -39,9 +39,7 @@
 
 @interface MainViewController : UIViewController <UITextFieldDelegate> {
 
-	IBOutlet MessageView *messageView;
-	IBOutlet StatusView *statusView;
-	IBOutlet MapViewGL *mapView;
+	MapViewGL *mapView;
 	
 	NhYnQuestion *currentYnQuestion;
 

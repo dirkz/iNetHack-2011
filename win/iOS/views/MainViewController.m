@@ -55,11 +55,20 @@
 #include "hack.h" // BUFSZ etc.
 #include "GameConfig.h"
 
-static MainViewController* instance;
+static MainViewController *s_instance;
+
+@interface MainViewController ()
+
+@property (nonatomic, readonly) MessageView *messageView;
+@property (nonatomic, readonly) StatusView *statusView;
+
+@end
 
 @implementation MainViewController
 
 @synthesize actionBar;
+@synthesize messageView;
+@synthesize statusView;
 
 + (void)initialize {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -73,14 +82,21 @@ static MainViewController* instance;
 }
 
 + (MainViewController *)instance {
-	return instance;
+	return s_instance;
 }
 
 #pragma mark - UIViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        s_instance = self;
+    }
+    return self;
+}
+
 - (void)awakeFromNib {
 	[super awakeFromNib]; // responsible for viewDidLoad
-	instance = self;
+    s_instance = self;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -168,7 +184,7 @@ static MainViewController* instance;
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
 	[self clipAround];
 	[self redrawMap];
-	[messageView scrollToBottom];
+	[self.messageView scrollToBottom];
 }
 
 - (void)releaseIfDefined:(id *)thing {
@@ -254,13 +270,8 @@ static MainViewController* instance;
 	[self presentModalViewController:actionViewController animated:YES];
 }
 
-- (UIBarButtonItem *)buttonWithTitle:(NSString *)title target:(id)target action:(SEL)action {
-	return [[[UIBarButtonItem alloc] initWithTitle:title
-											 style:UIBarButtonItemStyleBordered target:target action:action] autorelease];
-}
-
 - (IBAction)toggleMessageView:(id)sender {
-	[messageView toggleMessageHistory:sender];
+	[self.messageView toggleMessageHistory:sender];
 }
 
 #pragma mark - View Controllers
@@ -336,15 +347,58 @@ static MainViewController* instance;
 
         CGRect actionFrame = actionBar.frame;
 
-        CGRect statusFrame = statusView.frame;
+        CGRect statusFrame = self.statusView.frame;
         statusFrame.origin.y = actionFrame.origin.y - statusFrame.size.height;
-        statusView.frame = statusFrame;
+        self.statusView.frame = statusFrame;
         
         CGRect viewFrame = mapView.frame;
         viewFrame.size.height = self.view.bounds.size.height - actionFrame.size.height - statusFrame.size.height - viewFrame.origin.y;
         mapView.frame = viewFrame;
     }
     return actionBar;
+}
+
+- (MessageView *)messageView {
+    if (!messageView) {
+        CGFloat buttonHeight = 23;
+        
+        CGRect frame = self.view.bounds;
+        frame.size.height = buttonHeight;
+        messageView = [[MessageView alloc] initWithFrame:frame];
+        messageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
+        messageView.backgroundColor = [UIColor blackColor];
+        messageView.textColor = [UIColor whiteColor];
+        messageView.alpha = .5f;
+        messageView.opaque = NO;
+        [self.view addSubview:messageView];
+        [messageView release];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setBackgroundImage:[UIImage imageNamed:@"dropdownButton.png"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(toggleMessageView:) forControlEvents:UIControlEventTouchUpInside];
+        frame = self.view.bounds;
+        frame.origin.y = 0;
+        frame.size.width = frame.size.height = buttonHeight;
+        frame.origin.x = self.view.bounds.size.width - frame.size.width;
+        button.frame = frame;
+        [self.view addSubview:button];
+    }
+    return messageView;
+}
+
+- (StatusView *)statusView {
+    if (!statusView) {
+        CGRect frame = self.view.bounds;
+        frame.size.height = 32.f;
+        frame.origin.y = self.view.bounds.size.height - self.actionBar.bounds.size.height - frame.size.height;
+        statusView = [[StatusView alloc] initWithFrame:frame];
+        statusView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        statusView.contentMode = UIViewContentModeRedraw;
+        statusView.clearsContextBeforeDrawing = YES;
+        [self.view addSubview:statusView];
+        [statusView release];
+    }
+    return statusView;
 }
 
 #pragma mark - Window API
@@ -359,8 +413,8 @@ static MainViewController* instance;
 
 - (void)refreshMessages {
     dispatch_async(dispatch_get_main_queue(), ^ {
-        [statusView update];
-        messageView.text = [[NhWindow messageWindow] textWithDelimiter:@" "];
+        [self.statusView update];
+        self.messageView.text = [[NhWindow messageWindow] textWithDelimiter:@" "];
     });
 }
 

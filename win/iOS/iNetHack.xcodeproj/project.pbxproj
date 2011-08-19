@@ -102,6 +102,7 @@
 		4339622113FE4669007EE048 /* LICENSE_FontLabel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 433961CE13FE4668007EE048 /* LICENSE_FontLabel.txt */; };
 		4339622313FE4697007EE048 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4339622213FE4697007EE048 /* libz.dylib */; };
 		4339622D13FE4B3A007EE048 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4339622C13FE4B3A007EE048 /* HelloWorldLayer.m */; };
+		4339623213FE502E007EE048 /* MainViewLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4339623113FE502E007EE048 /* MainViewLayer.m */; };
 		4339A7F0115A7E8800741CE5 /* petmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4339A7EF115A7E8800741CE5 /* petmark.png */; };
 		4346308213FAD79E00550A93 /* air.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEB13FAD79E00550A93 /* air.lev */; };
 		4346308313FAD79E00550A93 /* Arc-fila.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEC13FAD79E00550A93 /* Arc-fila.lev */; };
@@ -631,6 +632,8 @@
 		4339622A13FE4B25007EE048 /* GameConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		4339622B13FE4B3A007EE048 /* HelloWorldLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
 		4339622C13FE4B3A007EE048 /* HelloWorldLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		4339623013FE502E007EE048 /* MainViewLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewLayer.h; sourceTree = "<group>"; };
+		4339623113FE502E007EE048 /* MainViewLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewLayer.m; sourceTree = "<group>"; };
 		4339A7EF115A7E8800741CE5 /* petmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = petmark.png; sourceTree = "<group>"; };
 		43462FEB13FAD79E00550A93 /* air.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.lev; sourceTree = "<group>"; };
 		43462FEC13FAD79E00550A93 /* Arc-fila.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arc-fila.lev"; sourceTree = "<group>"; };
@@ -1453,6 +1456,8 @@
 				4339622A13FE4B25007EE048 /* GameConfig.h */,
 				4339622B13FE4B3A007EE048 /* HelloWorldLayer.h */,
 				4339622C13FE4B3A007EE048 /* HelloWorldLayer.m */,
+				4339623013FE502E007EE048 /* MainViewLayer.h */,
+				4339623113FE502E007EE048 /* MainViewLayer.m */,
 			);
 			path = cocos2d;
 			sourceTree = "<group>";
@@ -2511,6 +2516,7 @@
 				4339621E13FE4669007EE048 /* ZAttributedString.m in Sources */,
 				4339621F13FE4669007EE048 /* ZFont.m in Sources */,
 				4339622D13FE4B3A007EE048 /* HelloWorldLayer.m in Sources */,
+				4339623213FE502E007EE048 /* MainViewLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
