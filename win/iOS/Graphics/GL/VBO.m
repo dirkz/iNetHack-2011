@@ -19,51 +19,64 @@
 @implementation VBO
 
 @synthesize name;
-@synthesize buffered;
 @synthesize mapBufferSupport;
+@synthesize length;
 
-- (id)initWithLength:(uint)length {
+- (id)initWithLength:(uint)l {
     if ((self = [super init])) {
-        data = [[NSMutableData alloc] initWithLength:length];
+        length = l;
         glGenBuffers(1, &name);
+        NSAssert(name, @"could not generate vertex buffer object name");
         const char *pStr = (const char *) glGetString(GL_EXTENSIONS);
         if (strstr(pStr, "GL_OES_mapbuffer")) {
             // doesn't seem to work right now
 //            self.mapBufferSupport = YES;
+        }
+        if (!self.mapBufferSupport) {
+            data = [[NSMutableData alloc] initWithLength:length];
         }
     }
     return self;
 }
 
 - (void *)mapBytes {
-    if (self.mapBufferSupport && self.buffered) {
+    if (self.mapBufferSupport) {
         glBindBuffer(GL_ARRAY_BUFFER, self.name);
+        glBufferData(GL_ARRAY_BUFFER, self.length, NULL, GL_DYNAMIC_DRAW);
         glCheckError();
-        void *v = glMapBufferOES(GL_ARRAY_BUFFER, GL_WRITE_ONLY_OES);
-        glCheckError();
-        return v;
+        void *mappedData = glMapBufferOES(GL_ARRAY_BUFFER, GL_WRITE_ONLY_OES);
+        NSAssert(mappedData, @"mappedData 0x0 despite GL_OES_mapbuffer");
+        return mappedData;
     } else {
         return data.mutableBytes;
     }
 }
 
 - (void)unmapBytes {
-    if (!self.buffered || !self.mapBufferSupport) {
-        glBindBuffer(GL_ARRAY_BUFFER, self.name);
-        glBufferData(GL_ARRAY_BUFFER, self.length, data.mutableBytes, GL_STATIC_DRAW);
+    if (self.mapBufferSupport) {
+        glUnmapBufferOES(GL_ARRAY_BUFFER);
         glCheckError();
-        self.buffered = YES;
+    } else {
+        if (!buffered) {
+            glBufferData(GL_ARRAY_BUFFER, self.length, data.mutableBytes, GL_DYNAMIC_DRAW);
+            glCheckError();
+            buffered = YES;
+        } else {
+            glBufferSubData(GL_ARRAY_BUFFER, 0, self.length, data.mutableBytes);
+            glCheckError();
+        }
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 }
 
 - (void)reset {
-    memset(data.mutableBytes, 0, self.length);
-}
-
-#pragma mark - Properties
-
-- (uint)length {
-    return [data length];
+    if (self.mapBufferSupport) {
+        void *v = [self mapBytes];
+        memset(v, 0, self.length);
+        [self unmapBytes];
+    } else {
+        memset(data.mutableBytes, 0, self.length);
+    }
 }
 
 #pragma mark - Memory

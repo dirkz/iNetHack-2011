@@ -13,14 +13,12 @@
 @interface VBO : NSObject {
     
     NSMutableData *data;
+    BOOL buffered;
     
 }
 
 @property (nonatomic, readonly) uint length;
 @property (nonatomic, readonly) GLuint name;
-
-// Already buffered in the GPU? Set this yourself
-@property (nonatomic, assign) BOOL buffered;
 
 - (void *)mapBytes;
 - (void)unmapBytes;
