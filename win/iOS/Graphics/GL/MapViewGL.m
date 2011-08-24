@@ -183,7 +183,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)vertexLineBuffer {
     if (!vertexLineBuffer) {
-        vertexLineBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
+        vertexLineBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6];
         GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(CGRectZero, vertexLineBuffer.bytes);
     }
     return vertexLineBuffer;
@@ -219,7 +219,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)drawFrame {
     [self setFramebuffer];
-    
+
     glClearColor(0, 0, 0, 1.f);
     glClear(GL_COLOR_BUFFER_BIT);
     
@@ -243,49 +243,53 @@ static BOOL s_doubleTapsEnabled = NO;
             }
         }
         
-        glEnable(GL_TEXTURE_2D);
         glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
         glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
         glTexCoordPointer(2, GL_FLOAT, 0, 0);
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         glCheckError();
 
-        glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.name);
+        glBindBuffer(GL_ARRAY_BUFFER, self.vertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
-        glEnableClientState(GL_VERTEX_ARRAY);
         glCheckError();
         
+        glEnable(GL_TEXTURE_2D);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
-
-        // draw health rectangle around player
-//        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-//        glDisable(GL_TEXTURE_2D);
-//        glCheckError();
-//
-//        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
-//        glVertexPointer(2, GL_FLOAT, 0, 0);
-//        glCheckError();
-//
-//        int hp100;
-//        if (u.mtimedone) {
-//            hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
-//        } else {
-//            hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
-//        }
-//        const static float colorValue = 0.7f;
-//        float playerRectColor[] = { colorValue, 0, 0 };
-//        if (hp100 > 75) {
-//            playerRectColor[0] = 0;
-//            playerRectColor[1] = colorValue;
-//        } else if (hp100 > 50) {
-//            playerRectColor[2] = 0;
-//            playerRectColor[0] = playerRectColor[1] = colorValue;
-//        }
-//        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
-//        glCheckError();
-//
-//        glDrawArrays(GL_LINES, 0, 1 * 8);
-//        glColor4f(1.f, 1.f, 1.f, 1.f);
+        
+        /////////////////////////////////////////
+        // draw health rectangle around player //
+        /////////////////////////////////////////
+        int hp100;
+        if (u.mtimedone) {
+            hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
+        } else {
+            hp100 = u.uhpmax ? u.uhp*100/u.uhpmax : 100;
+        }
+        const static float colorValue = 0.7f;
+        float playerRectColor[] = { colorValue, 0, 0 };
+        if (hp100 > 75) {
+            playerRectColor[0] = 0;
+            playerRectColor[1] = colorValue;
+        } else if (hp100 > 50) {
+            playerRectColor[2] = 0;
+            playerRectColor[0] = playerRectColor[1] = colorValue;
+        }
+        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+        glCheckError();
+        
+        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
+        glVertexPointer(2, GL_FLOAT, 0, 0);
+        glCheckError();
+        
+        glDisable(GL_TEXTURE_2D);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glCheckError();
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+        
+        // set color back to default
+        glColor4f(1.f, 1.f, 1.f, 1.f);
     }
     
     [self presentFramebuffer];
@@ -336,10 +340,11 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)updateHealthRect {
     CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
     DLog(@"updating health rect vertices %x with %@", (uint) self.vertexLineBuffer.bytes, NSStringFromCGRect(tileRect));
-    GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.vertexLineBuffer bytes]);
+    GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(tileRect, [self.vertexLineBuffer bytes]);
 
     glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
     glBufferData(GL_ARRAY_BUFFER, self.vertexLineBuffer.length, self.vertexLineBuffer.bytes, GL_DYNAMIC_DRAW);
+    glCheckError();
 }
 
 #pragma mark - Touch Handling
