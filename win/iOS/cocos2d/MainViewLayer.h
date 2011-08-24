@@ -15,6 +15,8 @@
     
     int clipX, clipY;
     TileSet *tileSet;
+    CCSpriteBatchNode *levelBatchNode;
+    CGSize tileSize;
     
 }
 

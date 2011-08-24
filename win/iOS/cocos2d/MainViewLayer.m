@@ -8,7 +8,11 @@
 
 #import "MainViewLayer.h"
 
+#include "hack.h"
+
 #import "TileSet.h"
+#import "NhWindow.h"
+#import "NhMapWindow.h"
 
 static const MainViewLayer *s_sharedInstance;
 
@@ -61,12 +65,19 @@ static const MainViewLayer *s_sharedInstance;
 
 - (void)drawFrame {
     DLog(@"drawFrame");
+    [self visit];
 }
 
 - (void)updateTileSet {
-    DLog(@"updateTileSet");
     tileSet = [TileSet sharedInstance];
     NSAssert(tileSet, @"missing TileSet");
+    tileSize = tileSet.tileSize;
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:tileSet.textureFileName ofType:@"png"];
+
+    [levelBatchNode release];
+    levelBatchNode = [[CCSpriteBatchNode alloc] initWithFile:imagePath capacity:ROWNO * COLNO];
+    
+    [self drawFrame];
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
@@ -79,11 +90,7 @@ static const MainViewLayer *s_sharedInstance;
 
 // on "dealloc" you need to release all your retained objects
 - (void)dealloc {
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
+    [levelBatchNode release];
 	[super dealloc];
 }
 
