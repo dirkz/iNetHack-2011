@@ -41,6 +41,12 @@
     return self;
 }
 
+#pragma mark - Description
+
+- (NSString *)description {
+    return [NSString stringWithFormat:@"VBO x%x %u bytes at x%x", self, self.length, self.bytes];
+}
+
 #pragma mark - Memory
 
 - (void)dealloc {

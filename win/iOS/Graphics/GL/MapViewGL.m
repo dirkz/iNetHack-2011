@@ -211,8 +211,8 @@ static BOOL s_doubleTapsEnabled = NO;
     NSAssert2(diff <= self.vertexBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.vertexBuffer.length);
     
     glBindBuffer(GL_ARRAY_BUFFER, self.vertexBuffer.name);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.vertexBuffer.length, self.vertexBuffer.bytes, GL_DYNAMIC_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    glBufferData(GL_ARRAY_BUFFER, self.vertexBuffer.length, self.vertexBuffer.bytes, GL_DYNAMIC_DRAW);
+    glCheckError();
 }
 
 #pragma mark - API
@@ -245,21 +245,26 @@ static BOOL s_doubleTapsEnabled = NO;
         
         glEnable(GL_TEXTURE_2D);
         glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
         glTexCoordPointer(2, GL_FLOAT, 0, 0);
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glCheckError();
 
         glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glEnableClientState(GL_VERTEX_ARRAY);
+        glCheckError();
         
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
 
         // draw health rectangle around player
-//        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
-//        glVertexPointer(2, GL_FLOAT, 0, 0);
 //        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 //        glDisable(GL_TEXTURE_2D);
+//        glCheckError();
+//
+//        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
+//        glVertexPointer(2, GL_FLOAT, 0, 0);
+//        glCheckError();
 //
 //        int hp100;
 //        if (u.mtimedone) {
@@ -277,6 +282,7 @@ static BOOL s_doubleTapsEnabled = NO;
 //            playerRectColor[0] = playerRectColor[1] = colorValue;
 //        }
 //        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+//        glCheckError();
 //
 //        glDrawArrays(GL_LINES, 0, 1 * 8);
 //        glColor4f(1.f, 1.f, 1.f, 1.f);
@@ -333,7 +339,7 @@ static BOOL s_doubleTapsEnabled = NO;
     GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.vertexLineBuffer bytes]);
 
     glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, self.vertexLineBuffer.length, self.vertexLineBuffer.bytes, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, self.vertexLineBuffer.length, self.vertexLineBuffer.bytes, GL_DYNAMIC_DRAW);
 }
 
 #pragma mark - Touch Handling
