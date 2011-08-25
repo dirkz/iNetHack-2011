@@ -23,12 +23,6 @@ typedef struct _textureStruct
     GLfloat position[2];
 } textureStruct;
 
-enum {
-    ATTRIB_POSITION,
-    ATTRIB_COLOR,
-    NUM_ATTRIBUTES
-};
-
 static inline vertexStruct *GLTypesWriteTrianglesQuadFromRectIntoVertexStruct(CGRect r, vertexStruct *v) {
     v->position[0] = r.origin.x; // ll
     v->position[1] = r.origin.y;
