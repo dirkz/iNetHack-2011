@@ -288,7 +288,6 @@ static BOOL s_doubleTapsEnabled = NO;
         
         glDisable(GL_TEXTURE_2D);
         glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-        glEnableClientState(GL_VERTEX_ARRAY);
         glDrawArrays(GL_LINES, 0, 8);
         
         // set color back to default
