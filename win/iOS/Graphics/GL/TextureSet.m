@@ -258,7 +258,7 @@ typedef enum {
 - (void)dealloc {
     [texPositions release];
     if (name) {
-        glDeleteBuffers(1, &name);
+        glDeleteTextures(1, &name);
     }
     [super dealloc];
 }

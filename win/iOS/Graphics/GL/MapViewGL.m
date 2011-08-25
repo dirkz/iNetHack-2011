@@ -247,18 +247,18 @@ static BOOL s_doubleTapsEnabled = NO;
             }
         }
         
+        glEnable(GL_TEXTURE_2D);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
         glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
         glTexCoordPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
 
+        glEnableClientState(GL_VERTEX_ARRAY);
         glBindBuffer(GL_ARRAY_BUFFER, self.levelVertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
         
-        glEnable(GL_TEXTURE_2D);
-        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        glEnableClientState(GL_VERTEX_ARRAY);
         glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
         
         /////////////////////////////////////////
