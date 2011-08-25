@@ -156,7 +156,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)levelVertexBuffer {
     if (!levelVertexBuffer) {
-        levelVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO usage:GL_DYNAMIC_DRAW];
+        levelVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * (ROWNO+2) * (COLNO+2) usage:GL_DYNAMIC_DRAW];
     }
     return levelVertexBuffer;
 }
@@ -172,7 +172,7 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)texCoordsBuffer {
     if (!texCoordsBuffer) {
-        texCoordsBuffer = [[VBO alloc] initWithLength:sizeof(textureStruct) * 6 * ROWNO * COLNO usage:GL_DYNAMIC_DRAW];
+        texCoordsBuffer = [[VBO alloc] initWithLength:sizeof(textureStruct) * 6 * (ROWNO+2) * (COLNO+2) usage:GL_DYNAMIC_DRAW];
     }
     return texCoordsBuffer;
 }
@@ -182,8 +182,8 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)buildVertexBuffer {
     vertexStruct *vQuads = [self.levelVertexBuffer bytes];
     
-    for (int row = 0; row < ROWNO; ++row) {
-        for (int col = 0; col < COLNO; ++col) {
+    for (int row = -1; row <= ROWNO; ++row) {
+        for (int col = -1; col <= COLNO; ++col) {
             CGRect tileRect = CGRectMake(col * tileSize.width, row * tileSize.height, tileSize.width, tileSize.height);
             vQuads = GLTypesWriteTrianglesQuadFromRectIntoVertexStruct(tileRect, vQuads);
         }
@@ -207,9 +207,32 @@ static BOOL s_doubleTapsEnabled = NO;
         
 		int *glyphs = self.mapWindow.glyphs;
         
-        for (int row = ROWNO-1; row >= 0; --row) {
-            for (int col = 0; col < COLNO; ++col) {
-                int glyph = glyphAt(glyphs, col, row);
+        for (int row = ROWNO; row >= -1; --row) {
+            for (int col = -1; col <= COLNO; ++col) {
+                int glyph = kNoGlyph;
+                
+                if (col == -1) {
+                    if (row == -1) {
+                        glyph = cmap_to_glyph(S_tlcorn);
+                    } else if (row == ROWNO) {
+                        glyph = cmap_to_glyph(S_blcorn);
+                    } else {
+                        glyph = cmap_to_glyph(S_vwall);
+                    }
+                } else if (col == COLNO) {
+                    if (row == -1) {
+                        glyph = cmap_to_glyph(S_trcorn);
+                    } else if (row == ROWNO) {
+                        glyph = cmap_to_glyph(S_brcorn);
+                    } else {
+                        glyph = cmap_to_glyph(S_vwall);
+                    }
+                } else if (row == -1 || row == ROWNO) {
+                    glyph = cmap_to_glyph(S_hwall);
+                } else {
+                    glyph = glyphAt(glyphs, col, row);
+                }
+
                 if (glyph != kNoGlyph) {
                     int h = glyph2tile[glyph];
                     t = [self.textureSet writeTrianglesQuadForTextureHash:h toTexCoords:t];
@@ -233,7 +256,7 @@ static BOOL s_doubleTapsEnabled = NO;
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
         
-        glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
+        glDrawArrays(GL_TRIANGLES, 0, (ROWNO+2) * (COLNO+2) * 6);
         
         /////////////////////////////////////////
         // draw health rectangle around player //
