@@ -44,9 +44,9 @@ static BOOL s_doubleTapsEnabled = NO;
 @property (nonatomic, readonly) TextureSet *textureSet;
 
 // VBOs
-@property (nonatomic, readonly) VBO *vertexBuffer;
+@property (nonatomic, readonly) VBO *levelVertexBuffer;
 @property (nonatomic, readonly) VBO *texCoordsBuffer;
-@property (nonatomic, readonly) VBO *vertexLineBuffer;
+@property (nonatomic, readonly) VBO *healthRectVertexBuffer;
 
 @property (nonatomic, readonly) NhMapWindow *mapWindow;
 
@@ -55,9 +55,9 @@ static BOOL s_doubleTapsEnabled = NO;
 @implementation MapViewGL
 
 @synthesize textureSet;
-@synthesize vertexBuffer;
+@synthesize levelVertexBuffer;
 @synthesize texCoordsBuffer;
-@synthesize vertexLineBuffer;
+@synthesize healthRectVertexBuffer;
 
 #pragma mark - View
 
@@ -174,19 +174,19 @@ static BOOL s_doubleTapsEnabled = NO;
     return textureSet;
 }
 
-- (VBO *)vertexBuffer {
-    if (!vertexBuffer) {
-        vertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO];
+- (VBO *)levelVertexBuffer {
+    if (!levelVertexBuffer) {
+        levelVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO];
     }
-    return vertexBuffer;
+    return levelVertexBuffer;
 }
 
-- (VBO *)vertexLineBuffer {
-    if (!vertexLineBuffer) {
-        vertexLineBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
-        GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRectZero, vertexLineBuffer.bytes);
+- (VBO *)healthRectVertexBuffer {
+    if (!healthRectVertexBuffer) {
+        healthRectVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
+        GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRectZero, healthRectVertexBuffer.bytes);
     }
-    return vertexLineBuffer;
+    return healthRectVertexBuffer;
 }
 
 - (VBO *)texCoordsBuffer {
@@ -199,7 +199,7 @@ static BOOL s_doubleTapsEnabled = NO;
 #pragma mark - Util
 
 - (void)buildVertexBuffer {
-    vertexStruct *vQuads = [self.vertexBuffer bytes];
+    vertexStruct *vQuads = [self.levelVertexBuffer bytes];
     
     for (int row = 0; row < ROWNO; ++row) {
         for (int col = 0; col < COLNO; ++col) {
@@ -207,11 +207,11 @@ static BOOL s_doubleTapsEnabled = NO;
             vQuads = GLTypesWriteTrianglesQuadFromRectIntoVertexStruct(tileRect, vQuads);
         }
     }
-    size_t diff = (void *) vQuads - self.vertexBuffer.bytes;
-    NSAssert2(diff <= self.vertexBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.vertexBuffer.length);
+    size_t diff = (void *) vQuads - self.levelVertexBuffer.bytes;
+    NSAssert2(diff <= self.levelVertexBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.levelVertexBuffer.length);
     
-    glBindBuffer(GL_ARRAY_BUFFER, self.vertexBuffer.name);
-    glBufferData(GL_ARRAY_BUFFER, self.vertexBuffer.length, self.vertexBuffer.bytes, GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, self.levelVertexBuffer.name);
+    glBufferData(GL_ARRAY_BUFFER, self.levelVertexBuffer.length, self.levelVertexBuffer.bytes, GL_DYNAMIC_DRAW);
     glCheckError();
 }
 
@@ -275,18 +275,17 @@ static BOOL s_doubleTapsEnabled = NO;
             playerRectColor[2] = 0;
             playerRectColor[0] = playerRectColor[1] = colorValue;
         }
-        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
-        glCheckError();
+//        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+//        glCheckError();
         
-        glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
+        glBindBuffer(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
         
-        glDisable(GL_TEXTURE_2D);
-        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+//        glDisable(GL_TEXTURE_2D);
+//        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
         glEnableClientState(GL_VERTEX_ARRAY);
-        glCheckError();
-        glDrawArrays(GL_LINES, 0, 8);
+        glDrawArrays(GL_LINES, 0, 2);
         
         // set color back to default
         glColor4f(1.f, 1.f, 1.f, 1.f);
@@ -339,11 +338,11 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)updateHealthRect {
     CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
-    DLog(@"updating health rect vertices %x with %@", (uint) self.vertexLineBuffer.bytes, NSStringFromCGRect(tileRect));
-    GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.vertexLineBuffer bytes]);
+    DLog(@"updating health rect vertices %x with %@", (uint) self.healthRectVertexBuffer.bytes, NSStringFromCGRect(tileRect));
+    GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.healthRectVertexBuffer bytes]);
 
-    glBindBuffer(GL_ARRAY_BUFFER, self.vertexLineBuffer.name);
-    glBufferData(GL_ARRAY_BUFFER, self.vertexLineBuffer.length, self.vertexLineBuffer.bytes, GL_DYNAMIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.name);
+    glBufferData(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.length, self.healthRectVertexBuffer.bytes, GL_DYNAMIC_DRAW);
     glCheckError();
 }
 
@@ -463,9 +462,9 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)dealloc {
     [textureSet release];
-    [vertexBuffer release];
+    [levelVertexBuffer release];
     [texCoordsBuffer release];
-    [vertexLineBuffer release];
+    [healthRectVertexBuffer release];
     [super dealloc];
 }
 

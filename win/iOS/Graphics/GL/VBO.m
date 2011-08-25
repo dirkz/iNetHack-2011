@@ -44,7 +44,7 @@
 #pragma mark - Description
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"VBO x%x %u bytes at x%x", self, self.length, self.bytes];
+    return [NSString stringWithFormat:@"VBO x%x %u bytes at x%x name %d", self, self.length, self.bytes, self.name];
 }
 
 #pragma mark - Memory
