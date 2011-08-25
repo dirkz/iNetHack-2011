@@ -136,9 +136,6 @@ static BOOL s_doubleTapsEnabled = NO;
         tileSize = tileSet.tileSize;
 //        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
         
-        [textureSet release];
-        textureSet = nil;
-        
         [self buildVertexBuffer];
     }
 }
