@@ -74,5 +74,15 @@
 		<key>height</key>
 		<integer>32</integer>
 	</dict>
+	<dict>
+		<key>author</key>
+		<string>Dirk Zimmermann</string>
+		<key>filename</key>
+		<string>chozoz 32x32</string>
+		<key>width</key>
+		<integer>32</integer>
+		<key>height</key>
+		<integer>32</integer>
+	</dict>
 </array>
 </plist>

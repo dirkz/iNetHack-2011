@@ -341,6 +341,9 @@
 		438622C611590FC700295E23 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 438622C511590FC700295E23 /* QuestionViewController.m */; };
 		438622D21159104100295E23 /* QuestionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438622D11159104100295E23 /* QuestionViewController.xib */; };
 		43894ECA1406200300118B1B /* tilesets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43894EC91406200300118B1B /* tilesets.plist */; };
+		438EDB7D14068C10001E41C7 /* chozoz 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 438EDB7C14068C10001E41C7 /* chozoz 32x32.png */; };
+		438EDB8014068C69001E41C7 /* Texture chozoz 32x32.plist in Resources */ = {isa = PBXBuildFile; fileRef = 438EDB7E14068C69001E41C7 /* Texture chozoz 32x32.plist */; };
+		438EDB8114068C69001E41C7 /* Texture chozoz 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 438EDB7F14068C69001E41C7 /* Texture chozoz 32x32.png */; };
 		43998AC413FBB86800080074 /* ActionBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998AC313FBB86800080074 /* ActionBar.m */; };
 		43998AD513FBCE8C00080074 /* GLTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998ACC13FBCE8C00080074 /* GLTypes.m */; };
 		43998AD613FBCE8C00080074 /* TextureSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998ACE13FBCE8C00080074 /* TextureSet.m */; };
@@ -828,6 +831,9 @@
 		438622C511590FC700295E23 /* QuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionViewController.m; sourceTree = "<group>"; };
 		438622D11159104100295E23 /* QuestionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionViewController.xib; sourceTree = "<group>"; };
 		43894EC91406200300118B1B /* tilesets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tilesets.plist; sourceTree = "<group>"; };
+		438EDB7C14068C10001E41C7 /* chozoz 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chozoz 32x32.png"; sourceTree = "<group>"; };
+		438EDB7E14068C69001E41C7 /* Texture chozoz 32x32.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture chozoz 32x32.plist"; sourceTree = "<group>"; };
+		438EDB7F14068C69001E41C7 /* Texture chozoz 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture chozoz 32x32.png"; sourceTree = "<group>"; };
 		43998AC213FBB86800080074 /* ActionBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionBar.h; sourceTree = "<group>"; };
 		43998AC313FBB86800080074 /* ActionBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionBar.m; sourceTree = "<group>"; };
 		43998ACB13FBCE8C00080074 /* GLTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTypes.h; sourceTree = "<group>"; };
@@ -970,6 +976,8 @@
 				4305065A14061F0D002D3FA8 /* Texture chozo 32x32.png */,
 				4305065B14061F0D002D3FA8 /* Texture chozob 32x32.plist */,
 				4305065C14061F0D002D3FA8 /* Texture chozob 32x32.png */,
+				438EDB7E14068C69001E41C7 /* Texture chozoz 32x32.plist */,
+				438EDB7F14068C69001E41C7 /* Texture chozoz 32x32.png */,
 				4305065D14061F0D002D3FA8 /* Texture geoduck 10x20.plist */,
 				4305065E14061F0D002D3FA8 /* Texture geoduck 10x20.png */,
 				4305065F14061F0D002D3FA8 /* Texture geoduck 20x40.plist */,
@@ -990,6 +998,7 @@
 				4305066614061F0D002D3FA8 /* absurd 32x32.png */,
 				4305066714061F0D002D3FA8 /* chozo 32x32.png */,
 				4305066814061F0D002D3FA8 /* chozob 32x32.png */,
+				438EDB7C14068C10001E41C7 /* chozoz 32x32.png */,
 				4305066914061F0D002D3FA8 /* geoduck 10x20.png */,
 				4305066A14061F0D002D3FA8 /* geoduck 20x40.png */,
 				4305066B14061F0D002D3FA8 /* nhtiles 16x16.png */,
@@ -1755,6 +1764,9 @@
 				4305068214061F0D002D3FA8 /* nhtiles 16x16.png in Resources */,
 				4305068314061F0D002D3FA8 /* tiles 32x32.png in Resources */,
 				43894ECA1406200300118B1B /* tilesets.plist in Resources */,
+				438EDB7D14068C10001E41C7 /* chozoz 32x32.png in Resources */,
+				438EDB8014068C69001E41C7 /* Texture chozoz 32x32.plist in Resources */,
+				438EDB8114068C69001E41C7 /* Texture chozoz 32x32.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
