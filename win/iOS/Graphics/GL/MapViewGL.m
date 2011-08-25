@@ -39,6 +39,7 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gr;
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gr;
 
+- (NSString *)stringFromNum:(uint)n vertices:(GLfloat *)v;
 - (void)applyTransformations;
 
 @property (nonatomic, readonly) TextureSet *textureSet;
@@ -263,8 +264,6 @@ static BOOL s_doubleTapsEnabled = NO;
         /////////////////////////////////////////
         // draw health rectangle around player //
         /////////////////////////////////////////
-        [self updateHealthRect];
-
         int hp100;
         if (u.mtimedone) {
             hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
@@ -322,13 +321,11 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)clipAroundX:(int)x y:(int)y {
-    if (x != clipX || y != clipY) {
-        [self updateHealthRect];
-    }
-
 	clipX = x;
 	clipY = y;
     
+    [self updateHealthRect];
+
 	CGPoint center = CGPointMake(self.framebufferWidth/2, self.framebufferHeight/2);
 	CGPoint playerPos = CGPointMake(clipX*tileSize.width, clipY*tileSize.height);
 	
@@ -460,6 +457,21 @@ static BOOL s_doubleTapsEnabled = NO;
 	panOffset.y *= gr.scale;
     [self applyTransformations];
     [self drawFrame];
+}
+
+#pragma mark - Util
+
+- (NSString *)stringFromNum:(uint)n vertices:(GLfloat *)v {
+    NSMutableString *s = [NSMutableString string];
+    for (int i = 0; i < n; ++i) {
+        CGPoint p = CGPointMake(v[i * 2], v[i * 2 + 1]);
+        if (s.length > 0) {
+            [s appendFormat:@" %@", NSStringFromCGPoint(p)];
+        } else {
+            [s appendFormat:@"%@", NSStringFromCGPoint(p)];
+        }
+    }
+    return s;
 }
 
 #pragma mark - Memory

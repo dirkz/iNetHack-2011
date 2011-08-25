@@ -93,5 +93,15 @@ static inline vertexStruct *GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRect
     return v;
 }
 
+static inline CGRect GLTypesRectFromLinesQuad(vertexStruct *v) {
+    CGRect r = CGRectMake(v->position[0], v->position[1], 0, 0);
+    v++;
+    r.size.width = v->position[0] - r.origin.x;
+    v++;
+    v++;
+    r.size.height = v->position[1] - r.origin.y;
+    return r;
+}
+
 #endif
 
