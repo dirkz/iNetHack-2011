@@ -15,7 +15,6 @@
 
 @interface MapViewGL : ZEAGLView {
     
-    CGRect oldBounds;
     CGSize tileSize;
     
 	CGSize maxTileSize;

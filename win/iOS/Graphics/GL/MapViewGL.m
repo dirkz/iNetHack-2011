@@ -27,7 +27,6 @@ static BOOL s_doubleTapsEnabled = NO;
 
 @interface MapViewGL ()
 
-- (void)resize;
 - (void)buildVertexBuffer;
 - (void)tilePositionX:(int *)px y:(int *)py fromPoint:(CGPoint)p;
 - (void)updateHealthRect;
@@ -123,23 +122,6 @@ static BOOL s_doubleTapsEnabled = NO;
     return self;
 }
 
-- (void)resize {
-    CGRect bounds = self.bounds;
-    if (!CGRectEqualToRect(bounds, oldBounds)) {
-        oldBounds = bounds;
-        
-        if ([self respondsToSelector:@selector(contentScaleFactor)]) {
-            bounds.size.width *= self.contentScaleFactor;
-            bounds.size.height *= self.contentScaleFactor;
-        }
-        
-        tileSize = tileSet.tileSize;
-//        DLog(@"bounds %@ tileSize %@ drawStart %@", NSStringFromCGSize(bounds.size), NSStringFromCGSize(tileSize), NSStringFromCGPoint(drawStart));
-        
-        [self buildVertexBuffer];
-    }
-}
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     
@@ -154,7 +136,7 @@ static BOOL s_doubleTapsEnabled = NO;
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     
-    [self resize];
+    tileSize = tileSet.tileSize;
     
     [self clipAroundX:clipX y:clipY];
 }
