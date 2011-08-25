@@ -156,25 +156,23 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (VBO *)levelVertexBuffer {
     if (!levelVertexBuffer) {
-        levelVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO];
+        levelVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 6 * ROWNO * COLNO usage:GL_DYNAMIC_DRAW];
     }
     return levelVertexBuffer;
 }
 
 - (VBO *)healthRectVertexBuffer {
     if (!healthRectVertexBuffer) {
-        healthRectVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
+        healthRectVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8 usage:GL_DYNAMIC_DRAW];
         GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRectZero, healthRectVertexBuffer.bytes);
-        glBindBuffer(GL_ARRAY_BUFFER, healthRectVertexBuffer.name);
-        glBufferData(GL_ARRAY_BUFFER, healthRectVertexBuffer.length, healthRectVertexBuffer.bytes, GL_DYNAMIC_DRAW);
-        glCheckError();
+        [healthRectVertexBuffer transfer];
     }
     return healthRectVertexBuffer;
 }
 
 - (VBO *)texCoordsBuffer {
     if (!texCoordsBuffer) {
-        texCoordsBuffer = [[VBO alloc] initWithLength:sizeof(textureStruct) * 6 * ROWNO * COLNO];
+        texCoordsBuffer = [[VBO alloc] initWithLength:sizeof(textureStruct) * 6 * ROWNO * COLNO usage:GL_DYNAMIC_DRAW];
     }
     return texCoordsBuffer;
 }
@@ -193,9 +191,7 @@ static BOOL s_doubleTapsEnabled = NO;
     size_t diff = (void *) vQuads - self.levelVertexBuffer.bytes;
     NSAssert2(diff <= self.levelVertexBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.levelVertexBuffer.length);
     
-    glBindBuffer(GL_ARRAY_BUFFER, self.levelVertexBuffer.name);
-    glBufferData(GL_ARRAY_BUFFER, self.levelVertexBuffer.length, self.levelVertexBuffer.bytes, GL_DYNAMIC_DRAW);
-    glCheckError();
+    [self.levelVertexBuffer transfer];
 }
 
 #pragma mark - API
@@ -228,8 +224,7 @@ static BOOL s_doubleTapsEnabled = NO;
         
         glEnable(GL_TEXTURE_2D);
         glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-        glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
-        glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
+        [self.texCoordsBuffer transfer];
         glTexCoordPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
 
@@ -319,10 +314,7 @@ static BOOL s_doubleTapsEnabled = NO;
 - (void)updateHealthRect {
     CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
     GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.healthRectVertexBuffer bytes]);
-
-    glBindBuffer(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.name);
-    glBufferData(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.length, self.healthRectVertexBuffer.bytes, GL_DYNAMIC_DRAW);
-    glCheckError();
+    [self.healthRectVertexBuffer transfer];
 }
 
 #pragma mark - Touch Handling

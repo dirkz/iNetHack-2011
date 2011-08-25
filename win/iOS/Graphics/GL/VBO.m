@@ -22,10 +22,12 @@
 @synthesize mapBufferSupport;
 @synthesize length;
 @synthesize bytes;
+@synthesize transferred;
 
-- (id)initWithLength:(uint)l {
+- (id)initWithLength:(uint)l usage:(GLenum)u {
     if ((self = [super init])) {
         length = l;
+        usage = u;
         glGenBuffers(1, &name);
         NSAssert(name, @"could not generate vertex buffer object name");
 
@@ -39,6 +41,19 @@
         NSAssert(bytes, @"couldn't malloc bytes");
     }
     return self;
+}
+
+#pragma mark - API
+
+- (void)transfer {
+    glBindBuffer(GL_ARRAY_BUFFER, self.name);
+    if (!transferred) {
+        glBufferData(GL_ARRAY_BUFFER, self.length, self.bytes, usage);
+        glCheckError();
+        transferred = YES;
+    } else {
+        glBufferSubData(GL_ARRAY_BUFFER, 0, self.length, self.bytes);
+    }
 }
 
 #pragma mark - Description
