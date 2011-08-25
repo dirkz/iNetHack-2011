@@ -185,6 +185,9 @@ static BOOL s_doubleTapsEnabled = NO;
     if (!healthRectVertexBuffer) {
         healthRectVertexBuffer = [[VBO alloc] initWithLength:sizeof(vertexStruct) * 8];
         GLTypesWriteLinesQuadFromRectIntoVertexStruct(CGRectZero, healthRectVertexBuffer.bytes);
+        glBindBuffer(GL_ARRAY_BUFFER, healthRectVertexBuffer.name);
+        glBufferData(GL_ARRAY_BUFFER, healthRectVertexBuffer.length, healthRectVertexBuffer.bytes, GL_DYNAMIC_DRAW);
+        glCheckError();
     }
     return healthRectVertexBuffer;
 }
@@ -224,42 +227,44 @@ static BOOL s_doubleTapsEnabled = NO;
     glClear(GL_COLOR_BUFFER_BIT);
     
 	if (self.mapWindow) {
-//        textureStruct *t = [self.texCoordsBuffer bytes];
-//        
-//		int *glyphs = self.mapWindow.glyphs;
-//        
-//        for (int row = ROWNO-1; row >= 0; --row) {
-//            for (int col = 0; col < COLNO; ++col) {
-//                int glyph = glyphAt(glyphs, col, row);
-//                if (glyph != kNoGlyph) {
-//                    int h = glyph2tile[glyph];
-//                    t = [self.textureSet writeTrianglesQuadForTextureHash:h toTexCoords:t];
-//                } else {
-//                    memset(t, 0, sizeof(textureStruct) * 6);
-//                    t += 6;
-//                }
-//                size_t diff = (void *) t - self.texCoordsBuffer.bytes;
-//                NSAssert2(diff <= self.texCoordsBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.texCoordsBuffer.length);
-//            }
-//        }
-//        
-//        glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
-//        glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
-//        glTexCoordPointer(2, GL_FLOAT, 0, 0);
-//        glCheckError();
-//
-//        glBindBuffer(GL_ARRAY_BUFFER, self.vertexBuffer.name);
-//        glVertexPointer(2, GL_FLOAT, 0, 0);
-//        glCheckError();
-//        
-//        glEnable(GL_TEXTURE_2D);
-//        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-//        glEnableClientState(GL_VERTEX_ARRAY);
-//        glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
+        textureStruct *t = [self.texCoordsBuffer bytes];
+        
+		int *glyphs = self.mapWindow.glyphs;
+        
+        for (int row = ROWNO-1; row >= 0; --row) {
+            for (int col = 0; col < COLNO; ++col) {
+                int glyph = glyphAt(glyphs, col, row);
+                if (glyph != kNoGlyph) {
+                    int h = glyph2tile[glyph];
+                    t = [self.textureSet writeTrianglesQuadForTextureHash:h toTexCoords:t];
+                } else {
+                    memset(t, 0, sizeof(textureStruct) * 6);
+                    t += 6;
+                }
+                size_t diff = (void *) t - self.texCoordsBuffer.bytes;
+                NSAssert2(diff <= self.texCoordsBuffer.length, @"have exceeded buffer space (%u bytes written, %u available)", diff, self.texCoordsBuffer.length);
+            }
+        }
+        
+        glBindBuffer(GL_ARRAY_BUFFER, self.texCoordsBuffer.name);
+        glBufferData(GL_ARRAY_BUFFER, self.texCoordsBuffer.length, self.texCoordsBuffer.bytes, GL_DYNAMIC_DRAW);
+        glTexCoordPointer(2, GL_FLOAT, 0, 0);
+        glCheckError();
+
+        glBindBuffer(GL_ARRAY_BUFFER, self.levelVertexBuffer.name);
+        glVertexPointer(2, GL_FLOAT, 0, 0);
+        glCheckError();
+        
+        glEnable(GL_TEXTURE_2D);
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glDrawArrays(GL_TRIANGLES, 0, ROWNO * COLNO * 6);
         
         /////////////////////////////////////////
         // draw health rectangle around player //
         /////////////////////////////////////////
+        [self updateHealthRect];
+
         int hp100;
         if (u.mtimedone) {
             hp100 = u.mhmax ? u.mh*100/u.mhmax : 100;
@@ -275,17 +280,17 @@ static BOOL s_doubleTapsEnabled = NO;
             playerRectColor[2] = 0;
             playerRectColor[0] = playerRectColor[1] = colorValue;
         }
-//        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
-//        glCheckError();
+        glColor4f(playerRectColor[0], playerRectColor[1], playerRectColor[2], 1.f);
+        glCheckError();
         
         glBindBuffer(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.name);
         glVertexPointer(2, GL_FLOAT, 0, 0);
         glCheckError();
         
-//        glDisable(GL_TEXTURE_2D);
-//        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+        glDisable(GL_TEXTURE_2D);
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
         glEnableClientState(GL_VERTEX_ARRAY);
-        glDrawArrays(GL_LINES, 0, 2);
+        glDrawArrays(GL_LINES, 0, 8);
         
         // set color back to default
         glColor4f(1.f, 1.f, 1.f, 1.f);
@@ -338,7 +343,6 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (void)updateHealthRect {
     CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
-    DLog(@"updating health rect vertices %x with %@", (uint) self.healthRectVertexBuffer.bytes, NSStringFromCGRect(tileRect));
     GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.healthRectVertexBuffer bytes]);
 
     glBindBuffer(GL_ARRAY_BUFFER, self.healthRectVertexBuffer.name);
