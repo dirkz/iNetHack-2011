@@ -29,7 +29,7 @@ enum {
     NUM_ATTRIBUTES
 };
 
-static inline vertexStruct *GLTypesWriteTriangleStripQuadFromRectIntoVertexStruct(CGRect r, vertexStruct *v) {
+static inline vertexStruct *GLTypesWriteTrianglesQuadFromRectIntoVertexStruct(CGRect r, vertexStruct *v) {
     v->position[0] = r.origin.x; // ll
     v->position[1] = r.origin.y;
     ++v;
