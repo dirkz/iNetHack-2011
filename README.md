@@ -5,9 +5,9 @@ Based on the iOS Slash'EM port from 2010, development starting August 2011
 NetHack license and copyright:
 
 /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */  
-/* NetHack may be freely redistributed.  See [license] (blob/master/dat/license) "License" for details. */  
+/* NetHack may be freely redistributed.  See [license] (blob/master/dat/license "License") for details. */  
 
-iNetHack [license] (blob/master/win/iOS/license.txt) "License" and copyright:
+iNetHack [license] (blob/master/win/iOS/license.txt "License") and copyright:
 
 //  
 // iNetHack  
