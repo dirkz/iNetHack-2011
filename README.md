@@ -28,5 +28,5 @@ iNetHack [license] (iNetHack/blob/master/win/iOS/license.txt "License") and copy
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  
 //  
 
-August 2011
+August 2011  
 Dirk Zimmermann (me AT dirkz DOT com) [http://blog.dirkz.com] (http://blog.dirkz.com "http://blog.dirkz.com")
