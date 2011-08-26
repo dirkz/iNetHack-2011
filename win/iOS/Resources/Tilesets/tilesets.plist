@@ -15,6 +15,18 @@
 		<integer>32</integer>
 	</dict>
 	<dict>
+		<key>transparency</key>
+		<false/>
+		<key>author</key>
+		<string>John Shaw</string>
+		<key>filename</key>
+		<string>absurd 48x48</string>
+		<key>width</key>
+		<integer>48</integer>
+		<key>height</key>
+		<integer>48</integer>
+	</dict>
+	<dict>
 		<key>author</key>
 		<string>NetHack DevTeam</string>
 		<key>filename</key>
