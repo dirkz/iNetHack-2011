@@ -37,6 +37,9 @@
 		4305068114061F0D002D3FA8 /* geoduck 20x40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4305066A14061F0D002D3FA8 /* geoduck 20x40.png */; };
 		4305068214061F0D002D3FA8 /* nhtiles 16x16.png in Resources */ = {isa = PBXBuildFile; fileRef = 4305066B14061F0D002D3FA8 /* nhtiles 16x16.png */; };
 		4305068314061F0D002D3FA8 /* tiles 32x32.png in Resources */ = {isa = PBXBuildFile; fileRef = 4305066C14061F0D002D3FA8 /* tiles 32x32.png */; };
+		430C7727140BCB9F000122AB /* nhtiles 24x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 430C7726140BCB9F000122AB /* nhtiles 24x24.png */; };
+		430C772A140BCBD9000122AB /* Texture nhtiles 24x24.plist in Resources */ = {isa = PBXBuildFile; fileRef = 430C7728140BCBD9000122AB /* Texture nhtiles 24x24.plist */; };
+		430C772B140BCBD9000122AB /* Texture nhtiles 24x24.png in Resources */ = {isa = PBXBuildFile; fileRef = 430C7729140BCBD9000122AB /* Texture nhtiles 24x24.png */; };
 		4339A7F0115A7E8800741CE5 /* petmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4339A7EF115A7E8800741CE5 /* petmark.png */; };
 		4346308213FAD79E00550A93 /* air.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEB13FAD79E00550A93 /* air.lev */; };
 		4346308313FAD79E00550A93 /* Arc-fila.lev in Resources */ = {isa = PBXBuildFile; fileRef = 43462FEC13FAD79E00550A93 /* Arc-fila.lev */; };
@@ -394,6 +397,9 @@
 		4305066A14061F0D002D3FA8 /* geoduck 20x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geoduck 20x40.png"; sourceTree = "<group>"; };
 		4305066B14061F0D002D3FA8 /* nhtiles 16x16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nhtiles 16x16.png"; sourceTree = "<group>"; };
 		4305066C14061F0D002D3FA8 /* tiles 32x32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tiles 32x32.png"; sourceTree = "<group>"; };
+		430C7726140BCB9F000122AB /* nhtiles 24x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nhtiles 24x24.png"; sourceTree = "<group>"; };
+		430C7728140BCBD9000122AB /* Texture nhtiles 24x24.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Texture nhtiles 24x24.plist"; sourceTree = "<group>"; };
+		430C7729140BCBD9000122AB /* Texture nhtiles 24x24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Texture nhtiles 24x24.png"; sourceTree = "<group>"; };
 		4339A7EF115A7E8800741CE5 /* petmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = petmark.png; sourceTree = "<group>"; };
 		43462FEB13FAD79E00550A93 /* air.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.lev; sourceTree = "<group>"; };
 		43462FEC13FAD79E00550A93 /* Arc-fila.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arc-fila.lev"; sourceTree = "<group>"; };
@@ -980,6 +986,8 @@
 		4305065614061F0D002D3FA8 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				430C7728140BCBD9000122AB /* Texture nhtiles 24x24.plist */,
+				430C7729140BCBD9000122AB /* Texture nhtiles 24x24.png */,
 				4305065714061F0D002D3FA8 /* Texture absurd 32x32.plist */,
 				4305065814061F0D002D3FA8 /* Texture absurd 32x32.png */,
 				43FFF64C1407EEBF002A9261 /* Texture absurd 48x48.plist */,
@@ -1015,6 +1023,7 @@
 				4305066914061F0D002D3FA8 /* geoduck 10x20.png */,
 				4305066A14061F0D002D3FA8 /* geoduck 20x40.png */,
 				4305066B14061F0D002D3FA8 /* nhtiles 16x16.png */,
+				430C7726140BCB9F000122AB /* nhtiles 24x24.png */,
 				4305066C14061F0D002D3FA8 /* tiles 32x32.png */,
 			);
 			name = Tilesets;
@@ -1792,6 +1801,9 @@
 				43FFF64B1407EE6B002A9261 /* absurd 48x48.png in Resources */,
 				43FFF64E1407EEBF002A9261 /* Texture absurd 48x48.plist in Resources */,
 				43FFF64F1407EEBF002A9261 /* Texture absurd 48x48.png in Resources */,
+				430C7727140BCB9F000122AB /* nhtiles 24x24.png in Resources */,
+				430C772A140BCBD9000122AB /* Texture nhtiles 24x24.plist in Resources */,
+				430C772B140BCBD9000122AB /* Texture nhtiles 24x24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
