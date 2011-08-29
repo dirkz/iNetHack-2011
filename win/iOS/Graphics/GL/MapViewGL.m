@@ -60,14 +60,14 @@ static BOOL s_doubleTapsEnabled = NO;
 - (NSString *)stringFromNum:(uint)n vertices:(GLfloat *)v;
 - (void)applyTransformations;
 
+@property (nonatomic, readonly) NhMapWindow *mapWindow;
+@property (nonatomic, readonly) CGSize scaledTileSize;
 @property (nonatomic, readonly) TextureSet *textureSet;
 
 // VBOs
 @property (nonatomic, readonly) VBO *levelVertexBuffer;
 @property (nonatomic, readonly) VBO *texCoordsBuffer;
 @property (nonatomic, readonly) VBO *healthRectVertexBuffer;
-
-@property (nonatomic, readonly) NhMapWindow *mapWindow;
 
 @end
 
@@ -164,6 +164,10 @@ static BOOL s_doubleTapsEnabled = NO;
 
 - (NhMapWindow *)mapWindow {
     return (NhMapWindow *) [NhWindow mapWindow];
+}
+
+- (CGSize)scaledTileSize {
+    return CGSizeMake(tileSize.width * scale, tileSize.height * scale);
 }
 
 - (TextureSet *)textureSet {
@@ -314,6 +318,8 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)updateTileSet {
+    scale = 1.f;
+    
     tileSet = [TileSet sharedInstance];
     tileSize = tileSet.tileSize;
 
@@ -341,12 +347,14 @@ static BOOL s_doubleTapsEnabled = NO;
     
     [self updateHealthRect];
 
+    CGSize scaledTileSize = self.scaledTileSize;
+
 	CGPoint center = CGPointMake(self.framebufferWidth/2, self.framebufferHeight/2);
-	CGPoint playerPos = CGPointMake(clipX*tileSize.width, clipY*tileSize.height);
+	CGPoint playerPos = CGPointMake(clipX * scaledTileSize.width, clipY * scaledTileSize.height);
 	
-    CGFloat totalAreaHeight = tileSize.height * ROWNO;
+    CGFloat totalAreaHeight = self.scaledTileSize.height * ROWNO;
     CGFloat posY = totalAreaHeight-playerPos.y;
-	clipOffset = CGPointMake(-playerPos.x + center.x - tileSize.width/2, -posY + center.y + tileSize.height/2);
+	clipOffset = CGPointMake(-playerPos.x + center.x - scaledTileSize.width/2, -posY + center.y + scaledTileSize.height/2);
 
     [self resetPanOffsetClipAround:NO];
     
@@ -354,7 +362,8 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)updateHealthRect {
-    CGRect tileRect = CGRectMake(clipX * tileSize.width, (ROWNO - clipY -1) * tileSize.height, tileSize.width, tileSize.height);
+    CGSize scaledTileSize = tileSize;
+    CGRect tileRect = CGRectMake(clipX * scaledTileSize.width, (ROWNO - clipY -1) * scaledTileSize.height, scaledTileSize.width, scaledTileSize.height);
     GLTypesWriteLinesQuadFromRectIntoVertexStruct(tileRect, [self.healthRectVertexBuffer bytes]);
     [self.healthRectVertexBuffer transfer];
 }
@@ -381,24 +390,26 @@ static BOOL s_doubleTapsEnabled = NO;
     p.x *= contentScale;
     p.y *= contentScale;
     
+    CGSize scaledTileSize = self.scaledTileSize;
+    
     // Increase p.y about the invisible area of the level that is 'ontop' the screen
     // Since the offset are inverted (used for translation) we have to add them whereas normally we'd subtract them
-    GLfloat levelH = tileSize.height * ROWNO;
+    GLfloat levelH = scaledTileSize.height * ROWNO;
     GLfloat delta = levelH - self.framebufferHeight + clipOffset.y + panOffset.y;
-    p.y += delta + tileSize.height/2;
+    p.y += delta + scaledTileSize.height/2;
 
     // correct x for panning and clipping
-	p.x -= panOffset.x + clipOffset.x + tileSize.width/2;
+	p.x -= panOffset.x + clipOffset.x + scaledTileSize.width/2;
 
-	*px = roundf(p.x / tileSize.width);
-	*py = roundf(p.y / tileSize.height) - 1; // -1 to make it 0-based
+	*px = roundf(p.x / scaledTileSize.width);
+	*py = roundf(p.y / scaledTileSize.height) - 1; // -1 to make it 0-based
 }
 
 - (void)applyTransformations {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glScalef(scale, scale, 1.f);
     glTranslatef(clipOffset.x + panOffset.x, clipOffset.y + panOffset.y, 0);
+    glScalef(scale, scale, 1.f);
 }
 
 #pragma mark - UIGestureRecognizer
@@ -454,19 +465,13 @@ static BOOL s_doubleTapsEnabled = NO;
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)gr {
+    if (gr.state == UIGestureRecognizerStateBegan) {
+        // factor-in current scale
+        CGFloat currentDelta = scale - 1.f;
+        gr.scale += currentDelta;
+    }
     scale = gr.scale;
-    
-	tileSize.width *= round(gr.scale);
-	tileSize.height *= round(gr.scale);
-    
-	if (tileSize.width > maxTileSize.width || tileSize.height > maxTileSize.height) {
-		tileSize = maxTileSize;
-	} else if (tileSize.width < minTileSize.width || tileSize.height < minTileSize.height) {
-		tileSize = minTileSize;
-	}
-	
-	panOffset.x *= gr.scale;
-	panOffset.y *= gr.scale;
+    [self clipAroundX:clipX y:clipY];
     [self applyTransformations];
     [self drawFrame];
 }
