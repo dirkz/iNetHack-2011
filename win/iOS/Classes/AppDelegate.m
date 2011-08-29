@@ -1,5 +1,5 @@
 //
-//  SlashEMAppDelegate.m
+//  AppDelegate.m
 //  SlashEM
 //
 //  Created by Dirk Zimmermann on 3/16/10.
@@ -25,7 +25,7 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 //
 
-#import "SlashEMAppDelegate.h"
+#import "AppDelegate.h"
 #import "MainViewController.h"
 #import "winios.h"
 #import "TileSet.h"
@@ -35,7 +35,7 @@
 
 extern int unixmain(int argc, char **argv);
 
-@implementation SlashEMAppDelegate
+@implementation AppDelegate
 
 @synthesize window;
 @synthesize mainViewController;

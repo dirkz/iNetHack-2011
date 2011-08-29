@@ -1,5 +1,5 @@
 //
-//  SlashEMAppDelegate.h
+//  AppDelegate.h
 //  SlashEM
 //
 //  Created by Dirk Zimmermann on 3/16/10.
@@ -29,7 +29,7 @@
 
 @class MainViewController;
 
-@interface SlashEMAppDelegate : NSObject <UIApplicationDelegate> {
+@interface AppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	NSThread *netHackThread;
 	MainViewController *mainViewController;
