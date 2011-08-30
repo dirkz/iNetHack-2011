@@ -232,7 +232,7 @@
 			static const float startY = 3.0f;
 			static const float sliderHeight = 23.0f;
 			float textLabelHeight = cellHeight-marginY-startY-sliderHeight;
-			static const float imageViewWidth = 45.0f;
+			const float imageViewWidth = [TileSet sharedInstance].tileSize.width + 15.f;
 			static const float paddingRight = 5.0f;
 
 			// textLabel
@@ -245,6 +245,8 @@
 			textLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 			textLabel.tag = 1;
 			textLabel.font = [cell.textLabel.font fontWithSize:14.0f];
+            textLabel.textColor = [UIColor whiteColor];
+            textLabel.backgroundColor = [UIColor darkGrayColor];
 			[cell.contentView addSubview:textLabel];
 			[textLabel release];
 			
@@ -272,7 +274,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    tableView.backgroundColor = [UIColor darkGrayColor];
+    tableView.backgroundColor = [UIColor blackColor];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

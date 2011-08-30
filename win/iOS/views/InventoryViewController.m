@@ -56,6 +56,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.title = @"Inventory";
 	[self updateInventory];
 }
 
@@ -202,7 +203,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     cell.backgroundColor = [UIColor darkGrayColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    tableView.backgroundColor = [UIColor darkGrayColor];
+    tableView.backgroundColor = [UIColor blackColor];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
