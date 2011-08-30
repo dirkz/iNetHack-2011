@@ -360,7 +360,7 @@ struct you {
 	xchar	skill_record[P_SKILL_LIMIT];	/* skill advancements */
 	struct skills weapon_skills[P_NUM_SKILLS];
 	boolean twoweap;		/* KMH -- Using two-weapon combat */
-#ifdef __APPLE__
+#if TARGET_OS_IPHONE
 	int _ios_magic; /* change footprint for hearse, both for target and build platform (for makedefs) */
 #endif
 };	/* end of `struct you' */
