@@ -164,12 +164,14 @@ enum rotation_lock {
 	TileSetViewController *tilesetViewController = [[TileSetViewController alloc]
 													initWithNibName:@"TileSetViewController" bundle:nil];
 	[self presentModalViewController:tilesetViewController animated:YES];
+    [tilesetViewController release];
 }
 
 - (void)toolsMenuAction:(id)sender {
 	ToolsViewController *toolsViewController = [[ToolsViewController alloc]
 												initWithNibName:@"ToolsViewController" bundle:nil];
 	[self presentModalViewController:toolsViewController animated:YES];
+    [toolsViewController release];
 }
 
 - (void)wizardMenuAction:(id)sender {

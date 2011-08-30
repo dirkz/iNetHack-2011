@@ -120,6 +120,7 @@ extern int unixmain(int argc, char **argv);
 
 - (void)dealloc {
     [window release];
+    [netHackThread release];
     [super dealloc];
 }
 

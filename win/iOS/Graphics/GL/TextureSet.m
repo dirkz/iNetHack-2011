@@ -54,10 +54,6 @@ typedef enum {
 
 - (id)initWithBaseName:(NSString *)baseName {
     if ((self = [super init])) {
-        CGFloat scale = 1.f;
-        if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-            scale = [[UIScreen mainScreen] scale];
-        }
         NSString *imagePath = [NSString stringWithFormat:@"%@.png", baseName];
         UIImage *img = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:imagePath ofType:nil]];
         NSAssert1(img, @"could not load %@", imagePath);

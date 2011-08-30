@@ -30,9 +30,11 @@
 @class MainViewController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate> {
+
     UIWindow *window;
 	NSThread *netHackThread;
 	MainViewController *mainViewController;
+
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
