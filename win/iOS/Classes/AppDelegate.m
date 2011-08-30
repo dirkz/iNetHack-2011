@@ -51,6 +51,16 @@ extern int unixmain(int argc, char **argv);
     [builder createTileSets];
 #endif
     
+    // set wizard early so actionBar is built correctly
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	BOOL wizardMode = [defaults boolForKey:kWizard];
+	if (wizardMode) {
+		wizard = TRUE;
+	}
+#if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
+	wizard = TRUE; /* debugging */
+#endif
+
 	[window addSubview:mainViewController.view];
     [window makeKeyAndVisible];
 	

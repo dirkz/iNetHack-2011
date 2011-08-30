@@ -190,16 +190,6 @@ void ios_init_nhwindows(int* argc, char** argv) {
 	iflags.window_inited = TRUE;
 	iflags.use_color = TRUE;
 	switch_graphics(IBM_GRAPHICS);
-
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	BOOL wizardMode = [defaults boolForKey:kWizard];
-	if (wizardMode) {
-		wizard = TRUE;
-	}
-
-#if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
-	wizard = TRUE; /* debugging */
-#endif
 }
 
 void ios_askname() {
