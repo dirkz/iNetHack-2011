@@ -139,12 +139,6 @@ coord CoordMake(xchar i, xchar j) {
 		strcpy(nethackBaseOptions, [netHackOptions cStringUsingEncoding:NSASCIIStringEncoding]);
 	}
 	
-	NSString *characterName = [defaults stringForKey:kCharacterName];
-	if (characterName && characterName.length > 0) {
-		strcat(nethackBaseOptions, ",name:");
-		strcat(nethackBaseOptions, [characterName cStringUsingEncoding:NSASCIIStringEncoding]);
-	}
-	
 	setenv("NETHACKOPTIONS", nethackBaseOptions, 1);
 	
 	[pool drain];
@@ -209,7 +203,7 @@ void ios_init_nhwindows(int* argc, char** argv) {
 }
 
 void ios_askname() {
-	//DLog(@"askname");
+//	DLog(@"askname");
 	ios_getlin("Enter your name", plname);
 }
 

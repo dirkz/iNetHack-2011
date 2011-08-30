@@ -108,9 +108,6 @@ extern int unixmain(int argc, char **argv);
 	}
 #endif
 	
-	// set plname (very important for save files and getlock)
-	[[NSUserName() capitalizedString] getCString:plname maxLength:PL_NSIZ encoding:NSASCIIStringEncoding];
-	
 	// call Slash'EM
 	unixmain(argc, argv);
 	
