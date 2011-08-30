@@ -203,10 +203,9 @@ void ios_init_nhwindows(int* argc, char** argv) {
 		wizard = TRUE;
 	}
 
-#if TARGET_OS_IPHONE && TARGET_ios_SIMULATOR
+#if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
 	wizard = TRUE; /* debugging */
 #endif
-	
 }
 
 void ios_askname() {
