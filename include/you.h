@@ -69,6 +69,9 @@ struct u_conduct {		/* number of times... */
 	long	polyselfs;	/* transformed yourself */
 	long	wishes;		/* used a wish */
 	long	wisharti;	/* wished for an artifact */
+#if TARGET_OS_IPHONE
+	long	boughtwish;	/* purchased a wish in-app (IAP) */
+#endif
 				/* genocides already listed at end of game */
 };
 
@@ -360,9 +363,6 @@ struct you {
 	xchar	skill_record[P_SKILL_LIMIT];	/* skill advancements */
 	struct skills weapon_skills[P_NUM_SKILLS];
 	boolean twoweap;		/* KMH -- Using two-weapon combat */
-#if TARGET_OS_IPHONE
-	int _ios_magic; /* change footprint for hearse, both for target and build platform (for makedefs) */
-#endif
 };	/* end of `struct you' */
 
 #define Upolyd (u.umonnum != u.umonster)
