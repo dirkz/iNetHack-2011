@@ -43,7 +43,7 @@
 #import "MessageView.h"
 #import "MapView.h"
 #import "MapViewGL.h"
-#import "TileSetViewController.h"
+#import "MainMenuViewController.h"
 #import "ToolsViewController.h"
 #import "CommandButtonItem.h"
 #import "ActionBar.h"
@@ -160,11 +160,16 @@ enum rotation_lock {
 	[self presentModalViewController:actionViewController animated:YES];
 }
 
-- (void)tilesetMenuAction:(id)sender {
-	TileSetViewController *tilesetViewController = [[TileSetViewController alloc]
-													initWithNibName:@"TileSetViewController" bundle:nil];
-	[self presentModalViewController:tilesetViewController animated:YES];
-    [tilesetViewController release];
+- (void)mainMenuAction:(id)sender {
+	MainMenuViewController *vc = [[MainMenuViewController alloc]
+													initWithNibName:@"MainMenuViewController" bundle:nil];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        nc.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+    [vc release];
+    [[MainViewController instance] presentModalViewController:nc animated:YES];
+    [nc release];
 }
 
 - (void)toolsMenuAction:(id)sender {
@@ -254,7 +259,7 @@ enum rotation_lock {
         [toolbarItems addObject:[Action actionWithTitle:@"Info" target:self action:@selector(infoMenuAction:) arg:nil]];
         [toolbarItems addObject:[Action actionWithTitle:@"Tools" target:self action:@selector(toolsMenuAction:) arg:nil]];
         [toolbarItems addObject:[Action actionWithTitle:@"Move" target:self action:@selector(moveMenuAction:) arg:nil]];
-        [toolbarItems addObject:[Action actionWithTitle:@"Tiles" target:self action:@selector(tilesetMenuAction:) arg:nil]];
+        [toolbarItems addObject:[Action actionWithTitle:@"Menu" target:self action:@selector(mainMenuAction:) arg:nil]];
         
         if (wizard) { // wizard mode
             [toolbarItems addObject:[Action actionWithTitle:@"Wiz" target:self action:@selector(wizardMenuAction:)]];

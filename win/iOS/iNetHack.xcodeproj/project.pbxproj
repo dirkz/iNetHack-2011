@@ -180,6 +180,8 @@
 		4346311613FAD79E00550A93 /* wizard3.lev in Resources */ = {isa = PBXBuildFile; fileRef = 4346307F13FAD79E00550A93 /* wizard3.lev */; };
 		4346311713FAD79E00550A93 /* wizhelp in Resources */ = {isa = PBXBuildFile; fileRef = 4346308013FAD79E00550A93 /* wizhelp */; };
 		434C9D47115BE57F00A6EBD6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 434C9D46115BE57F00A6EBD6 /* Settings.bundle */; };
+		43601671140F9D7B00AA90DA /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4360166F140F9D7B00AA90DA /* MainMenuViewController.m */; };
+		43601672140F9D7B00AA90DA /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43601670140F9D7B00AA90DA /* MainMenuViewController.xib */; };
 		4365D6FC115154E600B15085 /* ExtendedCommandsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4365D6FB115154E600B15085 /* ExtendedCommandsController.xib */; };
 		437A90E7114FF57A000046FD /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A90B8114FF57A000046FD /* Action.m */; };
 		437A90E8114FF57A000046FD /* NhStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 437A90BA114FF57A000046FD /* NhStatus.m */; };
@@ -540,6 +542,9 @@
 		4346307F13FAD79E00550A93 /* wizard3.lev */ = {isa = PBXFileReference; lastKnownFileType = file; path = wizard3.lev; sourceTree = "<group>"; };
 		4346308013FAD79E00550A93 /* wizhelp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wizhelp; sourceTree = "<group>"; };
 		434C9D46115BE57F00A6EBD6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		4360166E140F9D7B00AA90DA /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		4360166F140F9D7B00AA90DA /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		43601670140F9D7B00AA90DA /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
 		4365D6FB115154E600B15085 /* ExtendedCommandsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtendedCommandsController.xib; sourceTree = "<group>"; };
 		437A90B7114FF57A000046FD /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		437A90B8114FF57A000046FD /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
@@ -1129,6 +1134,9 @@
 				438622C511590FC700295E23 /* QuestionViewController.m */,
 				43F64B251182F06A0016061C /* StatusView.h */,
 				43F64B261182F06A0016061C /* StatusView.m */,
+				4360166E140F9D7B00AA90DA /* MainMenuViewController.h */,
+				4360166F140F9D7B00AA90DA /* MainMenuViewController.m */,
+				43601670140F9D7B00AA90DA /* MainMenuViewController.xib */,
 			);
 			name = Views;
 			path = views;
@@ -1804,6 +1812,7 @@
 				430C7727140BCB9F000122AB /* nhtiles 24x24.png in Resources */,
 				430C772A140BCBD9000122AB /* Texture nhtiles 24x24.plist in Resources */,
 				430C772B140BCBD9000122AB /* Texture nhtiles 24x24.png in Resources */,
+				43601672140F9D7B00AA90DA /* MainMenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1976,6 +1985,7 @@
 				437E4E7B13FBFA9A005C8683 /* ZEAGLView.m in Sources */,
 				437E4E7E13FBFAF0005C8683 /* MapViewGL.m in Sources */,
 				43C5127E140B78B200F17A37 /* CGPointMath.m in Sources */,
+				43601671140F9D7B00AA90DA /* MainMenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

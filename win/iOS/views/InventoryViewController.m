@@ -158,6 +158,7 @@
 	} else {
 		cell.imageView.image = nil;
 	}
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	
     return cell;
 }

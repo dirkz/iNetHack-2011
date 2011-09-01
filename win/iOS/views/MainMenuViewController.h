@@ -1,0 +1,13 @@
+//
+//  MainMenuViewController.h
+//  iNetHack
+//
+//  Created by Dirk Zimmermann on 9/1/11.
+//  Copyright 2011 Dirk Zimmermann. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface MainMenuViewController : UITableViewController
+
+@end
