@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <StoreKit/StoreKit.h>
 
-@interface MainMenuViewController : UITableViewController
+@interface MainMenuViewController : UITableViewController <SKRequestDelegate,SKProductsRequestDelegate> {
+    
+    NSMutableArray *skProducts;
+    
+}
 
 @end
