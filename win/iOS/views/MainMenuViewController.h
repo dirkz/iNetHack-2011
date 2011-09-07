@@ -12,6 +12,7 @@
 @interface MainMenuViewController : UITableViewController <SKRequestDelegate,SKProductsRequestDelegate> {
     
     NSMutableArray *skProducts;
+    UIToolbar *toolbar;
     
 }
 

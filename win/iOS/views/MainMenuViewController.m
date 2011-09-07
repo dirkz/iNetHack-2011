@@ -60,24 +60,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.tableView.tableFooterView) {
-        CGRect bounds = self.tableView.bounds;
-        CGFloat height = 40.f;
-        bounds.origin.y = bounds.size.height-height;
-        bounds.size.height = height;
-        UIToolbar *tb = [[UIToolbar alloc] initWithFrame:bounds];
-        UIBarButtonItem	*flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem	*flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem	*spinner = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-        
-        [tb setItems:[NSArray arrayWithObjects:flex1, spinner, flex2, nil]];
-        self.tableView.tableFooterView = tb;
-        [tb release];
-
-        [flex1 release];
-        [flex2 release];
-        [spinner release];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -245,9 +227,29 @@
 
 - (void)setActivity:(BOOL)active {
     if (active) {
+        if (!self.tableView.tableHeaderView) {
+            CGRect bounds = self.tableView.bounds;
+            CGFloat height = 40.f;
+            bounds.origin.y = bounds.size.height-height;
+            bounds.size.height = height;
+            toolbar = [[UIToolbar alloc] initWithFrame:bounds];
+            UIBarButtonItem	*flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+            UIBarButtonItem	*flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+            UIBarButtonItem	*spinner = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
+            
+            [toolbar setItems:[NSArray arrayWithObjects:flex1, spinner, flex2, nil]];
+            self.tableView.tableHeaderView = toolbar;
+            [toolbar release];
+            
+            [flex1 release];
+            [flex2 release];
+            [spinner release];
+        }
         [self.activityIndicator startAnimating];
     } else {
         [self.activityIndicator stopAnimating];
+        toolbar = nil;
+        self.tableView.tableHeaderView = nil;
     }
 }
 
@@ -272,6 +274,7 @@
 
 - (void)dealloc {
     [skProducts release];
+    [activityIndicator release];
     [super dealloc];
 }
 
