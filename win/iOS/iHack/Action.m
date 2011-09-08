@@ -30,6 +30,8 @@
 @implementation Action
 
 @synthesize title;
+@synthesize description;
+@synthesize context;
 
 + (id)actionWithTitle:(NSString *)t target:(id)target action:(SEL)action arg:(id)arg {
 	Action *a = [[[self alloc] initWithTitle:t] autorelease];
@@ -80,6 +82,7 @@
 
 - (void)dealloc {
 	[title release];
+    [description release];
 	if (invocations) { // guard against auto-creation
 		[invocations release];
 	}

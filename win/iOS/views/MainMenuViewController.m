@@ -10,6 +10,7 @@
 
 #import "TileSetViewController.h"
 #import "MainViewController.h"
+#import "BlockAction.h"
 
 @interface MainMenuViewController ()
 
@@ -27,12 +28,14 @@
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.title = @"Main Menu";
         
-        skProducts = [[NSMutableArray alloc] init];
-
-        SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObjects:@"BuyAWish", nil]];
-        request.delegate = self;
-        [self setActivity:YES];
-        [request start];
+        sections = [[NSMutableArray alloc] init];
+        
+        NSArray *fixedActions = [NSArray arrayWithObjects:[BlockAction actionWithTitle:@"Tilesets" actionBlock:^(Action *action) {
+            TileSetViewController *vc = [[TileSetViewController alloc] initWithNibName:@"TileSetViewController" bundle:nil];
+            [self.navigationController pushViewController:vc animated:YES];
+            [vc release];
+        }], nil];
+        [sections addObject:fixedActions];
     }
     return self;
 }
@@ -60,6 +63,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+    if (!request) {
+        request = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObjects:@"BuyAWish", nil]];
+        request.delegate = self;
+        [self setActivity:YES];
+        [request start];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -87,12 +97,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return skProducts.count + 1;
+    return [[sections objectAtIndex:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -104,16 +114,14 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"Tilesets";
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    } else {
-        SKProduct *product = [skProducts objectAtIndex:indexPath.row-1];
-        cell.textLabel.text = product.localizedTitle;
-        cell.detailTextLabel.text = product.localizedDescription;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSArray *rows = [sections objectAtIndex:indexPath.section];
+    Action *action = [rows objectAtIndex:indexPath.row];
+    cell.textLabel.text = action.title;
+    if (action.description) {
+        cell.detailTextLabel.text = action.description;
     }
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
     return cell;
 }
 
@@ -159,39 +167,20 @@
 #pragma mark - SKRequestDelegate
 
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response {
-    NSUInteger oldCount = [skProducts count];
-    [skProducts setArray:response.products];
-    NSUInteger newCount = [skProducts count];
-    
-    DLog(@"old # of products %u, new %u", oldCount, newCount);
-    
-    NSMutableArray *indexPathsToDelete = nil;
-    if (oldCount > 0) {
-        indexPathsToDelete = [NSMutableArray arrayWithCapacity:oldCount];
-        for (uint i = 0; i < oldCount; ++i) {
-            [indexPathsToDelete addObject:[NSIndexPath indexPathForRow:i+1 inSection:0]];
-        }
+    NSMutableArray *products = [[NSMutableArray alloc] initWithCapacity:response.products.count];
+    for (SKProduct *product in response.products) {
+        BlockAction *action = [[BlockAction alloc] initWithTitle:product.localizedTitle actionBlock:^(Action *a) {
+            DLog(@"buy %@", a.context);
+            [self.navigationController dismissModalViewControllerAnimated:YES];
+        }];
+        action.description = product.localizedDescription;
+        action.context = product;
+        [products addObject:action];
     }
     
-    NSMutableArray *indexPathsToAdd = nil;
-    if (newCount > 0) {
-        indexPathsToAdd = [NSMutableArray arrayWithCapacity:[skProducts count]];
-        for (uint i = 0; i < newCount; ++i) {
-            [indexPathsToAdd addObject:[NSIndexPath indexPathForRow:i+1 inSection:0]];
-        }
-    }
-    
-    if (indexPathsToDelete || indexPathsToAdd) {
-        DLog(@"updating");
-        [self.tableView beginUpdates];
-        if (indexPathsToDelete) {
-            [self.tableView deleteRowsAtIndexPaths:indexPathsToDelete withRowAnimation:UITableViewRowAnimationBottom];
-        }
-        if (indexPathsToAdd) {
-            [self.tableView insertRowsAtIndexPaths:indexPathsToAdd withRowAnimation:UITableViewRowAnimationBottom];
-        }
-        [self.tableView endUpdates];
-    }
+    [sections addObject:products];
+    [products release];
+    [self.tableView reloadData];
 
     [self setActivity:NO];
 }
@@ -210,11 +199,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        TileSetViewController *vc = [[TileSetViewController alloc] initWithNibName:@"TileSetViewController" bundle:nil];
-        [self.navigationController pushViewController:vc animated:YES];
-        [vc release];
-    }
+    NSArray *rows = [sections objectAtIndex:indexPath.section];
+    Action *action = [rows objectAtIndex:indexPath.row];
+    [action invoke:self];
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -227,29 +214,15 @@
 
 - (void)setActivity:(BOOL)active {
     if (active) {
-        if (!self.tableView.tableHeaderView) {
-            CGRect bounds = self.tableView.bounds;
-            CGFloat height = 40.f;
-            bounds.origin.y = bounds.size.height-height;
-            bounds.size.height = height;
-            toolbar = [[UIToolbar alloc] initWithFrame:bounds];
-            UIBarButtonItem	*flex1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            UIBarButtonItem	*flex2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-            UIBarButtonItem	*spinner = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator];
-            
-            [toolbar setItems:[NSArray arrayWithObjects:flex1, spinner, flex2, nil]];
-            self.tableView.tableHeaderView = toolbar;
-            [toolbar release];
-            
-            [flex1 release];
-            [flex2 release];
-            [spinner release];
+        if (!self.navigationItem.rightBarButtonItem) {
+            [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithCustomView:self.activityIndicator] animated:YES];
+            [self.navigationItem.rightBarButtonItem release];
+            NSAssert(self.navigationItem.rightBarButtonItem, @"self.navigationController.navigationItem.rightBarButtonItem should exist now");
         }
         [self.activityIndicator startAnimating];
     } else {
         [self.activityIndicator stopAnimating];
-        toolbar = nil;
-        self.tableView.tableHeaderView = nil;
+        [self.navigationItem setRightBarButtonItem:nil animated:YES];
     }
 }
 
@@ -273,8 +246,8 @@
 }
 
 - (void)dealloc {
-    [skProducts release];
     [activityIndicator release];
+    [request release];
     [super dealloc];
 }
 

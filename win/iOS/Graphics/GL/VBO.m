@@ -65,7 +65,9 @@
 #pragma mark - API
 
 - (void)transfer {
+    glCheckError();
     glBindBuffer(GL_ARRAY_BUFFER, self.name);
+    glCheckError();
     if (!transferred) {
         glBufferData(GL_ARRAY_BUFFER, self.length, self.bytes, usage);
         glCheckError();

@@ -356,6 +356,7 @@
 		43998AD813FBCE8C00080074 /* TileSetBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998AD213FBCE8C00080074 /* TileSetBuilder.m */; };
 		43998ADB13FBCEDF00080074 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43998ADA13FBCEDF00080074 /* OpenGLES.framework */; };
 		43998ADE13FBCF1000080074 /* AssetBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 43998ADD13FBCF1000080074 /* AssetBuilder.m */; };
+		43AE4DFC1418ED8900D451C3 /* BlockAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 43AE4DFB1418ED8900D451C3 /* BlockAction.m */; };
 		43C5127E140B78B200F17A37 /* CGPointMath.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C5127D140B78B200F17A37 /* CGPointMath.m */; };
 		43C52F4511535404001FAA6D /* AsciiTileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 43C52F4411535404001FAA6D /* AsciiTileSet.m */; };
 		43D4D3E3116CF22E000D14B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D4D3E2116CF22E000D14B2 /* QuartzCore.framework */; };
@@ -863,6 +864,8 @@
 		43998ADA13FBCEDF00080074 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		43998ADC13FBCF1000080074 /* AssetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetBuilder.h; sourceTree = "<group>"; };
 		43998ADD13FBCF1000080074 /* AssetBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetBuilder.m; sourceTree = "<group>"; };
+		43AE4DFA1418ED8900D451C3 /* BlockAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockAction.h; sourceTree = "<group>"; };
+		43AE4DFB1418ED8900D451C3 /* BlockAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockAction.m; sourceTree = "<group>"; };
 		43B98DA213FAE68200427415 /* DLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLog.h; sourceTree = "<group>"; };
 		43C5127C140B78B200F17A37 /* CGPointMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointMath.h; sourceTree = "<group>"; };
 		43C5127D140B78B200F17A37 /* CGPointMath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGPointMath.m; sourceTree = "<group>"; };
@@ -919,8 +922,8 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				43C5127B140B78B200F17A37 /* Util */,
-				437A90FF114FF58E000046FD /* Views */,
 				43998AC913FBCE8C00080074 /* Graphics */,
+				437A90FF114FF58E000046FD /* Views */,
 				437A90B6114FF57A000046FD /* iHack */,
 				437A9518115003E0000046FD /* unix */,
 				437A94AC114FFDD3000046FD /* win */,
@@ -1053,6 +1056,8 @@
 			children = (
 				437A90B7114FF57A000046FD /* Action.h */,
 				437A90B8114FF57A000046FD /* Action.m */,
+				43AE4DFA1418ED8900D451C3 /* BlockAction.h */,
+				43AE4DFB1418ED8900D451C3 /* BlockAction.m */,
 				43998AC213FBB86800080074 /* ActionBar.h */,
 				43998AC313FBB86800080074 /* ActionBar.m */,
 				437A90B9114FF57A000046FD /* NhStatus.h */,
@@ -1990,6 +1995,7 @@
 				437E4E7E13FBFAF0005C8683 /* MapViewGL.m in Sources */,
 				43C5127E140B78B200F17A37 /* CGPointMath.m in Sources */,
 				43601671140F9D7B00AA90DA /* MainMenuViewController.m in Sources */,
+				43AE4DFC1418ED8900D451C3 /* BlockAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

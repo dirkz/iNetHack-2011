@@ -35,6 +35,8 @@
 }
 
 @property (nonatomic, readonly) NSString *title;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, retain) id context;
 
 + (id)actionWithTitle:(NSString *)t target:(id)target action:(SEL)action arg:(id)arg;
 + (id)actionWithTitle:(NSString *)t target:(id)target action:(SEL)action;
